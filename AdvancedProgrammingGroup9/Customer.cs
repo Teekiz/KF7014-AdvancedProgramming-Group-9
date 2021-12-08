@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 // public interface 
 
-namespace Group9Assignment
+namespace AdvancedProgrammingGroup9
 {
     public class Customer
     {
