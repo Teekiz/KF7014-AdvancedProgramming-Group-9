@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace AdvancedProgrammingGroup9
 {
-    //OrderInterface
-    public interface IOrder
+    //EnqeiuryInterface
+    public interface IEnquiry
     {
         int GetOrderID();
         DateTime GetReceivedDate();
@@ -17,9 +17,9 @@ namespace AdvancedProgrammingGroup9
     }
 
     //Concrete Implementation
-    public class Order : IOrder
+    public class Enquiry : IEnquiry
     {
-        public Order(int orderID, DateTime receivedDate, DateTime deadline)
+        public Enquiry(int orderID, DateTime receivedDate, DateTime deadline)
         {
             this.orderID = orderID;
             this.receivedDate = receivedDate;
@@ -35,6 +35,9 @@ namespace AdvancedProgrammingGroup9
         public DateTime receivedDate { get; set; }
         //[Required]
         public DateTime deadline { get; set; }
+
+        //TODO - Change this from customer to ICustomer
+        public Customer customer;
 
         //this was orignally a virtual ICollection named orderItemLists
         //https://stackoverflow.com/questions/47310922/how-to-get-index-of-an-item-in-icollectiont
@@ -73,31 +76,6 @@ namespace AdvancedProgrammingGroup9
             try { return orderItemsList[index]; }
             catch (Exception exception) { Console.WriteLine(exception); }
             return null;
-
-
-        }
-
-        public void saveItems()
-        {
-            using (var context = new DatabaseEntities())
-            {
-                OrderItems I = getItemInOrder(0);
-
-                Order o = this;
-
-                o.orderID = 1;
-                System.Windows.Forms.MessageBox.Show(o.GetOrderID().ToString());
-                System.Windows.Forms.MessageBox.Show(o.GetDeadline().ToString());
-                System.Windows.Forms.MessageBox.Show(o.GetReceivedDate().ToString());
-                System.Windows.Forms.MessageBox.Show(I.GetName().ToString());
-
-
-                context.Order.Add(o);
-                context.OrderItems.Add(I);
-                context.SaveChanges();
-
-                System.Windows.Forms.MessageBox.Show("Done.");
-            }
         }
     }
 }

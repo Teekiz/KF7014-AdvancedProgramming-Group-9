@@ -11,7 +11,7 @@ namespace AdvancedProgrammingGroup9
     {
         public DatabaseEntities() : base("connection") { }
 
-        public DbSet<Order> Order { get; set; }
+        public DbSet<Enquiry> Enquiry { get; set; }
         public DbSet<OrderItems> OrderItems { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

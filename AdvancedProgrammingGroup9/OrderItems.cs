@@ -53,7 +53,7 @@ namespace AdvancedProgrammingGroup9
         [Required]
         public int creationTime { get; set; }
         [Required]
-        public virtual Order Order { get; set; }
+        public virtual Enquiry Enquiry { get; set; }
 
         public OrderItems(String itemName, int quantity, byte[] referenceImage)
         {

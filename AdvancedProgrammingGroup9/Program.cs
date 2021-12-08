@@ -18,11 +18,9 @@ namespace AdvancedProgrammingGroup9
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new OrderCust());
 
-            Order order = new Order(1, DateTime.Now, DateTime.Now.AddDays(1));
-            order.createSword("Sword1", 1, null);
-            order.createArmour("Sword2", 1, null);
-
-            order.saveItems();
+            Enquiry enquiry = new Enquiry(1, DateTime.Now, DateTime.Now.AddDays(1));
+            enquiry.createSword("Sword1", 1, null);
+            enquiry.createArmour("Sword2", 1, null);
         }
 
     }
