@@ -16,7 +16,7 @@ namespace AdvancedProgrammingGroup9
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new DefaultForm());
+            Application.Run(new OrderCust());
 
             Order order = new Order(1, DateTime.Now, DateTime.Now.AddDays(1));
             order.createSword("Sword1", 1, null);

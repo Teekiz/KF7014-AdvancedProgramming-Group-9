@@ -1,5 +1,5 @@
 ﻿
-namespace WindowsFormsApp1
+namespace AdvancedProgrammingGroup9
 {
     partial class OrderManager
     {
