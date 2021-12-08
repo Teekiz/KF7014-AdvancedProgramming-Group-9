@@ -14,8 +14,7 @@ namespace AdvancedProgrammingGroup9
         int GetOrderID();
         DateTime GetReceivedDate();
         DateTime GetDeadline();
-        int CalculateEstimatedMaxTime();
-        int CalculateEstimatedMinTime();
+        void CalculateEstimatedTime(out int minTime, out int maxTime);
     }
 
     //Concrete Implementation
@@ -88,24 +87,16 @@ namespace AdvancedProgrammingGroup9
         }
 
         //These methods are used to calculate the amount of time it would take for the total time.
-        public int CalculateEstimatedMaxTime()
+        public void CalculateEstimatedTime(out int minTime, out int maxTime)
         {
-            int totalTime = 0;
+            minTime = 0;
+            maxTime = 0;
 
             for (int i = 0; i < countItemInOrder(); i++)
             {
-                totalTime += getItemInOrder(i).GetMaxTime() * getItemInOrder(i).GetQuantity();
+                minTime += getItemInOrder(i).GetMinTime() * getItemInOrder(i).GetQuantity();
+                maxTime += getItemInOrder(i).GetMaxTime() * getItemInOrder(i).GetQuantity();
             }
-            return totalTime;
-        }
-        public int CalculateEstimatedMinTime()
-        {
-            int totalTime = 0;
-            for (int i = 0; i < countItemInOrder(); i++)
-            {
-                totalTime += getItemInOrder(i).GetMinTime() * getItemInOrder(i).GetQuantity();
-            }
-            return totalTime;
         }
     }
 }
