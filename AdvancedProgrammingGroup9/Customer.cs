@@ -10,6 +10,8 @@ namespace AdvancedProgrammingGroup9
 {
     public class Customer
     {
+        //Added a comment to this - Ian please delete this when you can.
+
         public int customerID { get; set; }
         public string firstNames { get; set; }
         public string middleNames { get; set; }
