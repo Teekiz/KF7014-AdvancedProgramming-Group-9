@@ -14,6 +14,8 @@ namespace AdvancedProgrammingGroup9
         int GetOrderID();
         DateTime GetReceivedDate();
         DateTime GetDeadline();
+        int CalculateEstimatedMaxTime();
+        int CalculateEstimatedMinTime();
     }
 
     //Concrete Implementation
@@ -63,12 +65,19 @@ namespace AdvancedProgrammingGroup9
             orderItemsList.Add(orderItems);
         }
 
-        public int countOrderItemsList()
+        public void createCeremonialSword(string name, int quantity, byte[] referenceImage)
+        {
+            OrderItems orderItems = ItemFactory.Singleton.GetItemTypes(OrderType.CeremonialSword, name, quantity, referenceImage);
+            orderItemsList.Add(orderItems);
+        }
+        #endregion
+        
+
+        //primarly useful for testing
+        public int countItemInOrder()
         {
             return orderItemsList.Count();
         }
-
-        #endregion
 
         //gets the item in an order at an index, could be ran with a loop to get all
         public OrderItems getItemInOrder(int index)
@@ -76,6 +85,27 @@ namespace AdvancedProgrammingGroup9
             try { return orderItemsList[index]; }
             catch (Exception exception) { Console.WriteLine(exception); }
             return null;
+        }
+
+        //These methods are used to calculate the amount of time it would take for the total time.
+        public int CalculateEstimatedMaxTime()
+        {
+            int totalTime = 0;
+
+            for (int i = 0; i < countItemInOrder(); i++)
+            {
+                totalTime += getItemInOrder(i).GetMaxTime() * getItemInOrder(i).GetQuantity();
+            }
+            return totalTime;
+        }
+        public int CalculateEstimatedMinTime()
+        {
+            int totalTime = 0;
+            for (int i = 0; i < countItemInOrder(); i++)
+            {
+                totalTime += getItemInOrder(i).GetMinTime() * getItemInOrder(i).GetQuantity();
+            }
+            return totalTime;
         }
     }
 }

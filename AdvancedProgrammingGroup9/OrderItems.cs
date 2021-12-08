@@ -21,7 +21,8 @@ namespace AdvancedProgrammingGroup9
     enum OrderType
     {
         Sword = 0,
-        Armour = 1
+        Armour = 1,
+        CeremonialSword = 2
     }
 
     //intertface for order items - used to define all the common code
@@ -31,7 +32,8 @@ namespace AdvancedProgrammingGroup9
         string GetName();
         int GetQuantity();
         byte[] GetReferenceImage();
-        int GetTime();
+        int GetMaxTime();
+        int GetMinTime();
     }
 
     public class OrderItems : IOrderItems
@@ -45,17 +47,18 @@ namespace AdvancedProgrammingGroup9
         [Key]
         public int itemID { get; set; }
         [Required]
-        public String name { get; set; }
+        public string name { get; set; }
         [Required]
         public int quantity { get; set; }
         //referenceImage is optional for the user - this code was modified based on stack overflow (#1).
         public byte[] referenceImage { get; set; }
-        [Required]
-        public int creationTime { get; set; }
+        //used to calculate the range
+        protected int maxCreationTime { get; set; }
+        protected int minCreationTime { get; set; }
         [Required]
         public virtual Enquiry Enquiry { get; set; }
 
-        public OrderItems(String itemName, int quantity, byte[] referenceImage)
+        public OrderItems(string itemName, int quantity, byte[] referenceImage)
         {
             this.name = itemName;
             this.quantity = quantity;
@@ -78,9 +81,13 @@ namespace AdvancedProgrammingGroup9
         {
             return referenceImage;
         }
-        public int GetTime()
+        public int GetMaxTime()
         {
-            return creationTime;
+            return maxCreationTime;
+        }
+        public int GetMinTime()
+        {
+            return minCreationTime;
         }
     }
 
@@ -105,9 +112,12 @@ namespace AdvancedProgrammingGroup9
         {
             if (orderType == OrderType.Sword)
                 return new SwordItem(name, quantity, referenceImage);
-            else
-                //if (orderType == OrderType.Armour)
+            else if (orderType == OrderType.Armour)
                 return new ArmourItem(name, quantity, referenceImage);
+            else if (orderType == OrderType.CeremonialSword)
+                return new CeremonialSwordItem(name, quantity, referenceImage);
+            else
+                return null;
 
         }
     }
@@ -117,7 +127,8 @@ namespace AdvancedProgrammingGroup9
     {
         public SwordItem(string name, int quantity, byte[] referenceImage) : base(name, quantity, referenceImage)
         {
-            this.creationTime = 120;
+            this.maxCreationTime = 120;
+            this.minCreationTime = 80;
         }
     }
 
@@ -126,7 +137,18 @@ namespace AdvancedProgrammingGroup9
     {
         public ArmourItem(string name, int quantity, byte[] referenceImage) : base(name, quantity, referenceImage)
         {
-            this.creationTime = 300;
+            this.maxCreationTime = 300;
+            this.minCreationTime = 80;
+        }
+    }
+
+    //CeremonialSword item class
+    public class CeremonialSwordItem : OrderItems //IOrderItems
+    {
+        public CeremonialSwordItem(string name, int quantity, byte[] referenceImage) : base(name, quantity, referenceImage)
+        {
+            this.maxCreationTime = 30;
+            this.minCreationTime = 20;
         }
     }
 }
