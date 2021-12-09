@@ -28,7 +28,6 @@ namespace AdvancedProgrammingGroup9
     //intertface for order items - used to define all the common code
     public interface IOrderItems
     {
-        int GetID();
         string GetName();
         int GetQuantity();
         byte[] GetReferenceImage();
@@ -63,11 +62,6 @@ namespace AdvancedProgrammingGroup9
             this.name = itemName;
             this.quantity = quantity;
             this.referenceImage = referenceImage;
-        }
-
-        public int GetID()
-        {
-            return itemID;
         }
         public string GetName()
         {
@@ -114,11 +108,8 @@ namespace AdvancedProgrammingGroup9
                 return new SwordItem(name, quantity, referenceImage);
             else if (orderType == OrderType.Armour)
                 return new ArmourItem(name, quantity, referenceImage);
-            else if (orderType == OrderType.CeremonialSword)
-                return new CeremonialSwordItem(name, quantity, referenceImage);
             else
-                return null;
-
+                return new CeremonialSwordItem(name, quantity, referenceImage);
         }
     }
 

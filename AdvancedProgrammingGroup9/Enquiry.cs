@@ -11,18 +11,19 @@ namespace AdvancedProgrammingGroup9
     //EnqeiuryInterface
     public interface IEnquiry
     {
-        int GetOrderID();
         DateTime GetReceivedDate();
         DateTime GetDeadline();
+        void createSword(string name, int quantity, byte[] referenceImage);
+        void createArmour(string name, int quantity, byte[] referenceImage);
+        void createCeremonialSword(string name, int quantity, byte[] referenceImage);
         void CalculateEstimatedTime(out int minTime, out int maxTime);
     }
 
     //Concrete Implementation
     public class Enquiry : IEnquiry
     {
-        public Enquiry(int orderID, DateTime receivedDate, DateTime deadline)
+        public Enquiry(DateTime receivedDate, DateTime deadline)
         {
-            this.orderID = orderID;
             this.receivedDate = receivedDate;
             this.deadline = deadline;
 
@@ -44,7 +45,6 @@ namespace AdvancedProgrammingGroup9
         //https://stackoverflow.com/questions/47310922/how-to-get-index-of-an-item-in-icollectiont
         public virtual IList<OrderItems> orderItemsList { get; set; }
 
-        public int GetOrderID() { return orderID; }
         public DateTime GetReceivedDate() { return receivedDate; }
         public DateTime GetDeadline() { return deadline; }
         #endregion
@@ -70,8 +70,8 @@ namespace AdvancedProgrammingGroup9
             orderItemsList.Add(orderItems);
         }
         #endregion
-        
 
+        #region "Code used for the orderItemsList (count, get, calc)"
         //primarly useful for testing
         public int countItemInOrder()
         {
@@ -98,5 +98,7 @@ namespace AdvancedProgrammingGroup9
                 maxTime += getItemInOrder(i).GetMaxTime() * getItemInOrder(i).GetQuantity();
             }
         }
+
+        #endregion
     }
 }

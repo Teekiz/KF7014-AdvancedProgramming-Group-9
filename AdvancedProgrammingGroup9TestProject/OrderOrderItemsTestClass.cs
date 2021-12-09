@@ -13,7 +13,7 @@ namespace AdvancedProgrammingGroup9TestProject
         [TestInitialize]
         public void TestInitialize()
         {
-            enquiry1 = new Enquiry(1, DateTime.Now, DateTime.Now.AddDays(1));
+            enquiry1 = new Enquiry(DateTime.Now, DateTime.Now.AddDays(1));
             orderItem1 = new OrderItems("Sword1", 5, null);
         }
 
@@ -29,9 +29,7 @@ namespace AdvancedProgrammingGroup9TestProject
         {
             //pretty obvious in hindsight but the DateTime.Now method must be set as a variable else when it runs the values will be different.
             DateTime now = DateTime.Now;
-            enquiry1 = new Enquiry(1, now, DateTime.Now.AddDays(1));
-
-            Assert.AreEqual(1, enquiry1.GetOrderID(), "ID Incorrect");
+            enquiry1 = new Enquiry(now, DateTime.Now.AddDays(1));
             Assert.AreEqual(now, enquiry1.GetReceivedDate(), "Received Date Incorrect");
             Assert.AreEqual(now.AddDays(1), enquiry1.GetDeadline(), "Deadline Date Incorrect");
         }
@@ -44,7 +42,6 @@ namespace AdvancedProgrammingGroup9TestProject
             enquiry1.createCeremonialSword("CeremonialSword", 3, null);
 
             Assert.AreEqual(3, enquiry1.countItemInOrder(), "Incorrect count");
-            Assert.AreEqual(0, enquiry1.getItemInOrder(0).GetID(), "Incorrect ID");
             Assert.AreEqual("Sword", enquiry1.getItemInOrder(0).GetName(), "Incorrect Name");
             Assert.AreEqual(5, enquiry1.getItemInOrder(0).GetQuantity(), "Incorrect Quantity");
             Assert.AreEqual(5, enquiry1.getItemInOrder(0).GetQuantity(), "Incorrect Quantity");
