@@ -39,7 +39,7 @@ namespace AdvancedProgrammingGroup9
         public DateTime deadline { get; set; }
 
         //TODO - Change this from customer to ICustomer
-        public Customer customer;
+        public ICustomer customer;
 
         //this was orignally a virtual ICollection named orderItemLists
         //https://stackoverflow.com/questions/47310922/how-to-get-index-of-an-item-in-icollectiont
