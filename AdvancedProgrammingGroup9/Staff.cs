@@ -6,41 +6,45 @@ using System.Threading.Tasks;
 
 namespace AdvancedProgrammingGroup9
 {
-    public class staff
+    public interface IStaff
+    { 
+        //update
+    }
+
+    public class Staff : IStaff
     {
 
         //properties
-        public int staffID;
-        public string firstname;
-        public string lastname;
-        public int bankdetails;
-        public int salary;
-        public int workinghours;
-        public int holidays;
-        public int sickness;
-        public string addressid;
+        public int staffID { get; set; }
+        public string firstname { get; set; }
+        public string lastname { get; set; }
+        public int workinghours { get; set; }
+        public string addressid { get; set; }
 
         //empty construstor
 
-        public staff()
+        public Staff()
         {
 
 
         }
 
         //parametrised constor
-        public staff(int staffID, string firstname, string lastname, int bankdetails, int salary, int workinghours, int holidays, int sickness, string addressid)
+        public Staff(int staffID, string firstname, string lastname, int workinghours, string addressid)
         {
             this.staffID = staffID;
             this.firstname = firstname;
             this.lastname = lastname;
-            this.bankdetails = bankdetails;
-            this.salary = salary;
             this.workinghours = workinghours;
-            this.holidays = holidays;
-            this.sickness = sickness;
             this.addressid = addressid;
 
+        }
+
+
+        //getters
+        public string getFirstName()
+        {
+            return firstname;
         }
     }
 }
