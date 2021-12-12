@@ -12,8 +12,8 @@ namespace AdvancedProgrammingGroup9
     {
         public bool SaveEnquiry(Enquiry enquiry)
         {
-            //try
-            //{
+           try
+            {
                 using (var context = new DatabaseEntities())
                 {
                     context.Enquiry.Add(enquiry);
@@ -27,19 +27,35 @@ namespace AdvancedProgrammingGroup9
                     context.SaveChanges();
                     return true;
                 }
-            //}
-            /*
+            }  
             catch
             {
                 return false;
             }
-            */
         }      
     }
 
     public class DatabaseReadQueries
     {
-        //blank
+        public Enquiry GetEnquiry(int id)
+        {
+            //based on code from https://docs.microsoft.com/en-us/ef/core/querying/
+            using (var context = new DatabaseEntities())
+                {
+                    var enquiryQuery = context.Enquiry.Where(e => e.orderID == id).SingleOrDefault();
+                    return enquiryQuery;
+                }
+        }
+
+        public List<Enquiry> GetAllEnquiries()
+        {
+            //based on code from https://docs.microsoft.com/en-us/ef/core/querying/
+            using (var context = new DatabaseEntities())
+            {
+                var enquiryQuery = context.Enquiry.ToList();
+                return enquiryQuery;
+            }
+        }
     }
 
     public class DatabaseUpdateQueries

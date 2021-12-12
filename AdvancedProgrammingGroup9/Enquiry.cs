@@ -34,6 +34,10 @@ namespace AdvancedProgrammingGroup9
             orderItemsList = new List<OrderItems>();
         }
 
+        public Enquiry() { 
+        
+        }
+
         #region "Entity Framework and variables"
         [Key]
         public int orderID { get; set; }
@@ -56,6 +60,7 @@ namespace AdvancedProgrammingGroup9
         #region "Code for creation for item type"
 
         //used to create a sword item in the order
+        //i'm not entirely happy with how this works - the coupling between the classes seems quite high (but atm it works), rework later if possible.
         public void createSword(string name, int quantity, byte[] referenceImage)
         {
             OrderItems orderItems = ItemFactory.Singleton.GetItemTypes(OrderType.Sword, name, quantity, referenceImage);
@@ -102,7 +107,6 @@ namespace AdvancedProgrammingGroup9
                 maxTime += getItemInOrder(i).GetMaxTime() * getItemInOrder(i).GetQuantity();
             }
         }
-
         #endregion
     }
 }

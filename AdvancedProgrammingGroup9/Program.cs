@@ -16,7 +16,7 @@ namespace AdvancedProgrammingGroup9
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new OrderCust());
+            //Application.Run(new OrderCust());
 
             /* Used to test the check if the data will be saved to the database
 
