@@ -9,12 +9,14 @@ namespace AdvancedProgrammingGroup9TestProject
     {
         Enquiry enquiry1;
         OrderItems orderItem1;
+        DatabaseCreateQueries create;
 
         [TestInitialize]
         public void TestInitialize()
         {
             enquiry1 = new Enquiry(DateTime.Now, DateTime.Now.AddDays(1));
             orderItem1 = new OrderItems("Sword1", 5, null);
+            create = new DatabaseCreateQueries();
         }
 
         [TestCleanup]
@@ -58,6 +60,11 @@ namespace AdvancedProgrammingGroup9TestProject
             enquiry1.CalculateEstimatedTime(out int minTime, out int maxTime);
             Assert.AreEqual(1290, maxTime, "Incorrect Amount");
             Assert.AreEqual(620, minTime, "Incorrect Amount");
+        }
+
+        [TestMethod]
+        public void SaveItemsInOrder() {
+            //Assert.AreEqual(true, create.SaveEnquiry(enquiry1), "cannot save");
         }
     }
 }

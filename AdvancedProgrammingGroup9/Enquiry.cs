@@ -17,6 +17,10 @@ namespace AdvancedProgrammingGroup9
         void createArmour(string name, int quantity, byte[] referenceImage);
         void createCeremonialSword(string name, int quantity, byte[] referenceImage);
         void CalculateEstimatedTime(out int minTime, out int maxTime);
+        int countItemInOrder();
+        OrderItems getItemInOrder(int index);
+
+
     }
 
     //Concrete Implementation

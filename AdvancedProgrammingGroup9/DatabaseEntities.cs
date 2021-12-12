@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 
 namespace AdvancedProgrammingGroup9
 {
+    //enable-migrations –EnableAutomaticMigration:$true -force
+
     public partial class DatabaseEntities : DbContext
     {
         public DatabaseEntities() : base("connection") { }
