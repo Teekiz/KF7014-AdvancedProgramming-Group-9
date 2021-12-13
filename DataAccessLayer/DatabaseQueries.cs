@@ -6,9 +6,20 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer
 {
-    //spliting the datebase class into seperate classes for CRUD operations.
+    public interface IDatabaseCreateQueries
+    {
+        bool SaveEnquiry(Enquiry enquiry);
+    }
 
-    public class DatabaseCreateQueries
+    public interface IDatabaseReadQueries
+    {
+        List<Enquiry> GetAllEnquiries();
+        Enquiry GetEnquiry(int id);
+    }
+
+
+    //spliting the datebase class into seperate classes for CRUD operations.
+    public class DatabaseCreateQueries : IDatabaseCreateQueries
     {
         public bool SaveEnquiry(Enquiry enquiry)
         {
@@ -18,11 +29,13 @@ namespace DataAccessLayer
                 {
                     context.Enquiry.Add(enquiry);
 
+                    /*()
                     for (int i = 0; i < enquiry.countItemInOrder(); i++)
                     {
                         //adds all the of the items in the order to a database
                         context.OrderItems.Add(enquiry.getItemInOrder(i));
                     }
+                    */
 
                     context.SaveChanges();
                     return true;

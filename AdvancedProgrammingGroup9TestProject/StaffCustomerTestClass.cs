@@ -7,8 +7,9 @@ namespace AdvancedProgrammingGroup9TestProject
     [TestClass]
     class StaffCustomerTestClass
     {
-        Customer customer;
-        Staff staff;
+        /*
+        CustomerModel customer;
+        StaffModel staff;
 
         [TestInitialize]
         public void TestInitialize()
@@ -35,5 +36,6 @@ namespace AdvancedProgrammingGroup9TestProject
         {
             //
         }
+        */
     }
 }

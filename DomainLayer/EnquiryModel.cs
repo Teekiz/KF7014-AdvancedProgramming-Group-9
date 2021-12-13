@@ -5,11 +5,12 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DataAccessLayer;
 
 namespace DomainLayer
 {
     //EnqeiuryInterface
-    public interface IEnquiry
+    public interface IEnquiryModel
     {
         DateTime GetReceivedDate();
         DateTime GetDeadline();
@@ -18,23 +19,22 @@ namespace DomainLayer
         void createCeremonialSword(string name, int quantity, byte[] referenceImage);
         void CalculateEstimatedTime(out int minTime, out int maxTime);
         int countItemInOrder();
-        OrderItems getItemInOrder(int index);
-
+        OrderItemsModel getItemInOrder(int index);
 
     }
 
     //Concrete Implementation
-    public class Enquiry : IEnquiry
+    public class EnquiryModel : IEnquiryModel
     {
-        public Enquiry(DateTime receivedDate, DateTime deadline)
+        public EnquiryModel(DateTime receivedDate, DateTime deadline)
         {
             this.receivedDate = receivedDate;
             this.deadline = deadline;
 
-            orderItemsList = new List<OrderItems>();
+            orderItemsList = new List<OrderItemsModel>();
         }
 
-        public Enquiry() { 
+        public EnquiryModel() { 
         
         }
 
@@ -47,14 +47,18 @@ namespace DomainLayer
         public DateTime deadline { get; set; }
 
         //TODO - Change this from customer to ICustomer
-        public ICustomer customer;
+        public ICustomerModel customer;
 
         //this was orignally a virtual ICollection named orderItemLists
         //https://stackoverflow.com/questions/47310922/how-to-get-index-of-an-item-in-icollectiont
-        public virtual IList<OrderItems> orderItemsList { get; set; }
+        public virtual IList<OrderItemsModel> orderItemsList { get; set; }
 
         public DateTime GetReceivedDate() { return receivedDate; }
         public DateTime GetDeadline() { return deadline; }
+
+        IDatabaseCreateQueries create;
+        IDatabaseReadQueries read;
+        Enquiry enquiry;
         #endregion
 
         #region "Code for creation for item type"
@@ -63,19 +67,19 @@ namespace DomainLayer
         //i'm not entirely happy with how this works - the coupling between the classes seems quite high (but atm it works), rework later if possible.
         public void createSword(string name, int quantity, byte[] referenceImage)
         {
-            OrderItems orderItems = ItemFactory.Singleton.GetItemTypes(OrderType.Sword, name, quantity, referenceImage);
+            OrderItemsModel orderItems = ItemFactory.Singleton.GetItemTypes(OrderType.Sword, name, quantity, referenceImage);
             orderItemsList.Add(orderItems);
         }
 
         public void createArmour(string name, int quantity, byte[] referenceImage)
         {
-            OrderItems orderItems = ItemFactory.Singleton.GetItemTypes(OrderType.Armour, name, quantity, referenceImage);
+            OrderItemsModel orderItems = ItemFactory.Singleton.GetItemTypes(OrderType.Armour, name, quantity, referenceImage);
             orderItemsList.Add(orderItems);
         }
 
         public void createCeremonialSword(string name, int quantity, byte[] referenceImage)
         {
-            OrderItems orderItems = ItemFactory.Singleton.GetItemTypes(OrderType.CeremonialSword, name, quantity, referenceImage);
+            OrderItemsModel orderItems = ItemFactory.Singleton.GetItemTypes(OrderType.CeremonialSword, name, quantity, referenceImage);
             orderItemsList.Add(orderItems);
         }
         #endregion
@@ -88,7 +92,7 @@ namespace DomainLayer
         }
 
         //gets the item in an order at an index, could be ran with a loop to get all
-        public OrderItems getItemInOrder(int index)
+        public OrderItemsModel getItemInOrder(int index)
         {
             try { return orderItemsList[index]; }
             catch (Exception exception) { Console.WriteLine(exception); }
@@ -108,5 +112,19 @@ namespace DomainLayer
             }
         }
         #endregion
+
+        public void getSavedEnquiry()
+        {
+            foreach (var i in read.GetAllEnquiries())
+            {
+                int order = i.orderID;
+                System.Windows.Forms.MessageBox.Show(order.ToString());
+            }
+        }
+
+        public void SaveEnquiry()
+        {
+            create.SaveEnquiry(enquiry);
+        }
     }
 }

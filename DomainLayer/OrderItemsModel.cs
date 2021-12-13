@@ -26,7 +26,7 @@ namespace DomainLayer
     }
 
     //intertface for order items - used to define all the common code
-    public interface IOrderItems
+    public interface IOrderItemsModel
     {
         string GetName();
         int GetQuantity();
@@ -35,7 +35,7 @@ namespace DomainLayer
         int GetMinTime();
     }
 
-    public class OrderItems : IOrderItems
+    public class OrderItemsModel : IOrderItemsModel
     {
         /*
             The purpose of this class is to allow the saving of OrderItems into the database.
@@ -55,9 +55,9 @@ namespace DomainLayer
         protected int maxCreationTime { get; set; }
         protected int minCreationTime { get; set; }
         [Required]
-        public virtual Enquiry Enquiry { get; set; }
+        public virtual EnquiryModel Enquiry { get; set; }
 
-        public OrderItems(string itemName, int quantity, byte[] referenceImage)
+        public OrderItemsModel(string itemName, int quantity, byte[] referenceImage)
         {
             this.name = itemName;
             this.quantity = quantity;
@@ -102,7 +102,7 @@ namespace DomainLayer
         }
 
         //used to get the item types and create a new object based on the type.
-        public OrderItems GetItemTypes(OrderType orderType, string name, int quantity, byte[] referenceImage)
+        public OrderItemsModel GetItemTypes(OrderType orderType, string name, int quantity, byte[] referenceImage)
         {
             if (orderType == OrderType.Sword)
                 return new SwordItem(name, quantity, referenceImage);
@@ -114,7 +114,7 @@ namespace DomainLayer
     }
 
     //sword item class
-    public class SwordItem : OrderItems //IOrderItems
+    public class SwordItem : OrderItemsModel //IOrderItems
     {
         public SwordItem(string name, int quantity, byte[] referenceImage) : base(name, quantity, referenceImage)
         {
@@ -124,7 +124,7 @@ namespace DomainLayer
     }
 
     //armour item class
-    public class ArmourItem : OrderItems
+    public class ArmourItem : OrderItemsModel
     {
         public ArmourItem(string name, int quantity, byte[] referenceImage) : base(name, quantity, referenceImage)
         {
@@ -134,7 +134,7 @@ namespace DomainLayer
     }
 
     //CeremonialSword item class
-    public class CeremonialSwordItem : OrderItems //IOrderItems
+    public class CeremonialSwordItem : OrderItemsModel //IOrderItems
     {
         public CeremonialSwordItem(string name, int quantity, byte[] referenceImage) : base(name, quantity, referenceImage)
         {

@@ -9,15 +9,17 @@ namespace AdvancedProgrammingGroup9TestProject
     [TestClass]
     public class OrderOrderItemsTestClass
     {
-        Enquiry enquiry1;
-        OrderItems orderItem1;
+        /*
+        EnquiryModel enquiry1;
+        OrderItemsModel orderItem1;
         DatabaseCreateQueries create;
+
 
         [TestInitialize]
         public void TestInitialize()
         {
-            enquiry1 = new Enquiry(DateTime.Now, DateTime.Now.AddDays(1));
-            orderItem1 = new OrderItems("Sword1", 5, null);
+            enquiry1 = new EnquiryModel(DateTime.Now, DateTime.Now.AddDays(1));
+            orderItem1 = new OrderItemsModel("Sword1", 5, null);
             create = new DatabaseCreateQueries();
         }
 
@@ -33,7 +35,7 @@ namespace AdvancedProgrammingGroup9TestProject
         {
             //pretty obvious in hindsight but the DateTime.Now method must be set as a variable else when it runs the values will be different.
             DateTime now = DateTime.Now;
-            enquiry1 = new Enquiry(now, DateTime.Now.AddDays(1));
+            enquiry1 = new EnquiryModel(now, DateTime.Now.AddDays(1));
             Assert.AreEqual(now, enquiry1.GetReceivedDate(), "Received Date Incorrect");
             Assert.AreEqual(now.AddDays(1), enquiry1.GetDeadline(), "Deadline Date Incorrect");
         }
@@ -68,5 +70,6 @@ namespace AdvancedProgrammingGroup9TestProject
         public void SaveItemsInOrder() {
             //Assert.AreEqual(true, create.SaveEnquiry(enquiry1), "cannot save");
         }
+        */
     }
 }

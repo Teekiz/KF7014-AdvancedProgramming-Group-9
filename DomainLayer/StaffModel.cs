@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace DomainLayer
 {
-    public interface IStaff
+    public interface IStaffModel
     { 
         //update
     }
 
-    public class Staff : IStaff
+    public class StaffModel : IStaffModel
     {
 
         //properties
@@ -23,14 +23,14 @@ namespace DomainLayer
 
         //empty construstor
 
-        public Staff()
+        public StaffModel()
         {
 
 
         }
 
         //parametrised constor
-        public Staff(int staffID, string firstname, string lastname, int workinghours, string addressid)
+        public StaffModel(int staffID, string firstname, string lastname, int workinghours, string addressid)
         {
             this.staffID = staffID;
             this.firstname = firstname;

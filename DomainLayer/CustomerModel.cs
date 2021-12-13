@@ -8,49 +8,53 @@ using System.Threading.Tasks;
 
 namespace DomainLayer
 {
-    public interface ICustomer
-    { 
-    
+    public interface ICustomerModel
+    {
+        string getName();
+        string getAddress();
+        string getPostcode();
+        string returnTownCity();
+        string getStateCounty();
+        string getCountry();
+        string getType();
     }
 
-    public class Customer : ICustomer
+    public class CustomerModel : ICustomerModel
     {
         //Added a comment to this - Ian please delete this when you can.
 
-        public Customer(string name, string companyName, string address, string postcode, string townCity, string stateCounty,
-            string country, int phone, string email, int balance, string type)
+        public CustomerModel(string name, string address, string postcode, string townCity, string stateCounty, string country, string type)
         {
             this.name = name;
-            this.companyName = companyName;
             this.address = address;
             this.postcode = postcode;
             this.townCity = townCity;
             this.stateCounty = stateCounty;
             this.country = country;
-            this.phone = phone;
-            this.email = email;
-            this.balance = balance;
             this.type = type;
 
         }
 
+        public CustomerModel()
+        { 
+        
+        }
+
         public int customerID { get; set; }
         public string name { get; set; }
-        public string companyName { get; set; }
         public string address { get; set; }
         public string postcode { get; set; }
         public string townCity { get; set; }
         public string stateCounty { get; set; }
         public string country { get; set; }
-        public int phone { get; set; }
-        public string email { get; set; }
         public string type { get; set; }
-        public int balance { get; set; }
 
-        public string getName()
-        {
-            return name;
-        }
-
+        public string getName() {return name;}
+        public string getAddress() {return address;}
+        public string getPostcode() {return postcode;}
+        public string returnTownCity() {return townCity;}
+        public string getStateCounty() {return stateCounty;}
+        public string getCountry() {return country;}
+        public string getType() {return type;}
     }
 }

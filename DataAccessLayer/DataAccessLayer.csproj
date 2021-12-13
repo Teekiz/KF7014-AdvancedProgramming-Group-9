@@ -76,6 +76,7 @@
   <ItemGroup>
     <Compile Include="DatabaseEntities.cs" />
     <Compile Include="DatabaseQueries.cs" />
+    <Compile Include="DataAccessEntities.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

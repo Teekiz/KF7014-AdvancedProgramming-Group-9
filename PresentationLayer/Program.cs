@@ -19,7 +19,7 @@ namespace PresentationLayer
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new OrderCust());
 
-            Enquiry enquiry = new Enquiry(DateTime.Now, DateTime.Now.AddDays(1));
+            //EnquiryModel enquiry = new EnquiryModel(DateTime.Now, DateTime.Now.AddDays(1));
 
             /* Used to test the check if the data will be saved to the database
 
