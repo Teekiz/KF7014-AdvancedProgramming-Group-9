@@ -59,9 +59,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AdvancedProgrammingGroup9\AdvancedProgrammingGroup9.csproj">
-      <Project>{e965f48f-ba2c-40c8-9899-89bcec090aff}</Project>
-      <Name>AdvancedProgrammingGroup9</Name>
+    <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj">
+      <Project>{5ad3d4f7-4d7d-4dae-a017-b1ffad84745a}</Project>
+      <Name>DataAccessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DomainLayer\DomainLayer.csproj">
+      <Project>{8fc766d4-ca8d-4a7e-b2c1-383952d45dbc}</Project>
+      <Name>DomainLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PresentationLayer\PresentationLayer.csproj">
+      <Project>{c092c9a0-a7bc-42f7-b718-36f386e189af}</Project>
+      <Name>PresentationLayer</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

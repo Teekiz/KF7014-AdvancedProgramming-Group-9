@@ -15,7 +15,7 @@ Taken from user answer nima at https://stackoverflow.com/questions/4653095/how-t
 User suggested switching using byte array. referenceImage was set as Image class before suggestion. Used this code and the database accepted it.
 */
 
-namespace AdvancedProgrammingGroup9
+namespace DomainLayer
 {
     //this is all the types of orders
     enum OrderType

@@ -1,5 +1,5 @@
 ﻿
-namespace AdvancedProgrammingGroup9
+namespace PresentationLayer
 {
     partial class MainForm
     {
@@ -40,7 +40,6 @@ namespace AdvancedProgrammingGroup9
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::AdvancedProgrammingGroup9.Properties.Resources.iron_helm_1;
             this.pictureBox1.Location = new System.Drawing.Point(0, 164);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox1.Name = "pictureBox1";
@@ -52,7 +51,6 @@ namespace AdvancedProgrammingGroup9
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.pictureBox2.Image = global::AdvancedProgrammingGroup9.Properties.Resources.logo;
             this.pictureBox2.Location = new System.Drawing.Point(0, 0);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox2.Name = "pictureBox2";

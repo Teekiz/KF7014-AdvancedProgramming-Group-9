@@ -1,5 +1,5 @@
 ﻿
-namespace AdvancedProgrammingGroup9
+namespace PresentationLayer
 {
     partial class Schedule
     {

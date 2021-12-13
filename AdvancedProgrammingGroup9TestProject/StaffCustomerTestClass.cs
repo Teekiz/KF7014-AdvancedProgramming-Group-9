@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using AdvancedProgrammingGroup9;
+using DomainLayer;
 
 namespace AdvancedProgrammingGroup9TestProject
 {

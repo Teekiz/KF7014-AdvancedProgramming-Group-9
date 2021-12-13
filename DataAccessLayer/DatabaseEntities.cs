@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdvancedProgrammingGroup9
+namespace DataAccessLayer
 {
     //enable-migrations –EnableAutomaticMigration:$true -force
 

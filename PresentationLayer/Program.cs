@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DomainLayer;
 
-namespace AdvancedProgrammingGroup9
+namespace PresentationLayer
 {
     static class Program
     {
@@ -16,7 +17,9 @@ namespace AdvancedProgrammingGroup9
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new OrderCust());
+            Application.Run(new OrderCust());
+
+            Enquiry enquiry = new Enquiry(DateTime.Now, DateTime.Now.AddDays(1));
 
             /* Used to test the check if the data will be saved to the database
 
@@ -31,6 +34,5 @@ namespace AdvancedProgrammingGroup9
 
             */
         }
-
     }
 }

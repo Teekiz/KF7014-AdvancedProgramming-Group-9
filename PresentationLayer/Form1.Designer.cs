@@ -1,5 +1,5 @@
 ﻿
-namespace AdvancedProgrammingGroup9
+namespace PresentationLayer
 {
     partial class OrderCust
     {
@@ -298,7 +298,6 @@ namespace AdvancedProgrammingGroup9
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::AdvancedProgrammingGroup9.Properties.Resources.logo1;
             this.pictureBox1.Location = new System.Drawing.Point(804, 6);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox1.Name = "pictureBox1";
