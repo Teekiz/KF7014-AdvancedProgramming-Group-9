@@ -16,11 +16,20 @@ namespace AdvancedProgrammingGroup9
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new OrderCust());
+            //Application.Run(new OrderCust());
+
+            /* Used to test the check if the data will be saved to the database
 
             Enquiry enquiry = new Enquiry(DateTime.Now, DateTime.Now.AddDays(1));
-            enquiry.createSword("Sword1", 1, null);
-            enquiry.createArmour("Sword2", 1, null);
+            enquiry.createSword("Sword", 5, null);
+            enquiry.createArmour("Armour", 2, null);
+            enquiry.createCeremonialSword("CeremonialSword", 3, null);
+
+            DatabaseCreateQueries create = new DatabaseCreateQueries();
+            bool value = create.SaveEnquiry(enquiry);
+            System.Windows.Forms.MessageBox.Show(value.ToString());
+
+            */
         }
 
     }

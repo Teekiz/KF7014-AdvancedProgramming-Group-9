@@ -17,6 +17,10 @@ namespace AdvancedProgrammingGroup9
         void createArmour(string name, int quantity, byte[] referenceImage);
         void createCeremonialSword(string name, int quantity, byte[] referenceImage);
         void CalculateEstimatedTime(out int minTime, out int maxTime);
+        int countItemInOrder();
+        OrderItems getItemInOrder(int index);
+
+
     }
 
     //Concrete Implementation
@@ -30,6 +34,10 @@ namespace AdvancedProgrammingGroup9
             orderItemsList = new List<OrderItems>();
         }
 
+        public Enquiry() { 
+        
+        }
+
         #region "Entity Framework and variables"
         [Key]
         public int orderID { get; set; }
@@ -39,7 +47,7 @@ namespace AdvancedProgrammingGroup9
         public DateTime deadline { get; set; }
 
         //TODO - Change this from customer to ICustomer
-        public Customer customer;
+        public ICustomer customer;
 
         //this was orignally a virtual ICollection named orderItemLists
         //https://stackoverflow.com/questions/47310922/how-to-get-index-of-an-item-in-icollectiont
@@ -52,6 +60,7 @@ namespace AdvancedProgrammingGroup9
         #region "Code for creation for item type"
 
         //used to create a sword item in the order
+        //i'm not entirely happy with how this works - the coupling between the classes seems quite high (but atm it works), rework later if possible.
         public void createSword(string name, int quantity, byte[] referenceImage)
         {
             OrderItems orderItems = ItemFactory.Singleton.GetItemTypes(OrderType.Sword, name, quantity, referenceImage);
@@ -98,7 +107,6 @@ namespace AdvancedProgrammingGroup9
                 maxTime += getItemInOrder(i).GetMaxTime() * getItemInOrder(i).GetQuantity();
             }
         }
-
         #endregion
     }
 }
