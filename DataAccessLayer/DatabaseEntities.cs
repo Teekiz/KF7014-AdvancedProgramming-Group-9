@@ -15,6 +15,7 @@ namespace DataAccessLayer
 
         public DbSet<Enquiry> Enquiry { get; set; }
         public DbSet<OrderItems> OrderItems { get; set; }
+        public DbSet<Customer> Customer { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

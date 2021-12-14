@@ -50,6 +50,6 @@ namespace DataAccessLayer
         public string stateCounty { get; set; }
         public string country { get; set; }
         public string type { get; set; }
-        public virtual Enquiry Enquiry { get; set; }
+        //public virtual Enquiry Enquiry { get; set; }
     }
 }

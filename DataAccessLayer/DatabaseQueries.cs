@@ -9,6 +9,7 @@ namespace DataAccessLayer
     public interface IDatabaseCreateQueries
     {
         bool SaveEnquiry(Enquiry enquiry);
+        void SaveCustomer(Customer customer);
     }
 
     public interface IDatabaseReadQueries
@@ -23,7 +24,7 @@ namespace DataAccessLayer
     {
         public bool SaveEnquiry(Enquiry enquiry)
         {
-           try
+            try
             {
                 using (var context = new DatabaseEntities())
                 {
@@ -40,12 +41,21 @@ namespace DataAccessLayer
                     context.SaveChanges();
                     return true;
                 }
-            }  
+            }
             catch
             {
                 return false;
             }
-        }      
+        }
+
+        public void SaveCustomer(Customer customer)
+        {
+            using (var context = new DatabaseEntities())
+            {
+                context.Customer.Add(customer);
+                context.SaveChanges();
+            }
+        }
     }
 
     public class DatabaseReadQueries
