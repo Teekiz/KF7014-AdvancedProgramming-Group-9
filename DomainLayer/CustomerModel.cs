@@ -11,7 +11,9 @@ namespace DomainLayer
 {
     public interface ICustomerModel
     {
-
+        void SetCustomer(Customer customer);
+        Customer GetCustomer();
+        void SaveCustomer(Customer customer);
     }
 
     public class CustomerModel : ICustomerModel

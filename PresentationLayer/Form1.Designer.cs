@@ -41,7 +41,7 @@ namespace PresentationLayer
             this.OFCphone = new System.Windows.Forms.Label();
             this.OFCcustomertype = new System.Windows.Forms.Label();
             this.OFCot = new System.Windows.Forms.Label();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this.OFC = new System.Windows.Forms.RadioButton();
             this.OFCncd = new System.Windows.Forms.Label();
             this.OFCncdF = new System.Windows.Forms.DateTimePicker();
             this.OFCbirthdateF = new System.Windows.Forms.DateTimePicker();
@@ -53,7 +53,7 @@ namespace PresentationLayer
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.OFCpicturebox = new System.Windows.Forms.PictureBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.OFCitembox = new System.Windows.Forms.ListBox();
             this.OFCnotesF = new System.Windows.Forms.RichTextBox();
             this.OFCcustomerform = new System.Windows.Forms.Label();
             this.OFCot1q = new System.Windows.Forms.TextBox();
@@ -77,6 +77,7 @@ namespace PresentationLayer
             this.OFCnameF.Name = "OFCnameF";
             this.OFCnameF.Size = new System.Drawing.Size(531, 22);
             this.OFCnameF.TabIndex = 0;
+            this.OFCnameF.TextChanged += new System.EventHandler(this.OFCnameF_TextChanged);
             // 
             // OFCaddr1F
             // 
@@ -191,17 +192,17 @@ namespace PresentationLayer
             this.OFCot.TabIndex = 12;
             this.OFCot.Text = "Order Type";
             // 
-            // radioButton4
+            // OFC
             // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(208, 416);
-            this.radioButton4.Margin = new System.Windows.Forms.Padding(4);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(150, 21);
-            this.radioButton4.TabIndex = 13;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "Ceremonial Swords";
-            this.radioButton4.UseVisualStyleBackColor = true;
+            this.OFC.AutoSize = true;
+            this.OFC.Location = new System.Drawing.Point(208, 416);
+            this.OFC.Margin = new System.Windows.Forms.Padding(4);
+            this.OFC.Name = "OFC";
+            this.OFC.Size = new System.Drawing.Size(150, 21);
+            this.OFC.TabIndex = 13;
+            this.OFC.TabStop = true;
+            this.OFC.Text = "Ceremonial Swords";
+            this.OFC.UseVisualStyleBackColor = true;
             // 
             // OFCncd
             // 
@@ -272,6 +273,7 @@ namespace PresentationLayer
             this.OFCsubmit.TabIndex = 25;
             this.OFCsubmit.Text = "Submit";
             this.OFCsubmit.UseVisualStyleBackColor = true;
+            this.OFCsubmit.Click += new System.EventHandler(this.OFCsubmit_Click);
             // 
             // label10
             // 
@@ -314,15 +316,15 @@ namespace PresentationLayer
             this.OFCpicturebox.TabIndex = 14;
             this.OFCpicturebox.TabStop = false;
             // 
-            // listBox1
+            // OFCitembox
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 16;
-            this.listBox1.Location = new System.Drawing.Point(804, 250);
-            this.listBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(332, 420);
-            this.listBox1.TabIndex = 28;
+            this.OFCitembox.FormattingEnabled = true;
+            this.OFCitembox.ItemHeight = 16;
+            this.OFCitembox.Location = new System.Drawing.Point(804, 250);
+            this.OFCitembox.Margin = new System.Windows.Forms.Padding(4);
+            this.OFCitembox.Name = "OFCitembox";
+            this.OFCitembox.Size = new System.Drawing.Size(332, 548);
+            this.OFCitembox.TabIndex = 28;
             // 
             // OFCnotesF
             // 
@@ -409,7 +411,7 @@ namespace PresentationLayer
             this.textBox9.Location = new System.Drawing.Point(209, 444);
             this.textBox9.Multiline = true;
             this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(498, 70);
+            this.textBox9.Size = new System.Drawing.Size(505, 70);
             this.textBox9.TabIndex = 67;
             this.textBox9.Text = "Example desc 1";
             // 
@@ -418,7 +420,7 @@ namespace PresentationLayer
             this.textBox10.Location = new System.Drawing.Point(208, 573);
             this.textBox10.Multiline = true;
             this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(498, 70);
+            this.textBox10.Size = new System.Drawing.Size(506, 70);
             this.textBox10.TabIndex = 68;
             this.textBox10.Text = "Example desc2";
             // 
@@ -427,7 +429,7 @@ namespace PresentationLayer
             this.textBox11.Location = new System.Drawing.Point(209, 705);
             this.textBox11.Multiline = true;
             this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(498, 70);
+            this.textBox11.Size = new System.Drawing.Size(505, 70);
             this.textBox11.TabIndex = 69;
             this.textBox11.Text = "Example desc3";
             // 
@@ -449,7 +451,7 @@ namespace PresentationLayer
             this.Controls.Add(this.OFCot1q);
             this.Controls.Add(this.OFCcustomerform);
             this.Controls.Add(this.OFCnotesF);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.OFCitembox);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.OFCsubmit);
@@ -461,7 +463,7 @@ namespace PresentationLayer
             this.Controls.Add(this.OFCncdF);
             this.Controls.Add(this.OFCncd);
             this.Controls.Add(this.OFCpicturebox);
-            this.Controls.Add(this.radioButton4);
+            this.Controls.Add(this.OFC);
             this.Controls.Add(this.OFCot);
             this.Controls.Add(this.OFCcustomertype);
             this.Controls.Add(this.OFCphone);
@@ -499,7 +501,7 @@ namespace PresentationLayer
         private System.Windows.Forms.Label OFCphone;
         private System.Windows.Forms.Label OFCcustomertype;
         private System.Windows.Forms.Label OFCot;
-        private System.Windows.Forms.RadioButton radioButton4;
+        private System.Windows.Forms.RadioButton OFC;
         private System.Windows.Forms.PictureBox OFCpicturebox;
         private System.Windows.Forms.Label OFCncd;
         private System.Windows.Forms.DateTimePicker OFCncdF;
@@ -511,7 +513,7 @@ namespace PresentationLayer
         private System.Windows.Forms.Button OFCsubmit;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox OFCitembox;
         private System.Windows.Forms.RichTextBox OFCnotesF;
         private System.Windows.Forms.Label OFCcustomerform;
         private System.Windows.Forms.TextBox OFCot1q;

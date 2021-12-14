@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DomainLayer;
+using DataAccessLayer;
 
 namespace PresentationLayer
 {
@@ -17,7 +18,14 @@ namespace PresentationLayer
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new OrderCust());
+
+            OrderCust screen = new OrderCust();
+            IDatabaseCreateQueries create = new DatabaseCreateQueries();
+            ICustomerModel model = new CustomerModel(create);
+            Presentation presentation = new Presentation(model, screen);
+            Application.Run(screen);
+
+            //Application.Run(new OrderCust());
 
             //EnquiryModel enquiry = new EnquiryModel(DateTime.Now, DateTime.Now.AddDays(1));
 
