@@ -30,44 +30,48 @@ namespace PresentationLayer
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.OFMdate = new System.Windows.Forms.Label();
+            this.OFMbirthdateF = new System.Windows.Forms.DateTimePicker();
+            this.OFMphone = new System.Windows.Forms.Label();
+            this.OFMaddr1 = new System.Windows.Forms.Label();
+            this.OFMbirthdate = new System.Windows.Forms.Label();
+            this.OFMname = new System.Windows.Forms.Label();
+            this.OFMphoneF = new System.Windows.Forms.TextBox();
+            this.OFMaddr1F = new System.Windows.Forms.TextBox();
+            this.OFNnameF = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
+            this.OFMrttc = new System.Windows.Forms.Label();
+            this.OFMettc = new System.Windows.Forms.Label();
+            this.OFMcottc = new System.Windows.Forms.Label();
+            this.OFMsystemrec = new System.Windows.Forms.Label();
+            this.OFMacceptorder = new System.Windows.Forms.Label();
+            this.OFMpriceoffer = new System.Windows.Forms.Label();
+            this.OFMrttcF = new System.Windows.Forms.DateTimePicker();
+            this.OFMettcF = new System.Windows.Forms.DateTimePicker();
+            this.OFMcottcF = new System.Windows.Forms.DateTimePicker();
+            this.OFMsystemrecF = new System.Windows.Forms.TextBox();
+            this.OFMpriceofferF = new System.Windows.Forms.TextBox();
+            this.OFMaoY = new System.Windows.Forms.RadioButton();
+            this.OFMaoN = new System.Windows.Forms.RadioButton();
             this.textBox6 = new System.Windows.Forms.TextBox();
-            this.dateTimePicker5 = new System.Windows.Forms.DateTimePicker();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.OFMdateF = new System.Windows.Forms.DateTimePicker();
+            this.OFMcn = new System.Windows.Forms.Label();
+            this.OFMco = new System.Windows.Forms.Label();
+            this.OFMcs = new System.Windows.Forms.Label();
+            this.OFMmordernotes = new System.Windows.Forms.Label();
+            this.OFMmordernotesF = new System.Windows.Forms.RichTextBox();
+            this.OFMcoF = new System.Windows.Forms.TableLayoutPanel();
+            this.OFMcsF = new System.Windows.Forms.TableLayoutPanel();
+            this.OFMcnF = new System.Windows.Forms.RichTextBox();
+            this.OFMlabel = new System.Windows.Forms.Label();
+            this.OFMsubmit = new System.Windows.Forms.Button();
+            this.OFMaddr2 = new System.Windows.Forms.Label();
+            this.OFMaddr2F = new System.Windows.Forms.TextBox();
+            this.OFMcountyF = new System.Windows.Forms.TextBox();
+            this.OFMcounty = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -80,93 +84,93 @@ namespace PresentationLayer
             this.label1.TabIndex = 8;
             this.label1.Text = "Order Number";
             // 
-            // label2
+            // OFMdate
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(401, 55);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(38, 17);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "Date";
+            this.OFMdate.AutoSize = true;
+            this.OFMdate.Location = new System.Drawing.Point(401, 55);
+            this.OFMdate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.OFMdate.Name = "OFMdate";
+            this.OFMdate.Size = new System.Drawing.Size(38, 17);
+            this.OFMdate.TabIndex = 9;
+            this.OFMdate.Text = "Date";
             // 
-            // dateTimePicker2
+            // OFMbirthdateF
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(184, 164);
-            this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(531, 22);
-            this.dateTimePicker2.TabIndex = 27;
+            this.OFMbirthdateF.Location = new System.Drawing.Point(184, 164);
+            this.OFMbirthdateF.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.OFMbirthdateF.Name = "OFMbirthdateF";
+            this.OFMbirthdateF.Size = new System.Drawing.Size(531, 22);
+            this.OFMbirthdateF.TabIndex = 27;
             // 
-            // label4
+            // OFMphone
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(31, 273);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(49, 17);
-            this.label4.TabIndex = 26;
-            this.label4.Text = "Phone";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
+            this.OFMphone.AutoSize = true;
+            this.OFMphone.Location = new System.Drawing.Point(31, 221);
+            this.OFMphone.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.OFMphone.Name = "OFMphone";
+            this.OFMphone.Size = new System.Drawing.Size(49, 17);
+            this.OFMphone.TabIndex = 26;
+            this.OFMphone.Text = "Phone";
+            this.OFMphone.Click += new System.EventHandler(this.label4_Click);
             // 
-            // label3
+            // OFMaddr1
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(31, 222);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(60, 17);
-            this.label3.TabIndex = 25;
-            this.label3.Text = "Address";
+            this.OFMaddr1.AutoSize = true;
+            this.OFMaddr1.Location = new System.Drawing.Point(16, 275);
+            this.OFMaddr1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.OFMaddr1.Name = "OFMaddr1";
+            this.OFMaddr1.Size = new System.Drawing.Size(112, 17);
+            this.OFMaddr1.TabIndex = 25;
+            this.OFMaddr1.Text = "Address - Line 1";
             // 
-            // label5
+            // OFMbirthdate
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(30, 164);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(67, 17);
-            this.label5.TabIndex = 24;
-            this.label5.Text = "BirthDate";
+            this.OFMbirthdate.AutoSize = true;
+            this.OFMbirthdate.Location = new System.Drawing.Point(30, 164);
+            this.OFMbirthdate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.OFMbirthdate.Name = "OFMbirthdate";
+            this.OFMbirthdate.Size = new System.Drawing.Size(67, 17);
+            this.OFMbirthdate.TabIndex = 24;
+            this.OFMbirthdate.Text = "BirthDate";
             // 
-            // label6
+            // OFMname
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(31, 107);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(45, 17);
-            this.label6.TabIndex = 23;
-            this.label6.Text = "Name";
+            this.OFMname.AutoSize = true;
+            this.OFMname.Location = new System.Drawing.Point(31, 107);
+            this.OFMname.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.OFMname.Name = "OFMname";
+            this.OFMname.Size = new System.Drawing.Size(45, 17);
+            this.OFMname.TabIndex = 23;
+            this.OFMname.Text = "Name";
             // 
-            // textBox4
+            // OFMphoneF
             // 
-            this.textBox4.Location = new System.Drawing.Point(184, 273);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(531, 22);
-            this.textBox4.TabIndex = 22;
+            this.OFMphoneF.Location = new System.Drawing.Point(184, 221);
+            this.OFMphoneF.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.OFMphoneF.Name = "OFMphoneF";
+            this.OFMphoneF.Size = new System.Drawing.Size(531, 22);
+            this.OFMphoneF.TabIndex = 22;
             // 
-            // textBox3
+            // OFMaddr1F
             // 
-            this.textBox3.Location = new System.Drawing.Point(184, 219);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(531, 22);
-            this.textBox3.TabIndex = 21;
+            this.OFMaddr1F.Location = new System.Drawing.Point(180, 275);
+            this.OFMaddr1F.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.OFMaddr1F.Name = "OFMaddr1F";
+            this.OFMaddr1F.Size = new System.Drawing.Size(535, 22);
+            this.OFMaddr1F.TabIndex = 21;
             // 
-            // textBox1
+            // OFNnameF
             // 
-            this.textBox1.Location = new System.Drawing.Point(184, 107);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(531, 22);
-            this.textBox1.TabIndex = 20;
+            this.OFNnameF.Location = new System.Drawing.Point(184, 107);
+            this.OFNnameF.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.OFNnameF.Name = "OFNnameF";
+            this.OFNnameF.Size = new System.Drawing.Size(531, 22);
+            this.OFNnameF.TabIndex = 20;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(16, 329);
+            this.label7.Location = new System.Drawing.Point(16, 440);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(99, 17);
@@ -176,7 +180,7 @@ namespace PresentationLayer
             // radioButton3
             // 
             this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(576, 324);
+            this.radioButton3.Location = new System.Drawing.Point(589, 435);
             this.radioButton3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(73, 21);
@@ -188,7 +192,7 @@ namespace PresentationLayer
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(361, 324);
+            this.radioButton2.Location = new System.Drawing.Point(385, 435);
             this.radioButton2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(117, 21);
@@ -200,7 +204,7 @@ namespace PresentationLayer
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(168, 324);
+            this.radioButton1.Location = new System.Drawing.Point(184, 436);
             this.radioButton1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(118, 21);
@@ -209,129 +213,129 @@ namespace PresentationLayer
             this.radioButton1.Text = "Governmental";
             this.radioButton1.UseVisualStyleBackColor = true;
             // 
-            // label8
+            // OFMrttc
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(16, 382);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(108, 17);
-            this.label8.TabIndex = 32;
-            this.label8.Text = "Requested TTC";
+            this.OFMrttc.AutoSize = true;
+            this.OFMrttc.Location = new System.Drawing.Point(13, 558);
+            this.OFMrttc.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.OFMrttc.Name = "OFMrttc";
+            this.OFMrttc.Size = new System.Drawing.Size(108, 17);
+            this.OFMrttc.TabIndex = 32;
+            this.OFMrttc.Text = "Requested TTC";
             // 
-            // label9
+            // OFMettc
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(19, 424);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(101, 17);
-            this.label9.TabIndex = 33;
-            this.label9.Text = "Estimated TTC";
+            this.OFMettc.AutoSize = true;
+            this.OFMettc.Location = new System.Drawing.Point(16, 600);
+            this.OFMettc.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.OFMettc.Name = "OFMettc";
+            this.OFMettc.Size = new System.Drawing.Size(101, 17);
+            this.OFMettc.TabIndex = 33;
+            this.OFMettc.Text = "Estimated TTC";
             // 
-            // label10
+            // OFMcottc
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(13, 466);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(127, 17);
-            this.label10.TabIndex = 34;
-            this.label10.Text = "Current Order TTC";
+            this.OFMcottc.AutoSize = true;
+            this.OFMcottc.Location = new System.Drawing.Point(10, 642);
+            this.OFMcottc.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.OFMcottc.Name = "OFMcottc";
+            this.OFMcottc.Size = new System.Drawing.Size(127, 17);
+            this.OFMcottc.TabIndex = 34;
+            this.OFMcottc.Text = "Current Order TTC";
             // 
-            // label11
+            // OFMsystemrec
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(7, 519);
-            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(168, 17);
-            this.label11.TabIndex = 35;
-            this.label11.Text = "System Recommendation";
+            this.OFMsystemrec.AutoSize = true;
+            this.OFMsystemrec.Location = new System.Drawing.Point(4, 695);
+            this.OFMsystemrec.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.OFMsystemrec.Name = "OFMsystemrec";
+            this.OFMsystemrec.Size = new System.Drawing.Size(168, 17);
+            this.OFMsystemrec.TabIndex = 35;
+            this.OFMsystemrec.Text = "System Recommendation";
             // 
-            // label12
+            // OFMacceptorder
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(16, 566);
-            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(100, 17);
-            this.label12.TabIndex = 36;
-            this.label12.Text = "Accept Order?";
+            this.OFMacceptorder.AutoSize = true;
+            this.OFMacceptorder.Location = new System.Drawing.Point(13, 742);
+            this.OFMacceptorder.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.OFMacceptorder.Name = "OFMacceptorder";
+            this.OFMacceptorder.Size = new System.Drawing.Size(100, 17);
+            this.OFMacceptorder.TabIndex = 36;
+            this.OFMacceptorder.Text = "Accept Order?";
             // 
-            // label13
+            // OFMpriceoffer
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(21, 614);
-            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(76, 17);
-            this.label13.TabIndex = 37;
-            this.label13.Text = "Price Offer";
+            this.OFMpriceoffer.AutoSize = true;
+            this.OFMpriceoffer.Location = new System.Drawing.Point(18, 790);
+            this.OFMpriceoffer.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.OFMpriceoffer.Name = "OFMpriceoffer";
+            this.OFMpriceoffer.Size = new System.Drawing.Size(76, 17);
+            this.OFMpriceoffer.TabIndex = 37;
+            this.OFMpriceoffer.Text = "Price Offer";
             // 
-            // dateTimePicker1
+            // OFMrttcF
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(183, 377);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(531, 22);
-            this.dateTimePicker1.TabIndex = 38;
+            this.OFMrttcF.Location = new System.Drawing.Point(180, 553);
+            this.OFMrttcF.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.OFMrttcF.Name = "OFMrttcF";
+            this.OFMrttcF.Size = new System.Drawing.Size(531, 22);
+            this.OFMrttcF.TabIndex = 38;
             // 
-            // dateTimePicker3
+            // OFMettcF
             // 
-            this.dateTimePicker3.Location = new System.Drawing.Point(184, 419);
-            this.dateTimePicker3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.dateTimePicker3.Name = "dateTimePicker3";
-            this.dateTimePicker3.Size = new System.Drawing.Size(531, 22);
-            this.dateTimePicker3.TabIndex = 39;
+            this.OFMettcF.Location = new System.Drawing.Point(181, 595);
+            this.OFMettcF.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.OFMettcF.Name = "OFMettcF";
+            this.OFMettcF.Size = new System.Drawing.Size(531, 22);
+            this.OFMettcF.TabIndex = 39;
             // 
-            // dateTimePicker4
+            // OFMcottcF
             // 
-            this.dateTimePicker4.Location = new System.Drawing.Point(184, 466);
-            this.dateTimePicker4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.dateTimePicker4.Name = "dateTimePicker4";
-            this.dateTimePicker4.Size = new System.Drawing.Size(531, 22);
-            this.dateTimePicker4.TabIndex = 40;
+            this.OFMcottcF.Location = new System.Drawing.Point(181, 642);
+            this.OFMcottcF.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.OFMcottcF.Name = "OFMcottcF";
+            this.OFMcottcF.Size = new System.Drawing.Size(531, 22);
+            this.OFMcottcF.TabIndex = 40;
             // 
-            // textBox2
+            // OFMsystemrecF
             // 
-            this.textBox2.Location = new System.Drawing.Point(183, 519);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(531, 22);
-            this.textBox2.TabIndex = 41;
+            this.OFMsystemrecF.Location = new System.Drawing.Point(180, 695);
+            this.OFMsystemrecF.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.OFMsystemrecF.Name = "OFMsystemrecF";
+            this.OFMsystemrecF.Size = new System.Drawing.Size(531, 22);
+            this.OFMsystemrecF.TabIndex = 41;
             // 
-            // textBox5
+            // OFMpriceofferF
             // 
-            this.textBox5.Location = new System.Drawing.Point(184, 611);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(531, 22);
-            this.textBox5.TabIndex = 42;
+            this.OFMpriceofferF.Location = new System.Drawing.Point(181, 787);
+            this.OFMpriceofferF.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.OFMpriceofferF.Name = "OFMpriceofferF";
+            this.OFMpriceofferF.Size = new System.Drawing.Size(531, 22);
+            this.OFMpriceofferF.TabIndex = 42;
             // 
-            // radioButton4
+            // OFMaoY
             // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(216, 564);
-            this.radioButton4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(53, 21);
-            this.radioButton4.TabIndex = 43;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "Yes";
-            this.radioButton4.UseVisualStyleBackColor = true;
+            this.OFMaoY.AutoSize = true;
+            this.OFMaoY.Location = new System.Drawing.Point(213, 740);
+            this.OFMaoY.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.OFMaoY.Name = "OFMaoY";
+            this.OFMaoY.Size = new System.Drawing.Size(53, 21);
+            this.OFMaoY.TabIndex = 43;
+            this.OFMaoY.TabStop = true;
+            this.OFMaoY.Text = "Yes";
+            this.OFMaoY.UseVisualStyleBackColor = true;
             // 
-            // radioButton5
+            // OFMaoN
             // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Location = new System.Drawing.Point(431, 564);
-            this.radioButton5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(47, 21);
-            this.radioButton5.TabIndex = 44;
-            this.radioButton5.TabStop = true;
-            this.radioButton5.Text = "No";
-            this.radioButton5.UseVisualStyleBackColor = true;
+            this.OFMaoN.AutoSize = true;
+            this.OFMaoN.Location = new System.Drawing.Point(428, 740);
+            this.OFMaoN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.OFMaoN.Name = "OFMaoN";
+            this.OFMaoN.Size = new System.Drawing.Size(47, 21);
+            this.OFMaoN.TabIndex = 44;
+            this.OFMaoN.TabStop = true;
+            this.OFMaoN.Text = "No";
+            this.OFMaoN.UseVisualStyleBackColor = true;
             // 
             // textBox6
             // 
@@ -341,174 +345,214 @@ namespace PresentationLayer
             this.textBox6.Size = new System.Drawing.Size(208, 22);
             this.textBox6.TabIndex = 45;
             // 
-            // dateTimePicker5
+            // OFMdateF
             // 
-            this.dateTimePicker5.Location = new System.Drawing.Point(449, 55);
-            this.dateTimePicker5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.dateTimePicker5.Name = "dateTimePicker5";
-            this.dateTimePicker5.Size = new System.Drawing.Size(265, 22);
-            this.dateTimePicker5.TabIndex = 46;
+            this.OFMdateF.Location = new System.Drawing.Point(449, 55);
+            this.OFMdateF.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.OFMdateF.Name = "OFMdateF";
+            this.OFMdateF.Size = new System.Drawing.Size(265, 22);
+            this.OFMdateF.TabIndex = 46;
             // 
-            // label14
+            // OFMcn
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(977, 11);
-            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(109, 17);
-            this.label14.TabIndex = 47;
-            this.label14.Text = "Customer Notes";
+            this.OFMcn.AutoSize = true;
+            this.OFMcn.Location = new System.Drawing.Point(977, 11);
+            this.OFMcn.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.OFMcn.Name = "OFMcn";
+            this.OFMcn.Size = new System.Drawing.Size(109, 17);
+            this.OFMcn.TabIndex = 47;
+            this.OFMcn.Text = "Customer Notes";
             // 
-            // label15
+            // OFMco
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(977, 140);
-            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(109, 17);
-            this.label15.TabIndex = 48;
-            this.label15.Text = "Customer Order";
+            this.OFMco.AutoSize = true;
+            this.OFMco.Location = new System.Drawing.Point(977, 140);
+            this.OFMco.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.OFMco.Name = "OFMco";
+            this.OFMco.Size = new System.Drawing.Size(109, 17);
+            this.OFMco.TabIndex = 48;
+            this.OFMco.Text = "Customer Order";
             // 
-            // label16
+            // OFMcs
             // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(977, 343);
-            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(118, 17);
-            this.label16.TabIndex = 49;
-            this.label16.Text = "Current Schedule";
+            this.OFMcs.AutoSize = true;
+            this.OFMcs.Location = new System.Drawing.Point(977, 343);
+            this.OFMcs.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.OFMcs.Name = "OFMcs";
+            this.OFMcs.Size = new System.Drawing.Size(118, 17);
+            this.OFMcs.TabIndex = 49;
+            this.OFMcs.Text = "Current Schedule";
             // 
-            // label17
+            // OFMmordernotes
             // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(7, 663);
-            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(155, 17);
-            this.label17.TabIndex = 51;
-            this.label17.Text = "Manager - Order Notes";
+            this.OFMmordernotes.AutoSize = true;
+            this.OFMmordernotes.Location = new System.Drawing.Point(4, 839);
+            this.OFMmordernotes.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.OFMmordernotes.Name = "OFMmordernotes";
+            this.OFMmordernotes.Size = new System.Drawing.Size(155, 17);
+            this.OFMmordernotes.TabIndex = 51;
+            this.OFMmordernotes.Text = "Manager - Order Notes";
             // 
-            // richTextBox1
+            // OFMmordernotesF
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(183, 660);
-            this.richTextBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(531, 58);
-            this.richTextBox1.TabIndex = 54;
-            this.richTextBox1.Text = "";
+            this.OFMmordernotesF.Location = new System.Drawing.Point(180, 836);
+            this.OFMmordernotesF.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.OFMmordernotesF.Name = "OFMmordernotesF";
+            this.OFMmordernotesF.Size = new System.Drawing.Size(531, 58);
+            this.OFMmordernotesF.TabIndex = 54;
+            this.OFMmordernotesF.Text = "";
             // 
-            // tableLayoutPanel1
+            // OFMcoF
             // 
-            this.tableLayoutPanel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.tableLayoutPanel1.ColumnCount = 4;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 52.85714F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 47.14286F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 96F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 91F));
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(847, 171);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(373, 146);
-            this.tableLayoutPanel1.TabIndex = 56;
+            this.OFMcoF.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.OFMcoF.ColumnCount = 4;
+            this.OFMcoF.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 52.85714F));
+            this.OFMcoF.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 47.14286F));
+            this.OFMcoF.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 96F));
+            this.OFMcoF.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 91F));
+            this.OFMcoF.Location = new System.Drawing.Point(847, 171);
+            this.OFMcoF.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.OFMcoF.Name = "OFMcoF";
+            this.OFMcoF.RowCount = 2;
+            this.OFMcoF.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.OFMcoF.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.OFMcoF.Size = new System.Drawing.Size(373, 146);
+            this.OFMcoF.TabIndex = 56;
             // 
-            // tableLayoutPanel2
+            // OFMcsF
             // 
-            this.tableLayoutPanel2.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.tableLayoutPanel2.ColumnCount = 3;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.79253F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.20747F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(847, 398);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 6;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 44.95413F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55.04587F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 78F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 62F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 55F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(373, 372);
-            this.tableLayoutPanel2.TabIndex = 57;
+            this.OFMcsF.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.OFMcsF.ColumnCount = 3;
+            this.OFMcsF.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.79253F));
+            this.OFMcsF.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.20747F));
+            this.OFMcsF.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.OFMcsF.Location = new System.Drawing.Point(847, 398);
+            this.OFMcsF.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.OFMcsF.Name = "OFMcsF";
+            this.OFMcsF.RowCount = 6;
+            this.OFMcsF.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 44.84536F));
+            this.OFMcsF.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55.15464F));
+            this.OFMcsF.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 106F));
+            this.OFMcsF.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 82F));
+            this.OFMcsF.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 71F));
+            this.OFMcsF.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
+            this.OFMcsF.Size = new System.Drawing.Size(373, 496);
+            this.OFMcsF.TabIndex = 57;
             // 
-            // richTextBox2
+            // OFMcnF
             // 
-            this.richTextBox2.Location = new System.Drawing.Point(847, 38);
-            this.richTextBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(372, 78);
-            this.richTextBox2.TabIndex = 55;
-            this.richTextBox2.Text = "";
+            this.OFMcnF.Location = new System.Drawing.Point(847, 38);
+            this.OFMcnF.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.OFMcnF.Name = "OFMcnF";
+            this.OFMcnF.Size = new System.Drawing.Size(372, 78);
+            this.OFMcnF.TabIndex = 55;
+            this.OFMcnF.Text = "";
             // 
-            // label18
+            // OFMlabel
             // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(287, 0);
-            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(282, 31);
-            this.label18.TabIndex = 58;
-            this.label18.Text = "Order Form - Manager";
-            this.label18.Click += new System.EventHandler(this.label18_Click);
+            this.OFMlabel.AutoSize = true;
+            this.OFMlabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OFMlabel.Location = new System.Drawing.Point(287, 0);
+            this.OFMlabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.OFMlabel.Name = "OFMlabel";
+            this.OFMlabel.Size = new System.Drawing.Size(282, 31);
+            this.OFMlabel.TabIndex = 58;
+            this.OFMlabel.Text = "Order Form - Manager";
+            this.OFMlabel.Click += new System.EventHandler(this.label18_Click);
             // 
-            // button1
+            // OFMsubmit
             // 
-            this.button1.Location = new System.Drawing.Point(403, 740);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(86, 30);
-            this.button1.TabIndex = 59;
-            this.button1.Text = "Submit";
-            this.button1.UseVisualStyleBackColor = true;
+            this.OFMsubmit.Location = new System.Drawing.Point(400, 916);
+            this.OFMsubmit.Name = "OFMsubmit";
+            this.OFMsubmit.Size = new System.Drawing.Size(86, 30);
+            this.OFMsubmit.TabIndex = 59;
+            this.OFMsubmit.Text = "Submit";
+            this.OFMsubmit.UseVisualStyleBackColor = true;
+            // 
+            // OFMaddr2
+            // 
+            this.OFMaddr2.AutoSize = true;
+            this.OFMaddr2.Location = new System.Drawing.Point(18, 329);
+            this.OFMaddr2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.OFMaddr2.Name = "OFMaddr2";
+            this.OFMaddr2.Size = new System.Drawing.Size(112, 17);
+            this.OFMaddr2.TabIndex = 60;
+            this.OFMaddr2.Text = "Address - Line 2";
+            // 
+            // OFMaddr2F
+            // 
+            this.OFMaddr2F.Location = new System.Drawing.Point(179, 329);
+            this.OFMaddr2F.Margin = new System.Windows.Forms.Padding(4);
+            this.OFMaddr2F.Name = "OFMaddr2F";
+            this.OFMaddr2F.Size = new System.Drawing.Size(535, 22);
+            this.OFMaddr2F.TabIndex = 61;
+            // 
+            // OFMcountyF
+            // 
+            this.OFMcountyF.Location = new System.Drawing.Point(181, 385);
+            this.OFMcountyF.Margin = new System.Windows.Forms.Padding(4);
+            this.OFMcountyF.Name = "OFMcountyF";
+            this.OFMcountyF.Size = new System.Drawing.Size(535, 22);
+            this.OFMcountyF.TabIndex = 62;
+            // 
+            // OFMcounty
+            // 
+            this.OFMcounty.AutoSize = true;
+            this.OFMcounty.Location = new System.Drawing.Point(31, 388);
+            this.OFMcounty.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.OFMcounty.Name = "OFMcounty";
+            this.OFMcounty.Size = new System.Drawing.Size(52, 17);
+            this.OFMcounty.TabIndex = 63;
+            this.OFMcounty.Text = "County";
             // 
             // OrderManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1267, 784);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label18);
-            this.Controls.Add(this.richTextBox2);
-            this.Controls.Add(this.tableLayoutPanel2);
-            this.Controls.Add(this.tableLayoutPanel1);
-            this.Controls.Add(this.richTextBox1);
-            this.Controls.Add(this.label17);
-            this.Controls.Add(this.label16);
-            this.Controls.Add(this.label15);
-            this.Controls.Add(this.label14);
-            this.Controls.Add(this.dateTimePicker5);
+            this.ClientSize = new System.Drawing.Size(1267, 947);
+            this.Controls.Add(this.OFMcounty);
+            this.Controls.Add(this.OFMcountyF);
+            this.Controls.Add(this.OFMaddr2F);
+            this.Controls.Add(this.OFMaddr2);
+            this.Controls.Add(this.OFMsubmit);
+            this.Controls.Add(this.OFMlabel);
+            this.Controls.Add(this.OFMcnF);
+            this.Controls.Add(this.OFMcsF);
+            this.Controls.Add(this.OFMcoF);
+            this.Controls.Add(this.OFMmordernotesF);
+            this.Controls.Add(this.OFMmordernotes);
+            this.Controls.Add(this.OFMcs);
+            this.Controls.Add(this.OFMco);
+            this.Controls.Add(this.OFMcn);
+            this.Controls.Add(this.OFMdateF);
             this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.radioButton5);
-            this.Controls.Add(this.radioButton4);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.dateTimePicker4);
-            this.Controls.Add(this.dateTimePicker3);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.label13);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.label11);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.label8);
+            this.Controls.Add(this.OFMaoN);
+            this.Controls.Add(this.OFMaoY);
+            this.Controls.Add(this.OFMpriceofferF);
+            this.Controls.Add(this.OFMsystemrecF);
+            this.Controls.Add(this.OFMcottcF);
+            this.Controls.Add(this.OFMettcF);
+            this.Controls.Add(this.OFMrttcF);
+            this.Controls.Add(this.OFMpriceoffer);
+            this.Controls.Add(this.OFMacceptorder);
+            this.Controls.Add(this.OFMsystemrec);
+            this.Controls.Add(this.OFMcottc);
+            this.Controls.Add(this.OFMettc);
+            this.Controls.Add(this.OFMrttc);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.radioButton3);
             this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.radioButton1);
-            this.Controls.Add(this.dateTimePicker2);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.OFMbirthdateF);
+            this.Controls.Add(this.OFMphone);
+            this.Controls.Add(this.OFMaddr1);
+            this.Controls.Add(this.OFMbirthdate);
+            this.Controls.Add(this.OFMname);
+            this.Controls.Add(this.OFMphoneF);
+            this.Controls.Add(this.OFMaddr1F);
+            this.Controls.Add(this.OFNnameF);
+            this.Controls.Add(this.OFMdate);
             this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "OrderManager";
@@ -522,43 +566,47 @@ namespace PresentationLayer
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label OFMdate;
+        private System.Windows.Forms.DateTimePicker OFMbirthdateF;
+        private System.Windows.Forms.Label OFMphone;
+        private System.Windows.Forms.Label OFMaddr1;
+        private System.Windows.Forms.Label OFMbirthdate;
+        private System.Windows.Forms.Label OFMname;
+        private System.Windows.Forms.TextBox OFMphoneF;
+        private System.Windows.Forms.TextBox OFMaddr1F;
+        private System.Windows.Forms.TextBox OFNnameF;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker3;
-        private System.Windows.Forms.DateTimePicker dateTimePicker4;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.RadioButton radioButton4;
-        private System.Windows.Forms.RadioButton radioButton5;
+        private System.Windows.Forms.Label OFMrttc;
+        private System.Windows.Forms.Label OFMettc;
+        private System.Windows.Forms.Label OFMcottc;
+        private System.Windows.Forms.Label OFMsystemrec;
+        private System.Windows.Forms.Label OFMacceptorder;
+        private System.Windows.Forms.Label OFMpriceoffer;
+        private System.Windows.Forms.DateTimePicker OFMrttcF;
+        private System.Windows.Forms.DateTimePicker OFMettcF;
+        private System.Windows.Forms.DateTimePicker OFMcottcF;
+        private System.Windows.Forms.TextBox OFMsystemrecF;
+        private System.Windows.Forms.TextBox OFMpriceofferF;
+        private System.Windows.Forms.RadioButton OFMaoY;
+        private System.Windows.Forms.RadioButton OFMaoN;
         private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.DateTimePicker dateTimePicker5;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.RichTextBox richTextBox2;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DateTimePicker OFMdateF;
+        private System.Windows.Forms.Label OFMcn;
+        private System.Windows.Forms.Label OFMco;
+        private System.Windows.Forms.Label OFMcs;
+        private System.Windows.Forms.Label OFMmordernotes;
+        private System.Windows.Forms.RichTextBox OFMmordernotesF;
+        private System.Windows.Forms.TableLayoutPanel OFMcoF;
+        private System.Windows.Forms.TableLayoutPanel OFMcsF;
+        private System.Windows.Forms.RichTextBox OFMcnF;
+        private System.Windows.Forms.Label OFMlabel;
+        private System.Windows.Forms.Button OFMsubmit;
+        private System.Windows.Forms.Label OFMaddr2;
+        private System.Windows.Forms.TextBox OFMaddr2F;
+        private System.Windows.Forms.TextBox OFMcountyF;
+        private System.Windows.Forms.Label OFMcounty;
     }
 }
