@@ -21,6 +21,7 @@ namespace DataAccessLayer
         public int orderID { get; set; }
         public DateTime receivedDate { get; set; }
         public DateTime deadline { get; set; }
+        public string orderStatus { get; set; }
         public virtual Customer Customer { get; set; }
         public virtual ICollection<OrderItems> orderItemsList { get; set; }
     }

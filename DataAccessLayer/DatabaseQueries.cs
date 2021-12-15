@@ -54,6 +54,8 @@ namespace DataAccessLayer
             {
                 context.Customer.Add(customer);
                 context.SaveChanges();
+
+                System.Windows.Forms.MessageBox.Show("Saved. Delete this.");
             }
         }
     }
