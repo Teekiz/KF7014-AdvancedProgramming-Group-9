@@ -12,56 +12,31 @@ namespace DomainLayer
     //EnqeiuryInterface
     public interface IEnquiryModel
     {
-        DateTime GetReceivedDate();
-        DateTime GetDeadline();
+        /*
         void createSword(string name, int quantity, byte[] referenceImage);
         void createArmour(string name, int quantity, byte[] referenceImage);
         void createCeremonialSword(string name, int quantity, byte[] referenceImage);
         void CalculateEstimatedTime(out int minTime, out int maxTime);
         int countItemInOrder();
         OrderItemsModel getItemInOrder(int index);
+        */
 
     }
 
     //Concrete Implementation
     public class EnquiryModel : IEnquiryModel
     {
-        public EnquiryModel(DateTime receivedDate, DateTime deadline)
-        {
-            this.receivedDate = receivedDate;
-            this.deadline = deadline;
-
-            orderItemsList = new List<OrderItemsModel>();
-        }
-
-        public EnquiryModel() { 
-        
-        }
-
-        #region "Entity Framework and variables"
-        [Key]
-        public int orderID { get; set; }
-        //[Required]
-        public DateTime receivedDate { get; set; }
-        //[Required]
-        public DateTime deadline { get; set; }
-
-        //TODO - Change this from customer to ICustomer
-        public ICustomerModel customer;
-
-        //this was orignally a virtual ICollection named orderItemLists
-        //https://stackoverflow.com/questions/47310922/how-to-get-index-of-an-item-in-icollectiont
-        public virtual IList<OrderItemsModel> orderItemsList { get; set; }
-
-        public DateTime GetReceivedDate() { return receivedDate; }
-        public DateTime GetDeadline() { return deadline; }
-
         IDatabaseCreateQueries create;
-        IDatabaseReadQueries read;
         Enquiry enquiry;
-        #endregion
+
+        public EnquiryModel(IDatabaseCreateQueries create) 
+        {
+            this.create = create;
+        }
 
         #region "Code for creation for item type"
+
+        /*
 
         //used to create a sword item in the order
         //i'm not entirely happy with how this works - the coupling between the classes seems quite high (but atm it works), rework later if possible.
@@ -82,9 +57,14 @@ namespace DomainLayer
             OrderItemsModel orderItems = ItemFactory.Singleton.GetItemTypes(OrderType.CeremonialSword, name, quantity, referenceImage);
             orderItemsList.Add(orderItems);
         }
+        */
+
         #endregion
 
+
         #region "Code used for the orderItemsList (count, get, calc)"
+
+        /*
         //primarly useful for testing
         public int countItemInOrder()
         {
@@ -111,8 +91,11 @@ namespace DomainLayer
                 maxTime += getItemInOrder(i).GetMaxTime() * getItemInOrder(i).GetQuantity();
             }
         }
+        */
+
         #endregion
 
+        /*
         public void getSavedEnquiry()
         {
             foreach (var i in read.GetAllEnquiries())
@@ -121,8 +104,9 @@ namespace DomainLayer
                 System.Windows.Forms.MessageBox.Show(order.ToString());
             }
         }
+        */
 
-        public void SaveEnquiry()
+        public void SaveEnquiry(Enquiry enquiry)
         {
             create.SaveEnquiry(enquiry);
         }
