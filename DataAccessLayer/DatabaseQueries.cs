@@ -10,6 +10,7 @@ namespace DataAccessLayer
     {
         bool SaveEnquiry(Enquiry enquiry);
         void SaveCustomer(Customer customer);
+        void SaveOrderItem(OrderItems orderItems);
     }
 
     public interface IDatabaseReadQueries
@@ -53,6 +54,17 @@ namespace DataAccessLayer
             using (var context = new DatabaseEntities())
             {
                 context.Customer.Add(customer);
+                context.SaveChanges();
+
+                System.Windows.Forms.MessageBox.Show("Saved. Delete this.");
+            }
+        }
+
+        public void SaveOrderItem(OrderItems orderItems)
+        {
+            using (var context = new DatabaseEntities())
+            {
+                context.OrderItems.Add(orderItems);
                 context.SaveChanges();
 
                 System.Windows.Forms.MessageBox.Show("Saved. Delete this.");

@@ -22,6 +22,7 @@ namespace DataAccessLayer
         public DateTime receivedDate { get; set; }
         public DateTime deadline { get; set; }
         public string orderStatus { get; set; }
+        public string orderNotes { get; set; }
         public virtual Customer Customer { get; set; }
         public virtual ICollection<OrderItems> orderItemsList { get; set; }
     }
@@ -45,10 +46,13 @@ namespace DataAccessLayer
         [Key]
         public int customerID { get; set; }
         public string name { get; set; }
-        public string address { get; set; }
+        public string addressline1 { get; set; }
+        public string phone { get; set; }
+        public string addressline2 { get; set; }
+        public DateTime birthdate { get; set; }
         public string postcode { get; set; }
         public string townCity { get; set; }
-        public string stateCounty { get; set; }
+        public string county { get; set; }
         public string country { get; set; }
         public string type { get; set; }
         //public virtual Enquiry Enquiry { get; set; }

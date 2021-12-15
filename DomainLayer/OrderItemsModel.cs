@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DataAccessLayer;
 
 /*
 Credit/References:
@@ -28,53 +29,31 @@ namespace DomainLayer
     //intertface for order items - used to define all the common code
     public interface IOrderItemsModel
     {
-        string GetName();
-        int GetQuantity();
-        byte[] GetReferenceImage();
+        void SaveItem(OrderItems orderitems);
         int GetMaxTime();
         int GetMinTime();
     }
 
     public class OrderItemsModel : IOrderItemsModel
     {
-        /*
-            The purpose of this class is to allow the saving of OrderItems into the database.
-            Before the orderItems was using an interface, it still does but the subtypes now
-            inherit from this orderItems class.
-        */
-
-        [Key]
-        public int itemID { get; set; }
-        [Required]
-        public string name { get; set; }
-        [Required]
-        public int quantity { get; set; }
-        //referenceImage is optional for the user - this code was modified based on stack overflow (#1).
-        public byte[] referenceImage { get; set; }
+ 
         //used to calculate the range
         protected int maxCreationTime { get; set; }
         protected int minCreationTime { get; set; }
-        [Required]
-        public virtual EnquiryModel Enquiry { get; set; }
 
-        public OrderItemsModel(string itemName, int quantity, byte[] referenceImage)
+        protected IDatabaseCreateQueries create;
+        OrderItems orderitems;
+
+        public OrderItemsModel(IDatabaseCreateQueries create)
         {
-            this.name = itemName;
-            this.quantity = quantity;
-            this.referenceImage = referenceImage;
+            this.create = create;
         }
-        public string GetName()
+
+        public void SaveItem(OrderItems orderitems)
         {
-            return name;
+            create.SaveOrderItem(orderitems);
         }
-        public int GetQuantity()
-        {
-            return quantity;
-        }
-        public byte[] GetReferenceImage()
-        {
-            return referenceImage;
-        }
+
         public int GetMaxTime()
         {
             return maxCreationTime;
@@ -85,6 +64,7 @@ namespace DomainLayer
         }
     }
 
+    /*
     //Item factory, create a item based on the type passed into the factory (sword, armour, etc)
     class ItemFactory
     {
@@ -102,21 +82,22 @@ namespace DomainLayer
         }
 
         //used to get the item types and create a new object based on the type.
-        public OrderItemsModel GetItemTypes(OrderType orderType, string name, int quantity, byte[] referenceImage)
+        public OrderItemsModel GetItemTypes(OrderType orderType)
         {
             if (orderType == OrderType.Sword)
-                return new SwordItem(name, quantity, referenceImage);
+                return new SwordItem();
             else if (orderType == OrderType.Armour)
-                return new ArmourItem(name, quantity, referenceImage);
+                return new ArmourItem();
             else
-                return new CeremonialSwordItem(name, quantity, referenceImage);
+                return new CeremonialSwordItem();
         }
     }
 
+    
     //sword item class
     public class SwordItem : OrderItemsModel //IOrderItems
     {
-        public SwordItem(string name, int quantity, byte[] referenceImage) : base(name, quantity, referenceImage)
+        public SwordItem() : base(IDatabaseCreateQueries create)
         {
             this.maxCreationTime = 120;
             this.minCreationTime = 80;
@@ -126,7 +107,7 @@ namespace DomainLayer
     //armour item class
     public class ArmourItem : OrderItemsModel
     {
-        public ArmourItem(string name, int quantity, byte[] referenceImage) : base(name, quantity, referenceImage)
+        public ArmourItem() : base()
         {
             this.maxCreationTime = 300;
             this.minCreationTime = 80;
@@ -136,10 +117,12 @@ namespace DomainLayer
     //CeremonialSword item class
     public class CeremonialSwordItem : OrderItemsModel //IOrderItems
     {
-        public CeremonialSwordItem(string name, int quantity, byte[] referenceImage) : base(name, quantity, referenceImage)
+        public CeremonialSwordItem() : base()
         {
             this.maxCreationTime = 30;
             this.minCreationTime = 20;
         }
     }
+
+    */
 }

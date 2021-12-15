@@ -21,6 +21,8 @@ namespace DomainLayer
         OrderItemsModel getItemInOrder(int index);
         */
 
+        void SaveEnquiry(Enquiry enquiry);
+
     }
 
     //Concrete Implementation

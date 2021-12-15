@@ -19,10 +19,11 @@ namespace PresentationLayer
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            OrderCust screen = new OrderCust();
+            OFCcountry screen = new OFCcountry();
             IDatabaseCreateQueries create = new DatabaseCreateQueries();
             ICustomerModel model = new CustomerModel(create);
-            Presentation presentation = new Presentation(model, screen);
+            IEnquiryModel enq = new EnquiryModel(create);
+            Presentation presentation = new Presentation(model, screen, enq);
             Application.Run(screen);
 
             //Application.Run(new OrderCust());
