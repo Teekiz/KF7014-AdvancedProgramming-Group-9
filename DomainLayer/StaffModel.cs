@@ -15,11 +15,11 @@ namespace DomainLayer
     {
 
         //properties
-        public int staffID { get; set; }
-        public string firstname { get; set; }
-        public string lastname { get; set; }
-        public int workinghours { get; set; }
-        public string addressid { get; set; }
+        public int staffID{get; set;}
+        public string firstname{ get; set;}
+        public string lastname{ get; set;}
+        public int workinghours{ get; set;}
+        public string addressid{ get; set;}
 
         //empty construstor
 
