@@ -41,7 +41,7 @@ namespace AdvancedProgrammingGroup9TestProject
             Assert.AreEqual(now, Firstname.GetReceivedFirstname(), "Received Firstname Incorrect");
             Assert.AreEqual(now, Lastname.GetReceivedlastname(), "Received Lastname Incorrect");
             Assert.AreEqual(now, Workinghours.GetReceivedworkinghours(), "Received Workinghours Incorrect");
-            Assert.AreEqual(now, AddressId.GetReceivedAddressId(), "Received AddressId Incorrect");
+            Assert.AreEqual(now, AddressId.GetReceivedAddressId(),"Received AddressId Incorrect");
             
             
         }
