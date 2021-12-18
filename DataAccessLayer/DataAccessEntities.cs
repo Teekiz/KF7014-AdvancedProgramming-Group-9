@@ -29,8 +29,9 @@ namespace DataAccessLayer
         public DateTime deadline { get; set; }
         public string orderStatus { get; set; }
         public string orderNotes { get; set; }
-        //[Required]//, ForeignKey("orderID")
-        //public virtual Customer Customer { get; set; }
+        //[Required, ForeignKey("orderID")]
+        //[Required]
+        public virtual Customer Customer { get; set; }
         public virtual ICollection<OrderItems> orderItemsList { get; set; }
     }
 
@@ -107,6 +108,6 @@ namespace DataAccessLayer
         public string county { get; set; }
         public string country { get; set; }
         public string type { get; set; }
-        public virtual Enquiry Enquiry { get; set; }
+        //public virtual Enquiry Enquiry { get; set; }
     }
 }

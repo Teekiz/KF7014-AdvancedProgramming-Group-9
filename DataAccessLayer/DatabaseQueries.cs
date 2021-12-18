@@ -8,10 +8,8 @@ namespace DataAccessLayer
 {
     public interface IDatabaseCreateQueries
     {
-        bool SaveEnquiry(Enquiry enquiry);
         void SaveCustomer(Customer customer);
-        void SaveOrderItem(OrderItems orderItems);
-        void SaveBoth(Enquiry enquiry, List<OrderItems> orderItems, Customer customer); //List
+        void SaveEnquiry(Enquiry enquiry, List<OrderItems> orderItems, Customer customer); //List
     }
 
     public interface IDatabaseReadQueries
@@ -27,68 +25,30 @@ namespace DataAccessLayer
     //spliting the datebase class into seperate classes for CRUD operations.
     public class DatabaseCreateQueries : IDatabaseCreateQueries
     {
-        public bool SaveEnquiry(Enquiry enquiry)
-        {
-            try
-            {
-                using (var context = new DatabaseEntities())
-                {
-                    context.Enquiries.Add(enquiry);
-
-                    /*()
-                    for (int i = 0; i < enquiry.countItemInOrder(); i++)
-                    {
-                        //adds all the of the items in the order to a database
-                        context.OrderItems.Add(enquiry.getItemInOrder(i));
-                    }
-                    */
-
-                    context.SaveChanges();
-                    return true;
-                }
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
         public void SaveCustomer(Customer customer)
         {
             using (var context = new DatabaseEntities())
             {
                 context.Customers.Add(customer);
                 context.SaveChanges();
-
-                System.Windows.Forms.MessageBox.Show("Saved. Delete this.");
             }
         }
 
-        public void SaveOrderItem(OrderItems orderItems)
+        public void SaveEnquiry(Enquiry enquiry, List<OrderItems> orderItems, Customer customer)
         {
             using (var context = new DatabaseEntities())
             {
-                context.OrderItems.Add(orderItems);
-                context.SaveChanges();
-                System.Windows.Forms.MessageBox.Show("Saved. Delete this.");
-            }
-        }
+                enquiry.Customer = customer;
 
-        public void SaveBoth(Enquiry enquiry, List<OrderItems> orderItems, Customer customer) //List<>
-        {
-            using (var context = new DatabaseEntities())
-            {
-                context.Customers.Add(customer);
                 context.Enquiries.Add(enquiry);
-
+                context.Customers.Add(customer);
                 
                 for (int i = 0; i < orderItems.Count(); i++)
                 {
                     //adds all the of the items in the order to a database
+                    orderItems[i].Enquiry = enquiry;
                     context.OrderItems.Add(orderItems[i]);
                 }
-                
-
                 context.SaveChanges();
             }
         }

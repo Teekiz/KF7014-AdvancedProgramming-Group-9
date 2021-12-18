@@ -12,21 +12,8 @@ namespace DomainLayer
     //EnqeiuryInterface
     public interface IEnquiryModel
     {
-        /*
-        void createSword(string name, int quantity, byte[] referenceImage);
-        void createArmour(string name, int quantity, byte[] referenceImage);
-        void createCeremonialSword(string name, int quantity, byte[] referenceImage);
-        void CalculateEstimatedTime(out int minTime, out int maxTime);
-        int countItemInOrder();
-        OrderItemsModel getItemInOrder(int index);
-        */
-
-        void SaveEnquiry(Enquiry enquiry);
-        void SaveAllOrderItems();
-        //void createItem(string description, int quantity, byte[] referenceImage, OrderType orderType);
         OrderItems createItem(string description, int quantity, byte[] referenceImage, OrderType orderType);
-
-        void SaveBoth(Enquiry enquiry, Customer customer, List<OrderItems> orderItems);
+        void SaveEnquiry(Enquiry enquiry, Customer customer, List<OrderItems> orderItems);
 
     }
 
@@ -42,22 +29,9 @@ namespace DomainLayer
             this.create = create;
         }
 
-        public void SaveEnquiry(Enquiry enquiry)
+        public void SaveEnquiry(Enquiry enquiry, Customer customer, List<OrderItems> orderItems)
         {
-            create.SaveEnquiry(enquiry);
-        }
-
-        public void SaveAllOrderItems()
-        {
-            for (int i = 0; i < countItemInOrder(); i++)
-            {
-                create.SaveOrderItem(getItemInOrder(i));
-            }
-        }
-
-        public void SaveBoth(Enquiry enquiry, Customer customer, List<OrderItems> orderItems)
-        {
-            create.SaveBoth(enquiry, orderItems, customer);
+            create.SaveEnquiry(enquiry, orderItems, customer);
         }
 
         #region "OrderItems"
