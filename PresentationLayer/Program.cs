@@ -23,7 +23,7 @@ namespace PresentationLayer
             IDatabaseCreateQueries create = new DatabaseCreateQueries();
             IDatabaseReadQueries read = new DatabaseReadQueries();
             ICustomerModel model = new CustomerModel(create, read);
-            IEnquiryModel enq = new EnquiryModel(create);
+            IEnquiryModel enq = new EnquiryModel(create, read);
 
             Presentation presentation = new Presentation(model, screen, enq);
 

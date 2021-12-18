@@ -27,6 +27,8 @@ namespace DataAccessLayer
         public int orderID { get; set; }
         public DateTime receivedDate { get; set; }
         public DateTime deadline { get; set; }
+        public double price { get; set; }
+        public int hoursToComplete { get; set; }
         public string orderStatus { get; set; }
         public string orderNotes { get; set; }
         //[Required, ForeignKey("orderID")]
@@ -55,10 +57,13 @@ namespace DataAccessLayer
         public double maxCost { get; set; }
         public virtual Enquiry Enquiry { get; set; }
 
+        public void getItemTime(out int minCalcTime, out int maxCalcTime)
+        {
+            minCalcTime = minTime * quantity;
+            maxCalcTime = maxTime * quantity;
+        }
     }
 
-
-    //Trying Polymorphism
     public class SwordItem : OrderItems
     {
         public SwordItem()
@@ -90,6 +95,17 @@ namespace DataAccessLayer
             minCost = 50.00;
             maxCost = 1000.00;
         }
+    }
+
+    public class Order
+    {
+        public Order() { }
+
+        [Key]
+        public int orderID { get; set; }
+        public DateTime scheduledStartDate { get; set; }
+        public int progressCompleted { get; set; }
+        public virtual Enquiry Enquiry { get; set; }
     }
 
     public class Customer

@@ -12,10 +12,10 @@ namespace DataAccessLayer
     public partial class DatabaseEntities : DbContext
     {
         public DatabaseEntities() : base("connection") { }
-
         public DbSet<Enquiry> Enquiries { get; set; } //Enquiry
         public DbSet<OrderItems> OrderItems { get; set; } //OrderItems
         public DbSet<Customer> Customers { get; set; } //Customer
+        public DbSet<Order> Orders { get; set; } //Order
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

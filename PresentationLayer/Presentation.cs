@@ -71,7 +71,8 @@ namespace PresentationLayer
             List<OrderItems> oi = new List<OrderItems>();
 
             oi.Add(enqiryModel.createItem("Sword Sword", 2, null, OrderType.Sword));
- 
+            oi.Add(enqiryModel.createItem("Ar Sword", 10, null, OrderType.Armour));
+
             enqiryModel.SaveEnquiry(e, c, oi);
         }
 

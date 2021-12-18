@@ -19,6 +19,8 @@ namespace DataAccessLayer
 
         List<Customer> GetAllCustomers();
         Customer GetCustomer(int id);
+        List<OrderItems> GetOrderItemsInEnquiry(int enquiryID);
+        List<Order> GetAllOrders();
     }
 
 
@@ -39,7 +41,6 @@ namespace DataAccessLayer
             using (var context = new DatabaseEntities())
             {
                 enquiry.Customer = customer;
-
                 context.Enquiries.Add(enquiry);
                 context.Customers.Add(customer);
                 
@@ -55,6 +56,14 @@ namespace DataAccessLayer
     }
     public class DatabaseReadQueries : IDatabaseReadQueries
     {
+         /*
+         *  some of this code is based on code the microsoft documenation for linq. To be on the safe side,
+         *  I figured it would be better to mention this here, just in case using the documentation
+         *  counts as plagerism. from https://docs.microsoft.com/en-us/ef/core/querying/
+         *  
+         *  specifically parts like this:           var enquiryQuery = context.Enquiries.Where(e => e.orderID == id).SingleOrDefault();
+         */
+
         public Enquiry GetEnquiry(int id)
         {
             //based on code from https://docs.microsoft.com/en-us/ef/core/querying/
@@ -92,6 +101,26 @@ namespace DataAccessLayer
             {
                 var customerQuery = context.Customers.ToList();
                 return customerQuery;
+            }
+        }
+
+        public List<OrderItems> GetOrderItemsInEnquiry(int enquiryID) 
+        {
+            using (var context = new DatabaseEntities())
+            {
+                //based on code from https://docs.microsoft.com/en-us/ef/core/querying/
+                var orderItemsQuery = context.OrderItems.Where(i => i.Enquiry.orderID == enquiryID).ToList();
+                return orderItemsQuery;
+            }
+        }
+
+        public List<Order> GetAllOrders() 
+        {
+            using (var context = new DatabaseEntities())
+            {
+                //based on code from https://docs.microsoft.com/en-us/ef/core/querying/
+                var orders = context.Orders.ToList();
+                return orders;
             }
         }
     }
