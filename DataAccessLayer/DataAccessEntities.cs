@@ -4,45 +4,97 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DataAccessLayer
 {
     /*
     Credit/References:
 
-    #1 Image to Byte[]: -
+    #1 Image to Byte[] (Under class OrderItems): -
     Taken from user answer nima at https://stackoverflow.com/questions/4653095/how-to-store-images-using-entity-framework-code-first-ctp-5
     User suggested switching using byte array. referenceImage was set as Image class before suggestion. Used this code and the database accepted it.
     */
 
     public class Enquiry
     {
+        public Enquiry()
+        {
+            orderItemsList = new List<OrderItems>();
+        }
+
         [Key]
         public int orderID { get; set; }
         public DateTime receivedDate { get; set; }
         public DateTime deadline { get; set; }
         public string orderStatus { get; set; }
         public string orderNotes { get; set; }
-        public virtual Customer Customer { get; set; }
+        //[Required]//, ForeignKey("orderID")
+        //public virtual Customer Customer { get; set; }
         public virtual ICollection<OrderItems> orderItemsList { get; set; }
     }
 
     public class OrderItems
     {
+        public OrderItems() {}
+
         [Key]
         public int itemID { get; set; }
-        [Required]
-        public string name { get; set; }
-        [Required]
+        public string description { get; set; }
         public int quantity { get; set; }
         //referenceImage is optional for the user - this code was modified based on stack overflow (#1).
         public byte[] referenceImage { get; set; }
-        [Required]
+        [NotMapped]
+        public int maxTime { get; set; }
+        [NotMapped]
+        public int minTime { get; set; }
+        [NotMapped]
+        public double minCost { get; set; }
+        [NotMapped]
+        public double maxCost { get; set; }
         public virtual Enquiry Enquiry { get; set; }
+
+    }
+
+
+    //Trying Polymorphism
+    public class SwordItem : OrderItems
+    {
+        public SwordItem()
+        {
+           minTime = 80;
+           maxTime = 120;
+           minCost = 2000.00;
+           maxCost = 10000.00;
+        }
+    }
+
+    public class ArmourItem : OrderItems
+    {
+        public ArmourItem()
+        {
+            minTime = 80;
+            maxTime = 300;
+            minCost = 2000.00;
+            maxCost = 10000.00;
+        }
+    }
+
+    public class CeremonialSwordItem : OrderItems
+    {
+        public CeremonialSwordItem()
+        {
+            minTime = 20;
+            maxTime = 30;
+            minCost = 50.00;
+            maxCost = 1000.00;
+        }
     }
 
     public class Customer
     {
+        public Customer() { }
+
         [Key]
         public int customerID { get; set; }
         public string name { get; set; }
@@ -55,6 +107,6 @@ namespace DataAccessLayer
         public string county { get; set; }
         public string country { get; set; }
         public string type { get; set; }
-        //public virtual Enquiry Enquiry { get; set; }
+        public virtual Enquiry Enquiry { get; set; }
     }
 }

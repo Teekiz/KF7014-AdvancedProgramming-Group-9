@@ -22,6 +22,11 @@ namespace DomainLayer
         */
 
         void SaveEnquiry(Enquiry enquiry);
+        void SaveAllOrderItems();
+        //void createItem(string description, int quantity, byte[] referenceImage, OrderType orderType);
+        OrderItems createItem(string description, int quantity, byte[] referenceImage, OrderType orderType);
+
+        void SaveBoth(Enquiry enquiry, Customer customer, List<OrderItems> orderItems);
 
     }
 
@@ -30,51 +35,68 @@ namespace DomainLayer
     {
         IDatabaseCreateQueries create;
         Enquiry enquiry;
+        List<OrderItems> orderItemsList = new List<OrderItems>();
 
         public EnquiryModel(IDatabaseCreateQueries create) 
         {
             this.create = create;
         }
 
-        #region "Code for creation for item type"
+        public void SaveEnquiry(Enquiry enquiry)
+        {
+            create.SaveEnquiry(enquiry);
+        }
 
-        /*
+        public void SaveAllOrderItems()
+        {
+            for (int i = 0; i < countItemInOrder(); i++)
+            {
+                create.SaveOrderItem(getItemInOrder(i));
+            }
+        }
+
+        public void SaveBoth(Enquiry enquiry, Customer customer, List<OrderItems> orderItems)
+        {
+            create.SaveBoth(enquiry, orderItems, customer);
+        }
+
+        #region "OrderItems"
 
         //used to create a sword item in the order
         //i'm not entirely happy with how this works - the coupling between the classes seems quite high (but atm it works), rework later if possible.
-        public void createSword(string name, int quantity, byte[] referenceImage)
+
+        public OrderItems createItem(string description, int quantity, byte[] referenceImage, OrderType orderType)
         {
-            OrderItemsModel orderItems = ItemFactory.Singleton.GetItemTypes(OrderType.Sword, name, quantity, referenceImage);
-            orderItemsList.Add(orderItems);
+            OrderItems orderItems;
+
+            if (orderType == OrderType.Sword)
+            {
+                orderItems = ItemFactory.Singleton.GetItemTypes(OrderType.Sword);
+            }
+            else if (orderType == OrderType.Armour)
+            {
+                orderItems = ItemFactory.Singleton.GetItemTypes(OrderType.Armour);
+            }
+            else
+            {
+                orderItems = ItemFactory.Singleton.GetItemTypes(OrderType.CeremonialSword);
+            }
+
+            orderItems.description = description;
+            orderItems.quantity = quantity;
+            orderItems.referenceImage = referenceImage;
+            orderItems.Enquiry = enquiry;
+            return orderItems;
+
         }
 
-        public void createArmour(string name, int quantity, byte[] referenceImage)
-        {
-            OrderItemsModel orderItems = ItemFactory.Singleton.GetItemTypes(OrderType.Armour, name, quantity, referenceImage);
-            orderItemsList.Add(orderItems);
-        }
-
-        public void createCeremonialSword(string name, int quantity, byte[] referenceImage)
-        {
-            OrderItemsModel orderItems = ItemFactory.Singleton.GetItemTypes(OrderType.CeremonialSword, name, quantity, referenceImage);
-            orderItemsList.Add(orderItems);
-        }
-        */
-
-        #endregion
-
-
-        #region "Code used for the orderItemsList (count, get, calc)"
-
-        /*
-        //primarly useful for testing
         public int countItemInOrder()
         {
             return orderItemsList.Count();
         }
 
         //gets the item in an order at an index, could be ran with a loop to get all
-        public OrderItemsModel getItemInOrder(int index)
+        public OrderItems getItemInOrder(int index)
         {
             try { return orderItemsList[index]; }
             catch (Exception exception) { Console.WriteLine(exception); }
@@ -89,28 +111,11 @@ namespace DomainLayer
 
             for (int i = 0; i < countItemInOrder(); i++)
             {
-                minTime += getItemInOrder(i).GetMinTime() * getItemInOrder(i).GetQuantity();
-                maxTime += getItemInOrder(i).GetMaxTime() * getItemInOrder(i).GetQuantity();
+                minTime += getItemInOrder(i).minTime * getItemInOrder(i).quantity;
+                maxTime += getItemInOrder(i).maxTime * getItemInOrder(i).quantity;
             }
         }
-        */
-
         #endregion
 
-        /*
-        public void getSavedEnquiry()
-        {
-            foreach (var i in read.GetAllEnquiries())
-            {
-                int order = i.orderID;
-                System.Windows.Forms.MessageBox.Show(order.ToString());
-            }
-        }
-        */
-
-        public void SaveEnquiry(Enquiry enquiry)
-        {
-            create.SaveEnquiry(enquiry);
-        }
     }
 }

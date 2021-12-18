@@ -61,7 +61,7 @@
   <ItemGroup>
     <Compile Include="CustomerModel.cs" />
     <Compile Include="EnquiryModel.cs" />
-    <Compile Include="OrderItemsModel.cs" />
+    <Compile Include="OrderItemsFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StaffModel.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">

@@ -21,10 +21,17 @@ namespace DomainLayer
 
         Customer customer;
         IDatabaseCreateQueries create;
+        IDatabaseReadQueries read;
 
-        public CustomerModel(IDatabaseCreateQueries create)
+        public CustomerModel(IDatabaseCreateQueries create, IDatabaseReadQueries read)
         {
             this.create = create;
+            this.read = read;
+        }
+
+        public void retreieveCustomer(int id)
+        {
+            customer = read.GetCustomer(id);
         }
 
         public void SetCustomer(Customer customer)

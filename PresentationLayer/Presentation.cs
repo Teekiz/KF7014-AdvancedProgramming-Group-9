@@ -51,15 +51,39 @@ namespace PresentationLayer
 
         public void saveEnquiry()
         {
+            Customer c = new Customer();
+            c.name = screen.name;
+            c.addressline1 = screen.addressline1;
+            c.county = screen.county;
+            c.country = screen.country;
+            c.townCity = screen.townCity;
+            c.birthdate = screen.birthdate;
+            c.addressline2 = screen.addressline2;
+            c.postcode = screen.postcode;
+            c.phone = screen.phone;
+            c.type = screen.getRadioButton();
+
             Enquiry e = new Enquiry();
             e.receivedDate = DateTime.Now;
             e.deadline = screen.deadline;
             e.orderNotes = screen.orderNotes;
-            enqiryModel.SaveEnquiry(e);
+
+            List<OrderItems> oi = new List<OrderItems>();
+
+            oi.Add(enqiryModel.createItem("Sword Sword", 2, null, OrderType.Sword));
+            oi.Add(enqiryModel.createItem("Armour Armour", 3, null, OrderType.Armour));
+            oi.Add(enqiryModel.createItem("C Sword", 10, null, OrderType.CeremonialSword));
+                
+
+            enqiryModel.SaveBoth(e, c, oi);
+            //enqiryModel.SaveEnquiry(e);
+            //enqiryModel.SaveAllOrderItems();
+
         }
 
         public void saveCustomer()
         {
+            /*
             Customer c = new Customer();
             c.name = screen.name;
             c.addressline1 = screen.addressline1;
@@ -73,6 +97,7 @@ namespace PresentationLayer
             c.type = screen.getRadioButton();
             
             customerModel.SaveCustomer(c);
+            */
         }
     }
 }
