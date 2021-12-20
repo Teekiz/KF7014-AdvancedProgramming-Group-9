@@ -126,4 +126,15 @@ namespace DataAccessLayer
         public string type { get; set; }
         //public virtual Enquiry Enquiry { get; set; }
     }
+    public class Staff
+    {
+        public Staff() {}
+        public int staffId { get; set; }
+        public string firstname { get; set; }
+        public string lastname { get; set; }
+        public int workinghours { get; set; }
+        public string addressId { get; set; }
+        
+        //public virtual Enquiry Enquiry {get;set}
+    }
 }
