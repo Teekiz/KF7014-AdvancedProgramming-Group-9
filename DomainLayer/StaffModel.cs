@@ -1,50 +1,52 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DataAccessLayer;
+
+// public interface 
 
 namespace DomainLayer
 {
     public interface IStaffModel
-    { 
-        //update
+    {
+        void SetStaff(Staff staff);
+        Staff GetStaff();
+        void SaveStaff(Staff staff);
     }
 
     public class StaffModel : IStaffModel
     {
 
-        //properties
-        public int staffID{get; set;}
-        public string firstname{ get; set;}
-        public string lastname{ get; set;}
-        public int workinghours{ get; set;}
-        public string addressid{ get; set;}
+        Staff staff;
+        IDatabaseCreateQueries create;
+        IDatabaseReadQueries read;
 
-        //empty construstor
-
-        public StaffModel()
+        public StaffModel(IDatabaseCreateQueries create, IDatabaseReadQueries read)
         {
-
-
+            this.create = create;
+            this.read = read;
         }
 
-        //parametrised constor
-        public StaffModel(int staffID, string firstname, string lastname, int workinghours, string addressid)
+        public void retreieveStaff(int id)
         {
-            this.staffID = staffID;
-            this.firstname = firstname;
-            this.lastname = lastname;
-            this.workinghours = workinghours;
-            this.addressid = addressid;
-
+            customer = read.GetStaff(id);
         }
 
-
-        //getters
-        public string getFirstName()
+        public void SetCustomer(Staff staff)
         {
-            return firstname;
+            staff.name = "Staff";
+        }
+
+        public Staff GetStaff()
+        {
+            return customer;
+        }
+
+        public void SaveStaff(Staff Staff)
+        {
+            create.SaveStaff(staff);
         }
     }
 }
