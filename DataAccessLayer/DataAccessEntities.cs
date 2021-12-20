@@ -129,12 +129,13 @@ namespace DataAccessLayer
     public class Staff
     {
         public Staff() {}
+
+        [Key]
         public int staffId { get; set; }
         public string firstname { get; set; }
         public string lastname { get; set; }
         public int workinghours { get; set; }
         public string addressId { get; set; }
-        
         //public virtual Enquiry Enquiry {get;set}
     }
 }

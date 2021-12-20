@@ -31,22 +31,22 @@ namespace DomainLayer
 
         public void retreieveStaff(int id)
         {
-            customer = read.GetStaff(id);
+            //TODO staff = read.GetStaff(id);
         }
 
-        public void SetCustomer(Staff staff)
+        public void SetStaff(Staff staff)
         {
-            staff.name = "Staff";
+            //TODOstaff.name = "Staff";
         }
 
         public Staff GetStaff()
         {
-            return customer;
+            return staff;
         }
 
         public void SaveStaff(Staff Staff)
         {
-            create.SaveStaff(staff);
+            //TODO create.SaveStaff(staff);
         }
     }
 }
