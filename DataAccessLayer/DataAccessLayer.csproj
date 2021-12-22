@@ -76,9 +76,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataAccessEntities.cs" />
     <Compile Include="DatabaseEntities.cs" />
     <Compile Include="DatabaseQueries.cs" />
-    <Compile Include="DataAccessEntities.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">

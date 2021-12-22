@@ -20,7 +20,7 @@ namespace DomainLayer
 
 
     //Item factory, create a item based on the type passed into the factory (sword, armour, etc)
-    class ItemFactory
+    public class ItemFactory
     {
         private static ItemFactory instance;
         private ItemFactory() { }

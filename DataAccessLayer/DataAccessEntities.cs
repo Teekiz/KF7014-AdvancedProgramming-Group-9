@@ -13,7 +13,7 @@ namespace DataAccessLayer
 
     #1 Image to Byte[] (Under class OrderItems): -
     Taken from user answer nima at https://stackoverflow.com/questions/4653095/how-to-store-images-using-entity-framework-code-first-ctp-5
-    User suggested switching using byte array. referenceImage was set as Image class before suggestion. Used this code and the database accepted it.
+    User suggested switching using byte array. my idea for referenceImage was to set as an Image class before suggestion. Used this code and the database accepted it.
     */
 
     public class Enquiry

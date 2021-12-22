@@ -8,8 +8,8 @@ namespace DataAccessLayer
 {
     public interface IDatabaseCreateQueries
     {
-        void SaveCustomer(Customer customer);
-        void SaveEnquiry(Enquiry enquiry, List<OrderItems> orderItems, Customer customer); //List
+        bool SaveCustomer(Customer customer);
+        bool SaveEnquiry(Enquiry enquiry, List<OrderItems> orderItems, Customer customer); //List
     }
 
     public interface IDatabaseReadQueries
@@ -23,35 +23,65 @@ namespace DataAccessLayer
         List<Order> GetAllOrders();
     }
 
+    public interface IDatabaseDeleteQueries
+    {
+        bool DeleteCustomer(int customerID);
+        bool DeleteAllCustomers();
+        bool DeleteEnquiry(int id);
+        bool DeleteAllEnquiries();
+        bool DeleteOrderItems(int id);
+        bool DeleteOrderItemsInEnquiry(int id);
+        bool DeleteAllOrderItems();
+    }
+
 
     //spliting the datebase class into seperate classes for CRUD operations.
     public class DatabaseCreateQueries : IDatabaseCreateQueries
     {
-        public void SaveCustomer(Customer customer)
+        public bool SaveCustomer(Customer customer)
         {
-            using (var context = new DatabaseEntities())
+            try
             {
-                context.Customers.Add(customer);
-                context.SaveChanges();
+                using (var context = new DatabaseEntities())
+                {
+                    context.Customers.Add(customer);
+                    context.SaveChanges();
+                    return true;
+                }
             }
+            catch
+            {
+                return false;
+            }
+
         }
 
-        public void SaveEnquiry(Enquiry enquiry, List<OrderItems> orderItems, Customer customer)
+        public bool SaveEnquiry(Enquiry enquiry, List<OrderItems> orderItems, Customer customer)
         {
-            using (var context = new DatabaseEntities())
+            try 
             {
-                enquiry.Customer = customer;
-                context.Enquiries.Add(enquiry);
-                context.Customers.Add(customer);
-                
-                for (int i = 0; i < orderItems.Count(); i++)
+                using (var context = new DatabaseEntities())
                 {
-                    //adds all the of the items in the order to a database
-                    orderItems[i].Enquiry = enquiry;
-                    context.OrderItems.Add(orderItems[i]);
+                    enquiry.Customer = customer;
+                    context.Enquiries.Add(enquiry);
+                    context.Customers.Add(customer);
+
+                    for (int i = 0; i < orderItems.Count(); i++)
+                    {
+                        //adds all the of the items in the order to a database
+                        orderItems[i].Enquiry = enquiry;
+                        context.OrderItems.Add(orderItems[i]);
+                    }
+                    context.SaveChanges();
+                    return true;
                 }
-                context.SaveChanges();
             }
+
+            catch
+            {
+                return false;
+            }
+
         }
     }
     public class DatabaseReadQueries : IDatabaseReadQueries
@@ -66,41 +96,73 @@ namespace DataAccessLayer
 
         public Enquiry GetEnquiry(int id)
         {
-            //based on code from https://docs.microsoft.com/en-us/ef/core/querying/
-            using (var context = new DatabaseEntities())
+            try
+            {
+                //based on code from https://docs.microsoft.com/en-us/ef/core/querying/
+                using (var context = new DatabaseEntities())
                 {
                     var enquiryQuery = context.Enquiries.Where(e => e.orderID == id).SingleOrDefault();
                     return enquiryQuery;
                 }
+            }
+
+            catch
+            {
+                return new Enquiry();
+            }
         }
 
         public List<Enquiry> GetAllEnquiries()
         {
-            //based on code from https://docs.microsoft.com/en-us/ef/core/querying/
-            using (var context = new DatabaseEntities())
+            try
             {
-                var enquiryQuery = context.Enquiries.ToList();
-                return enquiryQuery;
+                //based on code from https://docs.microsoft.com/en-us/ef/core/querying/
+                using (var context = new DatabaseEntities())
+                {
+                    var enquiryQuery = context.Enquiries.ToList();
+                    return enquiryQuery;
+                }
             }
+
+            catch
+            {
+                return new List<Enquiry>();
+            }
+
         }
 
         public Customer GetCustomer(int id)
         {
-            //based on code from https://docs.microsoft.com/en-us/ef/core/querying/
-            using (var context = new DatabaseEntities())
+            try
             {
-                var customerQuery = context.Customers.Where(c => c.customerID == id).SingleOrDefault();
-                return customerQuery;
+                //based on code from https://docs.microsoft.com/en-us/ef/core/querying/
+                using (var context = new DatabaseEntities())
+                {
+                    var customerQuery = context.Customers.Where(c => c.customerID == id).SingleOrDefault();
+                    return customerQuery;
+                }
+            }
+
+            catch
+            {
+                return new Customer();
             }
         }
 
         public List<Customer> GetAllCustomers()
         {
-            //based on code from https://docs.microsoft.com/en-us/ef/core/querying/
-            using (var context = new DatabaseEntities())
+            try
             {
-                var customerQuery = context.Customers.ToList();
-                return customerQuery;
+                //based on code from https://docs.microsoft.com/en-us/ef/core/querying/
+                using (var context = new DatabaseEntities())
+                {
+                    var customerQuery = context.Customers.ToList();
+                    return customerQuery;
+                }
+            }
+            catch
+            {
+                return new List<Customer>();
             }
         }
 
@@ -130,8 +192,183 @@ namespace DataAccessLayer
         //blank
     }
 
-    public class DatabaseDeleteQueries
+    public class DatabaseDeleteQueries : IDatabaseDeleteQueries
     {
-        //blank
+        public bool DeleteCustomer(int customerID)
+        {
+            try
+            {
+                using (var context = new DatabaseEntities())
+                {
+                    var customerGetQuery = context.Customers.Where(c => c.customerID == customerID).SingleOrDefault();
+                    var customerQuery = context.Customers.Remove(customerGetQuery);
+                    context.SaveChanges();
+                    return true;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+
+        }
+        public bool DeleteAllCustomers()
+        {
+            try
+            {
+                using (var context = new DatabaseEntities())
+                {
+                    var customerGetQuery = context.Customers.ToList();
+
+                    foreach (Customer c in customerGetQuery)
+                    {
+                        context.Customers.Remove(c);
+                        context.SaveChanges();
+                    }
+
+                    context.SaveChanges();
+
+                    var newCustomerGetQuery = context.Customers.ToList();
+                    if (newCustomerGetQuery.Count() == 0)
+                    {
+                        return true;
+                    }
+
+                    return false;
+                }
+            }
+
+            catch
+            {
+                return false;
+            }
+
+        }
+
+        public bool DeleteEnquiry(int id)
+        {
+            try
+            {
+                using (var context = new DatabaseEntities())
+                {
+                    var enquiryGetQuery = context.Enquiries.Where(e => e.orderID == id).SingleOrDefault();
+                    var enquiryQuery = context.Enquiries.Remove(enquiryGetQuery);
+                    context.SaveChanges();
+                    return true;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+
+        }
+        public bool DeleteAllEnquiries()
+        {
+            try
+            {
+                using (var context = new DatabaseEntities())
+                {
+                    var enquiryGetQuery = context.Enquiries.ToList();
+                    foreach (Enquiry e in enquiryGetQuery)
+                    {
+                        var enquiryQuery = context.Enquiries.Remove(e);
+                    }
+
+                    context.SaveChanges();
+
+                    var newEnquiryGetQuery = context.Enquiries.ToList();
+                    if (newEnquiryGetQuery.Count() == 0)
+                    {
+                        return true;
+                    }
+
+                    return false;
+                }
+            }
+
+            catch
+            {
+                return false;
+            }
+
+        }
+
+        public bool DeleteOrderItems(int id)
+        {
+            try
+            {
+                using (var context = new DatabaseEntities())
+                {
+                    var itemGetEnquiry = context.OrderItems.Where(i => i.itemID == id).SingleOrDefault();
+                    var itemEnquiry = context.OrderItems.Remove(itemGetEnquiry);
+                    context.SaveChanges();
+                    return true;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool DeleteOrderItemsInEnquiry(int id)
+        {
+            try
+            {
+                using (var context = new DatabaseEntities())
+                {
+                    var orderItemsQuery = context.OrderItems.Where(i => i.Enquiry.orderID == id).ToList();
+                    foreach (OrderItems i in orderItemsQuery)
+                    {
+                        var enquiryQuery = context.OrderItems.Remove(i);
+                    }
+
+                    context.SaveChanges();
+
+                    var newOrderItemsQuery = context.OrderItems.Where(i => i.Enquiry.orderID == id).ToList();
+                    if (newOrderItemsQuery.Count() == 0)
+                    {
+                        return true;
+                    }
+
+                    return false;
+                }
+
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        public bool DeleteAllOrderItems()
+        {
+                try
+                {
+                    using (var context = new DatabaseEntities())
+                    {
+                        var orderItemsQuery = context.OrderItems.ToList();
+                        foreach (OrderItems i in orderItemsQuery)
+                        {
+                            var enquiryQuery = context.OrderItems.Remove(i);
+                        }
+
+                        context.SaveChanges();
+
+                        var newOrderItemsQuery = context.OrderItems.ToList();
+                        if (newOrderItemsQuery.Count() == 0)
+                        {
+                            return true;
+                        }
+
+                        return false;
+                    }
+                }
+
+                catch
+                {
+                    return false;
+                }
+            }
     }
 }
