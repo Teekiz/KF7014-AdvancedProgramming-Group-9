@@ -34,6 +34,11 @@ namespace DataAccessLayer
         bool DeleteAllOrderItems();
     }
 
+    public interface IDatabaseUpdateQueries
+    {
+        bool UpdateEnquiry(Enquiry enquiry);
+    }
+
 
     //spliting the datebase class into seperate classes for CRUD operations.
     public class DatabaseCreateQueries : IDatabaseCreateQueries
@@ -187,9 +192,31 @@ namespace DataAccessLayer
         }
     }
 
-    public class DatabaseUpdateQueries
+    public class DatabaseUpdateQueries : IDatabaseUpdateQueries
     {
-        //blank
+        public bool UpdateEnquiry(Enquiry enquiry)
+        {
+            try
+            {
+                using (var context = new DatabaseEntities())
+                {
+                    //based on code from https://docs.microsoft.com/en-us/ef/core/querying/
+                    var orderItemsQuery = context.Enquiries.Where(i => i.orderID == enquiry.orderID).SingleOrDefault();
+                    orderItemsQuery.deadline = enquiry.deadline;
+                    orderItemsQuery.price = enquiry.price;
+                    orderItemsQuery.hoursToComplete = enquiry.hoursToComplete;
+                    orderItemsQuery.orderStatus = enquiry.orderStatus;
+                    orderItemsQuery.orderNotes = enquiry.orderNotes;
+                    context.SaveChanges();
+                    return true;
+                }
+            }
+
+            catch
+            {
+                return false;
+            }
+        }
     }
 
     public class DatabaseDeleteQueries : IDatabaseDeleteQueries

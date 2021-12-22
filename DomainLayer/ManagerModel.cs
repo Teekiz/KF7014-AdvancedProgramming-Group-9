@@ -19,6 +19,7 @@ namespace DomainLayer
     {
         List<OrderItems> GetItemsInEnquiry(int enquiryID);
         List<Enquiry> GetEnquiries();
+        void UpdateEnquiry(Enquiry enquiry);
         void CalculateEstimatedTime(out int minTime, out int maxTime, out double minCost, out double maxCost, List<OrderItems> orderItems);
         bool CheckSchedule(DateTime checkStartDate, Enquiry enquiry);
 
@@ -28,10 +29,17 @@ namespace DomainLayer
     public class ManagerModel
     {
         IDatabaseReadQueries read;
+        IDatabaseUpdateQueries update;
 
-        public ManagerModel(IDatabaseReadQueries read)
+        public ManagerModel(IDatabaseReadQueries read, IDatabaseUpdateQueries update)
         {
             this.read = read;
+            this.update = update;
+        }
+
+        public void UpdateEnquiry(Enquiry enquiry)
+        {
+            update.UpdateEnquiry(enquiry);
         }
 
         #region "Enquiry Reads"

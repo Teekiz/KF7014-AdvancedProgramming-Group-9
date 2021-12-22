@@ -16,6 +16,8 @@ namespace AdvancedProgrammingGroup9TestProject
         DatabaseReadQueries read = new DatabaseReadQueries();
         DatabaseCreateQueries create = new DatabaseCreateQueries();
         DatabaseDeleteQueries delete = new DatabaseDeleteQueries();
+        DatabaseUpdateQueries update = new DatabaseUpdateQueries();
+
         Customer customer;
         Enquiry enquiry;
         DateTime now;
@@ -70,6 +72,13 @@ namespace AdvancedProgrammingGroup9TestProject
         }
 
         [TestMethod]
+        public void dele()
+        {
+            delete.DeleteCustomer(66);
+            Assert.AreEqual(true, delete.DeleteCustomer(66));
+        }
+
+        [TestMethod]
         //Testing customer, read and write
         public void TestMethod1Customer()
         {
@@ -84,7 +93,7 @@ namespace AdvancedProgrammingGroup9TestProject
              * therefore, I am using to test get all customers and get the correct customer.
             */
 
-            Assert.AreEqual(read.GetCustomer(100), null);
+            Assert.AreEqual(null, read.GetCustomer(100));
             Customer readCustomer = read.GetAllCustomers()[0];
 
             Customer loadedCustomer = read.GetCustomer(readCustomer.customerID);
@@ -106,8 +115,6 @@ namespace AdvancedProgrammingGroup9TestProject
         [TestMethod]
         public void TestMethod2Enquiry()
         {
-            //This should be updated with update
-
             Assert.AreEqual(true, delete.DeleteAllCustomers());
             Assert.AreEqual(true, delete.DeleteAllEnquiries());
 
