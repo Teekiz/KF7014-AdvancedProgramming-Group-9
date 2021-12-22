@@ -9,28 +9,32 @@ using DataAccessLayer;
 
 namespace DomainLayer
 {
-    //EnqeiuryInterface
+    /*
+     * This model is used to cover functional requirement #1
+     * 
+     * 1.Initial enquiry:  Due to the sporadic nature of the demand there are times when the company needs to refuse orders it cannot complete.  
+     * It should be able to provide honest estimates as to when a potential order can be completed.  
+     * An initial form captures the key information so that an estimate can be given to the client, 
+     * they are also recorded in the system as an enquiry so that the client can choose to turn the enquiry into an order at a later date.
+     * 
+     */
+
+    //EnquiryInterface
     public interface IEnquiryModel
     {
         OrderItems createItem(string description, int quantity, byte[] referenceImage, OrderType orderType);
-        List<OrderItems> GetItemsInEnquiry(int enquiryID);
-        List<Enquiry> GetEnquiries(); 
         void SaveEnquiry(Enquiry enquiry, Customer customer, List<OrderItems> orderItems);
         void CalculateEstimatedTime(out int minTime, out int maxTime, out double minCost, out double maxCost, List<OrderItems> orderItems);
-        bool CheckSchedule(DateTime checkStartDate, Enquiry enquiry);
     }
 
     //Concrete Implementation
     public class EnquiryModel : IEnquiryModel
     {
         IDatabaseCreateQueries create;
-        IDatabaseReadQueries read;
-        Enquiry enquiry;
 
         public EnquiryModel(IDatabaseCreateQueries create, IDatabaseReadQueries read) 
         {
             this.create = create;
-            this.read = read;
         }
 
         public void SaveEnquiry(Enquiry enquiry, Customer customer, List<OrderItems> orderItems)
@@ -38,40 +42,6 @@ namespace DomainLayer
             create.SaveEnquiry(enquiry, orderItems, customer);
         }
 
-        //This current version will be "dumb" - as in it it just checks an order against a time. -this can be changed later on.
-        //UNTESTED
-        public bool CheckSchedule(DateTime checkStartDate, Enquiry enquiry)
-        {
-            for (int i = 0; i < read.GetAllOrders().Count(); i++)
-            {
-                DateTime orderStartDate = read.GetAllOrders()[i].scheduledStartDate;
-                int percentComplete = read.GetAllOrders()[i].progressCompleted;
-
-                //look for all orders that are not completed and start before the deadline
-                if (orderStartDate < enquiry.deadline && percentComplete < 100)
-                {
-                    DateTime orderDeadline = read.GetEnquiry(read.GetAllOrders()[i].Enquiry.orderID).deadline;
-                    //if the date to start falls between the start date of another order and the deadline then the space is taken. 
-                    if (checkStartDate > orderStartDate && enquiry.deadline < orderDeadline)
-                    {
-                        return false;
-                    }
-                }
-            }
-            return true;
-        }
-
-        #region "Enquiry Reads"
-        public List<Enquiry> GetEnquiries()
-        {
-            return read.GetAllEnquiries();
-        }
-
-        public List<OrderItems> GetItemsInEnquiry(int enquiryID)
-        {
-            return read.GetOrderItemsInEnquiry(enquiryID);
-        }
-        #endregion
 
         #region "OrderItems"
         //used to create a sword item in the order
@@ -96,7 +66,7 @@ namespace DomainLayer
             orderItems.description = description;
             orderItems.quantity = quantity;
             orderItems.referenceImage = referenceImage;
-            orderItems.Enquiry = enquiry;
+            //orderItems.Enquiry = enquiry;
             return orderItems;
         }
 
@@ -117,6 +87,5 @@ namespace DomainLayer
             }
         }
         #endregion
-
     }
 }
