@@ -13,10 +13,16 @@ namespace AdvancedProgrammingGroup9TestProject
     [TestClass]
     public class DataAccessTestClass
     {
+        /* - Old CRUD classes
         DatabaseReadQueries read = new DatabaseReadQueries();
         DatabaseCreateQueries create = new DatabaseCreateQueries();
         DatabaseDeleteQueries delete = new DatabaseDeleteQueries();
         DatabaseUpdateQueries update = new DatabaseUpdateQueries();
+        */
+
+        CustomerGateway CustomerCRUD = new CustomerGateway();
+        EnquiryGateway EnquiryCRUD = new EnquiryGateway();
+        OrderItemGateway OrderItemCRUD = new OrderItemGateway();
 
         Customer customer;
         Enquiry enquiry;
@@ -72,31 +78,24 @@ namespace AdvancedProgrammingGroup9TestProject
         }
 
         [TestMethod]
-        public void dele()
-        {
-            delete.DeleteCustomer(66);
-            Assert.AreEqual(true, delete.DeleteCustomer(66));
-        }
-
-        [TestMethod]
         //Testing customer, read and write
         public void TestMethod1Customer()
         {
             //checking to see if it rejects a blank customer
-            Assert.AreEqual(false, create.SaveCustomer(new Customer()));
+            Assert.AreEqual(false, CustomerCRUD.SaveCustomer(new Customer()));
             //Testing to see if it can handle if there is no data
-            delete.DeleteAllCustomers();
-            create.SaveCustomer(customer);
+            CustomerCRUD.DeleteAllCustomers();
+            CustomerCRUD.SaveCustomer(customer);
 
             /*
              * because of autoincrement, this test will always fail after the first one
              * therefore, I am using to test get all customers and get the correct customer.
             */
 
-            Assert.AreEqual(null, read.GetCustomer(100));
-            Customer readCustomer = read.GetAllCustomers()[0];
+            Assert.AreEqual(null, CustomerCRUD.GetCustomer(100));
+            Customer readCustomer = CustomerCRUD.GetAllCustomers()[0];
 
-            Customer loadedCustomer = read.GetCustomer(readCustomer.customerID);
+            Customer loadedCustomer = CustomerCRUD.GetCustomer(readCustomer.customerID);
             Assert.AreEqual(loadedCustomer.name, "Person Personington");
             Assert.AreEqual(loadedCustomer.addressline1, "Adress Line");
             Assert.AreEqual(loadedCustomer.addressline2, "26");
@@ -108,27 +107,25 @@ namespace AdvancedProgrammingGroup9TestProject
             Assert.AreEqual(loadedCustomer.country,"England");
             Assert.AreEqual(loadedCustomer.type, "Government");
 
-            //Should only be 1 customer in database
-            Assert.AreEqual(false, delete.DeleteCustomer(2));
-            Assert.AreEqual(true, delete.DeleteCustomer(loadedCustomer.customerID));
+            //this should be false unless there has been a large amount of data stored.
+            Assert.AreEqual(false, CustomerCRUD.DeleteCustomer(20000)); 
+            Assert.AreEqual(true, CustomerCRUD.DeleteCustomer(loadedCustomer.customerID));
+            Assert.AreEqual(true, CustomerCRUD.DeleteAllCustomers());
         }
+
         [TestMethod]
         public void TestMethod2Enquiry()
         {
-            Assert.AreEqual(true, delete.DeleteAllCustomers());
-            Assert.AreEqual(true, delete.DeleteAllEnquiries());
-
-            //Prerequisites to save an enquiry.
-            List<OrderItems> tempOrderItems = new List<OrderItems>();
-            //Assert.AreEqual(false, create.SaveEnquiry(enquiry, tempOrderItems, customer));
+            Assert.AreEqual(true, CustomerCRUD.DeleteAllCustomers());
+            Assert.AreEqual(true, EnquiryCRUD.DeleteAllEnquiries());
 
             //checking if it can be saved
-            Assert.AreEqual(true, create.SaveEnquiry(enquiry, orderItems, customer));
+            Assert.AreEqual(true, EnquiryCRUD.SaveEnquiry(enquiry, customer));
 
             //checking to see if the returned enquiry is null if it can't get it.
-            Assert.AreEqual(read.GetEnquiry(100), null);
-            Enquiry readEnquiry = read.GetAllEnquiries()[0];
-            Enquiry loadedEnquiry = read.GetEnquiry(readEnquiry.orderID);
+            Assert.AreEqual(EnquiryCRUD.GetEnquiry(100), null);
+            Enquiry readEnquiry = EnquiryCRUD.GetAllEnquiries()[0];
+            Enquiry loadedEnquiry = EnquiryCRUD.GetEnquiry(readEnquiry.orderID);
 
             Assert.AreEqual(loadedEnquiry.orderNotes, "Order notes");
             Assert.AreEqual(loadedEnquiry.receivedDate, now);
@@ -138,35 +135,39 @@ namespace AdvancedProgrammingGroup9TestProject
             loadedEnquiry.hoursToComplete = 5000;
 
             //creating a new enquiry to get new info
-            Assert.AreEqual(true, create.SaveEnquiry(loadedEnquiry, tempOrderItems, customer));
-            Enquiry loadedNewEnquiry = read.GetEnquiry(read.GetAllEnquiries()[1].orderID);
+            Assert.AreEqual(true, EnquiryCRUD.SaveEnquiry(loadedEnquiry, customer));
+            Enquiry loadedNewEnquiry = EnquiryCRUD.GetEnquiry(EnquiryCRUD.GetAllEnquiries()[1].orderID);
 
-            Assert.AreEqual(loadedEnquiry.orderNotes, "Order notes");
-            Assert.AreEqual(loadedEnquiry.receivedDate, now);
-            Assert.AreEqual(loadedEnquiry.deadline, now.AddDays(20));
-            Assert.AreEqual(loadedEnquiry.price, 1000);
-            Assert.AreEqual(loadedEnquiry.hoursToComplete, 5000);
+            Assert.AreEqual(loadedNewEnquiry.orderNotes, "Order notes");
+            Assert.AreEqual(loadedNewEnquiry.receivedDate, now);
+            Assert.AreEqual(loadedNewEnquiry.deadline, now.AddDays(20));
+            Assert.AreEqual(loadedNewEnquiry.price, 1000);
+            Assert.AreEqual(loadedNewEnquiry.hoursToComplete, 5000);
 
             //Should only be 1 enquiry in database
-            Assert.AreEqual(false, delete.DeleteEnquiry(30));
-            Assert.AreEqual(true, delete.DeleteEnquiry(loadedEnquiry.orderID));
-            Assert.AreEqual(true, delete.DeleteAllEnquiries());
+            Assert.AreEqual(false, EnquiryCRUD.DeleteEnquiry(20000));
+            Assert.AreEqual(true, EnquiryCRUD.DeleteEnquiry(loadedEnquiry.orderID));
+            Assert.AreEqual(true, EnquiryCRUD.DeleteAllEnquiries());
+            Assert.AreEqual(true, CustomerCRUD.DeleteAllCustomers());
         }
+
 
         [TestMethod]
         public void TestMethod3OrderItems()
         {
-            Assert.AreEqual(true, delete.DeleteAllCustomers());
-            Assert.AreEqual(true, delete.DeleteAllEnquiries());
-            Assert.AreEqual(true, delete.DeleteAllOrderItems());
+            Assert.AreEqual(true, CustomerCRUD.DeleteAllCustomers());
+            Assert.AreEqual(true, EnquiryCRUD.DeleteAllEnquiries());
+            Assert.AreEqual(true, OrderItemCRUD.DeleteAllOrderItems());
 
-            Assert.AreEqual(true, create.SaveEnquiry(enquiry, orderItems, customer));
+            //Assert.AreEqual(true, EnquiryCRUD.SaveEnquiry(enquiry, customer));
+            Assert.AreEqual(true, OrderItemCRUD.SaveOrderItems(orderItems, enquiry));
+            
 
             //checking to see if the returned enquiry is null if it can't get it.
-            Assert.AreEqual(read.GetOrderItemsInEnquiry(6).Count(), 0);
+            Assert.AreEqual(OrderItemCRUD.GetOrderItemsInEnquiry(6).Count(), 0);
 
-            Enquiry readEnquiry = read.GetAllEnquiries()[0];
-            List<OrderItems> loadedOrderItems = read.GetOrderItemsInEnquiry(readEnquiry.orderID);
+            Enquiry readEnquiry = EnquiryCRUD.GetAllEnquiries()[0];
+            List<OrderItems> loadedOrderItems = OrderItemCRUD.GetOrderItemsInEnquiry(readEnquiry.orderID);
 
             Assert.AreEqual("itemOne", loadedOrderItems[0].description);
             Assert.AreEqual(10, loadedOrderItems[0].quantity);
@@ -180,8 +181,12 @@ namespace AdvancedProgrammingGroup9TestProject
             Assert.AreEqual(8, loadedOrderItems[2].quantity);
             Assert.AreEqual(null, loadedOrderItems[2].referenceImage);
 
-            Assert.AreEqual(false, delete.DeleteOrderItems(30));
-            Assert.AreEqual(true, delete.DeleteOrderItemsInEnquiry(readEnquiry.orderID));
+            //Assert.AreEqual(false, OrderItemCRUD.DeleteOrderItems(30));
+            //Assert.AreEqual(true, OrderItemCRUD.DeleteOrderItemsInEnquiry(readEnquiry.orderID));
+
+            //Assert.AreEqual(true, EnquiryCRUD.DeleteAllEnquiries());
+            //Assert.AreEqual(true, CustomerCRUD.DeleteAllCustomers());
+            //Assert.AreEqual(true, OrderItemCRUD.DeleteAllOrderItems());
         }
     }
 }
