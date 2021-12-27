@@ -74,6 +74,12 @@ namespace DataAccessLayer
                     orderItemsQuery.hoursToComplete = enquiry.hoursToComplete;
                     orderItemsQuery.orderStatus = enquiry.orderStatus;
                     orderItemsQuery.orderNotes = enquiry.orderNotes;
+                    orderItemsQuery.itemDesc1 = enquiry.itemDesc1;
+                    orderItemsQuery.itemDesc2 = enquiry.itemDesc2;
+                    orderItemsQuery.itemDesc3 = enquiry.itemDesc3;
+                    orderItemsQuery.itemQuant1 = enquiry.itemQuant1;
+                    orderItemsQuery.itemQuant2 = enquiry.itemQuant2;
+                    orderItemsQuery.itemQuant3 = enquiry.itemQuant3;
                     context.SaveChanges();
                     return true;
                 }

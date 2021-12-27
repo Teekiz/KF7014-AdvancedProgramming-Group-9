@@ -38,13 +38,18 @@ namespace PresentationLayer
 
             return Customer;
         }
-        
+
         public Enquiry createEnquiry()
         {
             Enquiry.orderNotes = screen.orderNotes;
-
+            Enquiry.itemDesc1 = screen.itemDesc1;
+            Enquiry.itemDesc2 = screen.itemDesc2;
+            Enquiry.itemDesc3 = screen.itemDesc3;
+            Enquiry.itemQuant1 = screen.itemQuant1;
+            Enquiry.itemQuant2 = screen.itemQuant2;
+            Enquiry.itemQuant3 = screen.itemQuant3;
             return Enquiry;
-        } 
+        }
 
         public void saveEnquiry()
         {
@@ -60,11 +65,17 @@ namespace PresentationLayer
             c.phone = screen.phone;
             c.type = screen.getRadioButton();
 
+
             Enquiry e = enqiryModel.GetEnquiry();
             e.receivedDate = DateTime.Now;
             e.deadline = screen.deadline;
             e.orderNotes = screen.orderNotes;
-
+            e.itemDesc1 = screen.itemDesc1;
+            e.itemDesc2 = screen.itemDesc2;
+            e.itemDesc3 = screen.itemDesc3;
+            e.itemQuant1 = screen.itemQuant1;
+            e.itemQuant2 = screen.itemQuant2;
+            e.itemQuant3 = screen.itemQuant3;
             List<OrderItems> oi = new List<OrderItems>();
 
             oi.Add(enqiryModel.createItem("Sword Sword", 2, null, OrderType.Sword));

@@ -23,6 +23,12 @@ namespace PresentationLayer
         string phone { get; set; }
         string postcode { get; set; }
         string orderNotes { get; set; }
+        string itemDesc1 { get; set; }
+        string itemDesc2 { get; set; }
+        string itemDesc3 { get; set; }
+        string itemQuant1 { get; set; }
+        string itemQuant2 { get; set; }
+        string itemQuant3 { get; set; }
         string getRadioButton();
 
         void Form1_Load(object sender, EventArgs e);
@@ -105,6 +111,42 @@ namespace PresentationLayer
         public OFCcountry()
         {
             InitializeComponent();
+        }
+
+        public string itemDesc1
+        {
+            get { return OFCot1desc.Text; }
+            set { OFCot1desc.Text = value; }
+        }
+
+        public string itemDesc2
+        {
+            get { return OFCot2desc.Text; }
+            set { OFCot2desc.Text = value; }
+        }
+
+        public string itemDesc3
+        {
+            get { return OFCot3desc.Text; }
+            set { OFCot3desc.Text = value; }
+        }
+
+        public string itemQuant1
+        {
+            get { return OFCot1q.Text; }
+            set { OFCot1q.Text = value; }
+        }
+
+        public string itemQuant2
+        {
+            get { return OFCot2q.Text; }
+            set { OFCot2q.Text = value; }
+        }
+
+        public string itemQuant3
+        {
+            get { return OFCot3q.Text; }
+            set { OFCot3q.Text = value; }
         }
         public string getRadioButton()
             {
