@@ -21,11 +21,9 @@ namespace AdvancedProgrammingGroup9TestProject
             ICustomerGateway customerGateway = new CustomerGatewayMOCObject();
             IEnquiryModel model = new EnquiryModel(enquiryGateway, orderItemGateway, customerGateway);
 
-
             OrderItems sword = model.createItem("desc", 2, null, OrderType.Sword);
             SwordItem swordItem = new SwordItem();
             ArmourItem armourItem = new ArmourItem();
-
 
             Assert.AreEqual("desc", sword.description);
             Assert.AreEqual(2, sword.quantity);

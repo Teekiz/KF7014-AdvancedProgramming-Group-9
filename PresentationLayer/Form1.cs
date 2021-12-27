@@ -30,6 +30,9 @@ namespace PresentationLayer
         string itemQuant2 { get; set; }
         string itemQuant3 { get; set; }
         string getRadioButton();
+        bool CerimonialSwordChecked();
+        bool SwordChecked();
+        bool ArmourChecked();
 
         void Form1_Load(object sender, EventArgs e);
         void label7_Click(object sender, EventArgs e);
@@ -167,6 +170,34 @@ namespace PresentationLayer
                 return OFCct3.Text;
                 }
             }
+
+        public bool CerimonialSwordChecked()
+        {
+            if (OFCot1.Checked)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool SwordChecked()
+        {
+            if (OFCot2.Checked)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool ArmourChecked()
+        {
+            if (OFcot3.Checked)
+            {
+                return true;
+            }
+            return false;
+        }
+
         public void Form1_Load(object sender, EventArgs e)
         {
 

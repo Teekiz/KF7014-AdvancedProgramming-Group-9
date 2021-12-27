@@ -46,11 +46,8 @@ namespace DomainLayer
 
         public void SaveEnquiry(Enquiry enquiry, Customer customer, List<OrderItems> orderItems)
         {
-            enquiryCRUD.SaveEnquiry(enquiry, customer);
-            orderItemsCRUD.SaveOrderItems(orderItems, enquiry);
-            customerCRUD.SaveCustomer(customer);
+            enquiryCRUD.SaveEnquiryAll(enquiry, orderItems, customer);
         }
-
 
         public Customer GetCustomer()
         {

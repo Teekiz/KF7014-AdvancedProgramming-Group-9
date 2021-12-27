@@ -31,12 +31,6 @@ namespace DataAccessLayer
         public int hoursToComplete { get; set; }
         public string orderStatus { get; set; }
         public string orderNotes { get; set; }
-        public string itemDesc1 { get; set; }
-        public string itemDesc2 { get; set; }
-        public string itemDesc3 { get; set; }
-        public string itemQuant1 { get; set; }
-        public string itemQuant2 { get; set; }
-        public string itemQuant3 { get; set; }
         //[Required, ForeignKey("orderID")]
         //[Required]
 

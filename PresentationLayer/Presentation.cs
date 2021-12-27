@@ -42,12 +42,6 @@ namespace PresentationLayer
         public Enquiry createEnquiry()
         {
             Enquiry.orderNotes = screen.orderNotes;
-            Enquiry.itemDesc1 = screen.itemDesc1;
-            Enquiry.itemDesc2 = screen.itemDesc2;
-            Enquiry.itemDesc3 = screen.itemDesc3;
-            Enquiry.itemQuant1 = screen.itemQuant1;
-            Enquiry.itemQuant2 = screen.itemQuant2;
-            Enquiry.itemQuant3 = screen.itemQuant3;
             return Enquiry;
         }
 
@@ -70,16 +64,26 @@ namespace PresentationLayer
             e.receivedDate = DateTime.Now;
             e.deadline = screen.deadline;
             e.orderNotes = screen.orderNotes;
-            e.itemDesc1 = screen.itemDesc1;
-            e.itemDesc2 = screen.itemDesc2;
-            e.itemDesc3 = screen.itemDesc3;
-            e.itemQuant1 = screen.itemQuant1;
-            e.itemQuant2 = screen.itemQuant2;
-            e.itemQuant3 = screen.itemQuant3;
             List<OrderItems> oi = new List<OrderItems>();
 
-            oi.Add(enqiryModel.createItem("Sword Sword", 2, null, OrderType.Sword));
-            oi.Add(enqiryModel.createItem("Ar Sword", 10, null, OrderType.Armour));
+            int quan1 = Int32.Parse(screen.itemQuant1);
+            int quan2 = Int32.Parse(screen.itemQuant2);
+            int quan3 = Int32.Parse(screen.itemQuant3);
+
+            if (screen.CerimonialSwordChecked() == true)
+            {
+                oi.Add(enqiryModel.createItem(screen.itemDesc1, quan1, null, OrderType.CeremonialSword));
+            }
+
+            if (screen.SwordChecked() == true)
+            {
+                oi.Add(enqiryModel.createItem(screen.itemDesc2, quan2, null, OrderType.Sword));
+            }
+
+            if (screen.ArmourChecked() == true)
+            {
+                oi.Add(enqiryModel.createItem(screen.itemQuant3, quan3, null, OrderType.Armour));
+            }
 
             enqiryModel.SaveEnquiry(e, c, oi);
         }

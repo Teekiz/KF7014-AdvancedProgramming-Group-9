@@ -14,6 +14,8 @@ namespace DataAccessLayer
         bool DeleteEnquiry(int id);
         bool DeleteAllEnquiries();
         bool UpdateEnquiry(Enquiry enquiry);
+        //this is in response to the data being duplicated.
+        bool SaveEnquiryAll(Enquiry enquiry, List<OrderItems> orderItems, Customer customer);
     }
     public class EnquiryGateway : IEnquiryGateway
     {
@@ -23,8 +25,33 @@ namespace DataAccessLayer
             {
                 using (var context = new DatabaseEntities())
                 {
+                    //enquiry.Customer = customer;
+                    context.Enquiries.Add(enquiry);
+                    context.SaveChanges();
+                    return true;
+                }
+            }
+            catch { return false; }
+        }
+
+        //I'm not 100% happy with this method as it defeats the purpose of the other gateways, but otherwise all the data will be duplicated.
+        public bool SaveEnquiryAll(Enquiry enquiry, List<OrderItems> orderItems, Customer customer)
+        {
+            try
+            {
+                using (var context = new DatabaseEntities())
+                {
                     enquiry.Customer = customer;
                     context.Enquiries.Add(enquiry);
+                    context.Customers.Add(customer);
+
+                    for (int i = 0; i < orderItems.Count(); i++)
+                    {
+                        //adds all the of the items in the order to a database
+                        orderItems[i].Enquiry = enquiry;
+                        context.OrderItems.Add(orderItems[i]);
+                    }
+
                     context.SaveChanges();
                     return true;
                 }
@@ -74,12 +101,6 @@ namespace DataAccessLayer
                     orderItemsQuery.hoursToComplete = enquiry.hoursToComplete;
                     orderItemsQuery.orderStatus = enquiry.orderStatus;
                     orderItemsQuery.orderNotes = enquiry.orderNotes;
-                    orderItemsQuery.itemDesc1 = enquiry.itemDesc1;
-                    orderItemsQuery.itemDesc2 = enquiry.itemDesc2;
-                    orderItemsQuery.itemDesc3 = enquiry.itemDesc3;
-                    orderItemsQuery.itemQuant1 = enquiry.itemQuant1;
-                    orderItemsQuery.itemQuant2 = enquiry.itemQuant2;
-                    orderItemsQuery.itemQuant3 = enquiry.itemQuant3;
                     context.SaveChanges();
                     return true;
                 }
