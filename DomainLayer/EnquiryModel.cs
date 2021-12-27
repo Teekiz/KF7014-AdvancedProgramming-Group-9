@@ -25,6 +25,8 @@ namespace DomainLayer
         OrderItems createItem(string description, int quantity, byte[] referenceImage, OrderType orderType);
         void SaveEnquiry(Enquiry enquiry, Customer customer, List<OrderItems> orderItems);
         void CalculateEstimatedTime(out int minTime, out int maxTime, out double minCost, out double maxCost, List<OrderItems> orderItems);
+        Customer GetCustomer();
+        Enquiry GetEnquiry();
     }
 
     //Concrete Implementation
@@ -42,6 +44,16 @@ namespace DomainLayer
             create.SaveEnquiry(enquiry, orderItems, customer);
         }
 
+
+        public Customer GetCustomer()
+        {
+            return new Customer();
+        }
+
+        public Enquiry GetEnquiry()
+        {
+            return new Enquiry();
+        }
 
         #region "OrderItems"
         //used to create a sword item in the order

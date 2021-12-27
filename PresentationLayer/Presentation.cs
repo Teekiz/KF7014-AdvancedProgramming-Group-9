@@ -51,7 +51,7 @@ namespace PresentationLayer
 
         public void saveEnquiry()
         {
-            Customer c = new Customer();
+            Customer c = enqiryModel.GetCustomer();
             c.name = screen.name;
             c.addressline1 = screen.addressline1;
             c.county = screen.county;
@@ -63,7 +63,7 @@ namespace PresentationLayer
             c.phone = screen.phone;
             c.type = screen.getRadioButton();
 
-            Enquiry e = new Enquiry();
+            Enquiry e = enqiryModel.GetEnquiry();
             e.receivedDate = DateTime.Now;
             e.deadline = screen.deadline;
             e.orderNotes = screen.orderNotes;
