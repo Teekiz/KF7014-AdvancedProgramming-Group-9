@@ -57,7 +57,11 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomerGatewayMOCObject.cs" />
     <Compile Include="DataAccessTestClass.cs" />
+    <Compile Include="EnquiryGatewayMOCObject.cs" />
+    <Compile Include="EnquiryModelTestClass.cs" />
+    <Compile Include="OrderItemsGatewayMOCObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StaffCustomerTestClass.cs" />
   </ItemGroup>

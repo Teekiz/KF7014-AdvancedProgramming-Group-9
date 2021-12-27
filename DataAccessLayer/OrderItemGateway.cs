@@ -69,19 +69,22 @@ namespace DataAccessLayer
                 using (var context = new DatabaseEntities())
                 {
                     var orderItemsQuery = context.OrderItems.Where(i => i.Enquiry.orderID == id).ToList();
-                    foreach (OrderItems i in orderItemsQuery)
+
+                    if (orderItemsQuery.Count() > 0)
                     {
-                        var enquiryQuery = context.OrderItems.Remove(i);
+                        foreach (OrderItems i in orderItemsQuery)
+                        {
+                            var enquiryQuery = context.OrderItems.Remove(i);
+                        }
+
+                        context.SaveChanges();
+
+                        var newOrderItemsQuery = context.OrderItems.Where(i => i.Enquiry.orderID == id).ToList();
+                        if (newOrderItemsQuery.Count() == 0)
+                        {
+                            return true;
+                        }
                     }
-
-                    context.SaveChanges();
-
-                    var newOrderItemsQuery = context.OrderItems.Where(i => i.Enquiry.orderID == id).ToList();
-                    if (newOrderItemsQuery.Count() == 0)
-                    {
-                        return true;
-                    }
-
                     return false;
                 }
 

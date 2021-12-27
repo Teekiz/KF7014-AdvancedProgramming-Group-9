@@ -102,6 +102,7 @@ namespace DataAccessLayer
                 using (var context = new DatabaseEntities())
                 {
                     var enquiryGetQuery = context.Enquiries.ToList();
+
                     foreach (Enquiry e in enquiryGetQuery)
                     {
                         var enquiryQuery = context.Enquiries.Remove(e);

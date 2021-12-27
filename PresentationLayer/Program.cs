@@ -22,10 +22,14 @@ namespace PresentationLayer
             OFCcountry screen = new OFCcountry();
             IDatabaseCreateQueries create = new DatabaseCreateQueries();
             IDatabaseReadQueries read = new DatabaseReadQueries();
-            ICustomerModel model = new CustomerModel(create, read);
-            IEnquiryModel enq = new EnquiryModel(create, read);
 
-            Presentation presentation = new Presentation(model, screen, enq);
+            IEnquiryGateway enquiryGateway = new EnquiryGateway();
+            IOrderItemGateway orderItemGateway = new OrderItemGateway();
+            ICustomerGateway customerGateway = new CustomerGateway();
+
+            IEnquiryModel enq = new EnquiryModel(enquiryGateway, orderItemGateway, customerGateway);
+
+            Presentation presentation = new Presentation(screen, enq);
 
             Application.Run(screen);
         }

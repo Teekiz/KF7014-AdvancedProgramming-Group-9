@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using DataAccessLayer;
 using DomainLayer;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Linq;
 
 namespace AdvancedProgrammingGroup9TestProject
 {
@@ -36,6 +35,11 @@ namespace AdvancedProgrammingGroup9TestProject
         [TestInitialize]
         public void DataClasses()
         {
+            //Empty database.
+            Assert.AreEqual(true, EnquiryCRUD.DeleteAllEnquiries());
+            Assert.AreEqual(true, CustomerCRUD.DeleteAllCustomers());
+            Assert.AreEqual(true, OrderItemCRUD.DeleteAllOrderItems());
+
             customer = new Customer();
             customer.name = "Person Personington";
             customer.addressline1 = "Adress Line";
@@ -84,6 +88,10 @@ namespace AdvancedProgrammingGroup9TestProject
             //checking to see if it rejects a blank customer
             Assert.AreEqual(false, CustomerCRUD.SaveCustomer(new Customer()));
             //Testing to see if it can handle if there is no data
+            
+            //Testing to see if it can delete a customer that doesn't exist.
+            Assert.AreEqual(false, CustomerCRUD.DeleteCustomer(1000));
+
             CustomerCRUD.DeleteAllCustomers();
             CustomerCRUD.SaveCustomer(customer);
 
@@ -119,6 +127,9 @@ namespace AdvancedProgrammingGroup9TestProject
             Assert.AreEqual(true, CustomerCRUD.DeleteAllCustomers());
             Assert.AreEqual(true, EnquiryCRUD.DeleteAllEnquiries());
 
+            //Testing to see if it can delete a customer that doesn't exist.
+            Assert.AreEqual(false, EnquiryCRUD.DeleteEnquiry(1000));
+
             //checking if it can be saved
             Assert.AreEqual(true, EnquiryCRUD.SaveEnquiry(enquiry, customer));
 
@@ -144,6 +155,23 @@ namespace AdvancedProgrammingGroup9TestProject
             Assert.AreEqual(loadedNewEnquiry.price, 1000);
             Assert.AreEqual(loadedNewEnquiry.hoursToComplete, 5000);
 
+            loadedNewEnquiry.orderNotes = "updated";
+            loadedNewEnquiry.orderStatus = "updated";
+
+
+            //testing the method update
+            Assert.AreEqual(true, EnquiryCRUD.UpdateEnquiry(loadedNewEnquiry));
+            Enquiry updatedEnquiry = EnquiryCRUD.GetEnquiry(loadedNewEnquiry.orderID);
+
+            Assert.AreEqual(updatedEnquiry.orderNotes, "updated");
+            Assert.AreEqual(updatedEnquiry.receivedDate, now);
+            Assert.AreEqual(updatedEnquiry.deadline, now.AddDays(20));
+            Assert.AreEqual(updatedEnquiry.price, 1000);
+            Assert.AreEqual(updatedEnquiry.hoursToComplete, 5000);
+            Assert.AreEqual(updatedEnquiry.orderStatus, "updated");
+
+            Assert.AreEqual(false, EnquiryCRUD.UpdateEnquiry(new Enquiry()));
+
             //Should only be 1 enquiry in database
             Assert.AreEqual(false, EnquiryCRUD.DeleteEnquiry(20000));
             Assert.AreEqual(true, EnquiryCRUD.DeleteEnquiry(loadedEnquiry.orderID));
@@ -159,12 +187,17 @@ namespace AdvancedProgrammingGroup9TestProject
             Assert.AreEqual(true, EnquiryCRUD.DeleteAllEnquiries());
             Assert.AreEqual(true, OrderItemCRUD.DeleteAllOrderItems());
 
+            //Testing to see if it can delete an orderItem that doesn't exist.
+            Assert.AreEqual(false, OrderItemCRUD.DeleteOrderItems(10000));
+
+            //Testing to see if it can delete a orderitem in an enquiry that doesn't exist.
+            Assert.AreEqual(false, OrderItemCRUD.DeleteOrderItemsInEnquiry(100000));
+
             //Assert.AreEqual(true, EnquiryCRUD.SaveEnquiry(enquiry, customer));
             Assert.AreEqual(true, OrderItemCRUD.SaveOrderItems(orderItems, enquiry));
             
-
             //checking to see if the returned enquiry is null if it can't get it.
-            Assert.AreEqual(OrderItemCRUD.GetOrderItemsInEnquiry(6).Count(), 0);
+            Assert.AreEqual(0, OrderItemCRUD.GetOrderItemsInEnquiry(1000).Count());
 
             Enquiry readEnquiry = EnquiryCRUD.GetAllEnquiries()[0];
             List<OrderItems> loadedOrderItems = OrderItemCRUD.GetOrderItemsInEnquiry(readEnquiry.orderID);
@@ -181,12 +214,12 @@ namespace AdvancedProgrammingGroup9TestProject
             Assert.AreEqual(8, loadedOrderItems[2].quantity);
             Assert.AreEqual(null, loadedOrderItems[2].referenceImage);
 
-            //Assert.AreEqual(false, OrderItemCRUD.DeleteOrderItems(30));
-            //Assert.AreEqual(true, OrderItemCRUD.DeleteOrderItemsInEnquiry(readEnquiry.orderID));
+            Assert.AreEqual(false, OrderItemCRUD.DeleteOrderItems(300000));
+            Assert.AreEqual(true, OrderItemCRUD.DeleteOrderItemsInEnquiry(readEnquiry.orderID));
 
-            //Assert.AreEqual(true, EnquiryCRUD.DeleteAllEnquiries());
-            //Assert.AreEqual(true, CustomerCRUD.DeleteAllCustomers());
-            //Assert.AreEqual(true, OrderItemCRUD.DeleteAllOrderItems());
+            Assert.AreEqual(true, EnquiryCRUD.DeleteAllEnquiries());
+            Assert.AreEqual(true, CustomerCRUD.DeleteAllCustomers());
+            Assert.AreEqual(true, OrderItemCRUD.DeleteAllOrderItems());
         }
     }
 }

@@ -10,19 +10,16 @@ namespace PresentationLayer
 {
     public class Presentation
     {
-        private ICustomerModel customerModel;
         private IEnquiryModel enqiryModel;
         private IOrderCust screen;
         Customer Customer;
         Enquiry Enquiry;
 
-        public Presentation(ICustomerModel model, IOrderCust screen, IEnquiryModel enqiryModel)
+        public Presentation(IOrderCust screen, IEnquiryModel enqiryModel)
         {
-            customerModel = model;
             this.screen = screen;
             this.enqiryModel = enqiryModel;
             screen.register(this);
-            Customer = customerModel.GetCustomer();
         }
 
         public Customer createCustomer()

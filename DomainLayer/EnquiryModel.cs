@@ -32,16 +32,23 @@ namespace DomainLayer
     //Concrete Implementation
     public class EnquiryModel : IEnquiryModel
     {
-        IDatabaseCreateQueries create;
+        //IDatabaseCreateQueries create;
+        IEnquiryGateway enquiryCRUD;
+        ICustomerGateway customerCRUD;
+        IOrderItemGateway orderItemsCRUD;
 
-        public EnquiryModel(IDatabaseCreateQueries create, IDatabaseReadQueries read) 
+        public EnquiryModel(IEnquiryGateway enquiryCRUD, IOrderItemGateway orderItemsCRUD, ICustomerGateway customerCRUD) 
         {
-            this.create = create;
+            this.enquiryCRUD = enquiryCRUD;
+            this.orderItemsCRUD = orderItemsCRUD;
+            this.customerCRUD = customerCRUD;
         }
 
         public void SaveEnquiry(Enquiry enquiry, Customer customer, List<OrderItems> orderItems)
         {
-            create.SaveEnquiry(enquiry, orderItems, customer);
+            enquiryCRUD.SaveEnquiry(enquiry, customer);
+            orderItemsCRUD.SaveOrderItems(orderItems, enquiry);
+            customerCRUD.SaveCustomer(customer);
         }
 
 
