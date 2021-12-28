@@ -25,6 +25,8 @@ namespace DomainLayer
         void CalculateEstimatedTime(out int minTime, out int maxTime, out double minCost, out double maxCost, List<OrderItems> orderItems);
         bool CheckSchedule(DateTime checkStartDate, Enquiry enquiry);
         bool PriceHoursCheck(Double price, int hours, List<OrderItems> orderItems);
+        bool SaveOrder(Order order, Enquiry enquiry);
+        Order GetOrder();
     }
 
     public class ManagerModel : IManagerModel
@@ -48,6 +50,22 @@ namespace DomainLayer
             enquiryCRUD.UpdateEnquiry(enquiry);
         }
 
+        public bool SaveOrder(Order order, Enquiry enquiry)
+        {
+            try
+            {
+                order.Enquiry = enquiry;
+                orderCRUD.SaveOrder(order);
+                return true;
+            }
+
+            catch
+            {
+                return false;
+            }
+
+        }
+
         public List<Enquiry> GetEnquiries()
         {
             return enquiryCRUD.GetAllEnquiries();
@@ -68,21 +86,28 @@ namespace DomainLayer
             try { return customerCRUD.GetCustomer(customerID); }
             catch { return new Customer(); }
         }
+
+        public Order GetOrder()
+        {
+            return new Order();
+        }
         #endregion
 
         //This current version will be "dumb" - as in it it just checks an order against a time. -this can be changed later on.
         //UNTESTED
         public bool CheckSchedule(DateTime checkStartDate, Enquiry enquiry)
         {
-            for (int i = 0; i < orderCRUD.GetAllOrders().Count(); i++)
+            //for (int i = 0; i < orderCRUD.GetAllOrders().Count(); i++)
+            foreach (Order order in orderCRUD.GetAllOrders())
             {
-                DateTime orderStartDate = orderCRUD.GetAllOrders()[i].scheduledStartDate;
-                int percentComplete = orderCRUD.GetAllOrders()[i].progressCompleted;
+                DateTime orderStartDate = order.scheduledStartDate;
+                int percentComplete = order.progressCompleted;
+                DateTime orderDeadline = enquiryCRUD.GetEnquiry(order.Enquiry.orderID).deadline;
 
                 //look for all orders that are not completed and start before the deadline
                 if (orderStartDate < enquiry.deadline && percentComplete < 100)
                 {
-                    DateTime orderDeadline = enquiryCRUD.GetEnquiry(orderCRUD.GetAllOrders()[i].Enquiry.orderID).deadline;
+                    
                     //if the date to start falls between the start date of another order and the deadline then the space is taken. 
                     if (checkStartDate > orderStartDate && enquiry.deadline < orderDeadline)
                     {

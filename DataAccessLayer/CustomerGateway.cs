@@ -20,8 +20,6 @@ namespace DataAccessLayer
         bool DeleteAllCustomers();
     }
 
-
-
     public class CustomerGateway : ICustomerGateway
     {
         public bool SaveCustomer(Customer customer)

@@ -48,7 +48,10 @@ namespace DomainLayer
         {
             try
             {
-                enquiryCRUD.SaveEnquiryAll(enquiry, orderItems, customer);
+                customerCRUD.SaveCustomer(customer);
+                enquiryCRUD.SaveEnquiry(enquiry, customer);
+                orderItemsCRUD.SaveOrderItems(orderItems, enquiry);
+
                 return true;
             }
             catch
@@ -91,7 +94,6 @@ namespace DomainLayer
             orderItems.description = description;
             orderItems.quantity = quantity;
             orderItems.referenceImage = referenceImage;
-            //orderItems.Enquiry = enquiry;
             return orderItems;
         }
 

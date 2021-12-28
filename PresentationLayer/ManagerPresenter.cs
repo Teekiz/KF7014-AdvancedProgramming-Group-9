@@ -19,6 +19,7 @@ namespace PresentationLayer
         Enquiry enquiry;
         Customer customer;
         List<OrderItems> orderItems;
+        Order order;
 
         public ManagerPresenter(IOrderManager screen, IManagerModel model)
         {
@@ -48,6 +49,7 @@ namespace PresentationLayer
             enquiry = GetEnquiry(enquId);
             customer = GetCustomer(enquiry);
             orderItems = GetOrderItems(enquiry);
+            order = model.GetOrder();
             UpdateFormView(enquiry, customer, orderItems);
         }
 
@@ -93,6 +95,9 @@ namespace PresentationLayer
                 enquiry.price = price;
                 enquiry.hoursToComplete = hours;
                 model.UpdateEnquiry(enquiry);
+
+                order.scheduledStartDate = screen.startDate;
+                model.SaveOrder(order, enquiry);
             }
         }
     }

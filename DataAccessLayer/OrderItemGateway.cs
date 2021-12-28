@@ -15,6 +15,10 @@ namespace DataAccessLayer
         bool DeleteAllOrderItems();
     }
 
+    //For this method I used the answer by the user Slauma (2013)
+    //https://stackoverflow.com/questions/20710178/entity-framework-creates-new-duplicate-entries-for-associated-objects
+    //using it for context.Customers.Attach(enquiry.Customer); to fix duplication issues
+
     public class OrderItemGateway : IOrderItemGateway
     {
         public bool SaveOrderItems(List<OrderItems> orderItems, Enquiry enquiry)
@@ -25,8 +29,9 @@ namespace DataAccessLayer
                 {
                     for (int i = 0; i < orderItems.Count(); i++)
                     {
-                        //adds all the of the items in the order to a database
                         orderItems[i].Enquiry = enquiry;
+                        //adds all the of the items in the order to a database
+                        context.Enquiries.Attach(orderItems[i].Enquiry);
                         context.OrderItems.Add(orderItems[i]);
                     }
                     context.SaveChanges();

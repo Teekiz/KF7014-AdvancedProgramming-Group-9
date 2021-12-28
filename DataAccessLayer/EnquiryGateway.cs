@@ -19,13 +19,19 @@ namespace DataAccessLayer
     }
     public class EnquiryGateway : IEnquiryGateway
     {
+
+        //For this method I used the answer by the user Slauma (2013)
+        //https://stackoverflow.com/questions/20710178/entity-framework-creates-new-duplicate-entries-for-associated-objects
+        //using it for context.Customers.Attach(enquiry.Customer); to fix duplication issues
+
         public bool SaveEnquiry(Enquiry enquiry, Customer customer)
         {
             try
             {
                 using (var context = new DatabaseEntities())
                 {
-                    //enquiry.Customer = customer;
+                    enquiry.Customer = customer;
+                    context.Customers.Attach(enquiry.Customer);
                     context.Enquiries.Add(enquiry);
                     context.SaveChanges();
                     return true;
@@ -34,7 +40,8 @@ namespace DataAccessLayer
             catch { return false; }
         }
 
-        //I'm not 100% happy with this method as it defeats the purpose of the other gateways, but otherwise all the data will be duplicated.
+        //This method is a legacy method, it was used when saving all the items at once because otherwise it would create
+        //duplicates, I am leaving this in here in case it needs to be used later on.
         public bool SaveEnquiryAll(Enquiry enquiry, List<OrderItems> orderItems, Customer customer)
         {
             try
