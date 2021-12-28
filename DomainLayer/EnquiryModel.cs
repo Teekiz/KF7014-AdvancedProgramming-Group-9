@@ -23,7 +23,7 @@ namespace DomainLayer
     public interface IEnquiryModel
     {
         OrderItems createItem(string description, int quantity, byte[] referenceImage, OrderType orderType);
-        void SaveEnquiry(Enquiry enquiry, Customer customer, List<OrderItems> orderItems);
+        bool SaveEnquiry(Enquiry enquiry, Customer customer, List<OrderItems> orderItems);
         void CalculateEstimatedTime(out int minTime, out int maxTime, out double minCost, out double maxCost, List<OrderItems> orderItems);
         Customer GetCustomer();
         Enquiry GetEnquiry();
@@ -44,9 +44,18 @@ namespace DomainLayer
             this.customerCRUD = customerCRUD;
         }
 
-        public void SaveEnquiry(Enquiry enquiry, Customer customer, List<OrderItems> orderItems)
+        public bool SaveEnquiry(Enquiry enquiry, Customer customer, List<OrderItems> orderItems)
         {
-            enquiryCRUD.SaveEnquiryAll(enquiry, orderItems, customer);
+            try
+            {
+                enquiryCRUD.SaveEnquiryAll(enquiry, orderItems, customer);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+
         }
 
         public Customer GetCustomer()

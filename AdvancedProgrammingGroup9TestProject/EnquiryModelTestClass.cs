@@ -21,6 +21,8 @@ namespace AdvancedProgrammingGroup9TestProject
             ICustomerGateway customerGateway = new CustomerGatewayMOCObject();
             IEnquiryModel model = new EnquiryModel(enquiryGateway, orderItemGateway, customerGateway);
             List<OrderItems> orderItemsList = new List<OrderItems>();
+            Enquiry enquiry = new Enquiry();
+            Customer customer = new Customer();
 
             //checking the create models.
 
@@ -58,6 +60,8 @@ namespace AdvancedProgrammingGroup9TestProject
             Assert.AreEqual(1350, maxTime);
             Assert.AreEqual(14250, minCost);
             Assert.AreEqual(75000, maxCost);
+
+            Assert.AreEqual(true, model.SaveEnquiry(enquiry, customer, orderItemsList));
         }
     }
 }
