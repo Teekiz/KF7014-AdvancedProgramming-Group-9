@@ -40,11 +40,11 @@ namespace PresentationLayer
         void label3_Click(object sender, EventArgs e);
         void OFCnameF_TextChanged(object sender, EventArgs e);
         void OFCsubmit_Click(object sender, EventArgs e);
-        void register(Presentation psr);
+        void register(EnquiryPresenter psr);
     }
     public partial class OFCcountry : Form, IOrderCust
     {
-        private Presentation presenter;
+        private EnquiryPresenter presenter;
 
         public string name
         {
@@ -223,13 +223,12 @@ namespace PresentationLayer
 
         }
 
-        public void register(Presentation psr)
+        public void register(EnquiryPresenter psr)
         {
             presenter = psr;
         }
         public void OFCsubmit_Click(object sender, EventArgs e)
         {
-            presenter.saveCustomer();
             presenter.saveEnquiry();
         }
     }
