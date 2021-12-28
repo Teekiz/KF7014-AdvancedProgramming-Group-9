@@ -19,40 +19,46 @@ namespace DomainLayer
     {
         List<OrderItems> GetItemsInEnquiry(int enquiryID);
         List<Enquiry> GetEnquiries();
+        Enquiry GetEnquiry(int enquiryID);
         void UpdateEnquiry(Enquiry enquiry);
         void CalculateEstimatedTime(out int minTime, out int maxTime, out double minCost, out double maxCost, List<OrderItems> orderItems);
         bool CheckSchedule(DateTime checkStartDate, Enquiry enquiry);
-
-        //Need an update method
     }
 
     public class ManagerModel
     {
-        IDatabaseReadQueries read;
-        IDatabaseUpdateQueries update;
+        IEnquiryGateway enquiryCRUD;
+        ICustomerGateway customerCRUD;
+        IOrderItemGateway orderItemsCRUD;
 
-        public ManagerModel(IDatabaseReadQueries read, IDatabaseUpdateQueries update)
+        public ManagerModel(IEnquiryGateway enquiryCRUD, ICustomerGateway customerCRUD, IOrderItemGateway orderItemsCRUD)
         {
-            this.read = read;
-            this.update = update;
+            this.enquiryCRUD = enquiryCRUD;
+            this.customerCRUD = customerCRUD;
+            this.orderItemsCRUD = orderItemsCRUD;
         }
 
         public void UpdateEnquiry(Enquiry enquiry)
         {
-            update.UpdateEnquiry(enquiry);
+            enquiryCRUD.UpdateEnquiry(enquiry);
         }
 
         #region "Enquiry Reads"
         public List<Enquiry> GetEnquiries()
         {
-            return read.GetAllEnquiries();
+            return enquiryCRUD.GetAllEnquiries();
         }
 
         public List<OrderItems> GetItemsInEnquiry(int enquiryID)
         {
-            return read.GetOrderItemsInEnquiry(enquiryID);
+            return orderItemsCRUD.GetOrderItemsInEnquiry(enquiryID);
         }
         #endregion
+
+        public Enquiry GetEnquiry(int enquiryID)
+        {
+            return enquiryCRUD.GetEnquiry(enquiryID);
+        }
 
         //This current version will be "dumb" - as in it it just checks an order against a time. -this can be changed later on.
         //UNTESTED
@@ -66,7 +72,7 @@ namespace DomainLayer
                 //look for all orders that are not completed and start before the deadline
                 if (orderStartDate < enquiry.deadline && percentComplete < 100)
                 {
-                    DateTime orderDeadline = read.GetEnquiry(read.GetAllOrders()[i].Enquiry.orderID).deadline;
+                    DateTime orderDeadline = enquiryCRUD.GetEnquiry(read.GetAllOrders()[i].Enquiry.orderID).deadline;
                     //if the date to start falls between the start date of another order and the deadline then the space is taken. 
                     if (checkStartDate > orderStartDate && enquiry.deadline < orderDeadline)
                     {
@@ -87,10 +93,11 @@ namespace DomainLayer
             for (int i = 0; i < orderItems.Count(); i++)
             {
                 orderItems[i].getItemTime(out int minCalcTime, out int maxCalcTime);
+                orderItems[i].getItemCost(out double minCalcCost, out double maxCalcCost);
                 minTime += minCalcTime;
                 maxTime += maxCalcTime;
-                minCost += orderItems[i].minCost;
-                maxCost += orderItems[i].maxCost;
+                minCost += minCalcCost;
+                maxCost += maxCalcCost;
             }
         }
     }

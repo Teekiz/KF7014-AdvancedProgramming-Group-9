@@ -29,7 +29,7 @@ namespace PresentationLayer
 
             IEnquiryModel enq = new EnquiryModel(enquiryGateway, orderItemGateway, customerGateway);
 
-            Presentation presentation = new Presentation(screen, enq);
+            EnquiryPresenter presentation = new EnquiryPresenter(screen, enq);
 
             Application.Run(screen);
         }
