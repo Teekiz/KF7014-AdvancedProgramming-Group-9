@@ -96,10 +96,11 @@ namespace DomainLayer
             for (int i = 0; i < orderItems.Count(); i++)
             {
                 orderItems[i].getItemTime(out int minCalcTime, out int maxCalcTime);
+                orderItems[i].getItemCost(out double minCalcCost, out double maxCalcCost);
                 minTime += minCalcTime;
                 maxTime += maxCalcTime;
-                minCost += orderItems[i].minCost;
-                maxCost += orderItems[i].maxCost;
+                minCost += minCalcCost;
+                maxCost += maxCalcCost;
             }
         }
         #endregion

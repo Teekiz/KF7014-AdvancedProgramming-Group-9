@@ -63,6 +63,13 @@ namespace DataAccessLayer
             minCalcTime = minTime * quantity;
             maxCalcTime = maxTime * quantity;
         }
+
+        public void getItemCost(out double minCalcCost, out double maxCalcCost)
+        {
+            minCalcCost = minCost * Convert.ToDouble(quantity);
+            maxCalcCost = maxCost * Convert.ToDouble(quantity);
+        }
+
     }
 
     public class SwordItem : OrderItems

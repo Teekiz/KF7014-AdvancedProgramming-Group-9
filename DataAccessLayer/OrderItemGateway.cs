@@ -26,7 +26,7 @@ namespace DataAccessLayer
                     for (int i = 0; i < orderItems.Count(); i++)
                     {
                         //adds all the of the items in the order to a database
-                        //orderItems[i].Enquiry = enquiry;
+                        orderItems[i].Enquiry = enquiry;
                         context.OrderItems.Add(orderItems[i]);
                     }
                     context.SaveChanges();
