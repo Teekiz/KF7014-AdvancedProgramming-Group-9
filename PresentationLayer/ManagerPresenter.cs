@@ -13,7 +13,7 @@ namespace PresentationLayer
         private IManagerModel model;
         private IOrderManager screen;
 
-        public ManagerPresenter(IManagerModel screen, IManagerModel model)
+        public ManagerPresenter(IOrderManager screen, IManagerModel model)
         {
             this.screen = screen;
             this.model = model;

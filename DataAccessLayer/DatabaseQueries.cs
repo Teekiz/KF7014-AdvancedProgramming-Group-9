@@ -16,7 +16,6 @@ namespace DataAccessLayer
     {
         List<Enquiry> GetAllEnquiries();
         Enquiry GetEnquiry(int id);
-
         List<Customer> GetAllCustomers();
         Customer GetCustomer(int id);
         List<OrderItems> GetOrderItemsInEnquiry(int enquiryID);

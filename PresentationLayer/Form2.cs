@@ -30,14 +30,16 @@ namespace PresentationLayer
         string systemRec { set; }
         string acceptOrderRadioButton();
         string customerTypeRadioButton();
-
         void Form2_Load(object sender, EventArgs e);
         void label4_Click(object sender, EventArgs e);
         void label18_Click(object sender, EventArgs e);
+        void register(ManagerPresenter psr);
     }
 
-    public partial class OrderManager : Form
+    public partial class OrderManager : Form, IOrderManager
     {
+        private EnquiryPresenter presenter;
+
         public OrderManager()
         {
             InitializeComponent();
@@ -56,6 +58,15 @@ namespace PresentationLayer
         private void label18_Click(object sender, EventArgs e)
         {
 
+        }
+        public void register(EnquiryPresenter psr)
+        {
+            presenter = psr;
+        }
+
+        public void OFCsubmit_Click(object sender, EventArgs e)
+        {
+            presenter.saveEnquiry();
         }
     }
 }
