@@ -69,7 +69,7 @@ namespace DataAccessLayer
             {
                 using (var context = new DatabaseEntities())
                 {
-                    var OrderGetQuery = context.Orders.Where(c => c.order == order).SingleOrDefault();
+                    var OrderGetQuery = context.Orders.Where(o => o.orderID == order).SingleOrDefault();
                     var OrderQuery = context.Orders.Remove(OrderGetQuery);
                     context.SaveChanges();
                     return true;
@@ -88,7 +88,7 @@ namespace DataAccessLayer
 
                     foreach (Order o in OrderGetQuery)
                     {
-                        context.Orders.Remove(c);
+                        context.Orders.Remove(o);
                         context.SaveChanges();
                     }
 
