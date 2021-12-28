@@ -15,7 +15,6 @@ namespace DataAccessLayer
         bool DeleteAllOrders();
     }
 
-
     public class OrderGateway : IOrderGateway
     {
         public bool SaveOrder(Order Order)
@@ -39,13 +38,15 @@ namespace DataAccessLayer
                 //based on code from https://docs.microsoft.com/en-us/ef/core/querying/
                 using (var context = new DatabaseEntities())
                 {
-                    var OrderQuery = context.Orders.Where(c => c.order == id).SingleOrDefault();
+                    var OrderQuery = context.Orders.Where(c => o.order == id).SingleOrDefault();
                     return OrderQuery;
                 }
             }
 
             catch { return new Order(); }
         }
+
+
 
         public List<Order> GetAllOrders()
         {
@@ -68,7 +69,7 @@ namespace DataAccessLayer
             {
                 using (var context = new DatabaseEntities())
                 {
-                    var OrderGetQuery = context.Orders.Where(c => c.order == order).SingleOrDefault();
+                    var OrderGetQuery = context.Orders.Where(o => o.order == order).SingleOrDefault();
                     var OrderQuery = context.Orders.Remove(OrderGetQuery);
                     context.SaveChanges();
                     return true;
@@ -85,7 +86,7 @@ namespace DataAccessLayer
                 {
                     var OrderGetQuery = context.Orders.ToList();
 
-                    foreach (Order c in OrderGetQuery)
+                    foreach (Order o in OrderGetQuery)
                     {
                         context.Orders.Remove(c);
                         context.SaveChanges();
