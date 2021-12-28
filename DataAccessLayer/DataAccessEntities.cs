@@ -108,7 +108,6 @@ namespace DataAccessLayer
     public class Order
     {
         public Order() { }
-
         [Key]
         public int orderID { get; set; }
         public DateTime scheduledStartDate { get; set; }

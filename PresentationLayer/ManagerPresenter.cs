@@ -88,7 +88,7 @@ namespace PresentationLayer
         {
             double price = Double.Parse(screen.price);
             int hours = Int32.Parse(screen.timeHours);
-            if (model.PriceHoursCheck(price, hours, orderItems) == true)
+            if (model.PriceHoursCheck(price, hours, orderItems) == true && model.CheckSchedule(screen.startDate, enquiry) == true)
             {
                 enquiry.price = price;
                 enquiry.hoursToComplete = hours;

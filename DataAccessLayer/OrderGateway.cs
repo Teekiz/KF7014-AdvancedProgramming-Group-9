@@ -104,7 +104,7 @@ namespace DataAccessLayer
 
                     foreach (Order o in OrderGetQuery)
                     {
-                        context.Orders.Remove(c);
+                        context.Orders.Remove(o);
                         context.SaveChanges();
                     }
 
