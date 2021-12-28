@@ -6,31 +6,25 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer
 {
-
-    /*
-     * Based on the design pattern found here https://martinfowler.com/eaaCatalog/tableDataGateway.html
-     */
-
-    public interface ICustomerGateway
+    public interface IOrderGateway
     {
-        bool SaveCustomer(Customer customer);
-        List<Customer> GetAllCustomers();
-        Customer GetCustomer(int id);
-        bool DeleteCustomer(int customerID);
-        bool DeleteAllCustomers();
+        bool SaveOrder(Order order);
+        List<Order> GetAllOrders();
+        Order GetOrder(int id);
+        bool DeleteOrder(int order);
+        bool DeleteAllOrders();
     }
 
 
-
-    public class CustomerGateway : ICustomerGateway
+    public class OrderGateway : IOrderGateway
     {
-        public bool SaveCustomer(Customer customer)
+        public bool SaveOrder(Order Order)
         {
             try
             {
                 using (var context = new DatabaseEntities())
                 {
-                    context.Customers.Add(customer);
+                    context.Orders.Add(Order);
                     context.SaveChanges();
                     return true;
                 }
@@ -38,44 +32,44 @@ namespace DataAccessLayer
             catch { return false; }
         }
 
-        public Customer GetCustomer(int id)
+        public Order GetOrder(int id)
         {
             try
             {
                 //based on code from https://docs.microsoft.com/en-us/ef/core/querying/
                 using (var context = new DatabaseEntities())
                 {
-                    var customerQuery = context.Customers.Where(c => c.customerID == id).SingleOrDefault();
-                    return customerQuery;
+                    var OrderQuery = context.Orders.Where(c => c.order == id).SingleOrDefault();
+                    return OrderQuery;
                 }
             }
 
-            catch { return new Customer(); }
+            catch { return new Order(); }
         }
 
-        public List<Customer> GetAllCustomers()
+        public List<Order> GetAllOrders()
         {
             try
             {
                 //based on code from https://docs.microsoft.com/en-us/ef/core/querying/
                 using (var context = new DatabaseEntities())
                 {
-                    var customerQuery = context.Customers.ToList();
-                    return customerQuery;
+                    var OrderQuery = context.Orders.ToList();
+                    return OrderQuery;
                 }
             }
             catch
-            { return new List<Customer>(); }
+            { return new List<Order>(); }
         }
 
-        public bool DeleteCustomer(int customerID)
+        public bool DeleteOrder(int order)
         {
             try
             {
                 using (var context = new DatabaseEntities())
                 {
-                    var customerGetQuery = context.Customers.Where(c => c.customerID == customerID).SingleOrDefault();
-                    var customerQuery = context.Customers.Remove(customerGetQuery);
+                    var OrderGetQuery = context.Orders.Where(c => c.order == order).SingleOrDefault();
+                    var OrderQuery = context.Orders.Remove(OrderGetQuery);
                     context.SaveChanges();
                     return true;
                 }
@@ -83,24 +77,24 @@ namespace DataAccessLayer
             catch { return false; }
         }
 
-        public bool DeleteAllCustomers()
+        public bool DeleteAllOrders()
         {
             try
             {
                 using (var context = new DatabaseEntities())
                 {
-                    var customerGetQuery = context.Customers.ToList();
+                    var OrderGetQuery = context.Orders.ToList();
 
-                    foreach (Customer c in customerGetQuery)
+                    foreach (Order c in OrderGetQuery)
                     {
-                        context.Customers.Remove(c);
+                        context.Orders.Remove(c);
                         context.SaveChanges();
                     }
 
                     context.SaveChanges();
 
-                    var newCustomerGetQuery = context.Customers.ToList();
-                    if (newCustomerGetQuery.Count() == 0)
+                    var newOrderGetQuery = context.Orders.ToList();
+                    if (newOrderGetQuery.Count() == 0)
                     {
                         return true;
                     }
@@ -112,4 +106,6 @@ namespace DataAccessLayer
             catch { return false; }
         }
     }
+}
+
 }
