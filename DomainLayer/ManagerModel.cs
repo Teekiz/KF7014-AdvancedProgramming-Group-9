@@ -20,10 +20,11 @@ namespace DomainLayer
         List<OrderItems> GetItemsInEnquiry(int enquiryID);
         List<Enquiry> GetEnquiries();
         Enquiry GetEnquiry(int enquiryID);
-        Customer GetCustomerInEnquiry(Enquiry enquiry);
+        Customer GetCustomerInEnquiry(int customerID);
         void UpdateEnquiry(Enquiry enquiry);
         void CalculateEstimatedTime(out int minTime, out int maxTime, out double minCost, out double maxCost, List<OrderItems> orderItems);
         bool CheckSchedule(DateTime checkStartDate, Enquiry enquiry);
+        bool PriceHoursCheck(Double price, int hours, List<OrderItems> orderItems);
     }
 
     public class ManagerModel : IManagerModel
@@ -62,9 +63,9 @@ namespace DomainLayer
             return enquiryCRUD.GetEnquiry(enquiryID);
         }
 
-        public Customer GetCustomerInEnquiry(Enquiry enquiry)
+        public Customer GetCustomerInEnquiry(int customerID)
         {
-            try { return customerCRUD.GetCustomer(enquiry.Customer.customerID); }
+            try { return customerCRUD.GetCustomer(customerID); }
             catch { return new Customer(); }
         }
         #endregion
@@ -107,6 +108,25 @@ namespace DomainLayer
                 maxTime += maxCalcTime;
                 minCost += minCalcCost;
                 maxCost += maxCalcCost;
+            }
+        }
+
+        public bool PriceHoursCheck(Double price, int hours, List<OrderItems> orderItems)
+        {
+            CalculateEstimatedTime(out int minTime, out int maxTime, out double minCost, out double maxCost, orderItems);
+            if (price < minCost || price > maxCost)
+            {
+                System.Windows.Forms.MessageBox.Show("Price should be between " + minCost.ToString() + " and " + maxCost.ToString() + ".");
+                return false;
+            }
+            else if (hours < minTime || hours > maxTime)
+            {
+                System.Windows.Forms.MessageBox.Show("Hours should be between " + minTime.ToString() + " and " + maxTime.ToString() + ".");
+                return false;
+            }
+            else
+            {
+                return true;
             }
         }
     }

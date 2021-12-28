@@ -8,10 +8,17 @@ using DataAccessLayer;
 
 namespace PresentationLayer
 {
+    //#1 For Method UpdateFormView
+    //item is (objectType) is from https://stackoverflow.com/questions/3561202/check-if-instance-is-of-a-type
+    //answered by the user Jon Skeet (2010)
+
     public class ManagerPresenter
     {
         private IManagerModel model;
         private IOrderManager screen;
+        Enquiry enquiry;
+        Customer customer;
+        List<OrderItems> orderItems;
 
         public ManagerPresenter(IOrderManager screen, IManagerModel model)
         {
@@ -20,16 +27,73 @@ namespace PresentationLayer
             screen.register(this);
         }
 
-        public void GetEnquiry()
+        public Enquiry GetEnquiry(int EnquiryID)
         {
-            //id
-            model.GetEnquiry();
+            return model.GetEnquiry(EnquiryID);
         }
 
-        public void UpdateEnquiry()
+        public Customer GetCustomer(Enquiry enquiry)
         {
-            Enquiry enquiry
-            model.UpdateEnquiry();
+            return model.GetCustomerInEnquiry(enquiry.orderID);
+        }
+
+        public List<OrderItems> GetOrderItems(Enquiry enquiry)
+        {
+            return model.GetItemsInEnquiry(enquiry.orderID);
+        }
+
+        public void EnquiryUpdate()
+        {
+            int enquId = Int32.Parse(screen.orderNumber);
+            enquiry = GetEnquiry(enquId);
+            customer = GetCustomer(enquiry);
+            orderItems = GetOrderItems(enquiry);
+            UpdateFormView(enquiry, customer, orderItems);
+        }
+
+        public void UpdateFormView(Enquiry enquiry, Customer customer, List<OrderItems> orderItems)
+        {
+            screen.orderNumber = enquiry.orderID.ToString();
+            screen.DateReceived = enquiry.receivedDate;
+            screen.customerName = customer.name;
+            screen.custPhone = customer.phone;
+            screen.custAddressline1 = customer.addressline1;
+            screen.custAddressline2 = customer.addressline2;
+            screen.custCountry = customer.country;
+            screen.custType = customer.type;
+            screen.deadline = enquiry.deadline;
+            screen.custOrderNotes = enquiry.orderNotes;
+            screen.price = enquiry.price.ToString();
+            screen.timeHours = enquiry.hoursToComplete.ToString();
+
+            //item is (objectType) is from https://stackoverflow.com/questions/3561202/check-if-instance-is-of-a-type
+            //answered by the user Jon Skeet (2010)
+
+            List<string> itemsList = new List<string>();
+            foreach (OrderItems item in orderItems)
+            {
+                string itype = "";
+                if (item is SwordItem) itype = "Sword Item";
+                else if (item is ArmourItem) itype = "Armour Item";
+                else itype = "Ceremonial Sword";
+
+                string itemstring = item.description + ", " + item.quantity + ", " + itype + ".";
+                itemsList.Add(itemstring);
+            }
+            screen.orderItemListView(itemsList);
+        }
+
+        //While the button will say save, all it does is update the query.
+        public void SaveUpdateEnquiry()
+        {
+            double price = Double.Parse(screen.price);
+            int hours = Int32.Parse(screen.timeHours);
+            if (model.PriceHoursCheck(price, hours, orderItems) == true)
+            {
+                enquiry.price = price;
+                enquiry.hoursToComplete = hours;
+                model.UpdateEnquiry(enquiry);
+            }
         }
     }
 }
