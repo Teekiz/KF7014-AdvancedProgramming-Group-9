@@ -66,6 +66,8 @@ namespace PresentationLayer
             this.txtPriceActual = new System.Windows.Forms.TextBox();
             this.lblDeadline = new System.Windows.Forms.Label();
             this.lstBoxItems = new System.Windows.Forms.ListBox();
+            this.lblMStartDate = new System.Windows.Forms.Label();
+            this.dtpMstartDate = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // label1
@@ -147,7 +149,7 @@ namespace PresentationLayer
             // OFMsystemrec
             // 
             this.OFMsystemrec.AutoSize = true;
-            this.OFMsystemrec.Location = new System.Drawing.Point(3, 337);
+            this.OFMsystemrec.Location = new System.Drawing.Point(3, 364);
             this.OFMsystemrec.Name = "OFMsystemrec";
             this.OFMsystemrec.Size = new System.Drawing.Size(127, 13);
             this.OFMsystemrec.TabIndex = 35;
@@ -156,7 +158,7 @@ namespace PresentationLayer
             // OFMacceptorder
             // 
             this.OFMacceptorder.AutoSize = true;
-            this.OFMacceptorder.Location = new System.Drawing.Point(10, 367);
+            this.OFMacceptorder.Location = new System.Drawing.Point(12, 392);
             this.OFMacceptorder.Name = "OFMacceptorder";
             this.OFMacceptorder.Size = new System.Drawing.Size(76, 13);
             this.OFMacceptorder.TabIndex = 36;
@@ -171,7 +173,7 @@ namespace PresentationLayer
             // 
             // OFMsystemrecF
             // 
-            this.OFMsystemrecF.Location = new System.Drawing.Point(138, 334);
+            this.OFMsystemrecF.Location = new System.Drawing.Point(136, 361);
             this.OFMsystemrecF.Name = "OFMsystemrecF";
             this.OFMsystemrecF.Size = new System.Drawing.Size(399, 20);
             this.OFMsystemrecF.TabIndex = 41;
@@ -179,7 +181,7 @@ namespace PresentationLayer
             // OFMaoY
             // 
             this.OFMaoY.AutoSize = true;
-            this.OFMaoY.Location = new System.Drawing.Point(150, 363);
+            this.OFMaoY.Location = new System.Drawing.Point(147, 388);
             this.OFMaoY.Name = "OFMaoY";
             this.OFMaoY.Size = new System.Drawing.Size(43, 17);
             this.OFMaoY.TabIndex = 43;
@@ -190,7 +192,7 @@ namespace PresentationLayer
             // OFMaoN
             // 
             this.OFMaoN.AutoSize = true;
-            this.OFMaoN.Location = new System.Drawing.Point(428, 367);
+            this.OFMaoN.Location = new System.Drawing.Point(442, 390);
             this.OFMaoN.Name = "OFMaoN";
             this.OFMaoN.Size = new System.Drawing.Size(39, 17);
             this.OFMaoN.TabIndex = 44;
@@ -243,7 +245,7 @@ namespace PresentationLayer
             // OFMmordernotes
             // 
             this.OFMmordernotes.AutoSize = true;
-            this.OFMmordernotes.Location = new System.Drawing.Point(3, 406);
+            this.OFMmordernotes.Location = new System.Drawing.Point(3, 441);
             this.OFMmordernotes.Name = "OFMmordernotes";
             this.OFMmordernotes.Size = new System.Drawing.Size(115, 13);
             this.OFMmordernotes.TabIndex = 51;
@@ -251,7 +253,7 @@ namespace PresentationLayer
             // 
             // OFMmordernotesF
             // 
-            this.OFMmordernotesF.Location = new System.Drawing.Point(138, 390);
+            this.OFMmordernotesF.Location = new System.Drawing.Point(138, 419);
             this.OFMmordernotesF.Name = "OFMmordernotesF";
             this.OFMmordernotesF.Size = new System.Drawing.Size(399, 48);
             this.OFMmordernotesF.TabIndex = 54;
@@ -297,7 +299,7 @@ namespace PresentationLayer
             // 
             // OFMsubmit
             // 
-            this.OFMsubmit.Location = new System.Drawing.Point(292, 456);
+            this.OFMsubmit.Location = new System.Drawing.Point(293, 472);
             this.OFMsubmit.Margin = new System.Windows.Forms.Padding(2);
             this.OFMsubmit.Name = "OFMsubmit";
             this.OFMsubmit.Size = new System.Drawing.Size(64, 24);
@@ -394,12 +396,30 @@ namespace PresentationLayer
             this.lstBoxItems.Size = new System.Drawing.Size(280, 108);
             this.lstBoxItems.TabIndex = 70;
             // 
+            // lblMStartDate
+            // 
+            this.lblMStartDate.AutoSize = true;
+            this.lblMStartDate.Location = new System.Drawing.Point(16, 338);
+            this.lblMStartDate.Name = "lblMStartDate";
+            this.lblMStartDate.Size = new System.Drawing.Size(55, 13);
+            this.lblMStartDate.TabIndex = 71;
+            this.lblMStartDate.Text = "Start Date";
+            // 
+            // dtpMstartDate
+            // 
+            this.dtpMstartDate.Location = new System.Drawing.Point(136, 335);
+            this.dtpMstartDate.Name = "dtpMstartDate";
+            this.dtpMstartDate.Size = new System.Drawing.Size(399, 20);
+            this.dtpMstartDate.TabIndex = 72;
+            // 
             // OrderManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.ClientSize = new System.Drawing.Size(950, 769);
+            this.Controls.Add(this.dtpMstartDate);
+            this.Controls.Add(this.lblMStartDate);
             this.Controls.Add(this.lstBoxItems);
             this.Controls.Add(this.lblDeadline);
             this.Controls.Add(this.txtPriceActual);
@@ -484,5 +504,7 @@ namespace PresentationLayer
         private System.Windows.Forms.TextBox txtPriceActual;
         private System.Windows.Forms.Label lblDeadline;
         private System.Windows.Forms.ListBox lstBoxItems;
+        private System.Windows.Forms.Label lblMStartDate;
+        private System.Windows.Forms.DateTimePicker dtpMstartDate;
     }
 }

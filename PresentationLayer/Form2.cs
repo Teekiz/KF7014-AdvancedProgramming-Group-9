@@ -26,6 +26,7 @@ namespace PresentationLayer
         string systemRec { get; set; }
         string orderNotes { get; set; }
         string custOrderNotes { get; set; }
+        DateTime startDate { get; set; }
         void orderItemListView(List<String> orderItems);
         bool acceptOrderRadioButton();
         void register(ManagerPresenter psr);
@@ -114,6 +115,12 @@ namespace PresentationLayer
         {
             get { return OFMcnF.Text; }
             set { OFMcnF.Text = value; }
+        }
+
+        public DateTime startDate
+        {
+            get { return dtpMstartDate.Value; }
+            set { dtpMstartDate.Value = value; }
         }
 
         public bool acceptOrderRadioButton()
