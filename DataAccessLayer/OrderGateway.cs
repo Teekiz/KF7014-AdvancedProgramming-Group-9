@@ -11,6 +11,7 @@ namespace DataAccessLayer
         bool SaveOrder(Order order);
         bool UpdateOrder(Order order);
         List<Order> GetAllOrders();
+        Order GetConflictingOrder(DateTime startRange, DateTime endRange);
         Order GetOrder(int id);
         bool DeleteOrder(int order);
         bool DeleteAllOrders();
@@ -53,6 +54,22 @@ namespace DataAccessLayer
             }
 
             catch { return new Order(); }
+        }
+
+        public Order GetConflictingOrder(DateTime startDate, DateTime endDate)
+        {
+            try
+            {
+                //based on code from https://docs.microsoft.com/en-us/ef/core/querying/
+                using (var context = new DatabaseEntities())
+                {
+                    //based on the logic for manager model.
+                    var OrderQuery = context.Orders.Where(o => (startDate >= o.scheduledStartDate) && (startDate <= o.confirmedDeadline)
+                    || (endDate >= o.scheduledStartDate) && (endDate >= o.confirmedDeadline)).SingleOrDefault(); //&& o.progressCompleted < 100  && o.progressCompleted < 100
+                    return OrderQuery;
+                }
+            }
+            catch { return null; }
         }
 
         public bool UpdateOrder(Order order)

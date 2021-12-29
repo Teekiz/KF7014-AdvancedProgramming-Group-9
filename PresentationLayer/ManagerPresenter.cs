@@ -90,15 +90,18 @@ namespace PresentationLayer
         {
             double price = Double.Parse(screen.price);
             int hours = Int32.Parse(screen.timeHours);
-            if (model.PriceHoursCheck(price, hours, orderItems) == true && model.CheckIfDeadlineIsFeasible(hours, screen.startDate,screen.deadline) == true && model.CheckSchedule(screen.startDate, screen.deadline) == true)
+            if (model.PriceHoursCheck(price, hours, orderItems) == true && model.CheckIfDeadlineIsFeasible(hours, screen.startDate,screen.deadline) == true)
             {
-                enquiry.price = price;
-                enquiry.hoursToComplete = hours;
-                model.UpdateEnquiry(enquiry);
+                if ((model.CheckSchedule(screen.startDate, screen.deadline) == true) || (model.CheckSchedule(screen.startDate, screen.deadline) == false) && (model.canOrderBeMoved(order, customer) is null))
+                {
+                    enquiry.price = price;
+                    enquiry.hoursToComplete = hours;
+                    model.UpdateEnquiry(enquiry);
 
-                order.scheduledStartDate = screen.startDate;
-                order.confirmedDeadline = screen.deadline;
-                model.SaveOrder(order, enquiry);
+                    order.scheduledStartDate = screen.startDate;
+                    order.confirmedDeadline = screen.deadline;
+                    model.SaveOrder(order, enquiry);
+                }
             }
         }
     }
