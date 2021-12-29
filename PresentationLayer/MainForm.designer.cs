@@ -31,19 +31,18 @@ namespace PresentationLayer
         {
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.MFb1 = new System.Windows.Forms.Button();
+            this.MFb2 = new System.Windows.Forms.Button();
+            this.MFb3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(0, 164);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Location = new System.Drawing.Point(0, 133);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1600, 802);
+            this.pictureBox1.Size = new System.Drawing.Size(1200, 652);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -52,57 +51,55 @@ namespace PresentationLayer
             // 
             this.pictureBox2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.pictureBox2.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(248, 165);
+            this.pictureBox2.Size = new System.Drawing.Size(186, 134);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
             // 
-            // button1
+            // MFb1
             // 
-            this.button1.Location = new System.Drawing.Point(384, 30);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(209, 94);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.MFb1.Location = new System.Drawing.Point(288, 24);
+            this.MFb1.Name = "MFb1";
+            this.MFb1.Size = new System.Drawing.Size(157, 76);
+            this.MFb1.TabIndex = 2;
+            this.MFb1.Text = "Order";
+            this.MFb1.UseVisualStyleBackColor = true;
+            this.MFb1.Click += new System.EventHandler(this.MFb1_Click);
             // 
-            // button2
+            // MFb2
             // 
-            this.button2.Location = new System.Drawing.Point(804, 30);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(217, 94);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.MFb2.Location = new System.Drawing.Point(603, 24);
+            this.MFb2.Name = "MFb2";
+            this.MFb2.Size = new System.Drawing.Size(163, 76);
+            this.MFb2.TabIndex = 3;
+            this.MFb2.Text = "Manager";
+            this.MFb2.UseVisualStyleBackColor = true;
+            this.MFb2.Click += new System.EventHandler(this.MFb2_Click);
             // 
-            // button3
+            // MFb3
             // 
-            this.button3.Location = new System.Drawing.Point(1237, 30);
-            this.button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(228, 94);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
+            this.MFb3.Location = new System.Drawing.Point(928, 24);
+            this.MFb3.Name = "MFb3";
+            this.MFb3.Size = new System.Drawing.Size(171, 76);
+            this.MFb3.TabIndex = 4;
+            this.MFb3.Text = "button3";
+            this.MFb3.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(1597, 961);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(1198, 781);
+            this.Controls.Add(this.MFb3);
+            this.Controls.Add(this.MFb2);
+            this.Controls.Add(this.MFb1);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "MainForm";
             this.Text = "Home Page";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
@@ -113,8 +110,8 @@ namespace PresentationLayer
 
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button MFb1;
+        private System.Windows.Forms.Button MFb2;
+        private System.Windows.Forms.Button MFb3;
     }
 }
