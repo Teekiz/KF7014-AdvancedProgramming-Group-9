@@ -20,11 +20,16 @@ namespace PresentationLayer
             screen.register(this);
         }
 
+        public void missingInfo(string missingVariable)
+        {
+            System.Windows.Forms.MessageBox.Show("Please ensure the " + missingVariable + " field is filled in correctly");
+        }
+
         public void saveEnquiry()
         {
             Customer c = enqiryModel.GetCustomer();
-            c.name = screen.name;
-            c.addressline1 = screen.addressline1;
+            if (screen.name == "I") { c.name = screen.name; } else { missingInfo("name"); }
+            if (screen.addressline1 == "") { c.addressline1 = screen.addressline1; } else { missingInfo("address"); }
             c.county = screen.county;
             c.country = screen.country;
             c.townCity = screen.townCity;
@@ -33,7 +38,8 @@ namespace PresentationLayer
             c.postcode = screen.postcode;
             c.phone = screen.phone;
             c.type = screen.getRadioButton();
-
+            
+           
             Enquiry e = enqiryModel.GetEnquiry();
             e.receivedDate = DateTime.Now;
             e.deadline = screen.deadline;
