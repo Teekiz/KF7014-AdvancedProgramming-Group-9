@@ -111,6 +111,7 @@ namespace DataAccessLayer
         [Key]
         public int orderID { get; set; }
         public DateTime scheduledStartDate { get; set; }
+        public DateTime confirmedDeadline { get; set; }
         public int progressCompleted { get; set; }
         public virtual Enquiry Enquiry { get; set; }
     }

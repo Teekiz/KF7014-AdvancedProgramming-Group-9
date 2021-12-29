@@ -97,6 +97,7 @@ namespace PresentationLayer
                 model.UpdateEnquiry(enquiry);
 
                 order.scheduledStartDate = screen.startDate;
+                order.confirmedDeadline = screen.deadline;
                 model.SaveOrder(order, enquiry);
             }
         }

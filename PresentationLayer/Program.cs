@@ -29,13 +29,15 @@ namespace PresentationLayer
             //OFCcountry screen = new OFCcountry();
             OrderManager screen = new OrderManager();
 
-                /*
+            /*
                 IEnquiryModel enq = new EnquiryModel(enquiryGateway, orderItemGateway, customerGateway);
                 EnquiryPresenter presentation = new EnquiryPresenter(screen, enq);
-                */
+            *
+
+            /*
                 IManagerModel manager = new ManagerModel(enquiryGateway, customerGateway, orderItemGateway, orderGateway);
                 ManagerPresenter presentation = new ManagerPresenter(screen, manager);
-
+            */
             Application.Run(screen);
         }
     }

@@ -58,14 +58,8 @@ namespace DomainLayer
                 orderCRUD.SaveOrder(order);
                 return true;
             }
-
-            catch
-            {
-                return false;
-            }
-
+            catch { return false; }
         }
-
         public List<Enquiry> GetEnquiries()
         {
             return enquiryCRUD.GetAllEnquiries();
@@ -97,7 +91,6 @@ namespace DomainLayer
         //UNTESTED
         public bool CheckSchedule(DateTime checkStartDate, Enquiry enquiry)
         {
-            //for (int i = 0; i < orderCRUD.GetAllOrders().Count(); i++)
             foreach (Order order in orderCRUD.GetAllOrders())
             {
                 DateTime orderStartDate = order.scheduledStartDate;
@@ -106,8 +99,7 @@ namespace DomainLayer
 
                 //look for all orders that are not completed and start before the deadline
                 if (orderStartDate < enquiry.deadline && percentComplete < 100)
-                {
-                    
+                {                    
                     //if the date to start falls between the start date of another order and the deadline then the space is taken. 
                     if (checkStartDate > orderStartDate && enquiry.deadline < orderDeadline)
                     {
@@ -116,6 +108,7 @@ namespace DomainLayer
                 }
             }
             return true;
+            
         }
 
         public void CalculateEstimatedTime(out int minTime, out int maxTime, out double minCost, out double maxCost, List<OrderItems> orderItems)

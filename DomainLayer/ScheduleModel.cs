@@ -8,5 +8,6 @@ namespace DomainLayer
 {
     public class ScheduleModel
     {
+
     }
 }

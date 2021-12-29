@@ -22,7 +22,7 @@ namespace PresentationLayer
         string custType { set; get; }
         string price { set; get; }
         string timeHours { set; get; }
-        DateTime deadline { set; }
+        DateTime deadline { set; get; }
         string systemRec { get; set; }
         string orderNotes { get; set; }
         string custOrderNotes { get; set; }
@@ -83,7 +83,6 @@ namespace PresentationLayer
             get { return txtCustomerType.Text; }
             set { txtCustomerType.Text = value; }
         }
-
         public string price
         {
             get { return txtPriceActual.Text; }
