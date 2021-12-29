@@ -10,27 +10,27 @@ using System.Windows.Forms;
 
 namespace PresentationLayer
 {
-    public partial class MainForm : Form
+    public partial class AccessPage : Form
     {
-        public MainForm()
+        public AccessPage()
         {
             InitializeComponent();
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
+        private void Form3_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void MFb1_Click(object sender, EventArgs e)
+        private void APbutton1_Click(object sender, EventArgs e)
         {
-            OFCcountry f2 = new OFCcountry();
+            Schedule f2 = new Schedule();
             f2.ShowDialog();
         }
 
-        private void MFb2_Click(object sender, EventArgs e)
+        private void APbutton2_Click(object sender, EventArgs e)
         {
-            AccessPage f2 = new AccessPage();
+            OrderManager f2 = new OrderManager();
             f2.ShowDialog();
         }
     }
