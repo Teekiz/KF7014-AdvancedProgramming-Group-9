@@ -88,7 +88,7 @@ namespace AdvancedProgrammingGroup9TestProject
             //checking to see if it rejects a blank customer
             Assert.AreEqual(false, CustomerCRUD.SaveCustomer(new Customer()));
             //Testing to see if it can handle if there is no data
-            
+
             //Testing to see if it can delete a customer that doesn't exist.
             Assert.AreEqual(false, CustomerCRUD.DeleteCustomer(1000));
 
@@ -112,11 +112,11 @@ namespace AdvancedProgrammingGroup9TestProject
             Assert.AreEqual(loadedCustomer.postcode, "NE1 1AD");
             Assert.AreEqual(loadedCustomer.townCity, "Newcastle");
             Assert.AreEqual(loadedCustomer.county, "Tyne and Wear");
-            Assert.AreEqual(loadedCustomer.country,"England");
+            Assert.AreEqual(loadedCustomer.country, "England");
             Assert.AreEqual(loadedCustomer.type, "Government");
 
             //this should be false unless there has been a large amount of data stored.
-            Assert.AreEqual(false, CustomerCRUD.DeleteCustomer(20000)); 
+            Assert.AreEqual(false, CustomerCRUD.DeleteCustomer(20000));
             Assert.AreEqual(true, CustomerCRUD.DeleteCustomer(loadedCustomer.customerID));
             Assert.AreEqual(true, CustomerCRUD.DeleteAllCustomers());
         }
@@ -195,7 +195,7 @@ namespace AdvancedProgrammingGroup9TestProject
 
             //Assert.AreEqual(true, EnquiryCRUD.SaveEnquiry(enquiry, customer));
             Assert.AreEqual(true, OrderItemCRUD.SaveOrderItems(orderItems, enquiry));
-            
+
             //checking to see if the returned enquiry is null if it can't get it.
             Assert.AreEqual(0, OrderItemCRUD.GetOrderItemsInEnquiry(1000).Count());
 
@@ -220,6 +220,11 @@ namespace AdvancedProgrammingGroup9TestProject
             Assert.AreEqual(true, EnquiryCRUD.DeleteAllEnquiries());
             Assert.AreEqual(true, CustomerCRUD.DeleteAllCustomers());
             Assert.AreEqual(true, OrderItemCRUD.DeleteAllOrderItems());
+        }
+        [TestMethod]
+        public void TestMethod4Orders()
+        {
+            Assert.AreEqual(true, CustomerCRUD.DeleteAllCustomers());
         }
     }
 }
