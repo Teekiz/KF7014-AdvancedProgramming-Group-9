@@ -40,6 +40,7 @@ namespace PresentationLayer
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Image = global::PresentationLayer.Properties.Resources.iron_helm_1;
             this.pictureBox1.Location = new System.Drawing.Point(0, 133);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(1200, 652);
@@ -50,6 +51,7 @@ namespace PresentationLayer
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.pictureBox2.Image = global::PresentationLayer.Properties.Resources.logo;
             this.pictureBox2.Location = new System.Drawing.Point(0, 0);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(186, 134);

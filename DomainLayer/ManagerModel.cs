@@ -23,9 +23,10 @@ namespace DomainLayer
         Customer GetCustomerInEnquiry(int customerID);
         void UpdateEnquiry(Enquiry enquiry);
         void CalculateEstimatedTime(out int minTime, out int maxTime, out double minCost, out double maxCost, List<OrderItems> orderItems);
-        bool CheckSchedule(DateTime checkStartDate, Enquiry enquiry);
+        bool CheckSchedule(DateTime checkStartDate, DateTime checkDeadline);
         bool PriceHoursCheck(Double price, int hours, List<OrderItems> orderItems);
         bool SaveOrder(Order order, Enquiry enquiry);
+        bool CheckIfDeadlineIsFeasible(int hours, DateTime startDate, DateTime deadline);
         Order GetOrder();
     }
 
@@ -89,26 +90,40 @@ namespace DomainLayer
 
         //This current version will be "dumb" - as in it it just checks an order against a time. -this can be changed later on.
         //UNTESTED
-        public bool CheckSchedule(DateTime checkStartDate, Enquiry enquiry)
+        public bool CheckSchedule(DateTime checkStartDate, DateTime checkDeadline)
         {
             foreach (Order order in orderCRUD.GetAllOrders())
             {
                 DateTime orderStartDate = order.scheduledStartDate;
                 int percentComplete = order.progressCompleted;
-                DateTime orderDeadline = enquiryCRUD.GetEnquiry(order.Enquiry.orderID).deadline;
+                DateTime orderDeadline = order.confirmedDeadline;
 
                 //look for all orders that are not completed and start before the deadline
-                if (orderStartDate < enquiry.deadline && percentComplete < 100)
-                {                    
+                if (orderStartDate < checkDeadline && percentComplete < 100)
+                {
+                    System.Windows.Forms.MessageBox.Show(orderStartDate.ToString());
+                    System.Windows.Forms.MessageBox.Show(orderDeadline.ToString());
                     //if the date to start falls between the start date of another order and the deadline then the space is taken. 
-                    if (checkStartDate > orderStartDate && enquiry.deadline < orderDeadline)
+                    if (checkStartDate > orderStartDate && checkDeadline < orderDeadline)
                     {
+                        System.Windows.Forms.MessageBox.Show("There is already an order during that time period.");
                         return false;
                     }
                 }
             }
-            return true;
-            
+            return true;  
+        }
+
+        //checks to see if the start date is before the deadline and the hours needed added by the contracts manger would place the calculated deadline after the actual deadline.
+        public bool CheckIfDeadlineIsFeasible(int hours, DateTime startDate, DateTime deadline)
+        {
+            //24 hours / 3 = 8.
+            DateTime timeNeeded = startDate.AddHours(hours * 3);
+            if (startDate > deadline) 
+            { System.Windows.Forms.MessageBox.Show("Deadline is before start date."); return false; }
+            else if (timeNeeded > deadline)
+            { System.Windows.Forms.MessageBox.Show("Hours needed is greater than the deadline."); return false; }
+            else { return true; }
         }
 
         public void CalculateEstimatedTime(out int minTime, out int maxTime, out double minCost, out double maxCost, List<OrderItems> orderItems)

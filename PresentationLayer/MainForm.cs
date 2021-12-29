@@ -7,13 +7,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DomainLayer;
+using DataAccessLayer;
 
 namespace PresentationLayer
 {
     public partial class MainForm : Form
     {
+        IEnquiryGateway enquiryGateway;
+        IOrderItemGateway orderItemGateway;
+        ICustomerGateway customerGateway;
+        IOrderGateway orderGateway;
+
         public MainForm()
         {
+            enquiryGateway = new EnquiryGateway();
+            orderItemGateway = new OrderItemGateway();
+            customerGateway = new CustomerGateway();
+            orderGateway = new OrderGateway();
+
             InitializeComponent();
         }
 
@@ -24,14 +36,18 @@ namespace PresentationLayer
 
         private void MFb1_Click(object sender, EventArgs e)
         {
-            OFCcountry f2 = new OFCcountry();
-            f2.ShowDialog();
+            OFCcountry screen = new OFCcountry();
+            IEnquiryModel enq = new EnquiryModel(enquiryGateway, orderItemGateway, customerGateway);
+            EnquiryPresenter presentation = new EnquiryPresenter(screen, enq);
+            screen.ShowDialog();
         }
 
         private void MFb2_Click(object sender, EventArgs e)
         {
-            AccessPage f2 = new AccessPage();
-            f2.ShowDialog();
+            OrderManager screen = new OrderManager();
+            IManagerModel manager = new ManagerModel(enquiryGateway, customerGateway, orderItemGateway, orderGateway);
+            ManagerPresenter presentation = new ManagerPresenter(screen, manager);
+            screen.ShowDialog();
         }
     }
 }

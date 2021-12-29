@@ -34,29 +34,27 @@ namespace PresentationLayer
             c.phone = screen.phone;
             c.type = screen.getRadioButton();
 
-
             Enquiry e = enqiryModel.GetEnquiry();
             e.receivedDate = DateTime.Now;
             e.deadline = screen.deadline;
             e.orderNotes = screen.orderNotes;
             List<OrderItems> oi = new List<OrderItems>();
 
-            int quan1 = Int32.Parse(screen.itemQuant1);
-            int quan2 = Int32.Parse(screen.itemQuant2);
-            int quan3 = Int32.Parse(screen.itemQuant3);
-
             if (screen.CerimonialSwordChecked() == true)
             {
+                int quan1 = Int32.Parse(screen.itemQuant1);
                 oi.Add(enqiryModel.createItem(screen.itemDesc1, quan1, null, OrderType.CeremonialSword));
             }
 
             if (screen.SwordChecked() == true)
             {
+                int quan2 = Int32.Parse(screen.itemQuant2);
                 oi.Add(enqiryModel.createItem(screen.itemDesc2, quan2, null, OrderType.Sword));
             }
 
             if (screen.ArmourChecked() == true)
             {
+                int quan3 = Int32.Parse(screen.itemQuant3);
                 oi.Add(enqiryModel.createItem(screen.itemQuant3, quan3, null, OrderType.Armour));
             }
 
