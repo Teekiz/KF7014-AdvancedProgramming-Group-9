@@ -22,9 +22,11 @@ namespace AdvancedProgrammingGroup9TestProject
         CustomerGateway CustomerCRUD = new CustomerGateway();
         EnquiryGateway EnquiryCRUD = new EnquiryGateway();
         OrderItemGateway OrderItemCRUD = new OrderItemGateway();
+        OrderGateway OrderCRUD = new OrderGateway();
 
         Customer customer;
         Enquiry enquiry;
+        Order order;
         DateTime now;
 
         OrderItems itemOne;
@@ -39,6 +41,7 @@ namespace AdvancedProgrammingGroup9TestProject
             Assert.AreEqual(true, EnquiryCRUD.DeleteAllEnquiries());
             Assert.AreEqual(true, CustomerCRUD.DeleteAllCustomers());
             Assert.AreEqual(true, OrderItemCRUD.DeleteAllOrderItems());
+            Assert.AreEqual(true, OrderCRUD.DeleteAllOrders());
 
             customer = new Customer();
             customer.name = "Person Personington";
