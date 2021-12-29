@@ -10,7 +10,7 @@ namespace PresentationLayer
 {
     
 
-    public class ManagerPresenter
+    public class SchedulePresenter
     {
         private IScheduleModel ScheduleModel;
         private IgetOrderDetails screen;
