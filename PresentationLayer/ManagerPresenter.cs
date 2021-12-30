@@ -102,9 +102,10 @@ namespace PresentationLayer
         {
             double price = Double.Parse(screen.price);
             int hours = Int32.Parse(screen.timeHours);
-            if (model.PriceHoursCheck(price, hours, orderItems) == true && model.CheckIfDeadlineIsFeasible(hours, screen.startDate,screen.deadline) == true)
+            if (model.PriceHoursCheck(price, hours, orderItems) == true && model.CheckIfDeadlineIsFeasible(hours, screen.startDate, screen.deadline) == true)
             {
-                if ((model.CheckSchedule(screen.startDate, screen.deadline) == true) || (model.CheckSchedule(screen.startDate, screen.deadline) == false) && (model.canOrderBeMoved(order, customer) is null))
+                //if the schedule is clear or if the it is not clear but the order conflicting it is able to be moved.
+                if (model.CheckSchedule(screen.startDate, screen.deadline) == true)
                 {
                     enquiry.price = price;
                     enquiry.hoursToComplete = hours;
@@ -114,6 +115,24 @@ namespace PresentationLayer
                     order.confirmedDeadline = screen.deadline;
                     model.SaveOrder(order, enquiry);
                 }
+
+                //if the check shedule is not clear but there is an order that can be moved
+                else if ((model.CheckSchedule(screen.startDate, screen.deadline) == false)
+                    && (model.canOrderBeMoved(order, customer).Count() == 1 || model.canOrderBeMoved(order, customer).Count() == 2))
+                {
+                    enquiry.price = price;
+                    enquiry.hoursToComplete = hours;
+                    model.UpdateEnquiry(enquiry);
+
+                }
+                else
+                { 
+                    // can't be moved
+                }
+            }
+            else
+            { 
+                //can't be salced
             }
         }
     }
