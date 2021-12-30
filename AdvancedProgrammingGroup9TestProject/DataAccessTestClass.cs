@@ -234,14 +234,20 @@ namespace AdvancedProgrammingGroup9TestProject
             Assert.AreEqual(true, OrderCRUD.DeleteOrder());
             Assert.AreEqual(true, OrderCRUD.DeleteAllOrders());
 
-            // the next 2 lines need further development
-            Assert.AreEqual(true, OrderCRUD.GetConflictingOrder());
-            Assert.AreEqual(true, OrderCRUD.GetOrder());
-      
+            // the next lines need further development
             Assert.AreEqual(true, OrderCRUD.GetAllOrders));
-            //checking to see if the returned enquiry is null if it can't get it.
             Assert.AreEqual(0, OrderItemCRUD.GetAllOrders(1000).Count());
             List<Order> loadedOrder = OrderCRUD.GetAllOrders(readEnquiry.orderID);
+
+            Assert.AreEqual(OrderCRUD.GetOrder(100), null);
+            Order loadedOrder = OrderCRUD.GetOrder(readOrder.orderID);
+
+            Assert.AreEqual(OrderCRUD.GetConflictingOrder(100), null);
+            Order readOrder = OrderCRUD.GetConflictingOrder()[0];
+
+
+            //checking to see if the returned enquiry is null if it can't get it.
+
         }
     }
 }
