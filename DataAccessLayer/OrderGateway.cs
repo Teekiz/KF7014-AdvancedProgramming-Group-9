@@ -63,6 +63,7 @@ namespace DataAccessLayer
                     //based on code from https://docs.microsoft.com/en-us/ef/core/querying/
                     var orderQuery = context.Orders.Where(o => o.orderID == order.orderID).SingleOrDefault();
                     orderQuery.scheduledStartDate = order.scheduledStartDate;
+                    orderQuery.confirmedDeadline = order.confirmedDeadline;
                     orderQuery.progressCompleted = order.progressCompleted;
                     context.SaveChanges();
                     return true;

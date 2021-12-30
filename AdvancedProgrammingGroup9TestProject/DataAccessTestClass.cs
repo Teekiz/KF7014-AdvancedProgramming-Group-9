@@ -82,6 +82,8 @@ namespace AdvancedProgrammingGroup9TestProject
             orderItems.Add(itemOne);
             orderItems.Add(itemTwo);
             orderItems.Add(itemThree);
+
+            order = new Order();
         }
 
         [TestMethod]
@@ -90,7 +92,6 @@ namespace AdvancedProgrammingGroup9TestProject
         {
             //checking to see if it rejects a blank customer
             Assert.AreEqual(false, CustomerCRUD.SaveCustomer(new Customer()));
-            //Testing to see if it can handle if there is no data
 
             //Testing to see if it can delete a customer that doesn't exist.
             Assert.AreEqual(false, CustomerCRUD.DeleteCustomer(1000));
@@ -103,7 +104,7 @@ namespace AdvancedProgrammingGroup9TestProject
              * therefore, I am using to test get all customers and get the correct customer.
             */
 
-            Assert.AreEqual(null, CustomerCRUD.GetCustomer(100));
+            Assert.AreEqual(null, CustomerCRUD.GetCustomer(1000));
             Customer readCustomer = CustomerCRUD.GetAllCustomers()[0];
 
             Customer loadedCustomer = CustomerCRUD.GetCustomer(readCustomer.customerID);
@@ -134,6 +135,7 @@ namespace AdvancedProgrammingGroup9TestProject
             Assert.AreEqual(false, EnquiryCRUD.DeleteEnquiry(1000));
 
             //checking if it can be saved
+            CustomerCRUD.SaveCustomer(customer);
             Assert.AreEqual(true, EnquiryCRUD.SaveEnquiry(enquiry, customer));
 
             //checking to see if the returned enquiry is null if it can't get it.
@@ -198,6 +200,8 @@ namespace AdvancedProgrammingGroup9TestProject
             Assert.AreEqual(false, OrderItemCRUD.DeleteOrderItemsInEnquiry(100000));
 
             //Assert.AreEqual(true, EnquiryCRUD.SaveEnquiry(enquiry, customer));
+            CustomerCRUD.SaveCustomer(customer);
+            EnquiryCRUD.SaveEnquiry(enquiry, customer);
             Assert.AreEqual(true, OrderItemCRUD.SaveOrderItems(orderItems, enquiry));
 
             //checking to see if the returned enquiry is null if it can't get it.
@@ -230,11 +234,15 @@ namespace AdvancedProgrammingGroup9TestProject
         {
             Assert.AreEqual(true, OrderCRUD.DeleteAllOrders());
 
-            DateTime start = DateTime.Now;
-            DateTime deadline = DateTime.Now.AddDays(1);
+            DateTime start = new DateTime(2021, 12, 21);
+            DateTime deadline = new DateTime(2021, 12, 25);
             order.scheduledStartDate = start;
             order.confirmedDeadline = deadline;
             order.Enquiry = enquiry;
+
+            //required to save orders
+            CustomerCRUD.SaveCustomer(customer);
+            EnquiryCRUD.SaveEnquiry(enquiry, customer);
 
             // the next 4 lines should be okay as they are boolean    
             Assert.AreEqual(true, OrderCRUD.SaveOrder(order));
@@ -243,12 +251,13 @@ namespace AdvancedProgrammingGroup9TestProject
             Assert.AreEqual(deadline, loadedOrder[0].confirmedDeadline);
 
             //checking to see if the order can be updated
-            DateTime updatedDeadline = DateTime.Now.AddDays(2);
-            loadedOrder[0].confirmedDeadline = updatedDeadline;
-            Assert.AreEqual(true, OrderCRUD.UpdateOrder(loadedOrder[0]));
+            DateTime updatedDeadline = new DateTime(2021, 12, 27); 
+            Order orderOrderToUpdate = loadedOrder[0];
+            orderOrderToUpdate.confirmedDeadline = updatedDeadline;
+            Assert.AreEqual(true, OrderCRUD.UpdateOrder(orderOrderToUpdate));
 
             //get the updated order
-            Order updatedOrder = OrderCRUD.GetOrder(loadedOrder[0].orderID);
+            Order updatedOrder = OrderCRUD.GetOrder(orderOrderToUpdate.orderID);
             Assert.AreEqual(updatedDeadline, updatedOrder.confirmedDeadline);
 
             //database should be empty after the delete

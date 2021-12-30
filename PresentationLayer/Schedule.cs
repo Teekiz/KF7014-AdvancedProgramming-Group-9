@@ -5,12 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using DomainLayer;
 using DataAccessLayer;
-/*
+
 namespace PresentationLayer
 
 {
-    
-    
+
+    /*
     public class SchedulePresenter
     {
         private IScheduleModel ScheduleModel;
@@ -115,6 +115,9 @@ namespace PresentationLayer
                  } 
             }
         }
+
+ 
     }
+
+       */
 }
-*/
