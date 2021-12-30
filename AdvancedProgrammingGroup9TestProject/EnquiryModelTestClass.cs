@@ -61,9 +61,9 @@ namespace AdvancedProgrammingGroup9TestProject
             Assert.AreEqual(14250, minCost);
             Assert.AreEqual(75000, maxCost);
 
+            //save enquiry
             Assert.AreEqual(true, model.SaveEnquiry(enquiry, customer, orderItemsList));
 
-            //save
             //get for customer
             //get for enquiry
         }

@@ -41,8 +41,9 @@ namespace PresentationLayer
 
         public Customer GetCustomer(Enquiry enquiry)
         {
-
-            if (model.GetCustomerInEnquiry(enquiry.orderID) == null)
+            if (enquiry is null)
+            { missingInfo2(); }
+            if ((model.GetCustomerInEnquiry(enquiry.orderID)) is null)
                 { missingInfo2(); }
             else if (model.GetCustomerInEnquiry(enquiry.orderID) != null)
                 { return model.GetCustomerInEnquiry(enquiry.orderID); }

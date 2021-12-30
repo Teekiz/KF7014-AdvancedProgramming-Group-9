@@ -9,8 +9,7 @@ using DataAccessLayer;
 namespace PresentationLayer
 
 {
-
-    /*
+   /*
     public class SchedulePresenter
     {
         private IScheduleModel ScheduleModel;
@@ -119,5 +118,5 @@ namespace PresentationLayer
  
     }
 
-       */
+    */
 }
