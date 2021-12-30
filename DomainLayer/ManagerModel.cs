@@ -8,30 +8,36 @@ using DataAccessLayer;
 namespace DomainLayer
 {
     /*
-     * This model is used to cover functional requirement #2
+     * This model is used to cover functional requirement #2 and 3
      * 
      * 2.Production estimates: The contracts manager will quickly assess the time needed to complete the order this will be in hours, 
      * and price the work accordingly. The system will then check to see if the work can be scheduled.
      * 
+     * 3.Create order: Enquiries can be progress an order status if the client accepts the estimated completion date as well as the price. 
+     * The order is then automatically placed into the Schedule.  
      */
 
     public interface IManagerModel
     {
+        //Data Required (Gets)
         List<OrderItems> GetItemsInEnquiry(int enquiryID);
         List<Enquiry> GetEnquiries();
         Enquiry GetEnquiry(int enquiryID);
         Customer GetCustomerInEnquiry(int customerID);
-        void UpdateEnquiry(Enquiry enquiry);
-        bool UpdateOrder(Order order);
+        Order GetOrder(int id);
         int GetEnquiryInOrder(Order order);
+        //Database Manipulation (Sets/Updates)
+        bool UpdateEnquiry(Enquiry enquiry);
+        bool UpdateOrder(Order order);
+        bool SaveOrder(Order order, Enquiry enquiry);
+        //Methods using the data.
         void CalculateEstimatedTime(out int minTime, out int maxTime, out double minCost, out double maxCost, List<OrderItems> orderItems);
         bool CheckSchedule(DateTime checkStartDate, DateTime checkDeadline);
         bool PriceHoursCheck(Double price, int hours, List<OrderItems> orderItems);
-        bool SaveOrder(Order order, Enquiry enquiry);
         bool CheckIfDeadlineIsFeasible(int hours, DateTime startDate, DateTime deadline);
         List<Order> canOrderBeMoved(Order replacementOrder, Customer customer);
         Order conflictingOrder(DateTime checkStartDate, DateTime checkDeadline);
-        Order GetOrder(int id);
+        
     }
 
     public class ManagerModel : IManagerModel
@@ -50,9 +56,10 @@ namespace DomainLayer
         }
 
         #region "Data Access Methods"
-        public void UpdateEnquiry(Enquiry enquiry)
+        public bool UpdateEnquiry(Enquiry enquiry)
         {
             enquiryCRUD.UpdateEnquiry(enquiry);
+            return true;
         }
 
         public bool UpdateOrder(Order order)

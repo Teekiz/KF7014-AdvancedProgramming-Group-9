@@ -20,11 +20,6 @@ namespace AdvancedProgrammingGroup9TestProject
             storedEnquiry.deadline = DateTime.Now.AddDays(20);
         }
 
-        public bool SaveEnquiryAll(Enquiry enquiry, List<OrderItems> orderItems, Customer customer)
-        {
-            return true;
-        }
-
         public bool DeleteAllEnquiries()
         {
             return true;
@@ -39,7 +34,6 @@ namespace AdvancedProgrammingGroup9TestProject
         {
             return 1;
         }
-
 
         public List<Enquiry> GetAllEnquiries()
         {

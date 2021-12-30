@@ -24,9 +24,7 @@ namespace DomainLayer
     {
         OrderItems createItem(string description, int quantity, byte[] referenceImage, OrderType orderType);
         bool SaveEnquiry(Enquiry enquiry, Customer customer, List<OrderItems> orderItems);
-        void CalculateEstimatedTime(out int minTime, out int maxTime, out double minCost, out double maxCost, List<OrderItems> orderItems);
-        Customer GetCustomer();
-        Enquiry GetEnquiry();
+        void CalculateEstimatedTime(out int minTime, out int maxTime, List<OrderItems> orderItems);
     }
 
     //Concrete Implementation
@@ -48,27 +46,17 @@ namespace DomainLayer
         {
             try
             {
-                customerCRUD.SaveCustomer(customer);
-                enquiryCRUD.SaveEnquiry(enquiry, customer);
-                orderItemsCRUD.SaveOrderItems(orderItems, enquiry);
+                if (enquiry is null || customer is null || orderItems is null) { return false; }
+                else 
+                {
+                    customerCRUD.SaveCustomer(customer);
+                    enquiryCRUD.SaveEnquiry(enquiry, customer);
+                    orderItemsCRUD.SaveOrderItems(orderItems, enquiry);
 
-                return true;
+                    return true;
+                }
             }
-            catch
-            {
-                return false;
-            }
-
-        }
-
-        public Customer GetCustomer()
-        {
-            return new Customer();
-        }
-
-        public Enquiry GetEnquiry()
-        {
-            return new Enquiry();
+            catch { return false; }
         }
 
         #region "OrderItems"
@@ -91,28 +79,30 @@ namespace DomainLayer
                 orderItems = ItemFactory.Singleton.GetItemTypes(OrderType.CeremonialSword);
             }
 
-            orderItems.description = description;
+            if (quantity < 0) { quantity = 0; }
+            orderItems.description = description; 
             orderItems.quantity = quantity;
             orderItems.referenceImage = referenceImage;
             return orderItems;
         }
 
-        public void CalculateEstimatedTime(out int minTime, out int maxTime, out double minCost, out double maxCost, List<OrderItems> orderItems)
+        public void CalculateEstimatedTime(out int minTime, out int maxTime, List<OrderItems> orderItems)
         {
-            minTime = 0;
-            maxTime = 0;
-            minCost = 0;
-            maxCost = 0;
-
-            for (int i = 0; i < orderItems.Count(); i++)
+            try
             {
-                orderItems[i].getItemTime(out int minCalcTime, out int maxCalcTime);
-                orderItems[i].getItemCost(out double minCalcCost, out double maxCalcCost);
-                minTime += minCalcTime;
-                maxTime += maxCalcTime;
-                minCost += minCalcCost;
-                maxCost += maxCalcCost;
+                minTime = 0;
+                maxTime = 0;
+
+                for (int i = 0; i < orderItems.Count(); i++)
+                {
+                    orderItems[i].getItemTime(out int minCalcTime, out int maxCalcTime);
+                    orderItems[i].getItemCost(out double minCalcCost, out double maxCalcCost);
+                    minTime += minCalcTime;
+                    maxTime += maxCalcTime;
+                }
             }
+            catch { minTime = 0; maxTime = 0; }
+            
         }
         #endregion
     }

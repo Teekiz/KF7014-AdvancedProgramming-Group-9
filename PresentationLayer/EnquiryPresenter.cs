@@ -12,6 +12,8 @@ namespace PresentationLayer
     {
         private IEnquiryModel enqiryModel;
         private IOrderCust screen;
+        Customer c;
+        Enquiry e;
 
         public EnquiryPresenter(IOrderCust screen, IEnquiryModel enqiryModel)
         {
@@ -28,7 +30,7 @@ namespace PresentationLayer
         //Checks if required forms are blank. If so, notify user. If not, create query.
         public void saveEnquiry()
         {
-            Customer c = enqiryModel.GetCustomer();
+            c = new Customer();
             if (screen.name == "")
             { missingInfo("name"); }
             else if (screen.addressline1 == "")
@@ -81,14 +83,12 @@ namespace PresentationLayer
                 c.addressline2 = screen.addressline2;
                 c.type = screen.getRadioButton();
 
-
-                Enquiry e = enqiryModel.GetEnquiry();
+                e = new Enquiry();
                 e.receivedDate = DateTime.Now;
                 e.deadline = screen.deadline;
                 e.orderNotes = screen.orderNotes;
                 List<OrderItems> oi = new List<OrderItems>();
 
-                
                 if (screen.CerimonialSwordChecked() == true)
                 {
                     int quan1 = Int32.Parse(screen.itemQuant1);
