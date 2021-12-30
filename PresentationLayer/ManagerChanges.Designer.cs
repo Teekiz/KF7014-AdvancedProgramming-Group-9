@@ -1,7 +1,7 @@
 ﻿
 namespace PresentationLayer
 {
-    partial class Form4
+    partial class ManagerChanges
     {
         /// <summary>
         /// Required designer variable.

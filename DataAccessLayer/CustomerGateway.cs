@@ -20,6 +20,9 @@ namespace DataAccessLayer
         bool DeleteAllCustomers();
     }
 
+    //1) Some of this code is based on https://docs.microsoft.com/en-us/ef/core/querying/ for the get methods
+    //I've put this in the methods relevent
+
     public class CustomerGateway : ICustomerGateway
     {
         public bool SaveCustomer(Customer customer)

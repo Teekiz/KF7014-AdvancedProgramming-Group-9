@@ -22,13 +22,16 @@ namespace DomainLayer
         Enquiry GetEnquiry(int enquiryID);
         Customer GetCustomerInEnquiry(int customerID);
         void UpdateEnquiry(Enquiry enquiry);
+        bool UpdateOrder(Order order);
+        int GetEnquiryInOrder(Order order);
         void CalculateEstimatedTime(out int minTime, out int maxTime, out double minCost, out double maxCost, List<OrderItems> orderItems);
         bool CheckSchedule(DateTime checkStartDate, DateTime checkDeadline);
         bool PriceHoursCheck(Double price, int hours, List<OrderItems> orderItems);
         bool SaveOrder(Order order, Enquiry enquiry);
         bool CheckIfDeadlineIsFeasible(int hours, DateTime startDate, DateTime deadline);
         List<Order> canOrderBeMoved(Order replacementOrder, Customer customer);
-        Order GetOrder();
+        Order conflictingOrder(DateTime checkStartDate, DateTime checkDeadline);
+        Order GetOrder(int id);
     }
 
     public class ManagerModel : IManagerModel
@@ -92,9 +95,16 @@ namespace DomainLayer
             catch { return new Customer(); }
         }
 
-        public Order GetOrder()
+        public int GetEnquiryInOrder(Order order)
         {
-            return new Order();
+            try { return orderCRUD.FindEnquiryIDinOrder(order); }
+            catch { return 0; }
+        }
+
+        public Order GetOrder(int id)
+        {
+            try { return orderCRUD.GetOrder(id); }
+            catch { return null; };
         }
         #endregion
 
@@ -118,6 +128,7 @@ namespace DomainLayer
                 if (orderStartDate < checkDeadline && percentComplete < 100)
                 {    
                     int days = (checkDeadline - checkStartDate).Days;
+
                     while (days > 0)
                     {     
                         //check to see if a date lands between the order start date and the deadline
@@ -125,7 +136,7 @@ namespace DomainLayer
                         else { dateWithin = dateWithin.AddHours(24.0); days--;}
                     }
                 }
-            }
+            }          
             return null;
         }
 
@@ -137,33 +148,43 @@ namespace DomainLayer
             DateTime startDate = replacementOrder.scheduledStartDate;
             DateTime deadline = replacementOrder.confirmedDeadline;
             string customerType = customer.type;
-
             //collectors are the lowest priority (the order looking to replace)
-            if (customerType.Equals("Collector")) { return null; }
+            if (customerType.Equals("Collector")) { return orderlist; }
+            //to be sure that the conflicting order is not null
+            Order orderToBeReplaced =  conflictingOrder(startDate, deadline);
+            int orderToBeReplacedID = orderCRUD.FindEnquiryIDinOrder(orderToBeReplaced);
 
-            Order orderToBeReplaced = conflictingOrder(startDate, deadline);
-            Enquiry customerEnquiry = enquiryCRUD.GetEnquiry(orderToBeReplaced.Enquiry.orderID);
-            DateTime newStartDate = orderToBeReplaced.confirmedDeadline.AddHours(-customerEnquiry.hoursToComplete);
-            //collectors are the lowest priority (the order to be replaced)
-            //based on "it appears as scheduled work but is should always be removed to make way for any orders" - count should be 1
-            if (customerEnquiry.Customer.type.Equals("Collector")) { orderlist.Add(orderToBeReplaced); return orderlist; }
-            //if it is possible to move the start date without moving the deadline (this doesn't account for the other order).
-            else if (CheckIfDeadlineIsFeasible(customerEnquiry.hoursToComplete, newStartDate,
-                orderToBeReplaced.confirmedDeadline) == true)
+            if (orderToBeReplaced is null) { return orderlist; }
+            else 
             {
-                //assume a check has been performed so that the deadline and start date are feasible.
-                if (deadline < newStartDate)
+                Enquiry customerEnquiry = enquiryCRUD.GetEnquiry(orderToBeReplacedID);
+                DateTime newStartDate = orderToBeReplaced.confirmedDeadline.AddHours(-customerEnquiry.hoursToComplete * 3);
+                //collectors are the lowest priority (the order to be replaced)
+                //based on "it appears as scheduled work but is should always be removed to make way for any orders" - count should be 1
+                int customerID = enquiryCRUD.FindCustomerIDinEnquiry(customerEnquiry);
+                if (customerCRUD.GetCustomer(customerID).type.Equals("Collector")) { orderlist.Add(orderToBeReplaced); orderlist.Add(replacementOrder); return orderlist; }
+                //if it is possible to move the start date without moving the deadline (this doesn't account for the other order).
+                else if (CheckIfDeadlineIsFeasible(customerEnquiry.hoursToComplete, newStartDate,
+                    orderToBeReplaced.confirmedDeadline) == true)
                 {
-                    orderToBeReplaced.scheduledStartDate = newStartDate;
-                    //the orderToBeReplaced is always 0
-                    //count should be 2
-                    orderlist.Add(orderToBeReplaced);
-                    orderlist.Add(replacementOrder);
-                    return orderlist;
-                } 
+                    //assume a check has been performed so that the deadline and start date are feasible.
+                    if (deadline < newStartDate)
+                    {
+
+                        System.Windows.Forms.MessageBox.Show(deadline.ToString());
+                        System.Windows.Forms.MessageBox.Show(newStartDate.ToString());
+
+                        orderToBeReplaced.scheduledStartDate = newStartDate;
+                        //the orderToBeReplaced is always 0
+                        //count should be 2
+                        orderlist.Add(orderToBeReplaced);
+                        orderlist.Add(replacementOrder);
+                        return orderlist;
+                    }
+                }
+                //count should be 0
+                return orderlist;
             }
-            //count should be 0
-             return orderlist;
         }
 
         //checks to see if the start date is before the deadline and the hours needed added by the contracts manger would place the calculated deadline after the actual deadline.

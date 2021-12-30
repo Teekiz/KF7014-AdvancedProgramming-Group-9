@@ -16,7 +16,6 @@ namespace PresentationLayer
     {
         private IManagerModel model;
         private IOrderManager screen;
-        private IOrderManagerChanges screen2;
         Enquiry enquiry;
         Customer customer;
         List<OrderItems> orderItems;
@@ -28,15 +27,6 @@ namespace PresentationLayer
             this.model = model;
             screen.register(this);
         }
-
-        public ManagerPresenter2(IOrderManagerChanges screen2, IManagerModel model)
-        {
-            this.screen2 = screen2;
-            this.model = model;
-            screen2.register(this);
-        }
-
-
 
         public Enquiry GetEnquiry(int EnquiryID)
         {
@@ -71,7 +61,7 @@ namespace PresentationLayer
             enquiry = GetEnquiry(enquId);
             customer = GetCustomer(enquiry);
             orderItems = GetOrderItems(enquiry);
-            order = model.GetOrder();
+            order = new Order();
             UpdateFormView(enquiry, customer, orderItems);
         }
 
@@ -112,38 +102,51 @@ namespace PresentationLayer
         {
             double price = Double.Parse(screen.price);
             int hours = Int32.Parse(screen.timeHours);
+            order.scheduledStartDate = screen.startDate;
+            order.confirmedDeadline = screen.deadline;
+
+            //as long as the price and hours is reasonable and if the deadline is feasible
             if (model.PriceHoursCheck(price, hours, orderItems) == true && model.CheckIfDeadlineIsFeasible(hours, screen.startDate, screen.deadline) == true)
             {
+                //to update the enquiry, also means that it doesn't need to run more than once
+                List<Order> canBeMovedOrders = model.canOrderBeMoved(order, customer);
                 //if the schedule is clear or if the it is not clear but the order conflicting it is able to be moved.
                 if (model.CheckSchedule(screen.startDate, screen.deadline) == true)
                 {
                     enquiry.price = price;
                     enquiry.hoursToComplete = hours;
                     model.UpdateEnquiry(enquiry);
-
-                    order.scheduledStartDate = screen.startDate;
-                    order.confirmedDeadline = screen.deadline;
                     model.SaveOrder(order, enquiry);
                 }
 
                 //if the check shedule is not clear but there is an order that can be moved
-                else if ((model.CheckSchedule(screen.startDate, screen.deadline) == false)
-                    && (model.canOrderBeMoved(order, customer).Count() == 1 || model.canOrderBeMoved(order, customer).Count() == 2))
+                else if (canBeMovedOrders.Count() == 2)
                 {
                     enquiry.price = price;
                     enquiry.hoursToComplete = hours;
                     model.UpdateEnquiry(enquiry);
+                    showUpdateForm(hours, canBeMovedOrders, enquiry);
 
                 }
                 else
-                { 
+                {
                     // can't be moved
+                    System.Windows.Forms.MessageBox.Show("Can't be moved");
                 }
             }
-            else
-            { 
-                //can't be salced
-            }
+        }
+
+        public void showUpdateForm(int hours, List<Order> ordersToChange, Enquiry enquiryToUse)
+        {
+            EnquiryGateway enquiryGateway = new EnquiryGateway();
+            OrderItemGateway orderItemGateway = new OrderItemGateway();
+            CustomerGateway customerGateway = new CustomerGateway();
+            OrderGateway orderGateway = new OrderGateway();
+
+            ManagerChanges newscreen = new ManagerChanges();
+            IManagerModel model = new ManagerModel(enquiryGateway, customerGateway, orderItemGateway, orderGateway);
+            ManagerChangesPresenter presentation = new ManagerChangesPresenter(newscreen, model, hours, ordersToChange, enquiryToUse);
+            newscreen.ShowDialog();
         }
     }
 }

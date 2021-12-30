@@ -13,15 +13,19 @@ namespace PresentationLayer
     public interface IOrderManagerChanges
     {
         string conflictOrderNumber { set; get; }
-        DateTime conclifctDeadline { set; get; }
+        DateTime conflictDeadline { set; get; }
         DateTime conflictStartDate { get; set; }
         string existingOrderNumber { set; get; }
         DateTime existingDeadline { set; get; }
         DateTime existingStartDate { get; set; }
+        void closeScreen();
+        void register(ManagerChangesPresenter psr);
     }
-    public partial class Form4 : Form
+    public partial class ManagerChanges : Form, IOrderManagerChanges
     {
-        public Form4()
+        ManagerChangesPresenter presenter;
+
+        public ManagerChanges()
         {
             InitializeComponent();
         }
@@ -61,26 +65,6 @@ namespace PresentationLayer
             get { return EorderID.Text; }
             set { EorderID.Text = value; }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         private void Form4_Load(object sender, EventArgs e)
         {
 
@@ -111,19 +95,23 @@ namespace PresentationLayer
 
         }
 
-        public void register(ManagerPresenter psr)
+        public void closeScreen()
         {
-            presenter2 = psr;
+            this.Close();
+        }
+        public void register(ManagerChangesPresenter psr)
+        {
+            presenter = psr;
         }
 
         private void txtOMOrderNumber_Leave(object sender, EventArgs e)
         {
-            presenter2.EnquiryUpdate();
+            presenter.saveChanges();
         }
 
         private void pushChanges_Click(object sender, EventArgs e)
         {
-            presenter2.SaveUpdateEnquiry();
+            presenter.saveChanges();
         }
     }
 }

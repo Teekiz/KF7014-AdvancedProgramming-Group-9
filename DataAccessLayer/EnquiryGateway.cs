@@ -16,14 +16,22 @@ namespace DataAccessLayer
         bool UpdateEnquiry(Enquiry enquiry);
         //this is in response to the data being duplicated.
         bool SaveEnquiryAll(Enquiry enquiry, List<OrderItems> orderItems, Customer customer);
+        int FindCustomerIDinEnquiry(Enquiry enquiry);
     }
     public class EnquiryGateway : IEnquiryGateway
     {
 
-        //For this method I used the answer by the user Slauma (2013)
+        //1) For this method I used the answer by the user Slauma (2013)
         //https://stackoverflow.com/questions/20710178/entity-framework-creates-new-duplicate-entries-for-associated-objects
         //using it for context.Customers.Attach(enquiry.Customer); to fix duplication issues
 
+        //2) I used the website entityframeworktutorial to understand eager loading
+        //https://www.entityframeworktutorial.net/eager-loading-in-entity-framework.aspx
+        //this was to find the enquiry id in orders, due to the lateness in the project, this is only used in this method
+        //however, I would've used this method more often.
+
+
+        //Method 1) reference
         public bool SaveEnquiry(Enquiry enquiry, Customer customer)
         {
             try
@@ -64,6 +72,22 @@ namespace DataAccessLayer
                 }
             }
             catch { return false; }
+        }
+
+        //Method for 2) reference
+        public int FindCustomerIDinEnquiry(Enquiry enquiry)
+        {
+            try
+            {
+                //based on code from https://docs.microsoft.com/en-us/ef/core/querying/
+                using (var context = new DatabaseEntities())
+                {
+                    var enquiryQuery = context.Enquiries.Include("Customer").Where(e => e.orderID == enquiry.orderID).SingleOrDefault();
+                    return enquiryQuery.Customer.customerID;
+                }
+            }
+            catch
+            { return 0; }
         }
 
         public Enquiry GetEnquiry(int id)

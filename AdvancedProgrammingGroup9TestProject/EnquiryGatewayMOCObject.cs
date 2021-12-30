@@ -35,6 +35,12 @@ namespace AdvancedProgrammingGroup9TestProject
             return true;
         }
 
+        public int FindCustomerIDinEnquiry(Enquiry enquiry)
+        {
+            return 1;
+        }
+
+
         public List<Enquiry> GetAllEnquiries()
         {
             List<Enquiry> enqlist = new List<Enquiry>();

@@ -10,6 +10,7 @@ namespace DataAccessLayer
     {
         bool SaveOrder(Order order);
         bool UpdateOrder(Order order);
+        int FindEnquiryIDinOrder(Order order);
         List<Order> GetAllOrders();
         Order GetOrder(int id);
         bool DeleteOrder(int order);
@@ -20,11 +21,18 @@ namespace DataAccessLayer
     //https://stackoverflow.com/questions/20710178/entity-framework-creates-new-duplicate-entries-for-associated-objects
     //using it for context.Enquiries.Attach(order.Enquiry); to fix duplication issues
 
+    //2) I used the website entityframeworktutorial to understand eager loading
+    //https://www.entityframeworktutorial.net/eager-loading-in-entity-framework.aspx
+    //this was to find the enquiry id in orders, due to the lateness in the project, this is only used in this method
+    //however, I would've used this method more often.
+
+    //3) Some of this code is based on https://docs.microsoft.com/en-us/ef/core/querying/ for the get methods
+    //I've put this in the methods relevent
+
     public class OrderGateway : IOrderGateway
     {
 
         //Method for 1) reference
-
         public bool SaveOrder(Order order)
         {
             try
@@ -85,6 +93,22 @@ namespace DataAccessLayer
             }
             catch
             { return new List<Order>(); }
+        }
+
+        //Method for 2) reference
+        public int FindEnquiryIDinOrder(Order order)
+        {
+            try
+            {
+                //based on code from https://docs.microsoft.com/en-us/ef/core/querying/
+                using (var context = new DatabaseEntities())
+                {
+                    var OrderQuery = context.Orders.Include("Enquiry").Where(o => o.orderID == order.orderID).SingleOrDefault();
+                    return OrderQuery.Enquiry.orderID;
+                }
+            }
+            catch
+            { return 0; }
         }
 
         public bool DeleteOrder(int order)
