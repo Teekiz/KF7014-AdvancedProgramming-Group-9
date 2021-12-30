@@ -228,26 +228,33 @@ namespace AdvancedProgrammingGroup9TestProject
         [TestMethod]
         public void TestMethod4Orders()
         {
-            // the next 4 lines should be okay as they are boolean    
-            Assert.AreEqual(true, OrderCRUD.SaveOrder());
-            Assert.AreEqual(true, OrderCRUD.UpdateOrder());
-            Assert.AreEqual(true, OrderCRUD.DeleteOrder());
             Assert.AreEqual(true, OrderCRUD.DeleteAllOrders());
 
-            // the next lines need further development
-            Assert.AreEqual(true, OrderCRUD.GetAllOrders));
-            Assert.AreEqual(0, OrderItemCRUD.GetAllOrders(1000).Count());
-            List<Order> loadedOrder = OrderCRUD.GetAllOrders(readEnquiry.orderID);
+            DateTime start = DateTime.Now;
+            DateTime deadline = DateTime.Now.AddDays(1);
+            order.scheduledStartDate = start;
+            order.confirmedDeadline = deadline;
+            order.Enquiry = enquiry;
 
-            Assert.AreEqual(OrderCRUD.GetOrder(100), null);
-            Order loadedOrder = OrderCRUD.GetOrder(readOrder.orderID);
+            // the next 4 lines should be okay as they are boolean    
+            Assert.AreEqual(true, OrderCRUD.SaveOrder(order));
+            List<Order> loadedOrder = OrderCRUD.GetAllOrders();
+            Assert.AreEqual(start, loadedOrder[0].scheduledStartDate);
+            Assert.AreEqual(deadline, loadedOrder[0].confirmedDeadline);
 
-            Assert.AreEqual(OrderCRUD.GetConflictingOrder(100), null);
-            Order readOrder = OrderCRUD.GetConflictingOrder()[0];
+            //checking to see if the order can be updated
+            DateTime updatedDeadline = DateTime.Now.AddDays(2);
+            loadedOrder[0].confirmedDeadline = updatedDeadline;
+            Assert.AreEqual(true, OrderCRUD.UpdateOrder(loadedOrder[0]));
 
+            //get the updated order
+            Order updatedOrder = OrderCRUD.GetOrder(loadedOrder[0].orderID);
+            Assert.AreEqual(updatedDeadline, updatedOrder.confirmedDeadline);
 
-            //checking to see if the returned enquiry is null if it can't get it.
-
+            //database should be empty after the delete
+            Assert.AreEqual(true, OrderCRUD.DeleteOrder(updatedOrder.orderID));
+            Assert.AreEqual(0, OrderCRUD.GetAllOrders().Count());
+            
         }
     }
 }
