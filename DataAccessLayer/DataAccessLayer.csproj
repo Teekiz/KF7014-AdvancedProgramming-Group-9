@@ -81,6 +81,7 @@
     <Compile Include="DatabaseQueries.cs" />
     <Compile Include="CustomerGateway.cs" />
     <Compile Include="EnquiryGateway.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="OrderGateway.cs" />
     <Compile Include="OrderItemGateway.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
