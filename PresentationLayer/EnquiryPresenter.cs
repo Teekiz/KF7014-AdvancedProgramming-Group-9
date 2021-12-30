@@ -45,8 +45,32 @@ namespace PresentationLayer
             { missingInfo("phone"); }
             else if (screen.termsChecked() != true)
             { missingInfo("terms and conditions"); }
-            else if ((screen.name != "") && (screen.addressline1 != "") && (screen.county != "") && (screen.country != "") && (screen.townCity != "") && (screen.postcode != "") && (screen.phone != "") && (screen.termsChecked() == true))
+            else if (screen.getRadioButton() == null)
+            { missingInfo("customer type"); }
+            else if ((screen.CerimonialSwordChecked() == false) && (screen.SwordChecked() == false) && (screen.ArmourChecked() == false))
             {
+                System.Windows.Forms.MessageBox.Show("You must select an item to purchase");
+            }
+            else if ((screen.itemQuant1 == "") && (screen.itemQuant2 == "") && (screen.itemQuant3 == ""))
+            { 
+                System.Windows.Forms.MessageBox.Show("You must enter the quantity of the item"); 
+            }
+            else if ((screen.CerimonialSwordChecked() == true) && (screen.itemQuant1 ==""))
+            {
+                System.Windows.Forms.MessageBox.Show("You must enter the quantity of the item");
+            }
+            else if ((screen.SwordChecked() == true) && (screen.itemQuant2 == ""))
+            {
+                System.Windows.Forms.MessageBox.Show("You must enter the quantity of the item");
+            }
+            else if ((screen.ArmourChecked() == true) && (screen.itemQuant3 == ""))
+            {
+                System.Windows.Forms.MessageBox.Show("You must enter the quantity of the item");
+            }
+            
+            else if ((screen.name != "") && (screen.addressline1 != "") && (screen.county != "") && (screen.country != "") && (screen.townCity != "") && (screen.postcode != "") && (screen.phone != "") && (screen.termsChecked() == true) && (screen.getRadioButton() != null))
+            {
+                c.name = screen.name;
                 c.addressline1 = screen.addressline1;
                 c.county = screen.county;
                 c.country = screen.country;
@@ -64,6 +88,7 @@ namespace PresentationLayer
                 e.orderNotes = screen.orderNotes;
                 List<OrderItems> oi = new List<OrderItems>();
 
+                
                 if (screen.CerimonialSwordChecked() == true)
                 {
                     int quan1 = Int32.Parse(screen.itemQuant1);
@@ -81,7 +106,7 @@ namespace PresentationLayer
                     int quan3 = Int32.Parse(screen.itemQuant3);
                     oi.Add(enqiryModel.createItem(screen.itemQuant3, quan3, null, OrderType.Armour));
                 }
-
+            
                 enqiryModel.SaveEnquiry(e, c, oi);
 
                 System.Windows.Forms.MessageBox.Show("Request Proccessed Successfully");

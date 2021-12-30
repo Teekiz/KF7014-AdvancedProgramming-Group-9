@@ -167,10 +167,11 @@ namespace PresentationLayer
             {
                 return OFCct2.Text;
             }
-            else
+            else if (OFCct3.Checked)
             { 
                 return OFCct3.Text;
                 }
+            return null;
             }
 
         public bool CerimonialSwordChecked()

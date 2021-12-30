@@ -105,27 +105,27 @@ namespace PresentationLayer
             this.OFCname.AutoSize = true;
             this.OFCname.Location = new System.Drawing.Point(28, 48);
             this.OFCname.Name = "OFCname";
-            this.OFCname.Size = new System.Drawing.Size(35, 13);
+            this.OFCname.Size = new System.Drawing.Size(42, 13);
             this.OFCname.TabIndex = 7;
-            this.OFCname.Text = "Name";
+            this.OFCname.Text = "Name *";
             // 
             // OFCbirthdate
             // 
             this.OFCbirthdate.AutoSize = true;
             this.OFCbirthdate.Location = new System.Drawing.Point(22, 85);
             this.OFCbirthdate.Name = "OFCbirthdate";
-            this.OFCbirthdate.Size = new System.Drawing.Size(51, 13);
+            this.OFCbirthdate.Size = new System.Drawing.Size(61, 13);
             this.OFCbirthdate.TabIndex = 8;
-            this.OFCbirthdate.Text = "BirthDate";
+            this.OFCbirthdate.Text = "Birth Date *";
             // 
             // OFCaddr1
             // 
             this.OFCaddr1.AutoSize = true;
             this.OFCaddr1.Location = new System.Drawing.Point(8, 171);
             this.OFCaddr1.Name = "OFCaddr1";
-            this.OFCaddr1.Size = new System.Drawing.Size(83, 13);
+            this.OFCaddr1.Size = new System.Drawing.Size(90, 13);
             this.OFCaddr1.TabIndex = 9;
-            this.OFCaddr1.Text = "Address - Line 1";
+            this.OFCaddr1.Text = "Address - Line 1 *";
             this.OFCaddr1.Click += new System.EventHandler(this.label3_Click);
             // 
             // OFCphone
@@ -133,18 +133,18 @@ namespace PresentationLayer
             this.OFCphone.AutoSize = true;
             this.OFCphone.Location = new System.Drawing.Point(28, 131);
             this.OFCphone.Name = "OFCphone";
-            this.OFCphone.Size = new System.Drawing.Size(38, 13);
+            this.OFCphone.Size = new System.Drawing.Size(45, 13);
             this.OFCphone.TabIndex = 10;
-            this.OFCphone.Text = "Phone";
+            this.OFCphone.Text = "Phone *";
             // 
             // OFCot
             // 
             this.OFCot.AutoSize = true;
             this.OFCot.Location = new System.Drawing.Point(12, 437);
             this.OFCot.Name = "OFCot";
-            this.OFCot.Size = new System.Drawing.Size(60, 13);
+            this.OFCot.Size = new System.Drawing.Size(67, 13);
             this.OFCot.TabIndex = 12;
-            this.OFCot.Text = "Order Type";
+            this.OFCot.Text = "Order Type *";
             // 
             // OFCncd
             // 
@@ -191,11 +191,11 @@ namespace PresentationLayer
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(16, 810);
+            this.label10.Location = new System.Drawing.Point(-2, 811);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(171, 13);
+            this.label10.Size = new System.Drawing.Size(178, 13);
             this.label10.TabIndex = 26;
-            this.label10.Text = "I Agree to the terms and conditions";
+            this.label10.Text = "I Agree to the terms and conditions *";
             this.label10.Click += new System.EventHandler(this.label10_Click);
             // 
             // OFCtermscond
@@ -261,9 +261,9 @@ namespace PresentationLayer
             this.OFCcounty.AutoSize = true;
             this.OFCcounty.Location = new System.Drawing.Point(28, 313);
             this.OFCcounty.Name = "OFCcounty";
-            this.OFCcounty.Size = new System.Drawing.Size(40, 13);
+            this.OFCcounty.Size = new System.Drawing.Size(47, 13);
             this.OFCcounty.TabIndex = 64;
-            this.OFCcounty.Text = "County";
+            this.OFCcounty.Text = "County *";
             // 
             // OFCaddr2F
             // 
@@ -344,9 +344,9 @@ namespace PresentationLayer
             this.OFCpostcode.AutoSize = true;
             this.OFCpostcode.Location = new System.Drawing.Point(20, 276);
             this.OFCpostcode.Name = "OFCpostcode";
-            this.OFCpostcode.Size = new System.Drawing.Size(52, 13);
+            this.OFCpostcode.Size = new System.Drawing.Size(59, 13);
             this.OFCpostcode.TabIndex = 73;
-            this.OFCpostcode.Text = "Postcode";
+            this.OFCpostcode.Text = "Postcode *";
             // 
             // OFCpostcodeF
             // 
@@ -360,9 +360,9 @@ namespace PresentationLayer
             this.OFCtown.AutoSize = true;
             this.OFCtown.Location = new System.Drawing.Point(17, 244);
             this.OFCtown.Name = "OFCtown";
-            this.OFCtown.Size = new System.Drawing.Size(56, 13);
+            this.OFCtown.Size = new System.Drawing.Size(63, 13);
             this.OFCtown.TabIndex = 75;
-            this.OFCtown.Text = "Town/City";
+            this.OFCtown.Text = "Town/City *";
             // 
             // OFCtownF
             // 
@@ -383,9 +383,9 @@ namespace PresentationLayer
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(28, 355);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(43, 13);
+            this.label2.Size = new System.Drawing.Size(50, 13);
             this.label2.TabIndex = 78;
-            this.label2.Text = "Country";
+            this.label2.Text = "Country *";
             // 
             // OFCgroupbox
             // 
@@ -436,9 +436,9 @@ namespace PresentationLayer
             this.OFCcustomertype.AutoSize = true;
             this.OFCcustomertype.Location = new System.Drawing.Point(16, 399);
             this.OFCcustomertype.Name = "OFCcustomertype";
-            this.OFCcustomertype.Size = new System.Drawing.Size(74, 13);
+            this.OFCcustomertype.Size = new System.Drawing.Size(81, 13);
             this.OFCcustomertype.TabIndex = 11;
-            this.OFCcustomertype.Text = "Customer type";
+            this.OFCcustomertype.Text = "Customer type *";
             // 
             // pictureBox2
             // 

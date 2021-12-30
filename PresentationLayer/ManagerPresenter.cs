@@ -33,9 +33,20 @@ namespace PresentationLayer
             return model.GetEnquiry(EnquiryID);
         }
 
+        public void missingInfo2()
+        {
+            System.Windows.Forms.MessageBox.Show("NOTICE");
+
+        }
+
         public Customer GetCustomer(Enquiry enquiry)
         {
-           return model.GetCustomerInEnquiry(enquiry.orderID);
+
+            if (model.GetCustomerInEnquiry(enquiry.orderID) == null)
+                { missingInfo2(); }
+            else if (model.GetCustomerInEnquiry(enquiry.orderID) != null)
+                { return model.GetCustomerInEnquiry(enquiry.orderID); }
+            return null;
         }
 
         public List<OrderItems> GetOrderItems(Enquiry enquiry)
