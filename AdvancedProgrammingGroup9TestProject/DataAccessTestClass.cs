@@ -189,6 +189,7 @@ namespace AdvancedProgrammingGroup9TestProject
             Assert.AreEqual(true, CustomerCRUD.DeleteAllCustomers());
             Assert.AreEqual(true, EnquiryCRUD.DeleteAllEnquiries());
             Assert.AreEqual(true, OrderItemCRUD.DeleteAllOrderItems());
+    
 
             //Testing to see if it can delete an orderItem that doesn't exist.
             Assert.AreEqual(false, OrderItemCRUD.DeleteOrderItems(10000));
@@ -227,7 +228,19 @@ namespace AdvancedProgrammingGroup9TestProject
         [TestMethod]
         public void TestMethod4Orders()
         {
-            Assert.AreEqual(true, CustomerCRUD.DeleteAllCustomers());
+            // the next 4 lines should be okay as they are for boolean    
+            Assert.AreEqual(true, OrderCRUD.SaveOrder());
+            Assert.AreEqual(true, OrderCRUD.UpdateOrder());
+            Assert.AreEqual(true, OrderCRUD.DeleteOrder());
+            Assert.AreEqual(true, OrderCRUD.DeleteAllOrders());
+
+            // the next 2 lines need further development
+            Assert.AreEqual(true, OrderCRUD.GetAllOrders));
+            //checking to see if the returned enquiry is null if it can't get it.
+            Assert.AreEqual(0, OrderItemCRUD.GetOrderItemsInEnquiry(1000).Count());
+            List<Order> loadedOrder = OrderCRUD.GetOrderInEnquiry(readEnquiry.orderID);
+
+            Assert.AreEqual(true, OrderCRUD.GetOrder());
         }
     }
 }
