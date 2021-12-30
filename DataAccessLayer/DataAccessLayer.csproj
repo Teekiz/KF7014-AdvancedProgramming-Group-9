@@ -61,7 +61,7 @@
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System">
-      <HintPath>..\..\..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -81,7 +81,6 @@
     <Compile Include="DatabaseQueries.cs" />
     <Compile Include="CustomerGateway.cs" />
     <Compile Include="EnquiryGateway.cs" />
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="OrderGateway.cs" />
     <Compile Include="OrderItemGateway.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

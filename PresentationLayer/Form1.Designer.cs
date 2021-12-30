@@ -442,7 +442,7 @@ namespace PresentationLayer
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::PresentationLayer.Properties.Resources.estimates;
+            
             this.pictureBox2.Location = new System.Drawing.Point(603, 228);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(250, 336);
@@ -452,7 +452,7 @@ namespace PresentationLayer
             // 
             // OFCpicturebox
             // 
-            this.OFCpicturebox.Image = global::PresentationLayer.Properties.Resources.logo1;
+            
             this.OFCpicturebox.Location = new System.Drawing.Point(603, 5);
             this.OFCpicturebox.Name = "OFCpicturebox";
             this.OFCpicturebox.Size = new System.Drawing.Size(250, 204);
