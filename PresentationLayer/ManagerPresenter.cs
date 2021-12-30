@@ -16,6 +16,7 @@ namespace PresentationLayer
     {
         private IManagerModel model;
         private IOrderManager screen;
+        private IOrderManagerChanges screen2;
         Enquiry enquiry;
         Customer customer;
         List<OrderItems> orderItems;
@@ -27,6 +28,15 @@ namespace PresentationLayer
             this.model = model;
             screen.register(this);
         }
+
+        public ManagerPresenter2(IOrderManagerChanges screen2, IManagerModel model)
+        {
+            this.screen2 = screen2;
+            this.model = model;
+            screen2.register(this);
+        }
+
+
 
         public Enquiry GetEnquiry(int EnquiryID)
         {
