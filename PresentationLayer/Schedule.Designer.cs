@@ -1,4 +1,4 @@
-﻿
+﻿/*
 namespace PresentationLayer
 {
     partial class Schedule
@@ -93,3 +93,4 @@ namespace PresentationLayer
         private System.Windows.Forms.Label label18;
     }
 }
+*/

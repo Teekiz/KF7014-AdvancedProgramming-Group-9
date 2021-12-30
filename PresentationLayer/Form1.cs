@@ -34,6 +34,8 @@ namespace PresentationLayer
         bool SwordChecked();
         bool ArmourChecked();
 
+        bool termsChecked();
+
         void Form1_Load(object sender, EventArgs e);
         void label7_Click(object sender, EventArgs e);
         void label10_Click(object sender, EventArgs e);
@@ -192,6 +194,15 @@ namespace PresentationLayer
         public bool ArmourChecked()
         {
             if (OFcot3.Checked)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool termsChecked()
+        {
+            if (OFCtermscond.Checked)
             {
                 return true;
             }

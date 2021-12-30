@@ -29,6 +29,7 @@ namespace PresentationLayer
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OrderManager));
             this.label1 = new System.Windows.Forms.Label();
             this.OFMdate = new System.Windows.Forms.Label();
             this.OFMphone = new System.Windows.Forms.Label();
@@ -265,7 +266,7 @@ namespace PresentationLayer
             this.OFMcsF.ColumnCount = 3;
             this.OFMcsF.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.79253F));
             this.OFMcsF.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.20747F));
-            this.OFMcsF.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 92F));
+            this.OFMcsF.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 93F));
             this.OFMcsF.Location = new System.Drawing.Point(635, 323);
             this.OFMcsF.Name = "OFMcsF";
             this.OFMcsF.RowCount = 6;
@@ -457,6 +458,7 @@ namespace PresentationLayer
             this.Controls.Add(this.OFNnameF);
             this.Controls.Add(this.OFMdate);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "OrderManager";
             this.Text = "Order Form - Manager";
             this.Load += new System.EventHandler(this.Form2_Load);

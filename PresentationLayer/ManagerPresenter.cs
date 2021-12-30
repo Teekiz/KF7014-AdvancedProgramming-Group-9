@@ -35,7 +35,7 @@ namespace PresentationLayer
 
         public Customer GetCustomer(Enquiry enquiry)
         {
-            return model.GetCustomerInEnquiry(enquiry.orderID);
+           return model.GetCustomerInEnquiry(enquiry.orderID);
         }
 
         public List<OrderItems> GetOrderItems(Enquiry enquiry)

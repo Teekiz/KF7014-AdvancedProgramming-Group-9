@@ -139,6 +139,12 @@
   <ItemGroup>
     <None Include="Resources\iron helm 1.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\istockphoto-1026493200-612x612.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\estimates.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

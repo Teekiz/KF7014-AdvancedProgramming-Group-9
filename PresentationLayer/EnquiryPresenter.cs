@@ -22,49 +22,71 @@ namespace PresentationLayer
 
         public void missingInfo(string missingVariable)
         {
-            System.Windows.Forms.MessageBox.Show("Please ensure the " + missingVariable + " field is filled in correctly");
-        }
+            System.Windows.Forms.MessageBox.Show("NOTICE - You must fill in the " + missingVariable + " to continue");
 
+        }
+        //Checks if required forms are blank. If so, notify user. If not, create query.
         public void saveEnquiry()
         {
             Customer c = enqiryModel.GetCustomer();
-            if (screen.name == "I") { c.name = screen.name; } else { missingInfo("name"); }
-            if (screen.addressline1 == "") { c.addressline1 = screen.addressline1; } else { missingInfo("address"); }
-            c.county = screen.county;
-            c.country = screen.country;
-            c.townCity = screen.townCity;
-            c.birthdate = screen.birthdate;
-            c.addressline2 = screen.addressline2;
-            c.postcode = screen.postcode;
-            c.phone = screen.phone;
-            c.type = screen.getRadioButton();
-            
-           
-            Enquiry e = enqiryModel.GetEnquiry();
-            e.receivedDate = DateTime.Now;
-            e.deadline = screen.deadline;
-            e.orderNotes = screen.orderNotes;
-            List<OrderItems> oi = new List<OrderItems>();
-
-            if (screen.CerimonialSwordChecked() == true)
+            if (screen.name == "")
+            { missingInfo("name"); }
+            else if (screen.addressline1 == "")
+            { missingInfo("address"); }
+            else if (screen.county == "")
+            { missingInfo("county"); }
+            else if (screen.country == "")
+            { missingInfo("country"); }
+            else if (screen.townCity == "")
+            { missingInfo("town/City"); }
+            else if (screen.postcode == "")
+            { missingInfo("postcode"); }
+            else if (screen.phone == "")
+            { missingInfo("phone"); }
+            else if (screen.termsChecked() != true)
+            { missingInfo("terms and conditions"); }
+            else if ((screen.name != "") && (screen.addressline1 != "") && (screen.county != "") && (screen.country != "") && (screen.townCity != "") && (screen.postcode != "") && (screen.phone != "") && (screen.termsChecked() == true))
             {
-                int quan1 = Int32.Parse(screen.itemQuant1);
-                oi.Add(enqiryModel.createItem(screen.itemDesc1, quan1, null, OrderType.CeremonialSword));
-            }
+                c.addressline1 = screen.addressline1;
+                c.county = screen.county;
+                c.country = screen.country;
+                c.townCity = screen.townCity;
+                c.postcode = screen.postcode;
+                c.phone = screen.phone;
+                c.birthdate = screen.birthdate;
+                c.addressline2 = screen.addressline2;
+                c.type = screen.getRadioButton();
 
-            if (screen.SwordChecked() == true)
-            {
-                int quan2 = Int32.Parse(screen.itemQuant2);
-                oi.Add(enqiryModel.createItem(screen.itemDesc2, quan2, null, OrderType.Sword));
-            }
 
-            if (screen.ArmourChecked() == true)
-            {
-                int quan3 = Int32.Parse(screen.itemQuant3);
-                oi.Add(enqiryModel.createItem(screen.itemQuant3, quan3, null, OrderType.Armour));
-            }
+                Enquiry e = enqiryModel.GetEnquiry();
+                e.receivedDate = DateTime.Now;
+                e.deadline = screen.deadline;
+                e.orderNotes = screen.orderNotes;
+                List<OrderItems> oi = new List<OrderItems>();
 
-            enqiryModel.SaveEnquiry(e, c, oi);
+                if (screen.CerimonialSwordChecked() == true)
+                {
+                    int quan1 = Int32.Parse(screen.itemQuant1);
+                    oi.Add(enqiryModel.createItem(screen.itemDesc1, quan1, null, OrderType.CeremonialSword));
+                }
+
+                if (screen.SwordChecked() == true)
+                {
+                    int quan2 = Int32.Parse(screen.itemQuant2);
+                    oi.Add(enqiryModel.createItem(screen.itemDesc2, quan2, null, OrderType.Sword));
+                }
+
+                if (screen.ArmourChecked() == true)
+                {
+                    int quan3 = Int32.Parse(screen.itemQuant3);
+                    oi.Add(enqiryModel.createItem(screen.itemQuant3, quan3, null, OrderType.Armour));
+                }
+
+                enqiryModel.SaveEnquiry(e, c, oi);
+
+                System.Windows.Forms.MessageBox.Show("Request Proccessed Successfully");
+            }
+          
         }
     }
 }

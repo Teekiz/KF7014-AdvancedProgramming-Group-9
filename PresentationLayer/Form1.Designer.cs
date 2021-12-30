@@ -29,6 +29,7 @@ namespace PresentationLayer
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OFCcountry));
             this.OFCnameF = new System.Windows.Forms.TextBox();
             this.OFCaddr1F = new System.Windows.Forms.TextBox();
             this.OFCphoneF = new System.Windows.Forms.TextBox();
@@ -44,9 +45,6 @@ namespace PresentationLayer
             this.OFCsubmit = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.OFCtermscond = new System.Windows.Forms.CheckBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.OFCpicturebox = new System.Windows.Forms.PictureBox();
-            this.OFCitembox = new System.Windows.Forms.ListBox();
             this.OFCnotesF = new System.Windows.Forms.RichTextBox();
             this.OFCcustomerform = new System.Windows.Forms.Label();
             this.OFCot1q = new System.Windows.Forms.TextBox();
@@ -73,9 +71,11 @@ namespace PresentationLayer
             this.OFCct2 = new System.Windows.Forms.RadioButton();
             this.OFCct1 = new System.Windows.Forms.RadioButton();
             this.OFCcustomertype = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.OFCpicturebox = new System.Windows.Forms.PictureBox();
+            this.OFCgroupbox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OFCpicturebox)).BeginInit();
-            this.OFCgroupbox.SuspendLayout();
             this.SuspendLayout();
             // 
             // OFCnameF
@@ -180,9 +180,9 @@ namespace PresentationLayer
             // 
             // OFCsubmit
             // 
-            this.OFCsubmit.Location = new System.Drawing.Point(626, 695);
+            this.OFCsubmit.Location = new System.Drawing.Point(603, 585);
             this.OFCsubmit.Name = "OFCsubmit";
-            this.OFCsubmit.Size = new System.Drawing.Size(75, 23);
+            this.OFCsubmit.Size = new System.Drawing.Size(250, 96);
             this.OFCsubmit.TabIndex = 25;
             this.OFCsubmit.Text = "Submit";
             this.OFCsubmit.UseVisualStyleBackColor = true;
@@ -207,31 +207,6 @@ namespace PresentationLayer
             this.OFCtermscond.TabIndex = 27;
             this.OFCtermscond.Text = "Yes";
             this.OFCtermscond.UseVisualStyleBackColor = true;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Location = new System.Drawing.Point(603, 203);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(250, 336);
-            this.pictureBox2.TabIndex = 24;
-            this.pictureBox2.TabStop = false;
-            // 
-            // OFCpicturebox
-            // 
-            this.OFCpicturebox.Location = new System.Drawing.Point(603, 5);
-            this.OFCpicturebox.Name = "OFCpicturebox";
-            this.OFCpicturebox.Size = new System.Drawing.Size(250, 171);
-            this.OFCpicturebox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.OFCpicturebox.TabIndex = 14;
-            this.OFCpicturebox.TabStop = false;
-            // 
-            // OFCitembox
-            // 
-            this.OFCitembox.FormattingEnabled = true;
-            this.OFCitembox.Location = new System.Drawing.Point(603, 203);
-            this.OFCitembox.Name = "OFCitembox";
-            this.OFCitembox.Size = new System.Drawing.Size(250, 446);
-            this.OFCitembox.TabIndex = 28;
             // 
             // OFCnotesF
             // 
@@ -307,7 +282,7 @@ namespace PresentationLayer
             // OFCot1desc
             // 
             this.OFCot1desc.Location = new System.Drawing.Point(157, 459);
-            this.OFCot1desc.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.OFCot1desc.Margin = new System.Windows.Forms.Padding(2);
             this.OFCot1desc.Multiline = true;
             this.OFCot1desc.Name = "OFCot1desc";
             this.OFCot1desc.Size = new System.Drawing.Size(380, 58);
@@ -317,7 +292,7 @@ namespace PresentationLayer
             // OFCot2desc
             // 
             this.OFCot2desc.Location = new System.Drawing.Point(156, 550);
-            this.OFCot2desc.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.OFCot2desc.Margin = new System.Windows.Forms.Padding(2);
             this.OFCot2desc.Multiline = true;
             this.OFCot2desc.Name = "OFCot2desc";
             this.OFCot2desc.Size = new System.Drawing.Size(380, 58);
@@ -327,7 +302,7 @@ namespace PresentationLayer
             // OFCot3desc
             // 
             this.OFCot3desc.Location = new System.Drawing.Point(157, 635);
-            this.OFCot3desc.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.OFCot3desc.Margin = new System.Windows.Forms.Padding(2);
             this.OFCot3desc.Multiline = true;
             this.OFCot3desc.Name = "OFCot3desc";
             this.OFCot3desc.Size = new System.Drawing.Size(380, 58);
@@ -465,6 +440,26 @@ namespace PresentationLayer
             this.OFCcustomertype.TabIndex = 11;
             this.OFCcustomertype.Text = "Customer type";
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::PresentationLayer.Properties.Resources.estimates;
+            this.pictureBox2.Location = new System.Drawing.Point(603, 228);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(250, 336);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 24;
+            this.pictureBox2.TabStop = false;
+            // 
+            // OFCpicturebox
+            // 
+            this.OFCpicturebox.Image = global::PresentationLayer.Properties.Resources.logo1;
+            this.OFCpicturebox.Location = new System.Drawing.Point(603, 5);
+            this.OFCpicturebox.Name = "OFCpicturebox";
+            this.OFCpicturebox.Size = new System.Drawing.Size(250, 204);
+            this.OFCpicturebox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.OFCpicturebox.TabIndex = 14;
+            this.OFCpicturebox.TabStop = false;
+            // 
             // OFCcountry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -494,7 +489,6 @@ namespace PresentationLayer
             this.Controls.Add(this.OFCot1q);
             this.Controls.Add(this.OFCcustomerform);
             this.Controls.Add(this.OFCnotesF);
-            this.Controls.Add(this.OFCitembox);
             this.Controls.Add(this.OFCtermscond);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.OFCsubmit);
@@ -512,13 +506,14 @@ namespace PresentationLayer
             this.Controls.Add(this.OFCphoneF);
             this.Controls.Add(this.OFCaddr1F);
             this.Controls.Add(this.OFCnameF);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "OFCcountry";
             this.Text = "Order Form - Customer";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.OFCpicturebox)).EndInit();
             this.OFCgroupbox.ResumeLayout(false);
             this.OFCgroupbox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OFCpicturebox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -543,7 +538,6 @@ namespace PresentationLayer
         private System.Windows.Forms.Button OFCsubmit;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.CheckBox OFCtermscond;
-        private System.Windows.Forms.ListBox OFCitembox;
         private System.Windows.Forms.RichTextBox OFCnotesF;
         private System.Windows.Forms.Label OFCcustomerform;
         private System.Windows.Forms.TextBox OFCot1q;
