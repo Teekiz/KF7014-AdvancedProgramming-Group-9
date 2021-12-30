@@ -14,8 +14,8 @@ namespace DataAccessLayer
     public interface ICustomerGateway
     {
         bool SaveCustomer(Customer customer);
-        List<Customer> GetAllCustomers();
         Customer GetCustomer(int id);
+        List<Customer> GetAllCustomers();
         bool DeleteCustomer(int customerID);
         bool DeleteAllCustomers();
     }
@@ -51,7 +51,7 @@ namespace DataAccessLayer
                 }
             }
 
-            catch { return new Customer(); }
+            catch { return null ; }
         }
 
         public List<Customer> GetAllCustomers()
@@ -66,7 +66,7 @@ namespace DataAccessLayer
                 }
             }
             catch
-            { return new List<Customer>(); }
+            { return null; }
         }
 
         public bool DeleteCustomer(int customerID)

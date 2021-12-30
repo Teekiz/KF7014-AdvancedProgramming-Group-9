@@ -177,6 +177,9 @@ namespace AdvancedProgrammingGroup9TestProject
 
             Assert.AreEqual(false, EnquiryCRUD.UpdateEnquiry(new Enquiry()));
 
+            //Get the enquiry id - will not save into db otherwise
+            Assert.AreEqual(customer.customerID, EnquiryCRUD.FindCustomerIDinEnquiry(loadedEnquiry));
+
             //Should only be 1 enquiry in database
             Assert.AreEqual(false, EnquiryCRUD.DeleteEnquiry(20000));
             Assert.AreEqual(true, EnquiryCRUD.DeleteEnquiry(loadedEnquiry.orderID));
@@ -222,6 +225,7 @@ namespace AdvancedProgrammingGroup9TestProject
             Assert.AreEqual(8, loadedOrderItems[2].quantity);
             Assert.AreEqual(null, loadedOrderItems[2].referenceImage);
 
+            Assert.AreEqual(true, OrderItemCRUD.DeleteOrderItems(loadedOrderItems[2].itemID));
             Assert.AreEqual(false, OrderItemCRUD.DeleteOrderItems(300000));
             Assert.AreEqual(true, OrderItemCRUD.DeleteOrderItemsInEnquiry(readEnquiry.orderID));
 
@@ -259,6 +263,9 @@ namespace AdvancedProgrammingGroup9TestProject
             //get the updated order
             Order updatedOrder = OrderCRUD.GetOrder(orderOrderToUpdate.orderID);
             Assert.AreEqual(updatedDeadline, updatedOrder.confirmedDeadline);
+
+            //Get the enquiry id - will not save into db otherwise
+            Assert.AreEqual(enquiry.orderID, OrderCRUD.FindEnquiryIDinOrder(loadedOrder[0]));
 
             //database should be empty after the delete
             Assert.AreEqual(true, OrderCRUD.DeleteOrder(updatedOrder.orderID));

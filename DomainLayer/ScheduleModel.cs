@@ -21,12 +21,12 @@ namespace DomainLayer
         IEnquiryGateway enquiryCRUD;
         IOrderItemGateway orderItemsCRUD;
 
-        #region "Order reads"
         public ScheduleModel(IOrderGateway orderCRUD)
         {
             this.orderCRUD = orderCRUD;
         }
 
+        #region "Order reads"
         public List<Order> GetAllOrdersWithinTwoMonths()
         {
             List<Order> ordersWithinTheNextTwoMonths = new List<Order>();

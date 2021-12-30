@@ -14,8 +14,6 @@ namespace DataAccessLayer
         bool DeleteEnquiry(int id);
         bool DeleteAllEnquiries();
         bool UpdateEnquiry(Enquiry enquiry);
-        //this is in response to the data being duplicated.
-        bool SaveEnquiryAll(Enquiry enquiry, List<OrderItems> orderItems, Customer customer);
         int FindCustomerIDinEnquiry(Enquiry enquiry);
     }
     public class EnquiryGateway : IEnquiryGateway
@@ -41,32 +39,6 @@ namespace DataAccessLayer
                     enquiry.Customer = customer;
                     context.Customers.Attach(enquiry.Customer);
                     context.Enquiries.Add(enquiry);
-                    context.SaveChanges();
-                    return true;
-                }
-            }
-            catch { return false; }
-        }
-
-        //This method is a legacy method, it was used when saving all the items at once because otherwise it would create
-        //duplicates, I am leaving this in here in case it needs to be used later on.
-        public bool SaveEnquiryAll(Enquiry enquiry, List<OrderItems> orderItems, Customer customer)
-        {
-            try
-            {
-                using (var context = new DatabaseEntities())
-                {
-                    enquiry.Customer = customer;
-                    context.Enquiries.Add(enquiry);
-                    context.Customers.Add(customer);
-
-                    for (int i = 0; i < orderItems.Count(); i++)
-                    {
-                        //adds all the of the items in the order to a database
-                        orderItems[i].Enquiry = enquiry;
-                        context.OrderItems.Add(orderItems[i]);
-                    }
-
                     context.SaveChanges();
                     return true;
                 }
@@ -101,7 +73,7 @@ namespace DataAccessLayer
                     return enquiryQuery;
                 }
             }
-            catch { return new Enquiry(); }
+            catch { return null; }
         }
 
         public List<Enquiry> GetAllEnquiries()
@@ -116,7 +88,7 @@ namespace DataAccessLayer
                 }
             }
 
-            catch { return new List<Enquiry>(); }
+            catch { return null; }
         }
 
         public bool UpdateEnquiry(Enquiry enquiry)

@@ -44,12 +44,16 @@ namespace DataAccessLayer
 
         public List<OrderItems> GetOrderItemsInEnquiry(int enquiryID)
         {
-            using (var context = new DatabaseEntities())
+            try 
             {
-                //based on code from https://docs.microsoft.com/en-us/ef/core/querying/
-                var orderItemsQuery = context.OrderItems.Where(i => i.Enquiry.orderID == enquiryID).ToList();
-                return orderItemsQuery;
+                using (var context = new DatabaseEntities())
+                {
+                    //based on code from https://docs.microsoft.com/en-us/ef/core/querying/
+                    var orderItemsQuery = context.OrderItems.Where(i => i.Enquiry.orderID == enquiryID).ToList();
+                    return orderItemsQuery;
+                }
             }
+            catch { return null; }
         }
 
         public bool DeleteOrderItems(int id)

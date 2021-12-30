@@ -60,7 +60,7 @@ namespace DataAccessLayer
                 }
             }
 
-            catch { return new Order(); }
+            catch { return null; }
         }
         public bool UpdateOrder(Order order)
         {
@@ -92,7 +92,7 @@ namespace DataAccessLayer
                 }
             }
             catch
-            { return new List<Order>(); }
+            { return null; }
         }
 
         //Method for 2) reference
