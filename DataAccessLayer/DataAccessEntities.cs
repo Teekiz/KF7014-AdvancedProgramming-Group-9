@@ -142,8 +142,8 @@ namespace DataAccessLayer
         public int staffId { get; set; }
         public string firstname { get; set; }
         public string lastname { get; set; }
-        public int workinghours { get; set; }
-        public string addressId { get; set; }
+        public string username { get; set; }
+        public string password { get; set; }
         //public virtual Enquiry Enquiry {get;set}
     }
 }
