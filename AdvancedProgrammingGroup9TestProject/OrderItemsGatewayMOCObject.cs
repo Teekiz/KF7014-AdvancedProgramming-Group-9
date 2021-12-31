@@ -49,7 +49,8 @@ namespace AdvancedProgrammingGroup9TestProject
 
         public List<OrderItems> GetOrderItemsInEnquiry(int enquiryID)
         {
-            return storedItems;
+            if (enquiryID > 1) { return null; }
+            else { return storedItems; }
         }
 
         public bool SaveOrderItems(List<OrderItems> orderItems, Enquiry enquiry)

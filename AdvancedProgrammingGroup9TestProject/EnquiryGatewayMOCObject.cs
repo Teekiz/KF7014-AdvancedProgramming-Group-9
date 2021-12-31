@@ -15,9 +15,10 @@ namespace AdvancedProgrammingGroup9TestProject
         public EnquiryGatewayMOCObject()
         {
             storedEnquiry = new Enquiry();
+            storedEnquiry.orderID = 1;
             storedEnquiry.orderNotes = "Order notes";
-            storedEnquiry.receivedDate = DateTime.Now;
-            storedEnquiry.deadline = DateTime.Now.AddDays(20);
+            storedEnquiry.receivedDate = new DateTime(2020/20/12);
+            storedEnquiry.deadline = new DateTime(2020/30/12);
         }
 
         public bool DeleteAllEnquiries()
@@ -44,7 +45,8 @@ namespace AdvancedProgrammingGroup9TestProject
 
         public Enquiry GetEnquiry(int id)
         {
-            return storedEnquiry;
+            if (id == 1) { return storedEnquiry; }
+            else { return null; } 
         }
 
         public bool SaveEnquiry(Enquiry enquiry, Customer customer)
