@@ -71,16 +71,20 @@ namespace PresentationLayer
             this.OFCct2 = new System.Windows.Forms.RadioButton();
             this.OFCct1 = new System.Windows.Forms.RadioButton();
             this.OFCcustomertype = new System.Windows.Forms.Label();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.OFCpicturebox = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.OFCgroupbox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OFCpicturebox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // OFCnameF
             // 
-            this.OFCnameF.Location = new System.Drawing.Point(132, 41);
+            this.OFCnameF.Location = new System.Drawing.Point(172, 68);
             this.OFCnameF.Name = "OFCnameF";
             this.OFCnameF.Size = new System.Drawing.Size(399, 20);
             this.OFCnameF.TabIndex = 0;
@@ -88,14 +92,14 @@ namespace PresentationLayer
             // 
             // OFCaddr1F
             // 
-            this.OFCaddr1F.Location = new System.Drawing.Point(132, 171);
+            this.OFCaddr1F.Location = new System.Drawing.Point(172, 198);
             this.OFCaddr1F.Name = "OFCaddr1F";
             this.OFCaddr1F.Size = new System.Drawing.Size(399, 20);
             this.OFCaddr1F.TabIndex = 2;
             // 
             // OFCphoneF
             // 
-            this.OFCphoneF.Location = new System.Drawing.Point(132, 131);
+            this.OFCphoneF.Location = new System.Drawing.Point(172, 158);
             this.OFCphoneF.Name = "OFCphoneF";
             this.OFCphoneF.Size = new System.Drawing.Size(399, 20);
             this.OFCphoneF.TabIndex = 3;
@@ -103,7 +107,8 @@ namespace PresentationLayer
             // OFCname
             // 
             this.OFCname.AutoSize = true;
-            this.OFCname.Location = new System.Drawing.Point(28, 48);
+            this.OFCname.BackColor = System.Drawing.Color.White;
+            this.OFCname.Location = new System.Drawing.Point(54, 68);
             this.OFCname.Name = "OFCname";
             this.OFCname.Size = new System.Drawing.Size(42, 13);
             this.OFCname.TabIndex = 7;
@@ -112,7 +117,8 @@ namespace PresentationLayer
             // OFCbirthdate
             // 
             this.OFCbirthdate.AutoSize = true;
-            this.OFCbirthdate.Location = new System.Drawing.Point(22, 85);
+            this.OFCbirthdate.BackColor = System.Drawing.Color.White;
+            this.OFCbirthdate.Location = new System.Drawing.Point(54, 112);
             this.OFCbirthdate.Name = "OFCbirthdate";
             this.OFCbirthdate.Size = new System.Drawing.Size(61, 13);
             this.OFCbirthdate.TabIndex = 8;
@@ -121,7 +127,8 @@ namespace PresentationLayer
             // OFCaddr1
             // 
             this.OFCaddr1.AutoSize = true;
-            this.OFCaddr1.Location = new System.Drawing.Point(8, 171);
+            this.OFCaddr1.BackColor = System.Drawing.Color.White;
+            this.OFCaddr1.Location = new System.Drawing.Point(38, 198);
             this.OFCaddr1.Name = "OFCaddr1";
             this.OFCaddr1.Size = new System.Drawing.Size(90, 13);
             this.OFCaddr1.TabIndex = 9;
@@ -131,7 +138,8 @@ namespace PresentationLayer
             // OFCphone
             // 
             this.OFCphone.AutoSize = true;
-            this.OFCphone.Location = new System.Drawing.Point(28, 131);
+            this.OFCphone.BackColor = System.Drawing.Color.White;
+            this.OFCphone.Location = new System.Drawing.Point(54, 158);
             this.OFCphone.Name = "OFCphone";
             this.OFCphone.Size = new System.Drawing.Size(45, 13);
             this.OFCphone.TabIndex = 10;
@@ -140,7 +148,8 @@ namespace PresentationLayer
             // OFCot
             // 
             this.OFCot.AutoSize = true;
-            this.OFCot.Location = new System.Drawing.Point(12, 437);
+            this.OFCot.BackColor = System.Drawing.Color.White;
+            this.OFCot.Location = new System.Drawing.Point(48, 461);
             this.OFCot.Name = "OFCot";
             this.OFCot.Size = new System.Drawing.Size(67, 13);
             this.OFCot.TabIndex = 12;
@@ -149,7 +158,8 @@ namespace PresentationLayer
             // OFCncd
             // 
             this.OFCncd.AutoSize = true;
-            this.OFCncd.Location = new System.Drawing.Point(-2, 719);
+            this.OFCncd.BackColor = System.Drawing.Color.White;
+            this.OFCncd.Location = new System.Drawing.Point(34, 784);
             this.OFCncd.Name = "OFCncd";
             this.OFCncd.Size = new System.Drawing.Size(123, 13);
             this.OFCncd.TabIndex = 16;
@@ -157,14 +167,14 @@ namespace PresentationLayer
             // 
             // OFCncdF
             // 
-            this.OFCncdF.Location = new System.Drawing.Point(137, 712);
+            this.OFCncdF.Location = new System.Drawing.Point(172, 784);
             this.OFCncdF.Name = "OFCncdF";
             this.OFCncdF.Size = new System.Drawing.Size(399, 20);
             this.OFCncdF.TabIndex = 17;
             // 
             // OFCbirthdateF
             // 
-            this.OFCbirthdateF.Location = new System.Drawing.Point(132, 85);
+            this.OFCbirthdateF.Location = new System.Drawing.Point(172, 112);
             this.OFCbirthdateF.Name = "OFCbirthdateF";
             this.OFCbirthdateF.Size = new System.Drawing.Size(399, 20);
             this.OFCbirthdateF.TabIndex = 19;
@@ -172,7 +182,8 @@ namespace PresentationLayer
             // OFCnotes
             // 
             this.OFCnotes.AutoSize = true;
-            this.OFCnotes.Location = new System.Drawing.Point(16, 747);
+            this.OFCnotes.BackColor = System.Drawing.Color.White;
+            this.OFCnotes.Location = new System.Drawing.Point(52, 825);
             this.OFCnotes.Name = "OFCnotes";
             this.OFCnotes.Size = new System.Drawing.Size(64, 13);
             this.OFCnotes.TabIndex = 23;
@@ -180,7 +191,7 @@ namespace PresentationLayer
             // 
             // OFCsubmit
             // 
-            this.OFCsubmit.Location = new System.Drawing.Point(603, 585);
+            this.OFCsubmit.Location = new System.Drawing.Point(643, 840);
             this.OFCsubmit.Name = "OFCsubmit";
             this.OFCsubmit.Size = new System.Drawing.Size(250, 96);
             this.OFCsubmit.TabIndex = 25;
@@ -191,7 +202,8 @@ namespace PresentationLayer
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(-2, 811);
+            this.label10.BackColor = System.Drawing.Color.White;
+            this.label10.Location = new System.Drawing.Point(38, 906);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(178, 13);
             this.label10.TabIndex = 26;
@@ -201,16 +213,17 @@ namespace PresentationLayer
             // OFCtermscond
             // 
             this.OFCtermscond.AutoSize = true;
-            this.OFCtermscond.Location = new System.Drawing.Point(193, 810);
+            this.OFCtermscond.BackColor = System.Drawing.Color.White;
+            this.OFCtermscond.Location = new System.Drawing.Point(222, 905);
             this.OFCtermscond.Name = "OFCtermscond";
             this.OFCtermscond.Size = new System.Drawing.Size(44, 17);
             this.OFCtermscond.TabIndex = 27;
             this.OFCtermscond.Text = "Yes";
-            this.OFCtermscond.UseVisualStyleBackColor = true;
+            this.OFCtermscond.UseVisualStyleBackColor = false;
             // 
             // OFCnotesF
             // 
-            this.OFCnotesF.Location = new System.Drawing.Point(137, 747);
+            this.OFCnotesF.Location = new System.Drawing.Point(172, 822);
             this.OFCnotesF.Name = "OFCnotesF";
             this.OFCnotesF.Size = new System.Drawing.Size(399, 52);
             this.OFCnotesF.TabIndex = 29;
@@ -219,30 +232,31 @@ namespace PresentationLayer
             // OFCcustomerform
             // 
             this.OFCcustomerform.AutoSize = true;
-            this.OFCcustomerform.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.OFCcustomerform.Location = new System.Drawing.Point(205, 5);
+            this.OFCcustomerform.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OFCcustomerform.ForeColor = System.Drawing.Color.White;
+            this.OFCcustomerform.Location = new System.Drawing.Point(366, 9);
             this.OFCcustomerform.Name = "OFCcustomerform";
-            this.OFCcustomerform.Size = new System.Drawing.Size(232, 25);
+            this.OFCcustomerform.Size = new System.Drawing.Size(263, 29);
             this.OFCcustomerform.TabIndex = 59;
             this.OFCcustomerform.Text = "Order Form - Customer";
             // 
             // OFCot1q
             // 
-            this.OFCot1q.Location = new System.Drawing.Point(132, 434);
+            this.OFCot1q.Location = new System.Drawing.Point(138, 461);
             this.OFCot1q.Name = "OFCot1q";
             this.OFCot1q.Size = new System.Drawing.Size(19, 20);
             this.OFCot1q.TabIndex = 60;
             // 
             // OFCot2q
             // 
-            this.OFCot2q.Location = new System.Drawing.Point(132, 519);
+            this.OFCot2q.Location = new System.Drawing.Point(138, 567);
             this.OFCot2q.Name = "OFCot2q";
             this.OFCot2q.Size = new System.Drawing.Size(19, 20);
             this.OFCot2q.TabIndex = 61;
             // 
             // OFCot3q
             // 
-            this.OFCot3q.Location = new System.Drawing.Point(132, 611);
+            this.OFCot3q.Location = new System.Drawing.Point(138, 662);
             this.OFCot3q.Name = "OFCot3q";
             this.OFCot3q.Size = new System.Drawing.Size(19, 20);
             this.OFCot3q.TabIndex = 62;
@@ -250,7 +264,8 @@ namespace PresentationLayer
             // OFCaddr2
             // 
             this.OFCaddr2.AutoSize = true;
-            this.OFCaddr2.Location = new System.Drawing.Point(8, 215);
+            this.OFCaddr2.BackColor = System.Drawing.Color.White;
+            this.OFCaddr2.Location = new System.Drawing.Point(38, 233);
             this.OFCaddr2.Name = "OFCaddr2";
             this.OFCaddr2.Size = new System.Drawing.Size(83, 13);
             this.OFCaddr2.TabIndex = 63;
@@ -259,7 +274,8 @@ namespace PresentationLayer
             // OFCcounty
             // 
             this.OFCcounty.AutoSize = true;
-            this.OFCcounty.Location = new System.Drawing.Point(28, 313);
+            this.OFCcounty.BackColor = System.Drawing.Color.White;
+            this.OFCcounty.Location = new System.Drawing.Point(59, 340);
             this.OFCcounty.Name = "OFCcounty";
             this.OFCcounty.Size = new System.Drawing.Size(47, 13);
             this.OFCcounty.TabIndex = 64;
@@ -267,82 +283,86 @@ namespace PresentationLayer
             // 
             // OFCaddr2F
             // 
-            this.OFCaddr2F.Location = new System.Drawing.Point(132, 213);
+            this.OFCaddr2F.Location = new System.Drawing.Point(172, 233);
             this.OFCaddr2F.Name = "OFCaddr2F";
             this.OFCaddr2F.Size = new System.Drawing.Size(399, 20);
             this.OFCaddr2F.TabIndex = 65;
             // 
             // OFCcountyF
             // 
-            this.OFCcountyF.Location = new System.Drawing.Point(132, 310);
+            this.OFCcountyF.Location = new System.Drawing.Point(172, 340);
             this.OFCcountyF.Name = "OFCcountyF";
             this.OFCcountyF.Size = new System.Drawing.Size(399, 20);
             this.OFCcountyF.TabIndex = 66;
             // 
             // OFCot1desc
             // 
-            this.OFCot1desc.Location = new System.Drawing.Point(157, 459);
+            this.OFCot1desc.Location = new System.Drawing.Point(172, 486);
             this.OFCot1desc.Margin = new System.Windows.Forms.Padding(2);
             this.OFCot1desc.Multiline = true;
             this.OFCot1desc.Name = "OFCot1desc";
-            this.OFCot1desc.Size = new System.Drawing.Size(380, 58);
+            this.OFCot1desc.Size = new System.Drawing.Size(399, 58);
             this.OFCot1desc.TabIndex = 67;
             this.OFCot1desc.Text = "Enter description of items here";
             // 
             // OFCot2desc
             // 
-            this.OFCot2desc.Location = new System.Drawing.Point(156, 550);
+            this.OFCot2desc.Location = new System.Drawing.Point(172, 592);
             this.OFCot2desc.Margin = new System.Windows.Forms.Padding(2);
             this.OFCot2desc.Multiline = true;
             this.OFCot2desc.Name = "OFCot2desc";
-            this.OFCot2desc.Size = new System.Drawing.Size(380, 58);
+            this.OFCot2desc.Size = new System.Drawing.Size(399, 58);
             this.OFCot2desc.TabIndex = 68;
             this.OFCot2desc.Text = "Enter description of items here";
             // 
             // OFCot3desc
             // 
-            this.OFCot3desc.Location = new System.Drawing.Point(157, 635);
+            this.OFCot3desc.Location = new System.Drawing.Point(172, 687);
             this.OFCot3desc.Margin = new System.Windows.Forms.Padding(2);
             this.OFCot3desc.Multiline = true;
             this.OFCot3desc.Name = "OFCot3desc";
-            this.OFCot3desc.Size = new System.Drawing.Size(380, 58);
+            this.OFCot3desc.Size = new System.Drawing.Size(399, 58);
             this.OFCot3desc.TabIndex = 69;
             this.OFCot3desc.Text = "Enter description of items here";
             // 
             // OFCot1
             // 
             this.OFCot1.AutoSize = true;
-            this.OFCot1.Location = new System.Drawing.Point(168, 437);
+            this.OFCot1.BackColor = System.Drawing.Color.White;
+            this.OFCot1.Location = new System.Drawing.Point(172, 464);
             this.OFCot1.Name = "OFCot1";
             this.OFCot1.Size = new System.Drawing.Size(116, 17);
             this.OFCot1.TabIndex = 70;
             this.OFCot1.Text = "Ceremonial Swords";
-            this.OFCot1.UseVisualStyleBackColor = true;
+            this.OFCot1.UseVisualStyleBackColor = false;
             // 
             // OFCot2
             // 
             this.OFCot2.AutoSize = true;
-            this.OFCot2.Location = new System.Drawing.Point(168, 522);
+            this.OFCot2.BackColor = System.Drawing.Color.White;
+            this.OFCot2.Location = new System.Drawing.Point(172, 570);
             this.OFCot2.Name = "OFCot2";
             this.OFCot2.Size = new System.Drawing.Size(124, 17);
             this.OFCot2.TabIndex = 71;
             this.OFCot2.Text = "\"Film Grade\" Swords";
-            this.OFCot2.UseVisualStyleBackColor = true;
+            this.OFCot2.UseVisualStyleBackColor = false;
             // 
             // OFcot3
             // 
             this.OFcot3.AutoSize = true;
-            this.OFcot3.Location = new System.Drawing.Point(168, 613);
+            this.OFcot3.BackColor = System.Drawing.Color.White;
+            this.OFcot3.Location = new System.Drawing.Point(172, 665);
             this.OFcot3.Name = "OFcot3";
             this.OFcot3.Size = new System.Drawing.Size(59, 17);
             this.OFcot3.TabIndex = 72;
             this.OFcot3.Text = "Armour";
-            this.OFcot3.UseVisualStyleBackColor = true;
+            this.OFcot3.UseVisualStyleBackColor = false;
             // 
             // OFCpostcode
             // 
             this.OFCpostcode.AutoSize = true;
-            this.OFCpostcode.Location = new System.Drawing.Point(20, 276);
+            this.OFCpostcode.BackColor = System.Drawing.Color.White;
+            this.OFCpostcode.Location = new System.Drawing.Point(56, 305);
             this.OFCpostcode.Name = "OFCpostcode";
             this.OFCpostcode.Size = new System.Drawing.Size(59, 13);
             this.OFCpostcode.TabIndex = 73;
@@ -350,7 +370,7 @@ namespace PresentationLayer
             // 
             // OFCpostcodeF
             // 
-            this.OFCpostcodeF.Location = new System.Drawing.Point(132, 276);
+            this.OFCpostcodeF.Location = new System.Drawing.Point(172, 302);
             this.OFCpostcodeF.Name = "OFCpostcodeF";
             this.OFCpostcodeF.Size = new System.Drawing.Size(399, 20);
             this.OFCpostcodeF.TabIndex = 74;
@@ -358,7 +378,8 @@ namespace PresentationLayer
             // OFCtown
             // 
             this.OFCtown.AutoSize = true;
-            this.OFCtown.Location = new System.Drawing.Point(17, 244);
+            this.OFCtown.BackColor = System.Drawing.Color.White;
+            this.OFCtown.Location = new System.Drawing.Point(52, 271);
             this.OFCtown.Name = "OFCtown";
             this.OFCtown.Size = new System.Drawing.Size(63, 13);
             this.OFCtown.TabIndex = 75;
@@ -366,14 +387,14 @@ namespace PresentationLayer
             // 
             // OFCtownF
             // 
-            this.OFCtownF.Location = new System.Drawing.Point(132, 244);
+            this.OFCtownF.Location = new System.Drawing.Point(172, 268);
             this.OFCtownF.Name = "OFCtownF";
             this.OFCtownF.Size = new System.Drawing.Size(399, 20);
             this.OFCtownF.TabIndex = 76;
             // 
             // OFCcountryF
             // 
-            this.OFCcountryF.Location = new System.Drawing.Point(132, 348);
+            this.OFCcountryF.Location = new System.Drawing.Point(172, 375);
             this.OFCcountryF.Name = "OFCcountryF";
             this.OFCcountryF.Size = new System.Drawing.Size(399, 20);
             this.OFCcountryF.TabIndex = 77;
@@ -381,7 +402,8 @@ namespace PresentationLayer
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(28, 355);
+            this.label2.BackColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(59, 378);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(50, 13);
             this.label2.TabIndex = 78;
@@ -389,10 +411,11 @@ namespace PresentationLayer
             // 
             // OFCgroupbox
             // 
+            this.OFCgroupbox.BackColor = System.Drawing.Color.White;
             this.OFCgroupbox.Controls.Add(this.OFCct3);
             this.OFCgroupbox.Controls.Add(this.OFCct2);
             this.OFCgroupbox.Controls.Add(this.OFCct1);
-            this.OFCgroupbox.Location = new System.Drawing.Point(132, 374);
+            this.OFCgroupbox.Location = new System.Drawing.Point(172, 404);
             this.OFCgroupbox.Name = "OFCgroupbox";
             this.OFCgroupbox.Size = new System.Drawing.Size(399, 54);
             this.OFCgroupbox.TabIndex = 79;
@@ -423,27 +446,38 @@ namespace PresentationLayer
             // OFCct1
             // 
             this.OFCct1.AutoSize = true;
+            this.OFCct1.BackColor = System.Drawing.Color.White;
             this.OFCct1.Location = new System.Drawing.Point(24, 16);
             this.OFCct1.Name = "OFCct1";
             this.OFCct1.Size = new System.Drawing.Size(91, 17);
             this.OFCct1.TabIndex = 0;
             this.OFCct1.TabStop = true;
             this.OFCct1.Text = "Governmental";
-            this.OFCct1.UseVisualStyleBackColor = true;
+            this.OFCct1.UseVisualStyleBackColor = false;
             // 
             // OFCcustomertype
             // 
             this.OFCcustomertype.AutoSize = true;
-            this.OFCcustomertype.Location = new System.Drawing.Point(16, 399);
+            this.OFCcustomertype.BackColor = System.Drawing.Color.White;
+            this.OFCcustomertype.Location = new System.Drawing.Point(38, 421);
             this.OFCcustomertype.Name = "OFCcustomertype";
             this.OFCcustomertype.Size = new System.Drawing.Size(81, 13);
             this.OFCcustomertype.TabIndex = 11;
             this.OFCcustomertype.Text = "Customer type *";
             // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::PresentationLayer.Properties.Resources.blue;
+            this.pictureBox3.Location = new System.Drawing.Point(626, 68);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(287, 888);
+            this.pictureBox3.TabIndex = 81;
+            this.pictureBox3.TabStop = false;
+            // 
             // pictureBox2
             // 
             this.pictureBox2.Image = global::PresentationLayer.Properties.Resources.estimates;
-            this.pictureBox2.Location = new System.Drawing.Point(603, 228);
+            this.pictureBox2.Location = new System.Drawing.Point(643, 314);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(250, 336);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -452,20 +486,31 @@ namespace PresentationLayer
             // 
             // OFCpicturebox
             // 
+            this.OFCpicturebox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.OFCpicturebox.Image = global::PresentationLayer.Properties.Resources.logo1;
-            this.OFCpicturebox.Location = new System.Drawing.Point(603, 5);
+            this.OFCpicturebox.Location = new System.Drawing.Point(643, 84);
             this.OFCpicturebox.Name = "OFCpicturebox";
             this.OFCpicturebox.Size = new System.Drawing.Size(250, 204);
             this.OFCpicturebox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.OFCpicturebox.TabIndex = 14;
             this.OFCpicturebox.TabStop = false;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::PresentationLayer.Properties.Resources.white5;
+            this.pictureBox1.Location = new System.Drawing.Point(24, 50);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(903, 919);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 80;
+            this.pictureBox1.TabStop = false;
+            // 
             // OFCcountry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.ClientSize = new System.Drawing.Size(876, 832);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.ClientSize = new System.Drawing.Size(948, 991);
             this.Controls.Add(this.OFCcustomertype);
             this.Controls.Add(this.OFCgroupbox);
             this.Controls.Add(this.label2);
@@ -506,14 +551,18 @@ namespace PresentationLayer
             this.Controls.Add(this.OFCphoneF);
             this.Controls.Add(this.OFCaddr1F);
             this.Controls.Add(this.OFCnameF);
+            this.Controls.Add(this.pictureBox3);
+            this.Controls.Add(this.pictureBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "OFCcountry";
             this.Text = "Order Form - Customer";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.OFCgroupbox.ResumeLayout(false);
             this.OFCgroupbox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OFCpicturebox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -564,6 +613,8 @@ namespace PresentationLayer
         private System.Windows.Forms.RadioButton OFCct2;
         private System.Windows.Forms.RadioButton OFCct1;
         private System.Windows.Forms.Label OFCcustomertype;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox3;
     }
 }
 

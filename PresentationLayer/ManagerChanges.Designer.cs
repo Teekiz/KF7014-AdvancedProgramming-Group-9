@@ -195,10 +195,11 @@ namespace PresentationLayer
             this.pushChanges.UseVisualStyleBackColor = true;
             this.pushChanges.Click += new System.EventHandler(this.pushChanges_Click);
             // 
-            // Form4
+            // ManagerChanges
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(800, 849);
             this.Controls.Add(this.pushChanges);
             this.Controls.Add(this.label9);
@@ -216,7 +217,7 @@ namespace PresentationLayer
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "Form4";
+            this.Name = "ManagerChanges";
             this.Text = "Form4";
             this.Load += new System.EventHandler(this.Form4_Load);
             this.ResumeLayout(false);

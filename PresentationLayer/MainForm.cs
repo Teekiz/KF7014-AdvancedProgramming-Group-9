@@ -55,5 +55,11 @@ namespace PresentationLayer
             Credits screen = new Credits();
             screen.ShowDialog();
         }
+
+        private void MFb3_Click(object sender, EventArgs e)
+        {
+            Schedule screen = new Schedule();
+            screen.ShowDialog();
+        }
     }
 }

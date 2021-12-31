@@ -30,15 +30,39 @@ namespace PresentationLayer
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.MFb2 = new System.Windows.Forms.Button();
+            this.MFb4 = new System.Windows.Forms.Button();
             this.MFb3 = new System.Windows.Forms.Button();
+            this.MFb2 = new System.Windows.Forms.Button();
             this.MFb1 = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.MFb4 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // MFb4
+            // 
+            this.MFb4.Font = new System.Drawing.Font("Bookman Old Style", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MFb4.Image = global::PresentationLayer.Properties.Resources.istockphoto_1026493200_612x612;
+            this.MFb4.Location = new System.Drawing.Point(1251, 24);
+            this.MFb4.Name = "MFb4";
+            this.MFb4.Size = new System.Drawing.Size(171, 76);
+            this.MFb4.TabIndex = 5;
+            this.MFb4.Text = "Credits";
+            this.MFb4.UseVisualStyleBackColor = true;
+            this.MFb4.Click += new System.EventHandler(this.MFb4_Click);
+            // 
+            // MFb3
+            // 
+            this.MFb3.Font = new System.Drawing.Font("Bookman Old Style", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MFb3.Image = global::PresentationLayer.Properties.Resources.istockphoto_1026493200_612x612;
+            this.MFb3.Location = new System.Drawing.Point(928, 24);
+            this.MFb3.Name = "MFb3";
+            this.MFb3.Size = new System.Drawing.Size(171, 76);
+            this.MFb3.TabIndex = 4;
+            this.MFb3.Text = "Schedule";
+            this.MFb3.UseVisualStyleBackColor = true;
+            this.MFb3.Click += new System.EventHandler(this.MFb3_Click);
             // 
             // MFb2
             // 
@@ -51,17 +75,6 @@ namespace PresentationLayer
             this.MFb2.Text = "Manager";
             this.MFb2.UseVisualStyleBackColor = true;
             this.MFb2.Click += new System.EventHandler(this.MFb2_Click);
-            // 
-            // MFb3
-            // 
-            this.MFb3.Font = new System.Drawing.Font("Bookman Old Style", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MFb3.Image = global::PresentationLayer.Properties.Resources.istockphoto_1026493200_612x612;
-            this.MFb3.Location = new System.Drawing.Point(928, 24);
-            this.MFb3.Name = "MFb3";
-            this.MFb3.Size = new System.Drawing.Size(171, 76);
-            this.MFb3.TabIndex = 4;
-            this.MFb3.Text = "Schedule";
-            this.MFb3.UseVisualStyleBackColor = true;
             // 
             // MFb1
             // 
@@ -95,18 +108,6 @@ namespace PresentationLayer
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            // 
-            // MFb4
-            // 
-            this.MFb4.Font = new System.Drawing.Font("Bookman Old Style", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MFb4.Image = global::PresentationLayer.Properties.Resources.istockphoto_1026493200_612x612;
-            this.MFb4.Location = new System.Drawing.Point(1251, 24);
-            this.MFb4.Name = "MFb4";
-            this.MFb4.Size = new System.Drawing.Size(171, 76);
-            this.MFb4.TabIndex = 5;
-            this.MFb4.Text = "Credits";
-            this.MFb4.UseVisualStyleBackColor = true;
-            this.MFb4.Click += new System.EventHandler(this.MFb4_Click);
             // 
             // MainForm
             // 

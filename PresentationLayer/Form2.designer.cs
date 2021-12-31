@@ -266,7 +266,7 @@ namespace PresentationLayer
             this.OFMcsF.ColumnCount = 3;
             this.OFMcsF.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.79253F));
             this.OFMcsF.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.20747F));
-            this.OFMcsF.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 93F));
+            this.OFMcsF.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 94F));
             this.OFMcsF.Location = new System.Drawing.Point(635, 323);
             this.OFMcsF.Name = "OFMcsF";
             this.OFMcsF.RowCount = 6;
@@ -300,10 +300,10 @@ namespace PresentationLayer
             // 
             // OFMsubmit
             // 
-            this.OFMsubmit.Location = new System.Drawing.Point(293, 472);
+            this.OFMsubmit.Location = new System.Drawing.Point(220, 486);
             this.OFMsubmit.Margin = new System.Windows.Forms.Padding(2);
             this.OFMsubmit.Name = "OFMsubmit";
-            this.OFMsubmit.Size = new System.Drawing.Size(64, 24);
+            this.OFMsubmit.Size = new System.Drawing.Size(237, 88);
             this.OFMsubmit.TabIndex = 59;
             this.OFMsubmit.Text = "Submit";
             this.OFMsubmit.UseVisualStyleBackColor = true;
