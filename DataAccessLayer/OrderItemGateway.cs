@@ -15,12 +15,31 @@ namespace DataAccessLayer
         bool DeleteAllOrderItems();
     }
 
-    //For this method I used the answer by the user Slauma (2013)
+    //1) For this method I used the answer by the user Slauma (2013)
     //https://stackoverflow.com/questions/20710178/entity-framework-creates-new-duplicate-entries-for-associated-objects
     //using it for context.Customers.Attach(enquiry.Customer); to fix duplication issues
 
-    public class OrderItemGateway : IOrderItemGateway
+    //2) reformated to use simple thread-saftey - this code mostly comes from
+    //C# in Depth "Implementing the Singleton Pattern in C#" https://csharpindepth.com/articles/singleton
+    //it has been changed from the version found in the presentation (week 6).
+
+    //the explanation for using the singleton pattern for the gateways is because there only needs to be one instance of these
+    //while the program will at some point need all the gateways, it doesn't make sense to create multiple versions of these objects.
+
+    public sealed class OrderItemGateway : IOrderItemGateway
     {
+        //code for reference 2
+        private static OrderItemGateway instance = null;
+        private static readonly object padlock = new object();
+        OrderItemGateway() { }
+
+        public static OrderItemGateway Instance
+        {
+            get { lock (padlock) { if (instance == null) { instance = new OrderItemGateway(); } return instance; } }
+        }
+        //reference 2 ends here.
+
+        //Method mentined in reference 1 
         public bool SaveOrderItems(List<OrderItems> orderItems, Enquiry enquiry)
         {
             try

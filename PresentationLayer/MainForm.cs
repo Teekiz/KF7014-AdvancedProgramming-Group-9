@@ -21,10 +21,10 @@ namespace PresentationLayer
 
         public MainForm()
         {
-            enquiryGateway = new EnquiryGateway();
-            orderItemGateway = new OrderItemGateway();
-            customerGateway = new CustomerGateway();
-            orderGateway = new OrderGateway();
+            enquiryGateway = EnquiryGateway.Instance;
+            orderItemGateway = OrderItemGateway.Instance;
+            customerGateway = CustomerGateway.Instance;
+            orderGateway = OrderGateway.Instance;
 
             InitializeComponent();
         }

@@ -12,17 +12,10 @@ namespace AdvancedProgrammingGroup9TestProject
     [TestClass]
     public class DataAccessTestClass
     {
-        /* - Old CRUD classes
-        DatabaseReadQueries read = new DatabaseReadQueries();
-        DatabaseCreateQueries create = new DatabaseCreateQueries();
-        DatabaseDeleteQueries delete = new DatabaseDeleteQueries();
-        DatabaseUpdateQueries update = new DatabaseUpdateQueries();
-        */
-
-        CustomerGateway CustomerCRUD = new CustomerGateway();
-        EnquiryGateway EnquiryCRUD = new EnquiryGateway();
-        OrderItemGateway OrderItemCRUD = new OrderItemGateway();
-        OrderGateway OrderCRUD = new OrderGateway();
+        CustomerGateway CustomerCRUD = CustomerGateway.Instance;
+        EnquiryGateway EnquiryCRUD = EnquiryGateway.Instance;
+        OrderItemGateway OrderItemCRUD = OrderItemGateway.Instance;
+        OrderGateway OrderCRUD = OrderGateway.Instance;
 
         Customer customer;
         Enquiry enquiry;

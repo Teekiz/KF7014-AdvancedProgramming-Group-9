@@ -138,10 +138,10 @@ namespace PresentationLayer
 
         public void showUpdateForm(int hours, List<Order> ordersToChange, Enquiry enquiryToUse)
         {
-            EnquiryGateway enquiryGateway = new EnquiryGateway();
-            OrderItemGateway orderItemGateway = new OrderItemGateway();
-            CustomerGateway customerGateway = new CustomerGateway();
-            OrderGateway orderGateway = new OrderGateway();
+            EnquiryGateway enquiryGateway = EnquiryGateway.Instance;
+            OrderItemGateway orderItemGateway = OrderItemGateway.Instance;
+            CustomerGateway customerGateway = CustomerGateway.Instance;
+            OrderGateway orderGateway = OrderGateway.Instance;
 
             ManagerChanges newscreen = new ManagerChanges();
             IManagerModel model = new ManagerModel(enquiryGateway, customerGateway, orderItemGateway, orderGateway);

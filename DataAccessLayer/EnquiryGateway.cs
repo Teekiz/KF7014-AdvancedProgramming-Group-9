@@ -16,7 +16,7 @@ namespace DataAccessLayer
         bool UpdateEnquiry(Enquiry enquiry);
         int FindCustomerIDinEnquiry(Enquiry enquiry);
     }
-    public class EnquiryGateway : IEnquiryGateway
+    public sealed class EnquiryGateway : IEnquiryGateway
     {
 
         //1) For this method I used the answer by the user Slauma (2013)
@@ -28,6 +28,24 @@ namespace DataAccessLayer
         //this was to find the enquiry id in orders, due to the lateness in the project, this is only used in this method
         //however, I would've used this method more often.
 
+        //3) reformated to use simple thread-saftey - this code mostly comes from
+        //C# in Depth "Implementing the Singleton Pattern in C#" https://csharpindepth.com/articles/singleton
+        //it has been changed from the version found in the presentation (week 6).
+
+        //the explanation for using the singleton pattern for the gateways is because there only needs to be one instance of these
+        //while the program will at some point need all the gateways, it doesn't make sense to create multiple versions of these objects.
+
+
+        //Method 3) for reference
+        private static EnquiryGateway instance = null;
+        private static readonly object padlock = new object();
+        EnquiryGateway() { }
+
+        public static EnquiryGateway Instance
+        {
+            get { lock (padlock) { if (instance == null) { instance = new EnquiryGateway(); } return instance; } }
+        }
+        //reference 3 ends here.
 
         //Method 1) reference
         public bool SaveEnquiry(Enquiry enquiry, Customer customer)

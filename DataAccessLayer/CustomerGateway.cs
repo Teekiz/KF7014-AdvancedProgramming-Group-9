@@ -23,8 +23,28 @@ namespace DataAccessLayer
     //1) Some of this code is based on https://docs.microsoft.com/en-us/ef/core/querying/ for the get methods
     //I've put this in the methods relevent
 
-    public class CustomerGateway : ICustomerGateway
+    //2) I reformatted the singleton design pattern to use thread saftey -
+    //this comes fromC# in Depth "Implementing the Singleton Pattern in C#" https://csharpindepth.com/articles/singleton
+
+    public sealed class CustomerGateway : ICustomerGateway
     {
+        //Reference 2.
+        //reformated to use simple thread-saftey - this code mostly comes from
+        //C# in Depth "Implementing the Singleton Pattern in C#" https://csharpindepth.com/articles/singleton
+        //it has been changed from the copy of the presentation
+
+        //the explanation for using the singleton pattern for the gateways is because there only needs to be one instance of these
+        //while the program will at some point need all the gateways, it doesn't make sense to create multiple versions of these objects.
+
+        private static CustomerGateway instance = null;
+        private static readonly object padlock = new object();
+        CustomerGateway() { }
+
+        public static CustomerGateway Instance
+        {
+            get { lock (padlock) { if (instance == null) { instance = new CustomerGateway(); } return instance; } }
+        }
+
         public bool SaveCustomer(Customer customer)
         {
             try

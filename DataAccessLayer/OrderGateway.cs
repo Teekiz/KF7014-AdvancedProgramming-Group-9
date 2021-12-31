@@ -29,8 +29,25 @@ namespace DataAccessLayer
     //3) Some of this code is based on https://docs.microsoft.com/en-us/ef/core/querying/ for the get methods
     //I've put this in the methods relevent
 
-    public class OrderGateway : IOrderGateway
+    //4) reformated to use simple thread-saftey - this code mostly comes from
+    //C# in Depth "Implementing the Singleton Pattern in C#" https://csharpindepth.com/articles/singleton
+    //it has been changed from the version found in the presentation (week 6).
+
+    //the explanation for using the singleton pattern for the gateways is because there only needs to be one instance of these
+    //while the program will at some point need all the gateways, it doesn't make sense to create multiple versions of these objects.
+
+    public sealed class OrderGateway : IOrderGateway
     {
+        //code for reference 4
+        private static OrderGateway instance = null;
+        private static readonly object padlock = new object();
+        OrderGateway() { }
+
+        public static OrderGateway Instance
+        {
+            get { lock (padlock) { if (instance == null) { instance = new OrderGateway(); } return instance; } }
+        }
+        //reference 4 ends here.
 
         //Method for 1) reference
         public bool SaveOrder(Order order)
