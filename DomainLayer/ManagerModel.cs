@@ -26,6 +26,7 @@ namespace DomainLayer
         Customer GetCustomerInEnquiry(int customerID);
         Order GetOrder(int id);
         int GetEnquiryInOrder(Order order);
+
         //Database Manipulation (Sets/Updates)
         bool UpdateEnquiry(Enquiry enquiry);
         bool UpdateOrder(Order order);
@@ -58,16 +59,21 @@ namespace DomainLayer
         #region "Data Access Methods"
         public bool UpdateEnquiry(Enquiry enquiry)
         {
-            enquiryCRUD.UpdateEnquiry(enquiry);
-            return true;
+            try
+            {
+                if (enquiry is null) { return false; }
+                else { enquiryCRUD.UpdateEnquiry(enquiry); return true; }
+            }
+
+            catch { return false; }
         }
 
         public bool UpdateOrder(Order order)
         {
             try
             {
-                orderCRUD.UpdateOrder(order);
-                return true;
+                if (order is null) { return false; }
+                else { orderCRUD.UpdateOrder(order); return true; }
             }
             catch { return false; }
         }
@@ -75,9 +81,13 @@ namespace DomainLayer
         {
             try
             {
-                order.Enquiry = enquiry;
-                orderCRUD.SaveOrder(order);
-                return true;
+                if (order is null || enquiry is null) { return false; }
+                else
+                {
+                    order.Enquiry = enquiry;
+                    orderCRUD.SaveOrder(order);
+                    return true;
+                }
             }
             catch { return false; }
         }
@@ -135,7 +145,6 @@ namespace DomainLayer
                 if (orderStartDate < checkDeadline && percentComplete < 100)
                 {    
                     int days = (checkDeadline - checkStartDate).Days;
-
                     while (days > 0)
                     {     
                         //check to see if a date lands between the order start date and the deadline
@@ -213,34 +222,45 @@ namespace DomainLayer
             minCost = 0;
             maxCost = 0;
 
-            for (int i = 0; i < orderItems.Count(); i++)
+            try
             {
-                orderItems[i].getItemTime(out int minCalcTime, out int maxCalcTime);
-                orderItems[i].getItemCost(out double minCalcCost, out double maxCalcCost);
-                minTime += minCalcTime;
-                maxTime += maxCalcTime;
-                minCost += minCalcCost;
-                maxCost += maxCalcCost;
-            }
+
+                for (int i = 0; i < orderItems.Count(); i++)
+                {
+                    orderItems[i].getItemTime(out int minCalcTime, out int maxCalcTime);
+                    orderItems[i].getItemCost(out double minCalcCost, out double maxCalcCost);
+                    minTime += minCalcTime;
+                    maxTime += maxCalcTime;
+                    minCost += minCalcCost;
+                    maxCost += maxCalcCost;
+                }
+            }         
+            catch {} //returns the values set above
         }
 
         public bool PriceHoursCheck(Double price, int hours, List<OrderItems> orderItems)
         {
-            CalculateEstimatedTime(out int minTime, out int maxTime, out double minCost, out double maxCost, orderItems);
-            if (price < minCost || price > maxCost)
+            try
             {
-                System.Windows.Forms.MessageBox.Show("Price should be between " + minCost.ToString() + " and " + maxCost.ToString() + ".");
-                return false;
+                if (orderItems.Count == 0 || orderItems is null) { return false; }
+
+                CalculateEstimatedTime(out int minTime, out int maxTime, out double minCost, out double maxCost, orderItems);
+                if (price < minCost || price > maxCost)
+                {
+                    System.Windows.Forms.MessageBox.Show("Price should be between " + minCost.ToString() + " and " + maxCost.ToString() + ".");
+                    return false;
+                }
+                else if (hours < minTime || hours > maxTime)
+                {
+                    System.Windows.Forms.MessageBox.Show("Hours should be between " + minTime.ToString() + " and " + maxTime.ToString() + ".");
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
             }
-            else if (hours < minTime || hours > maxTime)
-            {
-                System.Windows.Forms.MessageBox.Show("Hours should be between " + minTime.ToString() + " and " + maxTime.ToString() + ".");
-                return false;
-            }
-            else
-            {
-                return true;
-            }
+            catch { return false; }
         }
     }
 }

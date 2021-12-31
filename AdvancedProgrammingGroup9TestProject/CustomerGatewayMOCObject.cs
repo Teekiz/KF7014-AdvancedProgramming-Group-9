@@ -12,6 +12,20 @@ namespace AdvancedProgrammingGroup9TestProject
         public Customer storedcustomer;
         public List<Customer> allcustomers;
 
+        public CustomerGatewayMOCObject()
+        {
+            storedcustomer = new Customer();
+            storedcustomer.name = "Person Personington";
+            storedcustomer.addressline1 = "Adress Line";
+            storedcustomer.addressline2 = "26";
+            storedcustomer.phone = "0191234567";
+            storedcustomer.birthdate = new DateTime(1995, 2, 21);
+            storedcustomer.postcode = "NE1 1AD";
+            storedcustomer.townCity = "Newcastle";
+            storedcustomer.county = "Tyne and Wear";
+            storedcustomer.country = "England";
+            storedcustomer.type = "Government";
+        }
         public bool SaveCustomer(Customer customer)
         {
             storedcustomer = customer;
@@ -30,37 +44,15 @@ namespace AdvancedProgrammingGroup9TestProject
 
         public List<Customer> GetAllCustomers()
         {
-            Customer customer = new Customer();
-            customer.name = "Person Personington";
-            customer.addressline1 = "Adress Line";
-            customer.addressline2 = "26";
-            customer.phone = "0191234567";
-            customer.birthdate = new DateTime(1995, 2, 21);
-            customer.postcode = "NE1 1AD";
-            customer.townCity = "Newcastle";
-            customer.county = "Tyne and Wear";
-            customer.country = "England";
-            customer.type = "Government";
-
-            allcustomers.Add(customer);
+            allcustomers.Add(storedcustomer);
             return allcustomers;
         }
 
         public Customer GetCustomer(int id)
         {
-            Customer customer = new Customer();
-            customer.name = "Person B";
-            customer.addressline1 = "Adress Line";
-            customer.addressline2 = "26";
-            customer.phone = "0191234567";
-            customer.birthdate = new DateTime(1995, 2, 21);
-            customer.postcode = "NE1 1AD";
-            customer.townCity = "Newcastle";
-            customer.county = "Tyne and Wear";
-            customer.country = "England";
-            customer.type = "Government";
-
-            return customer;
+            if (id == 1) { return storedcustomer; }
+            else { return null; }
+            
         }
     }
 }
