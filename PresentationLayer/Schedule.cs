@@ -24,11 +24,13 @@ namespace PresentationLayer
             InitializeComponent();
         }
 
+        /*
         public string scheduleBox
         {
-            get { return scheduleBox.Text; }
-            set { scheduleBox.Text = value; }
+            //get { return scheduleBox.Text; }
+            //set { scheduleBox.Text = value; }
         }
+        */
 
         public void register(SchedulePresenter psr)
         {
