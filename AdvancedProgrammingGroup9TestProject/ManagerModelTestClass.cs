@@ -236,12 +236,66 @@ namespace AdvancedProgrammingGroup9TestProject
         [TestMethod]
         public void ManagerModelTestClassConflictingOrder()
         {
-            /*five dates stored in the datebase
+            /*four dates stored in the datebase that are relevent to this method
+             * this should mean that for the most of january, there is no slots free
              *  28/12/2021 - 01/01/2022 (2)
-             *  02/01/2022 - 09/01/2022 (2)
-             *  14/01/2022 - 20/01/2022 (2)
-             *  21/01/2022 - 21/02/2022 (2)
+             *  02/01/2022 - 09/01/2022 (3)
+             *  14/01/2022 - 20/01/2022 (4)
+             *  21/01/2022 - 21/02/2022 (5) 
             */
+
+            //it is expected that if there is no conflicting order, return null
+            //the beginning of january should be free
+            Assert.IsNull(model.conflictingOrder(new DateTime(2021, 1, 1), new DateTime(2021, 1, 10)));
+            //placing the object on the exact start and endate
+            Order existingOrder = model.conflictingOrder(new DateTime(2021, 12, 28), new DateTime(2022, 1, 1));
+            Assert.IsNotNull(existingOrder);
+            Assert.AreEqual(new DateTime(2021, 12, 28), existingOrder.scheduledStartDate);
+            Assert.AreEqual(new DateTime(2022, 1, 1), existingOrder.confirmedDeadline);
+
+            //Placing the values within the time
+            existingOrder = model.conflictingOrder(new DateTime(2021, 12, 29), new DateTime(2021, 12, 31));
+            Assert.IsNotNull(existingOrder);
+            Assert.AreEqual(new DateTime(2021, 12, 28), existingOrder.scheduledStartDate);
+            Assert.AreEqual(new DateTime(2022, 1, 1), existingOrder.confirmedDeadline);
+
+            //Testing march (should be free)
+            Assert.IsNull(model.conflictingOrder(new DateTime(2022, 3, 1), new DateTime(2022, 3, 5)));
+
+            //Placing the values during another time
+            existingOrder = model.conflictingOrder(new DateTime(2022, 1, 1), new DateTime(2022, 1, 5));
+            Assert.IsNotNull(existingOrder);
+            Assert.AreEqual(new DateTime(2022, 1, 2), existingOrder.scheduledStartDate);
+            Assert.AreEqual(new DateTime(2022, 1, 9), existingOrder.confirmedDeadline);
+        }
+
+        /*For Method: CheckSchedule(DateTime checkStartDate, DateTime checkDeadline)*/
+        //this method uses the database to find the exisitng orders, therefore, in the Gateway MOC objects
+        //there will be a few orders created.
+        [TestMethod]
+        public void ManagerModelTestCheckSchedule()
+        {
+            //this logic of this class mostly comes from the method above (conflictingOrder)
+            //therefore, this should work correctly with no errors
+
+            /*four dates stored in the datebase that are relevent to this method
+             * this should mean that for the most of january, there is no slots free
+             *  28/12/2021 - 01/01/2022 (2)
+             *  02/01/2022 - 09/01/2022 (3)
+             *  14/01/2022 - 20/01/2022 (4)
+             *  21/01/2022 - 21/02/2022 (5) 
+            */
+
+            //clear schedule
+            Assert.IsTrue(model.CheckSchedule(new DateTime(2021, 1, 1), new DateTime(2021, 1, 10)));
+            //busy schedule
+            Assert.IsFalse(model.CheckSchedule(new DateTime(2021, 12, 28), new DateTime(2022, 1, 1)));
+            //busy schedule
+            Assert.IsFalse(model.CheckSchedule(new DateTime(2021, 12, 29), new DateTime(2021, 12, 31)));
+            //clear - set in march
+            Assert.IsTrue(model.CheckSchedule(new DateTime(2022, 3, 1), new DateTime(2022, 3, 5)));
+            //exisiting time
+            Assert.IsFalse(model.CheckSchedule(new DateTime(2022, 1, 1), new DateTime(2022, 1, 5)));
         }
     }
 }

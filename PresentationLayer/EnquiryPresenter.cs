@@ -14,12 +14,16 @@ namespace PresentationLayer
         private IOrderCust screen;
         Customer c;
         Enquiry e;
+        List<OrderItems> oi;
 
         public EnquiryPresenter(IOrderCust screen, IEnquiryModel enqiryModel)
         {
             this.screen = screen;
             this.enqiryModel = enqiryModel;
             screen.register(this);
+            c = new Customer();
+            e = new Enquiry();
+            oi = new List<OrderItems>();
         }
 
         public void missingInfo(string missingVariable)
@@ -30,7 +34,7 @@ namespace PresentationLayer
         //Checks if required forms are blank. If so, notify user. If not, create query.
         public void saveEnquiry()
         {
-            c = new Customer();
+            
             if (screen.name == "")
             { missingInfo("name"); }
             else if (screen.addressline1 == "")
@@ -83,11 +87,9 @@ namespace PresentationLayer
                 c.addressline2 = screen.addressline2;
                 c.type = screen.getRadioButton();
 
-                e = new Enquiry();
                 e.receivedDate = DateTime.Now;
                 e.deadline = screen.deadline;
-                e.orderNotes = screen.orderNotes;
-                List<OrderItems> oi = new List<OrderItems>();
+                e.orderNotes = screen.orderNotes;                
 
                 if (screen.CerimonialSwordChecked() == true)
                 {
