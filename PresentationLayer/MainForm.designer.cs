@@ -35,6 +35,7 @@ namespace PresentationLayer
             this.MFb1 = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.MFb4 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -90,17 +91,30 @@ namespace PresentationLayer
             this.pictureBox1.Image = global::PresentationLayer.Properties.Resources.iron_helm_1;
             this.pictureBox1.Location = new System.Drawing.Point(0, 133);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1200, 652);
+            this.pictureBox1.Size = new System.Drawing.Size(1536, 844);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            // 
+            // MFb4
+            // 
+            this.MFb4.Font = new System.Drawing.Font("Bookman Old Style", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MFb4.Image = global::PresentationLayer.Properties.Resources.istockphoto_1026493200_612x612;
+            this.MFb4.Location = new System.Drawing.Point(1251, 24);
+            this.MFb4.Name = "MFb4";
+            this.MFb4.Size = new System.Drawing.Size(171, 76);
+            this.MFb4.TabIndex = 5;
+            this.MFb4.Text = "Credits";
+            this.MFb4.UseVisualStyleBackColor = true;
+            this.MFb4.Click += new System.EventHandler(this.MFb4_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(1198, 781);
+            this.ClientSize = new System.Drawing.Size(1535, 977);
+            this.Controls.Add(this.MFb4);
             this.Controls.Add(this.MFb3);
             this.Controls.Add(this.MFb2);
             this.Controls.Add(this.MFb1);
@@ -123,5 +137,6 @@ namespace PresentationLayer
         private System.Windows.Forms.Button MFb1;
         private System.Windows.Forms.Button MFb2;
         private System.Windows.Forms.Button MFb3;
+        private System.Windows.Forms.Button MFb4;
     }
 }

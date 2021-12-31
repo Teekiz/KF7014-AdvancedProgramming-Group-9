@@ -49,5 +49,11 @@ namespace PresentationLayer
             ManagerPresenter presentation = new ManagerPresenter(screen, manager);
             screen.ShowDialog();
         }
+
+        private void MFb4_Click(object sender, EventArgs e)
+        {
+            Credits screen = new Credits();
+            screen.ShowDialog();
+        }
     }
 }
