@@ -14,7 +14,10 @@ namespace AdvancedProgrammingGroup9TestProject
 
         public CustomerGatewayMOCObject()
         {
+            allcustomers = new List<Customer>();
+
             storedcustomer = new Customer();
+            storedcustomer.customerID = 1;
             storedcustomer.name = "Person Personington";
             storedcustomer.addressline1 = "Adress Line";
             storedcustomer.addressline2 = "26";
@@ -25,6 +28,34 @@ namespace AdvancedProgrammingGroup9TestProject
             storedcustomer.county = "Tyne and Wear";
             storedcustomer.country = "England";
             storedcustomer.type = "Government";
+            allcustomers.Add(storedcustomer);
+
+            Customer customer2 = new Customer();
+            customer2.customerID = 2;
+            customer2.type = "Collector";
+            allcustomers.Add(customer2);
+
+            Customer customer3 = new Customer();
+            customer3.customerID = 3;
+            customer3.type = "Governmental";
+            allcustomers.Add(customer3);
+
+            Customer customer4 = new Customer();
+            customer4.customerID = 4;
+            customer4.type = "Entertainment";
+            allcustomers.Add(customer4);
+
+            Customer customer5 = new Customer();
+            customer5.customerID = 5;
+            customer5.type = "Collector";
+            allcustomers.Add(customer5);
+
+            Customer customer6 = new Customer();
+            customer6.customerID = 6;
+            customer6.type = "Governmental";
+            allcustomers.Add(customer6);
+
+
         }
         public bool SaveCustomer(Customer customer)
         {
@@ -44,15 +75,17 @@ namespace AdvancedProgrammingGroup9TestProject
 
         public List<Customer> GetAllCustomers()
         {
-            allcustomers.Add(storedcustomer);
             return allcustomers;
         }
 
         public Customer GetCustomer(int id)
         {
-            if (id == 1) { return storedcustomer; }
-            else { return null; }
-            
+            foreach (Customer cu in GetAllCustomers())
+            {
+                if (cu.customerID == id) { return cu; }
+            }
+            return null;
+
         }
     }
 }

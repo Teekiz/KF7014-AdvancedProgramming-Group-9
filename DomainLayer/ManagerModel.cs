@@ -164,12 +164,13 @@ namespace DomainLayer
             DateTime startDate = replacementOrder.scheduledStartDate;
             DateTime deadline = replacementOrder.confirmedDeadline;
             string customerType = customer.type;
+
             //collectors are the lowest priority (the order looking to replace)
             if (customerType.Equals("Collector")) { return orderlist; }
             //to be sure that the conflicting order is not null
-            Order orderToBeReplaced =  conflictingOrder(startDate, deadline);
+            Order orderToBeReplaced = conflictingOrder(startDate, deadline);
+            if (orderToBeReplaced is null) { return orderlist; } //incase there is no conflict (which would reutnr null.)
             int orderToBeReplacedID = orderCRUD.FindEnquiryIDinOrder(orderToBeReplaced);
-
             if (orderToBeReplaced is null) { return orderlist; }
             else 
             {
@@ -186,10 +187,6 @@ namespace DomainLayer
                     //assume a check has been performed so that the deadline and start date are feasible.
                     if (deadline < newStartDate)
                     {
-
-                        System.Windows.Forms.MessageBox.Show(deadline.ToString());
-                        System.Windows.Forms.MessageBox.Show(newStartDate.ToString());
-
                         orderToBeReplaced.scheduledStartDate = newStartDate;
                         //the orderToBeReplaced is always 0
                         //count should be 2

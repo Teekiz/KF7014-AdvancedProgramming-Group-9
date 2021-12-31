@@ -55,7 +55,7 @@ namespace AdvancedProgrammingGroup9TestProject
             Assert.AreEqual(new DateTime(2020 / 20 / 12), enquiry.receivedDate);
             Assert.AreEqual(new DateTime(2020 / 30 / 12), enquiry.deadline);
             //if the id is wrong return null
-            Assert.IsNull(model.GetEnquiry(2));
+            Assert.IsNull(model.GetEnquiry(10));
 
             /*For Method: List<OrderItems> GetItemsInEnquiry(int enquiryID);*/
             //if the id matches an enquiry
@@ -80,7 +80,7 @@ namespace AdvancedProgrammingGroup9TestProject
             Assert.AreEqual("England", customer.country);
             Assert.AreEqual("Government", customer.type);
             //if customer does not exist.
-            customer = model.GetCustomerInEnquiry(2);
+            customer = model.GetCustomerInEnquiry(10);
             Assert.IsTrue(customer is null);
 
             /*For Method: Order GetOrder(int id);*/
@@ -263,7 +263,7 @@ namespace AdvancedProgrammingGroup9TestProject
             Assert.IsNull(model.conflictingOrder(new DateTime(2022, 3, 1), new DateTime(2022, 3, 5)));
 
             //Placing the values during another time
-            existingOrder = model.conflictingOrder(new DateTime(2022, 1, 1), new DateTime(2022, 1, 5));
+            existingOrder = model.conflictingOrder(new DateTime(2022, 1, 2), new DateTime(2022, 1, 5));
             Assert.IsNotNull(existingOrder);
             Assert.AreEqual(new DateTime(2022, 1, 2), existingOrder.scheduledStartDate);
             Assert.AreEqual(new DateTime(2022, 1, 9), existingOrder.confirmedDeadline);
@@ -296,6 +296,63 @@ namespace AdvancedProgrammingGroup9TestProject
             Assert.IsTrue(model.CheckSchedule(new DateTime(2022, 3, 1), new DateTime(2022, 3, 5)));
             //exisiting time
             Assert.IsFalse(model.CheckSchedule(new DateTime(2022, 1, 1), new DateTime(2022, 1, 5)));
+        }
+        /*For Method: List<Order> canOrderBeMoved(Order replacementOrder, Customer customer);*/
+        [TestMethod]
+        public void ManagerModelTestcanOrderBeMoved()
+        {
+            /*four dates stored in the datebase that are relevent to this method
+             * 
+             * this should mean that for the most of january, there is no slots free
+             *  28/12/2021 - 01/01/2022 (2) (hours 20, customer type collector)
+             *  02/01/2022 - 09/01/2022 (3) (hours 20, customer type govermental)
+             *  14/01/2022 - 20/01/2022 (4) (hours 20, customer type entertainment)
+             *  21/01/2022 - 21/02/2022 (5) (hours 20, customer type collector)
+             *  
+             *  because the other methods with large times work, it is assumed that 20 hours will work for the basic version of this test
+             */
+
+            Order testOrder = new Order();
+            testOrder.scheduledStartDate = new DateTime(2021, 12, 27);
+            testOrder.confirmedDeadline = new DateTime(2021, 12, 30);
+            Customer testCustomer = new Customer();
+            testCustomer.type = "Collector";
+
+            //this should automatically return 0 because the customer being tested is the lowest priority
+            Assert.AreEqual(0, model.canOrderBeMoved(testOrder, testCustomer).Count());
+
+            testCustomer.type = "Governmental";
+            Assert.AreEqual(2, model.canOrderBeMoved(testOrder, testCustomer).Count());
+
+            //should return 2, this is because the priorities are the same, but there is enough time before the deadline to move the order
+            testOrder.scheduledStartDate = new DateTime(2022, 1, 2);
+            testOrder.confirmedDeadline = new DateTime(2022, 1, 5);
+            Assert.AreEqual(2, model.canOrderBeMoved(testOrder, testCustomer).Count());
+
+            //should return 0, this is because the priorities are the same, but the deadline for the new order is far
+            //too late and conflicts with the existing start date
+            testOrder.scheduledStartDate = new DateTime(2022, 1, 15);
+            testOrder.confirmedDeadline = new DateTime(2022, 1, 19);
+            Assert.AreEqual(0, model.canOrderBeMoved(testOrder, testCustomer).Count());
+
+            //should return 0, this is because there is no conflict. Normally this shouldn't happen but just in case it does happen,
+            //testing to ensure it doesn't crash.
+            testOrder.scheduledStartDate = new DateTime(2021, 1, 1);
+            testOrder.confirmedDeadline = new DateTime(2021, 1, 20);
+            Assert.AreEqual(0, model.canOrderBeMoved(testOrder, testCustomer).Count());
+
+            /* new order */
+            /* 21/04/2022 - 21/05/2022 (6) (hours 200, customer type governmental) */
+            //this order should take 25 days to complete - this should not work
+            testCustomer.type = "Entertainment"; //just to ensure the 3rd tag works
+            testOrder.scheduledStartDate = new DateTime(2022, 4, 19);
+            testOrder.confirmedDeadline = new DateTime(2022, 5, 19);
+            Assert.AreEqual(0, model.canOrderBeMoved(testOrder, testCustomer).Count());
+
+            //however, as this order will only take 3 days, this should move the existing order.
+            testOrder.scheduledStartDate = new DateTime(2022, 4, 21);
+            testOrder.confirmedDeadline = new DateTime(2022, 4, 24);
+            Assert.AreEqual(2, model.canOrderBeMoved(testOrder, testCustomer).Count());
         }
     }
 }

@@ -19,6 +19,7 @@ namespace AdvancedProgrammingGroup9TestProject
             Enquiry en = new Enquiry();
             en.orderID = 1;
             storedOrder = new Order();
+            storedOrder.orderID = 1;
             storedOrder.progressCompleted = 0;
             storedOrder.scheduledStartDate = new DateTime(20/12/2021);
             storedOrder.confirmedDeadline = new DateTime(30/12/2021);
@@ -30,6 +31,7 @@ namespace AdvancedProgrammingGroup9TestProject
             Enquiry enquiry2 = new Enquiry();
             enquiry2.orderID = 2;
             Order order2 = new Order();
+            order2.orderID = 2;
             order2.progressCompleted = 0;
             order2.scheduledStartDate = new DateTime(2021, 12, 28); 
             order2.confirmedDeadline = new DateTime(2022, 1, 1);
@@ -39,6 +41,7 @@ namespace AdvancedProgrammingGroup9TestProject
             Enquiry enquiry3 = new Enquiry();
             enquiry3.orderID = 3;
             Order order3 = new Order();
+            order3.orderID = 3;
             order3.progressCompleted = 0;
             order3.scheduledStartDate = new DateTime(2022, 1, 2);
             order3.confirmedDeadline = new DateTime(2022, 1, 9);
@@ -48,6 +51,7 @@ namespace AdvancedProgrammingGroup9TestProject
             Enquiry enquiry4 = new Enquiry();
             enquiry4.orderID = 4;
             Order order4 = new Order();
+            order4.orderID = 4;
             order4.progressCompleted = 0;
             order4.scheduledStartDate = new DateTime(2022, 1, 14);
             order4.confirmedDeadline = new DateTime(2022, 1, 20);
@@ -57,6 +61,7 @@ namespace AdvancedProgrammingGroup9TestProject
             Enquiry enquiry5 = new Enquiry();
             enquiry5.orderID = 5;
             Order order5 = new Order();
+            order5.orderID = 5;
             order5.progressCompleted = 0;
             order5.scheduledStartDate = new DateTime(2022, 1, 21);
             order5.confirmedDeadline = new DateTime(2022, 2, 21);
@@ -67,6 +72,7 @@ namespace AdvancedProgrammingGroup9TestProject
             Enquiry enquiry6 = new Enquiry();
             enquiry6.orderID = 6;
             Order order6 = new Order();
+            order6.orderID = 6;
             order6.progressCompleted = 0;
             order6.scheduledStartDate = new DateTime(2022, 4, 21);
             order6.confirmedDeadline = new DateTime(2022, 5, 21);
@@ -76,6 +82,7 @@ namespace AdvancedProgrammingGroup9TestProject
             Enquiry enquiry7 = new Enquiry();
             enquiry7.orderID = 7;
             Order order7 = new Order();
+            order7.orderID = 7;
             order7.progressCompleted = 0;
             order7.scheduledStartDate = new DateTime(2022, 5, 22);
             order7.confirmedDeadline = new DateTime(2022, 5, 28);
@@ -106,8 +113,11 @@ namespace AdvancedProgrammingGroup9TestProject
 
         public int FindEnquiryIDinOrder(Order order)
         {
-            if (order is null) { return 0; }
-            else { return 1; }
+            foreach (Order o in OrderList)
+            { 
+                if (order.orderID == o.orderID) { return o.Enquiry.orderID; }
+            }
+            return 0;
         }
 
         public List<Order> GetAllOrders()
