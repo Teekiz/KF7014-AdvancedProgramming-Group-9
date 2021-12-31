@@ -21,11 +21,13 @@ namespace PresentationLayer
         List<OrderItems> orderItems;
         Order order;
 
+
         public ManagerPresenter(IOrderManager screen, IManagerModel model)
         {
             this.screen = screen;
             this.model = model;
             screen.register(this);
+
         }
 
         public Enquiry GetEnquiry(int EnquiryID)
@@ -35,24 +37,37 @@ namespace PresentationLayer
 
         public void missingInfo2()
         {
-            System.Windows.Forms.MessageBox.Show("NOTICE");
+            System.Windows.Forms.MessageBox.Show("NOTICE - Order Number not found!");
+
 
         }
+
+        public void missingInfo3()
+        {
+            System.Windows.Forms.MessageBox.Show("NOTICE - Please try again!");
+
+        }
+
+
 
         public Customer GetCustomer(Enquiry enquiry)
         {
             if (enquiry is null)
             { missingInfo2(); }
-            if ((model.GetCustomerInEnquiry(enquiry.orderID)) is null)
-                { missingInfo2(); }
+
             else if (model.GetCustomerInEnquiry(enquiry.orderID) != null)
-                { return model.GetCustomerInEnquiry(enquiry.orderID); }
+            { return model.GetCustomerInEnquiry(enquiry.orderID); }
             return null;
         }
 
         public List<OrderItems> GetOrderItems(Enquiry enquiry)
         {
-            return model.GetItemsInEnquiry(enquiry.orderID);
+            if (enquiry is null)
+            { return null; }
+            else
+            {
+                return model.GetItemsInEnquiry(enquiry.orderID);
+            }
         }
 
         public void EnquiryUpdate()
@@ -67,71 +82,84 @@ namespace PresentationLayer
 
         public void UpdateFormView(Enquiry enquiry, Customer customer, List<OrderItems> orderItems)
         {
-            screen.orderNumber = enquiry.orderID.ToString();
-            screen.DateReceived = enquiry.receivedDate;
-            screen.customerName = customer.name;
-            screen.custPhone = customer.phone;
-            screen.custAddressline1 = customer.addressline1;
-            screen.custAddressline2 = customer.addressline2;
-            screen.custCountry = customer.country;
-            screen.custType = customer.type;
-            screen.deadline = enquiry.deadline;
-            screen.custOrderNotes = enquiry.orderNotes;
-            screen.price = enquiry.price.ToString();
-            screen.timeHours = enquiry.hoursToComplete.ToString();
-
-            //item is (objectType) is from https://stackoverflow.com/questions/3561202/check-if-instance-is-of-a-type
-            //answered by the user Jon Skeet (2010)
-
-            List<string> itemsList = new List<string>();
-            foreach (OrderItems item in orderItems)
+            if (enquiry is null)
+            { missingInfo3(); }
+            else if (enquiry != null)
             {
-                string itype = "";
-                if (item is SwordItem) itype = "Sword Item";
-                else if (item is ArmourItem) itype = "Armour Item";
-                else itype = "Ceremonial Sword";
+                screen.orderNumber = enquiry.orderID.ToString();
+                screen.DateReceived = enquiry.receivedDate;
+                screen.customerName = customer.name;
+                screen.custPhone = customer.phone;
+                screen.custAddressline1 = customer.addressline1;
+                screen.custAddressline2 = customer.addressline2;
+                screen.custCountry = customer.country;
+                screen.custType = customer.type;
+                screen.deadline = enquiry.deadline;
+                screen.custOrderNotes = enquiry.orderNotes;
+                screen.price = enquiry.price.ToString();
+                screen.timeHours = enquiry.hoursToComplete.ToString();
 
-                string itemstring = item.description + ", " + item.quantity + ", " + itype + ".";
-                itemsList.Add(itemstring);
+                //item is (objectType) is from https://stackoverflow.com/questions/3561202/check-if-instance-is-of-a-type
+                //answered by the user Jon Skeet (2010)
+
+                List<string> itemsList = new List<string>();
+                foreach (OrderItems item in orderItems)
+                {
+                    string itype = "";
+                    if (item is SwordItem) itype = "Sword Item";
+                    else if (item is ArmourItem) itype = "Armour Item";
+                    else itype = "Ceremonial Sword";
+
+                    string itemstring = item.description + ", " + item.quantity + ", " + itype + ".";
+                    itemsList.Add(itemstring);
+                }
+                screen.orderItemListView(itemsList);
             }
-            screen.orderItemListView(itemsList);
         }
 
         //While the button will say save, all it does is update the query.
         public void SaveUpdateEnquiry()
         {
-            double price = Double.Parse(screen.price);
-            int hours = Int32.Parse(screen.timeHours);
-            order.scheduledStartDate = screen.startDate;
-            order.confirmedDeadline = screen.deadline;
-
-            //as long as the price and hours is reasonable and if the deadline is feasible
-            if (model.PriceHoursCheck(price, hours, orderItems) == true && model.CheckIfDeadlineIsFeasible(hours, screen.startDate, screen.deadline) == true)
+            if (enquiry is null)
+            { missingInfo2(); }
+            else if (enquiry != null)
             {
-                //to update the enquiry, also means that it doesn't need to run more than once
-                List<Order> canBeMovedOrders = model.canOrderBeMoved(order, customer);
-                //if the schedule is clear or if the it is not clear but the order conflicting it is able to be moved.
-                if (model.CheckSchedule(screen.startDate, screen.deadline) == true)
-                {
-                    enquiry.price = price;
-                    enquiry.hoursToComplete = hours;
-                    model.UpdateEnquiry(enquiry);
-                    model.SaveOrder(order, enquiry);
-                }
+                double price = Double.Parse(screen.price);
+                int hours = Int32.Parse(screen.timeHours);
+                order.scheduledStartDate = screen.startDate;
+                order.confirmedDeadline = screen.deadline;
 
-                //if the check shedule is not clear but there is an order that can be moved
-                else if (canBeMovedOrders.Count() == 2)
+                //as long as the price and hours is reasonable and if the deadline is feasible
+                if (model.PriceHoursCheck(price, hours, orderItems) == true && model.CheckIfDeadlineIsFeasible(hours, screen.startDate, screen.deadline) == true)
                 {
-                    enquiry.price = price;
-                    enquiry.hoursToComplete = hours;
-                    model.UpdateEnquiry(enquiry);
-                    showUpdateForm(hours, canBeMovedOrders, enquiry);
+                    //to update the enquiry, also means that it doesn't need to run more than once
+                    List<Order> canBeMovedOrders = model.canOrderBeMoved(order, customer);
+                    //if the schedule is clear or if the it is not clear but the order conflicting it is able to be moved.
+                    if (model.CheckSchedule(screen.startDate, screen.deadline) == true)
+                    {
+                        enquiry.price = price;
+                        enquiry.hoursToComplete = hours;
+                        model.UpdateEnquiry(enquiry);
+                        model.SaveOrder(order, enquiry);
 
-                }
-                else
-                {
-                    // can't be moved
-                    System.Windows.Forms.MessageBox.Show("Can't be moved");
+                        System.Windows.Forms.MessageBox.Show("NOTICE - Enquiry Updated!");
+
+                    }
+
+                    //if the check shedule is not clear but there is an order that can be moved
+                    else if (canBeMovedOrders.Count() == 2)
+                    {
+                        enquiry.price = price;
+                        enquiry.hoursToComplete = hours;
+                        model.UpdateEnquiry(enquiry);
+                        showUpdateForm(hours, canBeMovedOrders, enquiry);
+
+                    }
+                    else
+                    {
+                        // can't be moved
+                        System.Windows.Forms.MessageBox.Show("NOTICE - Item Cannot Be Moved!");
+                    }
                 }
             }
         }
