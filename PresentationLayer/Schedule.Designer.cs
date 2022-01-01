@@ -29,6 +29,7 @@ namespace PresentationLayer
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Schedule));
             this.rtbSchedule = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
@@ -46,6 +47,7 @@ namespace PresentationLayer
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.rtbSchedule);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Schedule";
             this.Text = "Schedule";
             this.Load += new System.EventHandler(this.Schedule_Load);

@@ -29,6 +29,7 @@ namespace PresentationLayer
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Credits));
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -63,6 +64,7 @@ namespace PresentationLayer
             this.ClientSize = new System.Drawing.Size(775, 748);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Credits";
             this.Text = "Credits";
             this.Load += new System.EventHandler(this.Credits_Load);
