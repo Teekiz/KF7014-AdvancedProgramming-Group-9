@@ -181,6 +181,11 @@ namespace DomainLayer
             //to be sure that the conflicting order is not null
             Order orderToBeReplaced = conflictingOrder(startDate, deadline);
             if (orderToBeReplaced is null) { return orderlist; } //incase there is no conflict (which would reutnr null.)
+            //if the ids are the same
+            if (orderToBeReplaced.orderID == replacementOrder.orderID) {
+                orderlist.Add(orderToBeReplaced);
+                orderlist.Add(replacementOrder);
+            }
             int orderToBeReplacedID = orderCRUD.FindEnquiryIDinOrder(orderToBeReplaced);
             if (orderToBeReplaced is null) { return orderlist; }
             else 
