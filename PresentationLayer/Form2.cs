@@ -7,11 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DomainLayer;
+using DataAccessLayer;
 
 namespace PresentationLayer
 {
     public interface IOrderManager
     {
+     
         string orderNumber { set; get; }
         DateTime DateReceived { set; get; }
         string customerName { set; get; }
@@ -28,7 +31,6 @@ namespace PresentationLayer
         string orderNotes { get; set; }
         string custOrderNotes { get; set; }
         DateTime startDate { get; set; }
-        string enquiryComboBox { get; set; }
         void orderItemListView(List<String> orderItems);
         bool acceptOrderRadioButton();
         void clearItemView();
@@ -37,10 +39,18 @@ namespace PresentationLayer
     //Return values of customer enquiry if order number is found (functions through ManagerPresenter).
     public partial class OrderManager : Form, IOrderManager
     {
+        IEnquiryGateway enquiryGateway;
+        IOrderItemGateway orderItemGateway;
+        IOrderGateway orderGateway;
+
         private ManagerPresenter presenter;
 
         public OrderManager()
         {
+            enquiryGateway = EnquiryGateway.Instance;
+            orderItemGateway = OrderItemGateway.Instance;
+            
+            orderGateway = OrderGateway.Instance;
             InitializeComponent();
         }
 
@@ -126,12 +136,6 @@ namespace PresentationLayer
             get { return dtpMstartDate.Value; }
             set { dtpMstartDate.Value = value; }
         }
-
-        public string enquiryComboBox
-        {
-            get { return cmbOrderNumber.SelectedItem.ToString(); }
-            set { cmbOrderNumber.Items.Add(value); }
-        }
         public bool acceptOrderRadioButton()
         {
             if (OFMaoY.Checked)
@@ -191,9 +195,12 @@ namespace PresentationLayer
             this.OFMrttcF.Enabled = false;
         }
 
-        private void cmbOrderNumber_SelectedIndexChanged(object sender, EventArgs e)
+        private void ScheduleButton_Click(object sender, EventArgs e)
         {
-            presenter.EnquiryUpdate();
+            Schedule screen = new Schedule();
+            IScheduleModel model = new ScheduleModel(orderGateway, enquiryGateway, orderItemGateway);
+            SchedulePresenter presentation = new SchedulePresenter(screen, model);
+            screen.ShowDialog();
         }
     }
 }

@@ -45,13 +45,13 @@ namespace PresentationLayer
             this.OFMsystemrecF = new System.Windows.Forms.TextBox();
             this.OFMaoY = new System.Windows.Forms.RadioButton();
             this.OFMaoN = new System.Windows.Forms.RadioButton();
+            this.txtOMOrderNumber = new System.Windows.Forms.TextBox();
             this.OFMdateF = new System.Windows.Forms.DateTimePicker();
             this.OFMcn = new System.Windows.Forms.Label();
             this.OFMco = new System.Windows.Forms.Label();
             this.OFMcs = new System.Windows.Forms.Label();
             this.OFMmordernotes = new System.Windows.Forms.Label();
             this.OFMmordernotesF = new System.Windows.Forms.RichTextBox();
-            this.OFMcsF = new System.Windows.Forms.TableLayoutPanel();
             this.OFMcnF = new System.Windows.Forms.RichTextBox();
             this.OFMlabel = new System.Windows.Forms.Label();
             this.OFMsubmit = new System.Windows.Forms.Button();
@@ -72,7 +72,7 @@ namespace PresentationLayer
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.dtpMendDate = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
-            this.cmbOrderNumber = new System.Windows.Forms.ComboBox();
+            this.ScheduleButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
@@ -174,11 +174,11 @@ namespace PresentationLayer
             // 
             this.OFMacceptorder.AutoSize = true;
             this.OFMacceptorder.BackColor = System.Drawing.Color.White;
-            this.OFMacceptorder.Location = new System.Drawing.Point(40, 554);
+            this.OFMacceptorder.Location = new System.Drawing.Point(40, 542);
             this.OFMacceptorder.Name = "OFMacceptorder";
-            this.OFMacceptorder.Size = new System.Drawing.Size(139, 13);
+            this.OFMacceptorder.Size = new System.Drawing.Size(76, 13);
             this.OFMacceptorder.TabIndex = 36;
-            this.OFMacceptorder.Text = "Has Client Accepted Order?";
+            this.OFMacceptorder.Text = "Accept Order?";
             // 
             // OFMrttcF
             // 
@@ -218,6 +218,14 @@ namespace PresentationLayer
             this.OFMaoN.TabStop = true;
             this.OFMaoN.Text = "No";
             this.OFMaoN.UseVisualStyleBackColor = false;
+            // 
+            // txtOMOrderNumber
+            // 
+            this.txtOMOrderNumber.Location = new System.Drawing.Point(147, 60);
+            this.txtOMOrderNumber.Name = "txtOMOrderNumber";
+            this.txtOMOrderNumber.Size = new System.Drawing.Size(157, 20);
+            this.txtOMOrderNumber.TabIndex = 45;
+            this.txtOMOrderNumber.Leave += new System.EventHandler(this.txtOMOrderNumber_Leave);
             // 
             // OFMdateF
             // 
@@ -276,25 +284,6 @@ namespace PresentationLayer
             this.OFMmordernotesF.Size = new System.Drawing.Size(431, 48);
             this.OFMmordernotesF.TabIndex = 54;
             this.OFMmordernotesF.Text = "";
-            // 
-            // OFMcsF
-            // 
-            this.OFMcsF.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.OFMcsF.ColumnCount = 3;
-            this.OFMcsF.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.79253F));
-            this.OFMcsF.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.20747F));
-            this.OFMcsF.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 99F));
-            this.OFMcsF.Location = new System.Drawing.Point(664, 390);
-            this.OFMcsF.Name = "OFMcsF";
-            this.OFMcsF.RowCount = 6;
-            this.OFMcsF.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 44.84536F));
-            this.OFMcsF.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55.15464F));
-            this.OFMcsF.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 86F));
-            this.OFMcsF.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 67F));
-            this.OFMcsF.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 58F));
-            this.OFMcsF.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
-            this.OFMcsF.Size = new System.Drawing.Size(280, 337);
-            this.OFMcsF.TabIndex = 57;
             // 
             // OFMcnF
             // 
@@ -474,14 +463,16 @@ namespace PresentationLayer
             this.label3.TabIndex = 84;
             this.label3.Text = "Updated Deadline";
             // 
-            // cmbOrderNumber
+            // ScheduleButton
             // 
-            this.cmbOrderNumber.FormattingEnabled = true;
-            this.cmbOrderNumber.Location = new System.Drawing.Point(147, 62);
-            this.cmbOrderNumber.Name = "cmbOrderNumber";
-            this.cmbOrderNumber.Size = new System.Drawing.Size(157, 21);
-            this.cmbOrderNumber.TabIndex = 85;
-            this.cmbOrderNumber.SelectedIndexChanged += new System.EventHandler(this.cmbOrderNumber_SelectedIndexChanged);
+            this.ScheduleButton.Location = new System.Drawing.Point(685, 390);
+            this.ScheduleButton.Margin = new System.Windows.Forms.Padding(2);
+            this.ScheduleButton.Name = "ScheduleButton";
+            this.ScheduleButton.Size = new System.Drawing.Size(237, 88);
+            this.ScheduleButton.TabIndex = 85;
+            this.ScheduleButton.Text = "Schedule";
+            this.ScheduleButton.UseVisualStyleBackColor = true;
+            this.ScheduleButton.Click += new System.EventHandler(this.ScheduleButton_Click);
             // 
             // OrderManager
             // 
@@ -489,7 +480,7 @@ namespace PresentationLayer
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1003, 798);
-            this.Controls.Add(this.cmbOrderNumber);
+            this.Controls.Add(this.ScheduleButton);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dtpMendDate);
             this.Controls.Add(this.dtpMstartDate);
@@ -508,13 +499,13 @@ namespace PresentationLayer
             this.Controls.Add(this.OFMsubmit);
             this.Controls.Add(this.OFMlabel);
             this.Controls.Add(this.OFMcnF);
-            this.Controls.Add(this.OFMcsF);
             this.Controls.Add(this.OFMmordernotesF);
             this.Controls.Add(this.OFMmordernotes);
             this.Controls.Add(this.OFMcs);
             this.Controls.Add(this.OFMco);
             this.Controls.Add(this.OFMcn);
             this.Controls.Add(this.OFMdateF);
+            this.Controls.Add(this.txtOMOrderNumber);
             this.Controls.Add(this.OFMaoN);
             this.Controls.Add(this.OFMaoY);
             this.Controls.Add(this.OFMsystemrecF);
@@ -560,13 +551,13 @@ namespace PresentationLayer
         private System.Windows.Forms.TextBox OFMsystemrecF;
         private System.Windows.Forms.RadioButton OFMaoY;
         private System.Windows.Forms.RadioButton OFMaoN;
+        private System.Windows.Forms.TextBox txtOMOrderNumber;
         private System.Windows.Forms.DateTimePicker OFMdateF;
         private System.Windows.Forms.Label OFMcn;
         private System.Windows.Forms.Label OFMco;
         private System.Windows.Forms.Label OFMcs;
         private System.Windows.Forms.Label OFMmordernotes;
         private System.Windows.Forms.RichTextBox OFMmordernotesF;
-        private System.Windows.Forms.TableLayoutPanel OFMcsF;
         private System.Windows.Forms.RichTextBox OFMcnF;
         private System.Windows.Forms.Label OFMlabel;
         private System.Windows.Forms.Button OFMsubmit;
@@ -587,6 +578,6 @@ namespace PresentationLayer
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.DateTimePicker dtpMendDate;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox cmbOrderNumber;
+        private System.Windows.Forms.Button ScheduleButton;
     }
 }
