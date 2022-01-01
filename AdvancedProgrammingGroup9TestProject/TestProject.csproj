@@ -61,7 +61,11 @@
     <Compile Include="DataAccessTestClass.cs" />
     <Compile Include="EnquiryGatewayMOCObject.cs" />
     <Compile Include="EnquiryModelTestClass.cs" />
+    <Compile Include="EnquiryPresenterTestClass.cs" />
+    <Compile Include="Form1MOC.cs" />
+    <Compile Include="Form2MOC.cs" />
     <Compile Include="ManagerModelTestClass.cs" />
+    <Compile Include="ManagerPresenterTestClass.cs" />
     <Compile Include="OrderGatewayMOCObject.cs" />
     <Compile Include="OrderItemsGatewayMOCObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
