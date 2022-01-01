@@ -10,8 +10,10 @@ namespace DomainLayer
     public interface IScheduleModel
     {
         List<Order> GetAllOrdersWithinTwoMonths();
+        Order GetOrder(int id);
         Enquiry GetEnquiryFromOrder(Order order);
         List<OrderItems> GetOrderItemsFromOrder(Order order);
+        bool OnTarget(Order order);
         bool updateOrder(Order order);
     }
 
@@ -21,9 +23,11 @@ namespace DomainLayer
         IEnquiryGateway enquiryCRUD;
         IOrderItemGateway orderItemsCRUD;
 
-        public ScheduleModel(IOrderGateway orderCRUD)
+        public ScheduleModel(IOrderGateway orderCRUD, IEnquiryGateway enquiryCRUD, IOrderItemGateway orderItemsCRUD)
         {
             this.orderCRUD = orderCRUD;
+            this.enquiryCRUD = enquiryCRUD;
+            this.orderItemsCRUD = orderItemsCRUD;
         }
 
         #region "Order reads"
@@ -37,6 +41,8 @@ namespace DomainLayer
             }
             return ordersWithinTheNextTwoMonths;
         }
+
+        public Order GetOrder(int id) { return orderCRUD.GetOrder(id); }
 
         public Enquiry GetEnquiryFromOrder(Order order)
         {
@@ -75,13 +81,13 @@ namespace DomainLayer
             DateTime half = deadline.AddHours(-hours * 2);
             DateTime threequaters = deadline.AddHours(-hours * 3);
 
-            if ((order.progressCompleted >= 25 && order.progressCompleted < 50) && now < onequater)
-            { return true; }
-            else if ((order.progressCompleted >= 50 && order.progressCompleted < 75) && now < half)
-            { return true; }
-            else if ((order.progressCompleted >= 75 && order.progressCompleted < 100) && now < threequaters)
-            { return true; }
-            else { return false; }
+            if (order.progressCompleted <= 25 && now > onequater)
+            { return false; }
+            else if (order.progressCompleted <= 50 && now > half)
+            { return false; }
+            else if (order.progressCompleted <= 75 && now > threequaters)
+            { return false; }
+            else { return true; }
         }
 
         //this method can be used for requirement 5, "Allows a percentage complete to be recorded against an order".

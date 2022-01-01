@@ -29,6 +29,7 @@ namespace PresentationLayer
         DateTime startDate { get; set; }
         void orderItemListView(List<String> orderItems);
         bool acceptOrderRadioButton();
+        void clearItemView();
         void register(ManagerPresenter psr);
     }
     //Return values of customer enquiry if order number is found (functions through ManagerPresenter).
@@ -127,6 +128,11 @@ namespace PresentationLayer
             {
                 return false;
             }
+        }
+
+        public void clearItemView()
+        {
+            lstBoxItems.Items.Clear();
         }
         public void orderItemListView(List<String> orderItems)
         {

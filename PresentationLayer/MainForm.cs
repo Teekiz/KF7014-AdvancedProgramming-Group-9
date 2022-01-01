@@ -51,15 +51,17 @@ namespace PresentationLayer
             screen.ShowDialog();
         }
 
-        private void MFb4_Click(object sender, EventArgs e)
-        {
-            Credits screen = new Credits();
-            screen.ShowDialog();
-        }
-
         private void MFb3_Click(object sender, EventArgs e)
         {
             Schedule screen = new Schedule();
+            IScheduleModel model = new ScheduleModel(orderGateway, enquiryGateway, orderItemGateway);
+            SchedulePresenter presentation = new SchedulePresenter(screen, model);
+            screen.ShowDialog();
+        }
+
+        private void MFb4_Click(object sender, EventArgs e)
+        {
+            Credits screen = new Credits();
             screen.ShowDialog();
         }
     }

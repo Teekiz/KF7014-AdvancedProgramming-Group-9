@@ -12,6 +12,7 @@ namespace AdvancedProgrammingGroup9TestProject
     [TestClass]
     public class IScheduleModelTestClass
     {
+        /*
         [TestMethod]
         //Testing Schedule, read and write
         public void TestMethod1ScheduleModel()
@@ -80,6 +81,6 @@ namespace AdvancedProgrammingGroup9TestProject
             Assert.AreEqual(55, minTime3);
             Assert.AreEqual(55, maxTime3);
         }
-                               
+          */                     
     }
 }

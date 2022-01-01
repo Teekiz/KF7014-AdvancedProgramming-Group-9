@@ -90,6 +90,9 @@ namespace PresentationLayer
             { missingInfo3(); }
             else if (enquiry != null)
             {
+                //get rid of all the existing information first.
+                screen.clearItemView();
+
                 screen.orderNumber = enquiry.orderID.ToString();
                 screen.DateReceived = enquiry.receivedDate;
                 screen.customerName = customer.name;

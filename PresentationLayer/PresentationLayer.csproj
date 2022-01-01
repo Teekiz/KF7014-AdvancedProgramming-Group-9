@@ -62,11 +62,11 @@
     <Compile Include="Credits.Designer.cs">
       <DependentUpon>Credits.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form5.cs">
+    <Compile Include="ScheduleOrderScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form5.Designer.cs">
-      <DependentUpon>Form5.cs</DependentUpon>
+    <Compile Include="ScheduleOrderScreen.Designer.cs">
+      <DependentUpon>ScheduleOrderScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="ManagerChanges.cs">
       <SubType>Form</SubType>
@@ -103,6 +103,7 @@
     <Compile Include="Schedule.Designer.cs">
       <DependentUpon>Schedule.cs</DependentUpon>
     </Compile>
+    <Compile Include="ScheduleOrderScreenPresenter.cs" />
     <Compile Include="SchedulePresenter.cs" />
     <EmbeddedResource Include="Credits.resx">
       <DependentUpon>Credits.cs</DependentUpon>
@@ -131,6 +132,9 @@
     </Compile>
     <EmbeddedResource Include="Schedule.resx">
       <DependentUpon>Schedule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScheduleOrderScreen.resx">
+      <DependentUpon>ScheduleOrderScreen.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
