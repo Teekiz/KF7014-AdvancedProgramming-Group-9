@@ -28,6 +28,7 @@ namespace PresentationLayer
         string orderNotes { get; set; }
         string custOrderNotes { get; set; }
         DateTime startDate { get; set; }
+        string enquiryComboBox { get; set; }
         void orderItemListView(List<String> orderItems);
         bool acceptOrderRadioButton();
         void clearItemView();
@@ -125,6 +126,12 @@ namespace PresentationLayer
             get { return dtpMstartDate.Value; }
             set { dtpMstartDate.Value = value; }
         }
+
+        public string enquiryComboBox
+        {
+            get { return cmbOrderNumber.SelectedItem.ToString(); }
+            set { cmbOrderNumber.Items.Add(value); }
+        }
         public bool acceptOrderRadioButton()
         {
             if (OFMaoY.Checked)
@@ -182,6 +189,11 @@ namespace PresentationLayer
         private void OFMrttcF_ValueChanged(object sender, EventArgs e)
         {
             this.OFMrttcF.Enabled = false;
+        }
+
+        private void cmbOrderNumber_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            presenter.EnquiryUpdate();
         }
     }
 }

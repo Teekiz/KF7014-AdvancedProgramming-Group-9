@@ -27,6 +27,7 @@ namespace PresentationLayer
             this.screen = screen;
             this.model = model;
             screen.register(this);
+            populateComboBox();
 
         }
 
@@ -39,8 +40,6 @@ namespace PresentationLayer
         public void missingInfo2()
         {
             System.Windows.Forms.MessageBox.Show("NOTICE - Order Number not found!");
-
-
         }
 
         //Second message to notify user to try again
@@ -83,15 +82,32 @@ namespace PresentationLayer
             }
         }
 
+        public void populateComboBox()
+        {
+            foreach (Enquiry enquiry in model.GetEnquiries())
+            {
+                screen.enquiryComboBox = enquiry.orderID.ToString();
+            }          
+        }
+
         public void EnquiryUpdate()
         {
-            int enquId = Int32.Parse(screen.orderNumber);
-            enquiry = GetEnquiry(enquId);
-            customer = GetCustomer(enquiry);
-            orderItems = GetOrderItems(enquiry);
-            order = GetOrder(enquiry);
-            
-            UpdateFormView(enquiry, customer, orderItems, order);
+
+                System.Windows.Forms.MessageBox.Show(screen.enquiryComboBox);
+
+            int enquId;
+            bool parse = int.TryParse(screen.enquiryComboBox, out enquId);
+
+            if (parse != true) { }
+            else 
+            {
+                enquiry = GetEnquiry(enquId);
+                customer = GetCustomer(enquiry);
+                orderItems = GetOrderItems(enquiry);
+                order = GetOrder(enquiry);
+
+                UpdateFormView(enquiry, customer, orderItems, order);
+            }
         }
 
         //Check if enquiry can be found. If so, update current data.
@@ -141,7 +157,6 @@ namespace PresentationLayer
             }
         }
 
-
         //While the button will say save, all it does is update the query.
         public void SaveUpdateEnquiry()
         {
@@ -156,10 +171,15 @@ namespace PresentationLayer
                 int hours = Int32.Parse(screen.timeHours);
                 order.scheduledStartDate = screen.startDate;
                 order.confirmedDeadline = screen.confirmedDeadline;
+                enquiry.price = price;
+                enquiry.hoursToComplete = hours;
 
+                
                 //as long as the price and hours is reasonable and if the deadline is feasible
                 if (model.PriceHoursCheck(price, hours, orderItems) == true && model.CheckIfDeadlineIsFeasible(hours, screen.startDate, screen.confirmedDeadline) == true)
                 {
+                    if (screen.acceptOrderRadioButton() == false) { model.UpdateEnquiry(enquiry); System.Windows.Forms.MessageBox.Show("NOTICE - Enquiry Updated! - Awaiting Customer Confirmation to Create Order."); }
+
                     //to update the enquiry, also means that it doesn't need to run more than once
                     List<Order> canBeMovedOrders = model.canOrderBeMoved(order, customer);
                     //if the schedule is clear or if the it is not clear but the order conflicting it is able to be moved.
@@ -170,8 +190,6 @@ namespace PresentationLayer
                         //if it is within the same slot
                         if (order.scheduledStartDate >= canBeMovedOrders[0].scheduledStartDate && order.confirmedDeadline <= canBeMovedOrders[0].confirmedDeadline)
                         {
-                            enquiry.price = price;
-                            enquiry.hoursToComplete = hours;
                             model.UpdateEnquiry(enquiry);
                             model.UpdateOrder(order);
                             System.Windows.Forms.MessageBox.Show("NOTICE - Enquiry Updated!");
@@ -180,8 +198,6 @@ namespace PresentationLayer
 
                     else if (model.CheckSchedule(screen.startDate, screen.confirmedDeadline) == true)
                     {
-                        enquiry.price = price;
-                        enquiry.hoursToComplete = hours;
                         model.UpdateEnquiry(enquiry);
                         model.SaveOrder(order, enquiry);
                         System.Windows.Forms.MessageBox.Show("NOTICE - Enquiry Updated!");
