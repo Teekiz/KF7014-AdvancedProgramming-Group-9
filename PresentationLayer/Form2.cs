@@ -7,11 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DomainLayer;
+using DataAccessLayer;
 
 namespace PresentationLayer
 {
     public interface IOrderManager
     {
+     
         string orderNumber { set; get; }
         DateTime DateReceived { set; get; }
         string customerName { set; get; }
@@ -36,10 +39,18 @@ namespace PresentationLayer
     //Return values of customer enquiry if order number is found (functions through ManagerPresenter).
     public partial class OrderManager : Form, IOrderManager
     {
+        IEnquiryGateway enquiryGateway;
+        IOrderItemGateway orderItemGateway;
+        IOrderGateway orderGateway;
+
         private ManagerPresenter presenter;
 
         public OrderManager()
         {
+            enquiryGateway = EnquiryGateway.Instance;
+            orderItemGateway = OrderItemGateway.Instance;
+            
+            orderGateway = OrderGateway.Instance;
             InitializeComponent();
         }
 
@@ -182,6 +193,14 @@ namespace PresentationLayer
         private void OFMrttcF_ValueChanged(object sender, EventArgs e)
         {
             this.OFMrttcF.Enabled = false;
+        }
+
+        private void ScheduleButton_Click(object sender, EventArgs e)
+        {
+            Schedule screen = new Schedule();
+            IScheduleModel model = new ScheduleModel(orderGateway, enquiryGateway, orderItemGateway);
+            SchedulePresenter presentation = new SchedulePresenter(screen, model);
+            screen.ShowDialog();
         }
     }
 }

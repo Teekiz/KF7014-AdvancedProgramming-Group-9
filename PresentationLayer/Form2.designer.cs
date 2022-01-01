@@ -52,7 +52,6 @@ namespace PresentationLayer
             this.OFMcs = new System.Windows.Forms.Label();
             this.OFMmordernotes = new System.Windows.Forms.Label();
             this.OFMmordernotesF = new System.Windows.Forms.RichTextBox();
-            this.OFMcsF = new System.Windows.Forms.TableLayoutPanel();
             this.OFMcnF = new System.Windows.Forms.RichTextBox();
             this.OFMlabel = new System.Windows.Forms.Label();
             this.OFMsubmit = new System.Windows.Forms.Button();
@@ -73,6 +72,7 @@ namespace PresentationLayer
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.dtpMendDate = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
+            this.ScheduleButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
@@ -285,25 +285,6 @@ namespace PresentationLayer
             this.OFMmordernotesF.TabIndex = 54;
             this.OFMmordernotesF.Text = "";
             // 
-            // OFMcsF
-            // 
-            this.OFMcsF.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.OFMcsF.ColumnCount = 3;
-            this.OFMcsF.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.79253F));
-            this.OFMcsF.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.20747F));
-            this.OFMcsF.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 97F));
-            this.OFMcsF.Location = new System.Drawing.Point(664, 390);
-            this.OFMcsF.Name = "OFMcsF";
-            this.OFMcsF.RowCount = 6;
-            this.OFMcsF.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 44.84536F));
-            this.OFMcsF.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55.15464F));
-            this.OFMcsF.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 86F));
-            this.OFMcsF.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 67F));
-            this.OFMcsF.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 58F));
-            this.OFMcsF.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
-            this.OFMcsF.Size = new System.Drawing.Size(280, 337);
-            this.OFMcsF.TabIndex = 57;
-            // 
             // OFMcnF
             // 
             this.OFMcnF.Location = new System.Drawing.Point(664, 99);
@@ -482,12 +463,24 @@ namespace PresentationLayer
             this.label3.TabIndex = 84;
             this.label3.Text = "Updated Deadline";
             // 
+            // ScheduleButton
+            // 
+            this.ScheduleButton.Location = new System.Drawing.Point(685, 390);
+            this.ScheduleButton.Margin = new System.Windows.Forms.Padding(2);
+            this.ScheduleButton.Name = "ScheduleButton";
+            this.ScheduleButton.Size = new System.Drawing.Size(237, 88);
+            this.ScheduleButton.TabIndex = 85;
+            this.ScheduleButton.Text = "Schedule";
+            this.ScheduleButton.UseVisualStyleBackColor = true;
+            this.ScheduleButton.Click += new System.EventHandler(this.ScheduleButton_Click);
+            // 
             // OrderManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1003, 798);
+            this.Controls.Add(this.ScheduleButton);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dtpMendDate);
             this.Controls.Add(this.dtpMstartDate);
@@ -506,7 +499,6 @@ namespace PresentationLayer
             this.Controls.Add(this.OFMsubmit);
             this.Controls.Add(this.OFMlabel);
             this.Controls.Add(this.OFMcnF);
-            this.Controls.Add(this.OFMcsF);
             this.Controls.Add(this.OFMmordernotesF);
             this.Controls.Add(this.OFMmordernotes);
             this.Controls.Add(this.OFMcs);
@@ -566,7 +558,6 @@ namespace PresentationLayer
         private System.Windows.Forms.Label OFMcs;
         private System.Windows.Forms.Label OFMmordernotes;
         private System.Windows.Forms.RichTextBox OFMmordernotesF;
-        private System.Windows.Forms.TableLayoutPanel OFMcsF;
         private System.Windows.Forms.RichTextBox OFMcnF;
         private System.Windows.Forms.Label OFMlabel;
         private System.Windows.Forms.Button OFMsubmit;
@@ -587,5 +578,6 @@ namespace PresentationLayer
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.DateTimePicker dtpMendDate;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button ScheduleButton;
     }
 }
