@@ -128,6 +128,7 @@ namespace PresentationLayer
                 screen.custOrderNotes = enquiry.orderNotes;
                 screen.price = enquiry.price.ToString();
                 screen.timeHours = enquiry.hoursToComplete.ToString();
+
                 if (model.DoesOrderExist(enquiry) != null) 
                 { 
                     order = model.DoesOrderExist(enquiry);
@@ -162,6 +163,7 @@ namespace PresentationLayer
             {
                 //if the order exists, set to true, update, else save ().
                 if (model.DoesOrderExist(enquiry) is null) { order = new Order(); order.orderID = 0; }
+                else { order = model.DoesOrderExist(enquiry); }
 
                 double price = Double.Parse(screen.price);
                 int hours = Int32.Parse(screen.timeHours);
@@ -175,44 +177,46 @@ namespace PresentationLayer
                 if (model.PriceHoursCheck(price, hours, orderItems) == true && model.CheckIfDeadlineIsFeasible(hours, screen.startDate, screen.confirmedDeadline) == true)
                 {
                     if (screen.acceptOrderRadioButton() == false) { model.UpdateEnquiry(enquiry); System.Windows.Forms.MessageBox.Show("NOTICE - Enquiry Updated! - Awaiting Customer Confirmation to Create Order."); }
-
-                    //to update the enquiry, also means that it doesn't need to run more than once
-                    List<Order> canBeMovedOrders = model.canOrderBeMoved(order, customer);
-                    //if the schedule is clear or if the it is not clear but the order conflicting it is able to be moved.
-  
-                    //if it is the same order
-                    if (canBeMovedOrders.Count() == 2 && canBeMovedOrders[0].orderID == order.orderID)
-                    {
-                        //if it is within the same slot
-                        if (order.scheduledStartDate >= canBeMovedOrders[0].scheduledStartDate && order.confirmedDeadline <= canBeMovedOrders[0].confirmedDeadline)
-                        {
-                            model.UpdateEnquiry(enquiry);
-                            model.UpdateOrder(order);
-                            System.Windows.Forms.MessageBox.Show("NOTICE - Enquiry Updated!");
-                        }
-                    }
-
-                    else if (model.CheckSchedule(screen.startDate, screen.confirmedDeadline) == true)
-                    {
-                        model.UpdateEnquiry(enquiry);
-                        model.SaveOrder(order, enquiry);
-                        System.Windows.Forms.MessageBox.Show("NOTICE - Enquiry Updated!");
-
-                    }
-
-                    //if the check shedule is not clear but there is an order that can be moved
-                    else if (canBeMovedOrders.Count() == 2)
-                    {
-                        enquiry.price = price;
-                        enquiry.hoursToComplete = hours;
-                        model.UpdateEnquiry(enquiry);
-                        showUpdateForm(hours, canBeMovedOrders, enquiry);
-
-                    }
                     else
                     {
-                        // can't be moved
-                        System.Windows.Forms.MessageBox.Show("NOTICE - Item Cannot Be Moved!");
+                        //to update the enquiry, also means that it doesn't need to run more than once
+                        List<Order> canBeMovedOrders = model.canOrderBeMoved(order, customer);
+                        //if the schedule is clear or if the it is not clear but the order conflicting it is able to be moved.
+
+                        //if it is the same order
+                        if (canBeMovedOrders.Count() == 2 && canBeMovedOrders[0].orderID == order.orderID)
+                        {
+                            //if it is within the same slot
+                            if (order.scheduledStartDate >= canBeMovedOrders[0].scheduledStartDate && order.confirmedDeadline <= canBeMovedOrders[0].confirmedDeadline)
+                            {
+                                model.UpdateEnquiry(enquiry);
+                                model.UpdateOrder(order);
+                                System.Windows.Forms.MessageBox.Show("NOTICE - Enquiry Updated!");
+                            }
+                        }
+
+                        else if (model.CheckSchedule(screen.startDate, screen.confirmedDeadline) == true)
+                        {
+                            model.UpdateEnquiry(enquiry);
+                            model.SaveOrder(order, enquiry);
+                            System.Windows.Forms.MessageBox.Show("NOTICE - Enquiry Updated!");
+
+                        }
+
+                        //if the check shedule is not clear but there is an order that can be moved
+                        else if (canBeMovedOrders.Count() == 2)
+                        {
+                            enquiry.price = price;
+                            enquiry.hoursToComplete = hours;
+                            model.UpdateEnquiry(enquiry);
+                            showUpdateForm(hours, canBeMovedOrders, enquiry);
+
+                        }
+                        else
+                        {
+                            // can't be moved
+                            System.Windows.Forms.MessageBox.Show("NOTICE - Item Cannot Be Moved!");
+                        }
                     }
                 }
             }
