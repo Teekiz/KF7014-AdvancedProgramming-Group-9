@@ -201,13 +201,13 @@ namespace DomainLayer
         }
 
         //checks to see if the start date is before the deadline and the hours needed added by the contracts manger would place the calculated deadline after the actual deadline.
-        public bool CheckIfDeadlineIsFeasible(int hours, DateTime startDate, DateTime deadline)
+        public bool CheckIfDeadlineIsFeasible(int hours, DateTime scheduledStartDate, DateTime confirmedDeadline)
         {
             //24 hours / 3 = 8.
-            DateTime timeNeeded = startDate.AddHours(hours * 3);
-            if (startDate > deadline) 
+            DateTime timeNeeded = scheduledStartDate.AddHours(hours * 3);
+            if (scheduledStartDate > confirmedDeadline) 
             { System.Windows.Forms.MessageBox.Show("Deadline is before start date."); return false; }
-            else if (timeNeeded > deadline)
+            else if (timeNeeded > confirmedDeadline)
             { System.Windows.Forms.MessageBox.Show("Hours needed is greater than the deadline."); return false; }
             else { return true; }
         }
