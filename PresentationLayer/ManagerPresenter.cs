@@ -86,17 +86,14 @@ namespace PresentationLayer
         {
             foreach (Enquiry enquiry in model.GetEnquiries())
             {
-                screen.enquiryComboBox = enquiry.orderID.ToString();
+                screen.orderNumber = enquiry.orderID.ToString();
             }          
         }
 
         public void EnquiryUpdate()
         {
-
-                System.Windows.Forms.MessageBox.Show(screen.enquiryComboBox);
-
             int enquId;
-            bool parse = int.TryParse(screen.enquiryComboBox, out enquId);
+            bool parse = int.TryParse(screen.orderNumber, out enquId);
 
             if (parse != true) { }
             else 
@@ -120,7 +117,6 @@ namespace PresentationLayer
                 //get rid of all the existing information first.
                 screen.clearItemView();
 
-                screen.orderNumber = enquiry.orderID.ToString();
                 screen.DateReceived = enquiry.receivedDate;
                 screen.customerName = customer.name;
                 screen.custPhone = customer.phone;

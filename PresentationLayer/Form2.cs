@@ -56,8 +56,8 @@ namespace PresentationLayer
 
         public string orderNumber
         {
-            get { return txtOMOrderNumber.Text; }
-            set { txtOMOrderNumber.Text = value; }
+            get { return cmbOrderNumber.SelectedItem.ToString(); }
+            set { cmbOrderNumber.Items.Add(value); }
         }
         public DateTime DateReceived 
         {
@@ -201,6 +201,11 @@ namespace PresentationLayer
             IScheduleModel model = new ScheduleModel(orderGateway, enquiryGateway, orderItemGateway);
             SchedulePresenter presentation = new SchedulePresenter(screen, model);
             screen.ShowDialog();
+        }
+
+        private void cmbOrderNumber_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            presenter.EnquiryUpdate();
         }
     }
 }

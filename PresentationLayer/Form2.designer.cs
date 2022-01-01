@@ -45,7 +45,6 @@ namespace PresentationLayer
             this.OFMsystemrecF = new System.Windows.Forms.TextBox();
             this.OFMaoY = new System.Windows.Forms.RadioButton();
             this.OFMaoN = new System.Windows.Forms.RadioButton();
-            this.txtOMOrderNumber = new System.Windows.Forms.TextBox();
             this.OFMdateF = new System.Windows.Forms.DateTimePicker();
             this.OFMcn = new System.Windows.Forms.Label();
             this.OFMco = new System.Windows.Forms.Label();
@@ -73,6 +72,7 @@ namespace PresentationLayer
             this.dtpMendDate = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.ScheduleButton = new System.Windows.Forms.Button();
+            this.cmbOrderNumber = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
@@ -218,14 +218,6 @@ namespace PresentationLayer
             this.OFMaoN.TabStop = true;
             this.OFMaoN.Text = "No";
             this.OFMaoN.UseVisualStyleBackColor = false;
-            // 
-            // txtOMOrderNumber
-            // 
-            this.txtOMOrderNumber.Location = new System.Drawing.Point(147, 60);
-            this.txtOMOrderNumber.Name = "txtOMOrderNumber";
-            this.txtOMOrderNumber.Size = new System.Drawing.Size(157, 20);
-            this.txtOMOrderNumber.TabIndex = 45;
-            this.txtOMOrderNumber.Leave += new System.EventHandler(this.txtOMOrderNumber_Leave);
             // 
             // OFMdateF
             // 
@@ -474,12 +466,22 @@ namespace PresentationLayer
             this.ScheduleButton.UseVisualStyleBackColor = true;
             this.ScheduleButton.Click += new System.EventHandler(this.ScheduleButton_Click);
             // 
+            // cmbOrderNumber
+            // 
+            this.cmbOrderNumber.FormattingEnabled = true;
+            this.cmbOrderNumber.Location = new System.Drawing.Point(147, 61);
+            this.cmbOrderNumber.Name = "cmbOrderNumber";
+            this.cmbOrderNumber.Size = new System.Drawing.Size(157, 21);
+            this.cmbOrderNumber.TabIndex = 86;
+            this.cmbOrderNumber.SelectedIndexChanged += new System.EventHandler(this.cmbOrderNumber_SelectedIndexChanged);
+            // 
             // OrderManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1003, 798);
+            this.Controls.Add(this.cmbOrderNumber);
             this.Controls.Add(this.ScheduleButton);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dtpMendDate);
@@ -505,7 +507,6 @@ namespace PresentationLayer
             this.Controls.Add(this.OFMco);
             this.Controls.Add(this.OFMcn);
             this.Controls.Add(this.OFMdateF);
-            this.Controls.Add(this.txtOMOrderNumber);
             this.Controls.Add(this.OFMaoN);
             this.Controls.Add(this.OFMaoY);
             this.Controls.Add(this.OFMsystemrecF);
@@ -551,7 +552,6 @@ namespace PresentationLayer
         private System.Windows.Forms.TextBox OFMsystemrecF;
         private System.Windows.Forms.RadioButton OFMaoY;
         private System.Windows.Forms.RadioButton OFMaoN;
-        private System.Windows.Forms.TextBox txtOMOrderNumber;
         private System.Windows.Forms.DateTimePicker OFMdateF;
         private System.Windows.Forms.Label OFMcn;
         private System.Windows.Forms.Label OFMco;
@@ -579,5 +579,6 @@ namespace PresentationLayer
         private System.Windows.Forms.DateTimePicker dtpMendDate;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button ScheduleButton;
+        private System.Windows.Forms.ComboBox cmbOrderNumber;
     }
 }
