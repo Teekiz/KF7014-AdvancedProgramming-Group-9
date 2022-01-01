@@ -235,11 +235,11 @@ namespace PresentationLayer
             // OFCcustomerform
             // 
             this.OFCcustomerform.AutoSize = true;
-            this.OFCcustomerform.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OFCcustomerform.Font = new System.Drawing.Font("Bookman Old Style", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.OFCcustomerform.ForeColor = System.Drawing.Color.White;
-            this.OFCcustomerform.Location = new System.Drawing.Point(366, 9);
+            this.OFCcustomerform.Location = new System.Drawing.Point(325, 9);
             this.OFCcustomerform.Name = "OFCcustomerform";
-            this.OFCcustomerform.Size = new System.Drawing.Size(263, 29);
+            this.OFCcustomerform.Size = new System.Drawing.Size(299, 29);
             this.OFCcustomerform.TabIndex = 59;
             this.OFCcustomerform.Text = "Order Form - Customer";
             // 
