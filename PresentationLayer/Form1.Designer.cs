@@ -75,6 +75,9 @@ namespace PresentationLayer
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.OFCpicturebox = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.OFCgroupbox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -149,7 +152,7 @@ namespace PresentationLayer
             // 
             this.OFCot.AutoSize = true;
             this.OFCot.BackColor = System.Drawing.Color.White;
-            this.OFCot.Location = new System.Drawing.Point(48, 461);
+            this.OFCot.Location = new System.Drawing.Point(42, 473);
             this.OFCot.Name = "OFCot";
             this.OFCot.Size = new System.Drawing.Size(67, 13);
             this.OFCot.TabIndex = 12;
@@ -159,7 +162,7 @@ namespace PresentationLayer
             // 
             this.OFCncd.AutoSize = true;
             this.OFCncd.BackColor = System.Drawing.Color.White;
-            this.OFCncd.Location = new System.Drawing.Point(34, 784);
+            this.OFCncd.Location = new System.Drawing.Point(38, 840);
             this.OFCncd.Name = "OFCncd";
             this.OFCncd.Size = new System.Drawing.Size(123, 13);
             this.OFCncd.TabIndex = 16;
@@ -167,7 +170,7 @@ namespace PresentationLayer
             // 
             // OFCncdF
             // 
-            this.OFCncdF.Location = new System.Drawing.Point(172, 784);
+            this.OFCncdF.Location = new System.Drawing.Point(172, 840);
             this.OFCncdF.Name = "OFCncdF";
             this.OFCncdF.Size = new System.Drawing.Size(399, 20);
             this.OFCncdF.TabIndex = 17;
@@ -183,7 +186,7 @@ namespace PresentationLayer
             // 
             this.OFCnotes.AutoSize = true;
             this.OFCnotes.BackColor = System.Drawing.Color.White;
-            this.OFCnotes.Location = new System.Drawing.Point(52, 825);
+            this.OFCnotes.Location = new System.Drawing.Point(42, 882);
             this.OFCnotes.Name = "OFCnotes";
             this.OFCnotes.Size = new System.Drawing.Size(64, 13);
             this.OFCnotes.TabIndex = 23;
@@ -203,7 +206,7 @@ namespace PresentationLayer
             // 
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(38, 906);
+            this.label10.Location = new System.Drawing.Point(38, 943);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(178, 13);
             this.label10.TabIndex = 26;
@@ -214,7 +217,7 @@ namespace PresentationLayer
             // 
             this.OFCtermscond.AutoSize = true;
             this.OFCtermscond.BackColor = System.Drawing.Color.White;
-            this.OFCtermscond.Location = new System.Drawing.Point(222, 905);
+            this.OFCtermscond.Location = new System.Drawing.Point(222, 939);
             this.OFCtermscond.Name = "OFCtermscond";
             this.OFCtermscond.Size = new System.Drawing.Size(44, 17);
             this.OFCtermscond.TabIndex = 27;
@@ -223,7 +226,7 @@ namespace PresentationLayer
             // 
             // OFCnotesF
             // 
-            this.OFCnotesF.Location = new System.Drawing.Point(172, 822);
+            this.OFCnotesF.Location = new System.Drawing.Point(172, 879);
             this.OFCnotesF.Name = "OFCnotesF";
             this.OFCnotesF.Size = new System.Drawing.Size(399, 52);
             this.OFCnotesF.TabIndex = 29;
@@ -242,23 +245,23 @@ namespace PresentationLayer
             // 
             // OFCot1q
             // 
-            this.OFCot1q.Location = new System.Drawing.Point(138, 461);
+            this.OFCot1q.Location = new System.Drawing.Point(172, 496);
             this.OFCot1q.Name = "OFCot1q";
-            this.OFCot1q.Size = new System.Drawing.Size(19, 20);
+            this.OFCot1q.Size = new System.Drawing.Size(44, 20);
             this.OFCot1q.TabIndex = 60;
             // 
             // OFCot2q
             // 
-            this.OFCot2q.Location = new System.Drawing.Point(138, 567);
+            this.OFCot2q.Location = new System.Drawing.Point(172, 619);
             this.OFCot2q.Name = "OFCot2q";
-            this.OFCot2q.Size = new System.Drawing.Size(19, 20);
+            this.OFCot2q.Size = new System.Drawing.Size(44, 20);
             this.OFCot2q.TabIndex = 61;
             // 
             // OFCot3q
             // 
-            this.OFCot3q.Location = new System.Drawing.Point(138, 662);
+            this.OFCot3q.Location = new System.Drawing.Point(172, 743);
             this.OFCot3q.Name = "OFCot3q";
-            this.OFCot3q.Size = new System.Drawing.Size(19, 20);
+            this.OFCot3q.Size = new System.Drawing.Size(44, 20);
             this.OFCot3q.TabIndex = 62;
             // 
             // OFCaddr2
@@ -297,7 +300,7 @@ namespace PresentationLayer
             // 
             // OFCot1desc
             // 
-            this.OFCot1desc.Location = new System.Drawing.Point(172, 486);
+            this.OFCot1desc.Location = new System.Drawing.Point(172, 521);
             this.OFCot1desc.Margin = new System.Windows.Forms.Padding(2);
             this.OFCot1desc.Multiline = true;
             this.OFCot1desc.Name = "OFCot1desc";
@@ -307,7 +310,7 @@ namespace PresentationLayer
             // 
             // OFCot2desc
             // 
-            this.OFCot2desc.Location = new System.Drawing.Point(172, 592);
+            this.OFCot2desc.Location = new System.Drawing.Point(172, 644);
             this.OFCot2desc.Margin = new System.Windows.Forms.Padding(2);
             this.OFCot2desc.Multiline = true;
             this.OFCot2desc.Name = "OFCot2desc";
@@ -317,7 +320,7 @@ namespace PresentationLayer
             // 
             // OFCot3desc
             // 
-            this.OFCot3desc.Location = new System.Drawing.Point(172, 687);
+            this.OFCot3desc.Location = new System.Drawing.Point(172, 768);
             this.OFCot3desc.Margin = new System.Windows.Forms.Padding(2);
             this.OFCot3desc.Multiline = true;
             this.OFCot3desc.Name = "OFCot3desc";
@@ -329,7 +332,7 @@ namespace PresentationLayer
             // 
             this.OFCot1.AutoSize = true;
             this.OFCot1.BackColor = System.Drawing.Color.White;
-            this.OFCot1.Location = new System.Drawing.Point(172, 464);
+            this.OFCot1.Location = new System.Drawing.Point(150, 473);
             this.OFCot1.Name = "OFCot1";
             this.OFCot1.Size = new System.Drawing.Size(116, 17);
             this.OFCot1.TabIndex = 70;
@@ -340,7 +343,7 @@ namespace PresentationLayer
             // 
             this.OFCot2.AutoSize = true;
             this.OFCot2.BackColor = System.Drawing.Color.White;
-            this.OFCot2.Location = new System.Drawing.Point(172, 570);
+            this.OFCot2.Location = new System.Drawing.Point(157, 596);
             this.OFCot2.Name = "OFCot2";
             this.OFCot2.Size = new System.Drawing.Size(124, 17);
             this.OFCot2.TabIndex = 71;
@@ -351,7 +354,7 @@ namespace PresentationLayer
             // 
             this.OFcot3.AutoSize = true;
             this.OFcot3.BackColor = System.Drawing.Color.White;
-            this.OFcot3.Location = new System.Drawing.Point(172, 665);
+            this.OFcot3.Location = new System.Drawing.Point(157, 720);
             this.OFcot3.Name = "OFcot3";
             this.OFcot3.Size = new System.Drawing.Size(59, 17);
             this.OFcot3.TabIndex = 72;
@@ -505,12 +508,45 @@ namespace PresentationLayer
             this.pictureBox1.TabIndex = 80;
             this.pictureBox1.TabStop = false;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(120, 622);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(46, 13);
+            this.label1.TabIndex = 82;
+            this.label1.Text = "Quantity";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(120, 499);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(46, 13);
+            this.label3.TabIndex = 83;
+            this.label3.Text = "Quantity";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(120, 746);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(46, 13);
+            this.label4.TabIndex = 84;
+            this.label4.Text = "Quantity";
+            // 
             // OFCcountry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(948, 991);
+            this.ClientSize = new System.Drawing.Size(948, 993);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.OFCcustomertype);
             this.Controls.Add(this.OFCgroupbox);
             this.Controls.Add(this.label2);
@@ -615,6 +651,9 @@ namespace PresentationLayer
         private System.Windows.Forms.Label OFCcustomertype;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }
 
