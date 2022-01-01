@@ -80,5 +80,10 @@ namespace AdvancedProgrammingGroup9TestProject
             Assert.AreEqual(55, minTime3);
             Assert.AreEqual(55, maxTime3);
         }
+                               
+               public bool updateOrder(Order order)
+        {
+            try { orderCRUD.UpdateOrder(order); return true; }
+            catch { return false;}  
     }
 }
