@@ -90,7 +90,7 @@ namespace AdvancedProgrammingGroup9TestProject
             Assert.AreEqual(new DateTime(20 / 12 / 2021), order.scheduledStartDate);
             Assert.AreEqual(new DateTime(30 / 12 / 2021), order.confirmedDeadline);
             //if the order does not exist
-            order = model.GetOrder(2);
+            order = model.GetOrder(20);
             Assert.IsTrue(order is null);
 
             /*For Method: int GetEnquiryInOrder(Order order);*/
@@ -123,6 +123,13 @@ namespace AdvancedProgrammingGroup9TestProject
             Assert.AreEqual(false, model.SaveOrder(null, model.GetEnquiry(1)));
             //both are null
             Assert.AreEqual(false, model.SaveOrder(null, null));
+
+            /*For Method: Order DoesOrderExist(Enquiry enquiry);*/            
+            Assert.AreEqual(orderGateway.GetOrder(3), model.DoesOrderExist(enquiryGateway.GetEnquiry(3)));
+            enquiry = new Enquiry();
+            enquiry.orderID = 20; //does not have an order.
+            Assert.IsNull(model.DoesOrderExist(enquiry));
+            //enq and order id of 3
         }
 
         //Probably the easiest method to test in this class as it only requires a list of items
@@ -130,7 +137,7 @@ namespace AdvancedProgrammingGroup9TestProject
 
         /*For Method: void CalculateEstimatedTime(out int minTime, out int maxTime, out double minCost, out double maxCost, List<OrderItems> orderItems);*/
 
-        [TestMethod]
+            [TestMethod]
         public void ManagerModelTestClassCalculateEstimatedTime()
         {
             //the smallest list, 1 ceremonial sword
@@ -353,6 +360,12 @@ namespace AdvancedProgrammingGroup9TestProject
             testOrder.scheduledStartDate = new DateTime(2022, 4, 21);
             testOrder.confirmedDeadline = new DateTime(2022, 4, 24);
             Assert.AreEqual(2, model.canOrderBeMoved(testOrder, testCustomer).Count());
+
+            //can order be moved if the id is the same
+            testOrder.orderID = 4;
+            testOrder.scheduledStartDate = new DateTime(2022, 1, 14);
+            testOrder.confirmedDeadline = new DateTime(2022, 1, 20);
+            Assert.AreEqual(testOrder.orderID, model.canOrderBeMoved(testOrder, testCustomer)[0].orderID);
         }
     }
 }

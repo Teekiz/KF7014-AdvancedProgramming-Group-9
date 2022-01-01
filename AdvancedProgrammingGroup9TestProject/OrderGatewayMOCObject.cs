@@ -127,9 +127,11 @@ namespace AdvancedProgrammingGroup9TestProject
 
         public Order GetOrder(int id)
         {
-            if (id == 1) { return storedOrder; }
-            else { return null; }
-            
+            foreach (Order o in OrderList)
+            {
+                if (o.orderID == id) { return o; }
+            }
+            return null;
         }
     }
 }
