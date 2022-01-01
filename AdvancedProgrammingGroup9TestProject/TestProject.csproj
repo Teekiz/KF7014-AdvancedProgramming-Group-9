@@ -69,7 +69,7 @@
     <Compile Include="OrderGatewayMOCObject.cs" />
     <Compile Include="OrderItemsGatewayMOCObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="schedule model.cs" />
+    <Compile Include="ScheduleModelTestClass.cs" />
     <Compile Include="StaffCustomerTestClass.cs" />
   </ItemGroup>
   <ItemGroup>

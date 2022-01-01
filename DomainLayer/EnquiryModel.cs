@@ -30,7 +30,6 @@ namespace DomainLayer
     //Concrete Implementation
     public class EnquiryModel : IEnquiryModel
     {
-        //IDatabaseCreateQueries create;
         IEnquiryGateway enquiryCRUD;
         ICustomerGateway customerCRUD;
         IOrderItemGateway orderItemsCRUD;

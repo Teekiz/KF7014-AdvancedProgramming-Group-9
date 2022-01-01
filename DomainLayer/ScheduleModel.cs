@@ -87,6 +87,8 @@ namespace DomainLayer
             { return false; }
             else if (order.progressCompleted <= 75 && now > threequaters)
             { return false; }
+            else if (order.progressCompleted <= 100 && now >= deadline)
+            { return false; }
             else { return true; }
         }
 
