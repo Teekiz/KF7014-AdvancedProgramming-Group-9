@@ -29,6 +29,7 @@ namespace PresentationLayer
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ScheduleOrderScreen));
             this.rtbOrderNotes = new System.Windows.Forms.RichTextBox();
             this.lblOrderNotes = new System.Windows.Forms.Label();
             this.lblOrderItems = new System.Windows.Forms.Label();
@@ -50,18 +51,22 @@ namespace PresentationLayer
             // lblOrderNotes
             // 
             this.lblOrderNotes.AutoSize = true;
-            this.lblOrderNotes.Location = new System.Drawing.Point(229, 32);
+            this.lblOrderNotes.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOrderNotes.ForeColor = System.Drawing.Color.White;
+            this.lblOrderNotes.Location = new System.Drawing.Point(186, 9);
             this.lblOrderNotes.Name = "lblOrderNotes";
-            this.lblOrderNotes.Size = new System.Drawing.Size(64, 13);
+            this.lblOrderNotes.Size = new System.Drawing.Size(128, 25);
             this.lblOrderNotes.TabIndex = 2;
             this.lblOrderNotes.Text = "Order Notes";
             // 
             // lblOrderItems
             // 
             this.lblOrderItems.AutoSize = true;
-            this.lblOrderItems.Location = new System.Drawing.Point(203, 171);
+            this.lblOrderItems.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOrderItems.ForeColor = System.Drawing.Color.White;
+            this.lblOrderItems.Location = new System.Drawing.Point(151, 160);
             this.lblOrderItems.Name = "lblOrderItems";
-            this.lblOrderItems.Size = new System.Drawing.Size(90, 13);
+            this.lblOrderItems.Size = new System.Drawing.Size(204, 29);
             this.lblOrderItems.TabIndex = 3;
             this.lblOrderItems.Text = "Items in the Order";
             // 
@@ -75,9 +80,11 @@ namespace PresentationLayer
             // lblPercentCompleted
             // 
             this.lblPercentCompleted.AutoSize = true;
-            this.lblPercentCompleted.Location = new System.Drawing.Point(218, 372);
+            this.lblPercentCompleted.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPercentCompleted.ForeColor = System.Drawing.Color.White;
+            this.lblPercentCompleted.Location = new System.Drawing.Point(171, 356);
             this.lblPercentCompleted.Name = "lblPercentCompleted";
-            this.lblPercentCompleted.Size = new System.Drawing.Size(65, 13);
+            this.lblPercentCompleted.Size = new System.Drawing.Size(155, 29);
             this.lblPercentCompleted.TabIndex = 5;
             this.lblPercentCompleted.Text = "Progress (%)";
             // 
@@ -103,6 +110,7 @@ namespace PresentationLayer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(508, 519);
             this.Controls.Add(this.lstOrders);
             this.Controls.Add(this.btnUpdate);
@@ -111,8 +119,9 @@ namespace PresentationLayer
             this.Controls.Add(this.lblOrderItems);
             this.Controls.Add(this.lblOrderNotes);
             this.Controls.Add(this.rtbOrderNotes);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ScheduleOrderScreen";
-            this.Text = "Form5";
+            this.Text = "Schedule Order Screen";
             this.ResumeLayout(false);
             this.PerformLayout();
 
