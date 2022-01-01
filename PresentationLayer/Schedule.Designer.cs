@@ -48,6 +48,7 @@ namespace PresentationLayer
             this.Controls.Add(this.rtbSchedule);
             this.Name = "Schedule";
             this.Text = "Schedule";
+            this.Load += new System.EventHandler(this.Schedule_Load);
             this.ResumeLayout(false);
 
         }

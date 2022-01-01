@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+//Basic form designed to display information regarding the credits for the assignment and references (images and code).
 namespace PresentationLayer
 {
     public partial class Credits : Form
@@ -15,6 +16,11 @@ namespace PresentationLayer
         public Credits()
         {
             InitializeComponent();
+        }
+
+        private void Credits_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

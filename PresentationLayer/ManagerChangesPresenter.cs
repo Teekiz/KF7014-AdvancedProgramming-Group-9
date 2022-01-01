@@ -29,6 +29,8 @@ namespace PresentationLayer
             loadScreenValues();
         }
 
+        //Try to load information for both the existing order and the conflicting order.
+        //If not possible, notify user of the failure.
         public void loadScreenValues()
         {
             try
@@ -45,11 +47,13 @@ namespace PresentationLayer
                 screen.conflictDeadline = conflictingOrder.confirmedDeadline; //order to be replaced
             }
             catch 
-            { 
-                //do nothing, the screen values just won't update.
+            {
+                //do nothing, the screen values just won't update. EDIT (Lewis) - Use System boxes instead!
+                System.Windows.Forms.MessageBox.Show("NOTICE - Changes not made!");
             }
         }
 
+        //If the selected changes to the deadline are identified to be feasable, Push changes into database.
         public void saveChanges()
         {
             conflictingOrder.scheduledStartDate = screen.conflictStartDate;
@@ -65,6 +69,7 @@ namespace PresentationLayer
             {
                 model.SaveOrder(conflictingOrder, enquiryUsedToSave);
                 model.UpdateOrder(existingOrder);
+                System.Windows.Forms.MessageBox.Show("NOTICE - Changes have been made!");
                 screen.closeScreen();
             }
         }

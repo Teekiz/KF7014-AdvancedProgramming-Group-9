@@ -36,5 +36,10 @@ namespace PresentationLayer
         {
             presenter = psr;
         }
+
+        private void Schedule_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

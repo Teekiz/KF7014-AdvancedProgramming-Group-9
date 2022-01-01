@@ -34,6 +34,7 @@ namespace PresentationLayer
 
         }
 
+        //On button click, load relevant form.
         private void MFb1_Click(object sender, EventArgs e)
         {
             OFCcountry screen = new OFCcountry();

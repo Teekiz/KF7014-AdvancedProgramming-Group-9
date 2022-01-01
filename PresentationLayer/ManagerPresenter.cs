@@ -35,6 +35,7 @@ namespace PresentationLayer
             return model.GetEnquiry(EnquiryID);
         }
 
+        //System message notifying user that the order number could not be found
         public void missingInfo2()
         {
             System.Windows.Forms.MessageBox.Show("NOTICE - Order Number not found!");
@@ -42,6 +43,7 @@ namespace PresentationLayer
 
         }
 
+        //Second message to notify user to try again
         public void missingInfo3()
         {
             System.Windows.Forms.MessageBox.Show("NOTICE - Please try again!");
@@ -49,7 +51,8 @@ namespace PresentationLayer
         }
 
 
-
+        //Checks if the order number entered is present. If not, produce system message via missingInfo2().
+        //If Order number is found, return enquiry.
         public Customer GetCustomer(Enquiry enquiry)
         {
             if (enquiry is null)
@@ -80,6 +83,7 @@ namespace PresentationLayer
             UpdateFormView(enquiry, customer, orderItems);
         }
 
+        //Check if enquiry can be found. If so, update current data.
         public void UpdateFormView(Enquiry enquiry, Customer customer, List<OrderItems> orderItems)
         {
             if (enquiry is null)

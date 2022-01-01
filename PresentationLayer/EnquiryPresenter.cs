@@ -26,6 +26,7 @@ namespace PresentationLayer
             oi = new List<OrderItems>();
         }
 
+        //If required info is missing in the form, display message informing user to enter this data.
         public void missingInfo(string missingVariable)
         {
             System.Windows.Forms.MessageBox.Show("NOTICE - You must fill in the " + missingVariable + " to continue");
@@ -90,7 +91,8 @@ namespace PresentationLayer
                 e.receivedDate = DateTime.Now;
                 e.deadline = screen.deadline;
                 e.orderNotes = screen.orderNotes;                
-
+                
+                //Checks for items checked on the form (swords and/or armour) If found, save enquiry.
                 if (screen.CerimonialSwordChecked() == true)
                 {
                     int quan1 = Int32.Parse(screen.itemQuant1);
@@ -112,6 +114,8 @@ namespace PresentationLayer
                 enqiryModel.SaveEnquiry(e, c, oi);
 
                 System.Windows.Forms.MessageBox.Show("Request Proccessed Successfully");
+
+                
             }
           
         }

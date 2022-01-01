@@ -65,6 +65,7 @@ namespace PresentationLayer
             this.Controls.Add(this.pictureBox1);
             this.Name = "Credits";
             this.Text = "Credits";
+            this.Load += new System.EventHandler(this.Credits_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

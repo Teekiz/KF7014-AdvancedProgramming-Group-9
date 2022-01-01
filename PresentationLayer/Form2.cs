@@ -31,7 +31,7 @@ namespace PresentationLayer
         bool acceptOrderRadioButton();
         void register(ManagerPresenter psr);
     }
-
+    //Return values of customer enquiry if order number is found (functions through ManagerPresenter).
     public partial class OrderManager : Form, IOrderManager
     {
         private ManagerPresenter presenter;
@@ -45,7 +45,6 @@ namespace PresentationLayer
         {
             get { return txtOMOrderNumber.Text; }
             set { txtOMOrderNumber.Text = value; }
-
         }
         public DateTime DateReceived 
         {
@@ -77,7 +76,6 @@ namespace PresentationLayer
             get { return OFMcountyF.Text; }
             set { OFMcountyF.Text = value; }
         }
-
         public string custType
         {
             get { return txtCustomerType.Text; }
@@ -98,7 +96,6 @@ namespace PresentationLayer
             get { return OFMrttcF.Value; }
             set { OFMrttcF.Value = value; }
         }
-
         public string systemRec
         {
             get { return OFMsystemrecF.Text; }
@@ -115,13 +112,11 @@ namespace PresentationLayer
             get { return OFMcnF.Text; }
             set { OFMcnF.Text = value; }
         }
-
         public DateTime startDate
         {
             get { return dtpMstartDate.Value; }
             set { dtpMstartDate.Value = value; }
         }
-
         public bool acceptOrderRadioButton()
         {
             if (OFMaoY.Checked)
@@ -133,7 +128,6 @@ namespace PresentationLayer
                 return false;
             }
         }
-
         public void orderItemListView(List<String> orderItems)
         {
             foreach (string item in orderItems)
@@ -141,32 +135,27 @@ namespace PresentationLayer
                 lstBoxItems.Items.Add(item);
             }
         }
-
         private void Form2_Load(object sender, EventArgs e)
         {
 
         }
-
         private void label4_Click(object sender, EventArgs e)
         {
 
         }
-
         private void label18_Click(object sender, EventArgs e)
         {
 
         }
-
         public void register(ManagerPresenter psr)
         {
             presenter = psr;
         }
-
         private void txtOMOrderNumber_Leave(object sender, EventArgs e)
         {
             presenter.EnquiryUpdate();
         }
-
+        //Save changes made to the enquiry.
         private void OFMsubmit_Click(object sender, EventArgs e)
         {
             presenter.SaveUpdateEnquiry();

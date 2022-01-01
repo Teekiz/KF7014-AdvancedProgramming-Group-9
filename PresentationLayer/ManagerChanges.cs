@@ -21,6 +21,9 @@ namespace PresentationLayer
         void closeScreen();
         void register(ManagerChangesPresenter psr);
     }
+
+    //Return data relevant to the existing order, and the conflicting order.
+    //Allows this data to be manipulated via text boxes and date forms.
     public partial class ManagerChanges : Form, IOrderManagerChanges
     {
         ManagerChangesPresenter presenter;
