@@ -116,11 +116,14 @@ namespace PresentationLayer
                 screen.custOrderNotes = enquiry.orderNotes;
                 screen.price = enquiry.price.ToString();
                 screen.timeHours = enquiry.hoursToComplete.ToString();
-                screen.startDate = order.scheduledStartDate;
-                screen.confirmedDeadline = order.confirmedDeadline;
-                
+                if (model.DoesOrderExist(enquiry) != null) 
+                { 
+                    order = model.DoesOrderExist(enquiry);
+                    screen.startDate = order.scheduledStartDate;
+                    screen.confirmedDeadline = order.confirmedDeadline;
+                }
 
-
+               
                 //item is (objectType) is from https://stackoverflow.com/questions/3561202/check-if-instance-is-of-a-type
                 //answered by the user Jon Skeet (2010)
 
@@ -139,6 +142,7 @@ namespace PresentationLayer
             }
         }
 
+
         //While the button will say save, all it does is update the query.
         public void SaveUpdateEnquiry()
         {
@@ -146,7 +150,11 @@ namespace PresentationLayer
             { missingInfo2(); }
             else if (enquiry != null)
             {
-                order = new Order();
+                //if the order exists, set to true, update, else save ().
+                bool updateOrSave = false;
+                if (model.DoesOrderExist(enquiry) is null) { updateOrSave = false; order = new Order(); }
+                else { updateOrSave = true; }
+
                 double price = Double.Parse(screen.price);
                 int hours = Int32.Parse(screen.timeHours);
                 order.scheduledStartDate = screen.startDate;
@@ -163,11 +171,16 @@ namespace PresentationLayer
                         enquiry.price = price;
                         enquiry.hoursToComplete = hours;
                         model.UpdateEnquiry(enquiry);
-                        model.UpdateOrder(order);
-                        model.SaveOrder(order, enquiry);
-
+                        if (updateOrSave == true) { model.UpdateOrder(order); }
+                        else { model.SaveOrder(order, enquiry); }
                         System.Windows.Forms.MessageBox.Show("NOTICE - Enquiry Updated!");
 
+                    }
+
+                    //if it is the same order
+                    else if (canBeMovedOrders.Count() == 2 && canBeMovedOrders[0].orderID == order.orderID)
+                    { 
+                        //if (order.scheduledStartDate >= canBeMovedOrders[0].scheduledStartDate && order.confirmedDeadline <= )
                     }
 
                     //if the check shedule is not clear but there is an order that can be moved

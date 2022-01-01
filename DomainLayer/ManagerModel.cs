@@ -25,6 +25,7 @@ namespace DomainLayer
         Enquiry GetEnquiry(int enquiryID);
         Customer GetCustomerInEnquiry(int customerID);
         Order GetOrder(int id);
+        Order DoesOrderExist(Enquiry enquiry);
         int GetEnquiryInOrder(Order order);
 
         //Database Manipulation (Sets/Updates)
@@ -57,6 +58,16 @@ namespace DomainLayer
         }
 
         #region "Data Access Methods"
+        public Order DoesOrderExist(Enquiry enquiry)
+        {
+            int id = enquiry.orderID;
+            foreach (Order order in orderCRUD.GetAllOrders())
+            {
+                if (GetEnquiryInOrder(order) == id) { return order; }
+            }  
+            return null;
+        }
+
         public bool UpdateEnquiry(Enquiry enquiry)
         {
             try
