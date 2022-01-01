@@ -19,7 +19,7 @@ namespace AdvancedProgrammingGroup9TestProject
             List<Order> GetAllOrdersWithinTwoMonths();
         Enquiry GetEnquiryFromOrder(Order order);
         List<OrderItems> GetOrderItemsFromOrder(Order order);
-        bool updateOrder(Order order);
+     
          Customer customer = new Customer();
 
             //checking the  1st schedule order create models.
@@ -81,9 +81,5 @@ namespace AdvancedProgrammingGroup9TestProject
             Assert.AreEqual(55, maxTime3);
         }
                                
-               public bool updateOrder(Order order)
-        {
-            try { orderCRUD.UpdateOrder(order); return true; }
-            catch { return false;}  
     }
 }
