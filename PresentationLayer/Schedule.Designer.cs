@@ -38,6 +38,7 @@ namespace PresentationLayer
             this.dgvNumberOfItems = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvProgress = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvOnSchedule = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSchedule)).BeginInit();
             this.SuspendLayout();
             // 
@@ -104,11 +105,24 @@ namespace PresentationLayer
             this.dgvOnSchedule.Name = "dgvOnSchedule";
             this.dgvOnSchedule.ReadOnly = true;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Bookman Old Style", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(340, 21);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(127, 29);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Schedule";
+            // 
             // Schedule
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvSchedule);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Schedule";
@@ -116,6 +130,7 @@ namespace PresentationLayer
             this.Load += new System.EventHandler(this.Schedule_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSchedule)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -129,5 +144,6 @@ namespace PresentationLayer
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvNumberOfItems;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvProgress;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvOnSchedule;
+        private System.Windows.Forms.Label label1;
     }
 }
