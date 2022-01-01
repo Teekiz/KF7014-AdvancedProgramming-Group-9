@@ -23,6 +23,7 @@ namespace PresentationLayer
         string price { set; get; }
         string timeHours { set; get; }
         DateTime deadline { set; get; }
+        DateTime confirmedDeadline { set; get; }
         string systemRec { get; set; }
         string orderNotes { get; set; }
         string custOrderNotes { get; set; }
@@ -96,6 +97,12 @@ namespace PresentationLayer
         {
             get { return OFMrttcF.Value; }
             set { OFMrttcF.Value = value; }
+
+        }
+        public DateTime confirmedDeadline
+        {
+            get { return dtpMendDate.Value; }
+            set { dtpMendDate.Value = value; }
         }
         public string systemRec
         {
@@ -165,6 +172,16 @@ namespace PresentationLayer
         private void OFMsubmit_Click(object sender, EventArgs e)
         {
             presenter.SaveUpdateEnquiry();
+        }
+
+        private void dtpMendDate_ValueChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void OFMrttcF_ValueChanged(object sender, EventArgs e)
+        {
+            this.OFMrttcF.Enabled = false;
         }
     }
 }

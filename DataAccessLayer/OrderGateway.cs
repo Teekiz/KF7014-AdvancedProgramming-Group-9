@@ -87,6 +87,7 @@ namespace DataAccessLayer
                 {
                     //based on code from https://docs.microsoft.com/en-us/ef/core/querying/
                     var orderQuery = context.Orders.Where(o => o.orderID == order.orderID).SingleOrDefault();
+                    System.Windows.Forms.MessageBox.Show("NOTICE - You must fill in the " + order.scheduledStartDate + " to continue");
                     orderQuery.scheduledStartDate = order.scheduledStartDate;
                     orderQuery.confirmedDeadline = order.confirmedDeadline;
                     orderQuery.progressCompleted = order.progressCompleted;

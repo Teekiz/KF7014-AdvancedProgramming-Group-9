@@ -73,18 +73,29 @@ namespace PresentationLayer
             }
         }
 
+        public Order GetOrder(Enquiry enquiry)
+        {
+            if (enquiry is null)
+            { return null; }
+            else
+            {
+                return model.GetOrder(enquiry.orderID);
+            }
+        }
+
         public void EnquiryUpdate()
         {
             int enquId = Int32.Parse(screen.orderNumber);
             enquiry = GetEnquiry(enquId);
             customer = GetCustomer(enquiry);
             orderItems = GetOrderItems(enquiry);
-            order = new Order();
-            UpdateFormView(enquiry, customer, orderItems);
+            order = GetOrder(enquiry);
+            
+            UpdateFormView(enquiry, customer, orderItems, order);
         }
 
         //Check if enquiry can be found. If so, update current data.
-        public void UpdateFormView(Enquiry enquiry, Customer customer, List<OrderItems> orderItems)
+        public void UpdateFormView(Enquiry enquiry, Customer customer, List<OrderItems> orderItems, Order order)
         {
             if (enquiry is null)
             { missingInfo3(); }
@@ -105,6 +116,10 @@ namespace PresentationLayer
                 screen.custOrderNotes = enquiry.orderNotes;
                 screen.price = enquiry.price.ToString();
                 screen.timeHours = enquiry.hoursToComplete.ToString();
+                screen.startDate = order.scheduledStartDate;
+                screen.confirmedDeadline = order.confirmedDeadline;
+                
+
 
                 //item is (objectType) is from https://stackoverflow.com/questions/3561202/check-if-instance-is-of-a-type
                 //answered by the user Jon Skeet (2010)
@@ -131,22 +146,24 @@ namespace PresentationLayer
             { missingInfo2(); }
             else if (enquiry != null)
             {
+                order = new Order();
                 double price = Double.Parse(screen.price);
                 int hours = Int32.Parse(screen.timeHours);
                 order.scheduledStartDate = screen.startDate;
-                order.confirmedDeadline = screen.deadline;
+                order.confirmedDeadline = screen.confirmedDeadline;
 
                 //as long as the price and hours is reasonable and if the deadline is feasible
-                if (model.PriceHoursCheck(price, hours, orderItems) == true && model.CheckIfDeadlineIsFeasible(hours, screen.startDate, screen.deadline) == true)
+                if (model.PriceHoursCheck(price, hours, orderItems) == true && model.CheckIfDeadlineIsFeasible(hours, screen.startDate, screen.confirmedDeadline) == true)
                 {
                     //to update the enquiry, also means that it doesn't need to run more than once
                     List<Order> canBeMovedOrders = model.canOrderBeMoved(order, customer);
                     //if the schedule is clear or if the it is not clear but the order conflicting it is able to be moved.
-                    if (model.CheckSchedule(screen.startDate, screen.deadline) == true)
+                    if (model.CheckSchedule(screen.startDate, screen.confirmedDeadline) == true)
                     {
                         enquiry.price = price;
                         enquiry.hoursToComplete = hours;
                         model.UpdateEnquiry(enquiry);
+                        model.UpdateOrder(order);
                         model.SaveOrder(order, enquiry);
 
                         System.Windows.Forms.MessageBox.Show("NOTICE - Enquiry Updated!");
