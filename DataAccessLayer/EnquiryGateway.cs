@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer
 {
+
+    //Created by Callum Rossiter
     public interface IEnquiryGateway
     {
         bool SaveEnquiry(Enquiry enquiry, Customer customer);

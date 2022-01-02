@@ -7,8 +7,14 @@ using DataAccessLayer;
 
 namespace DomainLayer
 {
+    /* 
+     * - Shared - some of the methods were create by Sai Pavan Madala, others by Callum
+     * - on some of the methods that had some problems, a note has been added where it was updated.
+     */
+
     public interface IScheduleModel
     {
+        //Interface implemented by Callum Rossiter.
         List<Order> GetAllOrdersWithinTwoMonths();
         Order GetOrder(int id);
         Enquiry GetEnquiryFromOrder(Order order);
@@ -31,6 +37,7 @@ namespace DomainLayer
         }
 
         #region "Order reads"
+        //Initially created by Sai Pavan Madala, updated by Callum Rossiter
         public List<Order> GetAllOrdersWithinTwoMonths()
         {
             List<Order> ordersWithinTheNextTwoMonths = new List<Order>();
@@ -43,19 +50,26 @@ namespace DomainLayer
             return ordersWithinTheNextTwoMonths;
         }
 
-        public Order GetOrder(int id) { return orderCRUD.GetOrder(id); }
+        //Initially created by Sai Pavan Madala, updated by Callum Rossiter
+        public Order GetOrder(int id) 
+        { 
+            return orderCRUD.GetOrder(id); 
+        }
 
+        //Initially created by Sai Pavan Madala, updated by Callum Rossiter
         public Enquiry GetEnquiryFromOrder(Order order)
         {
             return enquiryCRUD.GetEnquiry(orderCRUD.FindEnquiryIDinOrder(order));
         }
 
+        //Initially created by Sai Pavan Madala, updated by Callum Rossiter
         public List<OrderItems> GetOrderItemsFromOrder(Order order)
         {
             return orderItemsCRUD.GetOrderItemsInEnquiry(orderCRUD.FindEnquiryIDinOrder(order));
         }
         #endregion
 
+        //Created by Callum Rossiter
         public bool OnTarget(Order order)
         {
             /*
@@ -94,6 +108,7 @@ namespace DomainLayer
         }
 
         //this method can be used for requirement 5, "Allows a percentage complete to be recorded against an order".
+        ////Initially created by Sai Pavan Madala, updated by Callum Rossiter
         public bool updateOrder(Order order)
         {
             try { orderCRUD.UpdateOrder(order); return true; }

@@ -8,6 +8,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DataAccessLayer
 {
+    // Enquiry written by Callum Rossiter
+
     /*
     Credit/References:
 
@@ -45,6 +47,7 @@ namespace DataAccessLayer
         public virtual ICollection<OrderItems> orderItemsList { get { return OrderItemsList; } set { OrderItemsList = value; } }
     }
 
+    // Order Items written by Callum Rossiter
     public class OrderItems
     {
         public OrderItems() {}
@@ -121,6 +124,8 @@ namespace DataAccessLayer
         }
     }
 
+    // Order written by Callum Rossiter
+
     public class Order
     {
         public Order() { }
@@ -139,6 +144,7 @@ namespace DataAccessLayer
         public virtual Enquiry Enquiry { get { return enquiry; } set { enquiry = value; } }
     }
 
+    //Developed by Ian Kenny
     public class Customer
     {
         public Customer() { }
@@ -169,6 +175,8 @@ namespace DataAccessLayer
         public string country { get { return Country; } set { Country = value; } }
         public string type { get { return Type; } set { Type = value; } }
     }
+
+    //Created by Sai Pavan Madala
     public class Staff
     {
         public Staff() {}

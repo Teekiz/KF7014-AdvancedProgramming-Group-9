@@ -12,6 +12,8 @@ namespace DomainLayer
     /*
      * This model is used to cover functional requirement #1
      * 
+     * - All Methods written by Callum Rosster, some of the methods were based on earlier models not used (marked).
+     * 
      * 1.Initial enquiry:  Due to the sporadic nature of the demand there are times when the company needs to refuse orders it cannot complete.  
      * It should be able to provide honest estimates as to when a potential order can be completed.  
      * An initial form captures the key information so that an estimate can be given to the client, 
@@ -41,6 +43,7 @@ namespace DomainLayer
             this.customerCRUD = customerCRUD;
         }
 
+        //Created by Callum Rossiter - the .SaveCustomer however is based on work by Ian Kenny (see CustomerModel).
         public bool SaveEnquiry(Enquiry enquiry, Customer customer, List<OrderItems> orderItems)
         {
             try

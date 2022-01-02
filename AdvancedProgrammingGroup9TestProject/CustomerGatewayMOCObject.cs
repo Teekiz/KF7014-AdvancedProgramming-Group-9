@@ -7,6 +7,7 @@ using DataAccessLayer;
 
 namespace AdvancedProgrammingGroup9TestProject
 {
+    //Created by Callum Rossiter
     public class CustomerGatewayMOCObject : ICustomerGateway
     {
         public Customer storedcustomer;

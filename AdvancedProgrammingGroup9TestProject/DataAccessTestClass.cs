@@ -9,6 +9,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace AdvancedProgrammingGroup9TestProject
 {
+    //Created by Callum Rossiter, Ian Kenny developed the Order Test Method
+
     [TestClass]
     public class DataAccessTestClass
     {
@@ -79,6 +81,7 @@ namespace AdvancedProgrammingGroup9TestProject
             order = new Order();
         }
 
+        //Created by Callum Rossiter
         [TestMethod]
         //Testing customer, read and write
         public void TestMethod1Customer()
@@ -118,6 +121,7 @@ namespace AdvancedProgrammingGroup9TestProject
             Assert.AreEqual(true, CustomerCRUD.DeleteAllCustomers());
         }
 
+        //Created by Callum Rossiter
         [TestMethod]
         public void TestMethod2Enquiry()
         {
@@ -180,7 +184,7 @@ namespace AdvancedProgrammingGroup9TestProject
             Assert.AreEqual(true, CustomerCRUD.DeleteAllCustomers());
         }
 
-
+        //Created by Callum Rossiter
         [TestMethod]
         public void TestMethod3OrderItems()
         {
@@ -226,6 +230,7 @@ namespace AdvancedProgrammingGroup9TestProject
             Assert.AreEqual(true, CustomerCRUD.DeleteAllCustomers());
             Assert.AreEqual(true, OrderItemCRUD.DeleteAllOrderItems());
         }
+        //Created by Ian Kenny
         [TestMethod]
         public void TestMethod4Orders()
         {

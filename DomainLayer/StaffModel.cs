@@ -9,6 +9,7 @@ using DataAccessLayer;
 
 namespace DomainLayer
 {
+    //Created by Sai Pavan Madala - due to the lateness of the project, these methods are not really used.
     public interface IStaffModel
     {
         void SetStaff(Staff staff);

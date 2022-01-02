@@ -9,6 +9,8 @@ namespace DataAccessLayer
 
     /*
      * Based on the design pattern found here https://martinfowler.com/eaaCatalog/tableDataGateway.html
+     * 
+     *  - Created by Callum Rossiter
      */
 
     public interface ICustomerGateway

@@ -17,6 +17,8 @@ namespace DataAccessLayer
         bool DeleteAllOrders();
     }
 
+    //Created by Ian Kenny, some updates (and design pattern implementation) made by Callum Rossiter
+
     //1) For this method I used the answer by the user Slauma (2013)
     //https://stackoverflow.com/questions/20710178/entity-framework-creates-new-duplicate-entries-for-associated-objects
     //using it for context.Enquiries.Attach(order.Enquiry); to fix duplication issues
@@ -38,6 +40,7 @@ namespace DataAccessLayer
 
     public sealed class OrderGateway : IOrderGateway
     {
+        //Design Pattern implemented by Callum Rossiter
         //code for reference 4
         private static OrderGateway instance = null;
         private static readonly object padlock = new object();
@@ -49,7 +52,7 @@ namespace DataAccessLayer
         }
         //reference 4 ends here.
 
-        //Method for 1) reference
+        //Method for 1) reference - Updated by Callum Rossiter
         public bool SaveOrder(Order order)
         {
             try
@@ -65,6 +68,7 @@ namespace DataAccessLayer
             catch { return false; }
         }
 
+        //Created by - Ian Kenny
         public Order GetOrder(int id)
         {
             try
@@ -79,6 +83,8 @@ namespace DataAccessLayer
 
             catch { return null; }
         }
+
+        //Created by - Ian Kenny
         public bool UpdateOrder(Order order)
         {
             try
@@ -97,6 +103,7 @@ namespace DataAccessLayer
             catch { return false; }
         }
 
+        //Created by - Ian Kenny
         public List<Order> GetAllOrders()
         {
             try
@@ -112,7 +119,7 @@ namespace DataAccessLayer
             { return null; }
         }
 
-        //Method for 2) reference
+        //Method for 2) reference -  //Created by - Ian Kenny, updated by Callum Rossiter
         public int FindEnquiryIDinOrder(Order order)
         {
             try
@@ -128,6 +135,7 @@ namespace DataAccessLayer
             { return 0; }
         }
 
+        //Created by - Ian Kenny
         public bool DeleteOrder(int order)
         {
             try
@@ -143,6 +151,7 @@ namespace DataAccessLayer
             catch { return false; }
         }
 
+        //Created by - Ian Kenny
         public bool DeleteAllOrders()
         {
             try

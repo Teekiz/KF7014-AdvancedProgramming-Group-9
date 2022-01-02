@@ -8,6 +8,8 @@ using DataAccessLayer;
 namespace DomainLayer
 {
     /*
+     * - Methods done by Callum Rossiter
+     * 
      * This model is used to cover functional requirement #2 and 3
      * 
      * 2.Production estimates: The contracts manager will quickly assess the time needed to complete the order this will be in hours, 

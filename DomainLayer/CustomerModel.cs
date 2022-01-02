@@ -9,6 +9,8 @@ using DataAccessLayer;
 
 namespace DomainLayer
 {
+
+    //Model created by Ian Kenny - however, the methods were combined into the manager
     public interface ICustomerModel
     {
         void SetCustomer(Customer customer);
