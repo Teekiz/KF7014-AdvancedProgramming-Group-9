@@ -8,6 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+//Developed by Lewis Barton
+//GUI allowing managers to change aspects of an order in the schedule. Example being the percentage complete.
+//Data handling performed by ScheduleOrderScreenPresenter.
+
 namespace PresentationLayer
 {
     public interface IScheduleOrderScreen
@@ -52,6 +56,11 @@ namespace PresentationLayer
         public void register(ScheduleOrderScreenPresenter psr)
         {
             presenter = psr;
+        }
+
+        private void ScheduleOrderScreen_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

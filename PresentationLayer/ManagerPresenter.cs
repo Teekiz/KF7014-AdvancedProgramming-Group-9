@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 using DomainLayer;
 using DataAccessLayer;
 
+//Developed by Lewis Barton and Callum Rossiter.
+//Data handling for the Manager form (Form2). 
+
 namespace PresentationLayer
 {
     //#1 For Method UpdateFormView

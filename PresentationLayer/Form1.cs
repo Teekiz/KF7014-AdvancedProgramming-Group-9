@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+//Developed by Lewis Barton
+//GUI for customer order form. Data handling performed by enquiryPresenter.
+
 namespace PresentationLayer
 {
     public interface IOrderCust 

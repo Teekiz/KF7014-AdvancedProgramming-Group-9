@@ -10,6 +10,11 @@ using System.Windows.Forms;
 using DomainLayer;
 using DataAccessLayer;
 
+//Developed by Lewis Barton
+//GUI to allow a manager to change aspects of an enquiry such as the price and amount of hours needed.
+//Allows a manager to accept or decline an order.
+//Data handling performed by ManagerPresenter.
+
 namespace PresentationLayer
 {
     public interface IOrderManager

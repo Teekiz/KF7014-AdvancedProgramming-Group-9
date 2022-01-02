@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 using DomainLayer;
 using DataAccessLayer;
 
+//Developed by Lewis Barton and Callum Rossiter.
+//Data handling for ManagerChange form. Attempt to replace the start date and deadline of a conflicting order.
+
 namespace PresentationLayer
 {
     public class ManagerChangesPresenter

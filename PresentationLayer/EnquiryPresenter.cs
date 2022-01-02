@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 using DomainLayer;
 using DataAccessLayer;
 
+//Developed by Lewis Barton and Callum Rossiter.
+//Handles data for the Customer Form.
+//Identifies if the required forms are filled, if not, notify the user of this.
+//If all forms are filled then pass data into the database, create new enquiry.
+
 namespace PresentationLayer
 {
     public class EnquiryPresenter

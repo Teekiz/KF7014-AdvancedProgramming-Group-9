@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DataAccessLayer;
 
+//Developed by Lewis Barton
+//GUI to display the current schedule. Data handling completed by SchedulePresenter.
+
 namespace PresentationLayer
 {
     public interface ISchedule

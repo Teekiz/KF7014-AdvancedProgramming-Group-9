@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+//Developed by Lewis Barton
+//Displays names of developers, references to images used, and references to code used (external sources).
+
 //Basic form designed to display information regarding the credits for the assignment and references (images and code).
 namespace PresentationLayer
 {

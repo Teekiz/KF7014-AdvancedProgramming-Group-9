@@ -10,6 +10,9 @@ using System.Windows.Forms;
 using DomainLayer;
 using DataAccessLayer;
 
+//Developed by Lewis Barton
+//Main form linking other forms. Contains links to Customer form, manager form, schedule form, and credits form.
+
 namespace PresentationLayer
 {
     public partial class MainForm : Form

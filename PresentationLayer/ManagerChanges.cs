@@ -8,6 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+//Developed by Lewis Barton
+//GUI to allow a manager to change the dates of an order based on the priority of the order.
+//Data handling performed by managerChangePresenter.
+
 namespace PresentationLayer
 {
     public interface IOrderManagerChanges
