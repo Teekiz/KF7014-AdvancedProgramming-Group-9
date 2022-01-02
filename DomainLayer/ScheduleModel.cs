@@ -39,6 +39,7 @@ namespace DomainLayer
             {
                 if (order.confirmedDeadline < twoMonths && order.progressCompleted < 100){ ordersWithinTheNextTwoMonths.Add(order); }
             }
+            System.Windows.Forms.MessageBox.Show(ordersWithinTheNextTwoMonths.Count().ToString());
             return ordersWithinTheNextTwoMonths;
         }
 
