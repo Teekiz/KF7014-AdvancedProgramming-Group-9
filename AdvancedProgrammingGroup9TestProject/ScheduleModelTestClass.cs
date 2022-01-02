@@ -12,6 +12,7 @@ namespace AdvancedProgrammingGroup9TestProject
     [TestClass]
     public class ScheduleModelTestClass
     {
+        /*
         //look at the schedule model interface, you need to check each type
         //does it return the exepected value, what if the parameter is invaild, or null?
 
@@ -82,6 +83,8 @@ namespace AdvancedProgrammingGroup9TestProject
            model.CalculateEstimatedTime(out int minTime3, out int maxTime3, onull);
             Assert.AreEqual(55, minTime3);
             Assert.AreEqual(55, maxTime3);
-        }                   
+        } 
+        
+        */
     }
 }

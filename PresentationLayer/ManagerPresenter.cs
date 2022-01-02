@@ -187,11 +187,19 @@ namespace PresentationLayer
                         if (canBeMovedOrders.Count() == 2 && canBeMovedOrders[0].orderID == order.orderID)
                         {
                             //if it is within the same slot
-                            if (order.scheduledStartDate >= canBeMovedOrders[0].scheduledStartDate && order.confirmedDeadline <= canBeMovedOrders[0].confirmedDeadline)
+                            if (screen.startDate >= canBeMovedOrders[0].scheduledStartDate && screen.confirmedDeadline <= canBeMovedOrders[0].confirmedDeadline)
                             {
                                 model.UpdateEnquiry(enquiry);
                                 model.UpdateOrder(order);
-                                System.Windows.Forms.MessageBox.Show("NOTICE - Enquiry Updated!");
+                                System.Windows.Forms.MessageBox.Show("NOTICE - and Order Enquiry Updated!");
+                            }
+
+                            //if there is some space free - duplicate code, needs to be redone
+                            else if (model.CheckSchedule(screen.startDate, screen.confirmedDeadline) == true)
+                            {
+                                model.UpdateEnquiry(enquiry);
+                                model.UpdateOrder(order);
+                                System.Windows.Forms.MessageBox.Show("NOTICE - Enquiry and Order Updated!");
                             }
                         }
 
