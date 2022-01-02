@@ -137,7 +137,7 @@ namespace PresentationLayer
                 screen.timeHours = enquiry.hoursToComplete.ToString();
 
                 if (model.DoesOrderExist(enquiry) != null) 
-                { 
+                {   
                     order = model.DoesOrderExist(enquiry);
                     screen.startDate = order.scheduledStartDate;
                     screen.confirmedDeadline = order.confirmedDeadline;
@@ -169,8 +169,8 @@ namespace PresentationLayer
             else if (enquiry != null)
             {
                 //if the order exists, set to true, update, else save ().
-                if (model.DoesOrderExist(enquiry) is null) { order = new Order(); order.orderID = 0; }
-                else { order = model.DoesOrderExist(enquiry); }
+                if (model.DoesOrderExist(enquiry) is null) {   order = new Order(); order.orderID = 0; }
+                else { order = model.DoesOrderExist(enquiry);}
 
                 double price = Double.Parse(screen.price);
                 int hours = Int32.Parse(screen.timeHours);
@@ -179,7 +179,8 @@ namespace PresentationLayer
                 enquiry.price = price;
                 enquiry.hoursToComplete = hours;
 
-                
+                System.Windows.Forms.MessageBox.Show(order.orderID.ToString());
+
                 //as long as the price and hours is reasonable and if the deadline is feasible
                 if (model.PriceHoursCheck(price, hours, orderItems) == true && model.CheckIfDeadlineIsFeasible(hours, screen.startDate, screen.confirmedDeadline) == true)
                 {
@@ -198,7 +199,7 @@ namespace PresentationLayer
                             {
                                 model.UpdateEnquiry(enquiry);
                                 model.UpdateOrder(order);
-                                System.Windows.Forms.MessageBox.Show("NOTICE - and Order Enquiry Updated!");
+                                System.Windows.Forms.MessageBox.Show("NOTICE - Enquiry and Order Updated!");
                             }
 
                             //if there is some space free - duplicate code, needs to be redone
@@ -210,12 +211,18 @@ namespace PresentationLayer
                             }
                         }
 
+                        else if (model.CheckSchedule(screen.startDate, screen.confirmedDeadline) == true && order.orderID != 0)
+                        {
+                            model.UpdateEnquiry(enquiry);
+                            model.UpdateOrder(order);
+                            System.Windows.Forms.MessageBox.Show("NOTICE - Enquiry and Order Updated!");
+                        }
+
                         else if (model.CheckSchedule(screen.startDate, screen.confirmedDeadline) == true)
                         {
                             model.UpdateEnquiry(enquiry);
                             model.SaveOrder(order, enquiry);
                             System.Windows.Forms.MessageBox.Show("NOTICE - Enquiry Updated!");
-
                         }
 
                         //if the check shedule is not clear but there is an order that can be moved
