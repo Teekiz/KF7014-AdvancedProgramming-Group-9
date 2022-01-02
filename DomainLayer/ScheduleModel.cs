@@ -42,12 +42,15 @@ namespace DomainLayer
         {
             List<Order> ordersWithinTheNextTwoMonths = new List<Order>();
             DateTime twoMonths = DateTime.Now.AddMonths(2);
-            foreach (Order order in orderCRUD.GetAllOrders())
+            try
             {
-                if (order.confirmedDeadline < twoMonths && order.progressCompleted < 100){ ordersWithinTheNextTwoMonths.Add(order); }
+                foreach (Order order in orderCRUD.GetAllOrders())
+                {
+                    if (order.confirmedDeadline < twoMonths && order.progressCompleted < 100) { ordersWithinTheNextTwoMonths.Add(order); }
+                }
+                return ordersWithinTheNextTwoMonths;
             }
-            System.Windows.Forms.MessageBox.Show(ordersWithinTheNextTwoMonths.Count().ToString());
-            return ordersWithinTheNextTwoMonths;
+            catch (NullReferenceException) { System.Windows.Forms.MessageBox.Show("There are no orders (Is there a database connection?)"); return ordersWithinTheNextTwoMonths; throw; }  
         }
 
         //Initially created by Sai Pavan Madala, updated by Callum Rossiter

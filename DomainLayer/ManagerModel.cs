@@ -106,7 +106,9 @@ namespace DomainLayer
         }
         public List<Enquiry> GetEnquiries()
         {
-            return enquiryCRUD.GetAllEnquiries();
+            try { return enquiryCRUD.GetAllEnquiries();}
+            catch (NullReferenceException) { System.Windows.Forms.MessageBox.Show("There are no enquiries (Is there a connection to the database?)"); throw; }
+            
         }
 
         public List<OrderItems> GetItemsInEnquiry(int enquiryID)

@@ -87,10 +87,14 @@ namespace PresentationLayer
 
         public void populateComboBox()
         {
-            foreach (Enquiry enquiry in model.GetEnquiries())
+            try 
             {
-                screen.orderNumber = enquiry.orderID.ToString();
-            }          
+                foreach (Enquiry enquiry in model.GetEnquiries())
+                {
+                    screen.orderNumber = enquiry.orderID.ToString();
+                }
+            } catch { }
+       
         }
 
         public void EnquiryUpdate()
