@@ -43,7 +43,7 @@ namespace AdvancedProgrammingGroup9TestProject
             enquiry3.orderID = 3;
             Order order3 = new Order();
             order3.orderID = 3;
-            order3.progressCompleted = 0;
+            order3.progressCompleted = 100;
             order3.scheduledStartDate = new DateTime(2022, 1, 2);
             order3.confirmedDeadline = new DateTime(2022, 1, 9);
             order3.Enquiry = enquiry3;

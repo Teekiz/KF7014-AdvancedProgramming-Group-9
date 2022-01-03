@@ -22,18 +22,16 @@ namespace DomainLayer
     {
 
         Customer customer;
-        IDatabaseCreateQueries create;
-        IDatabaseReadQueries read;
+        ICustomerGateway customerCRUD;
 
-        public CustomerModel(IDatabaseCreateQueries create, IDatabaseReadQueries read)
+        public CustomerModel(ICustomerGateway customerCRUD)
         {
-            this.create = create;
-            this.read = read;
+            this.customerCRUD = customerCRUD;
         }
 
         public void retreieveCustomer(int id)
         {
-            customer = read.GetCustomer(id);
+            customer = customerCRUD.GetCustomer(id);
         }
 
         public void SetCustomer(Customer customer)
@@ -48,7 +46,7 @@ namespace DomainLayer
 
         public void SaveCustomer(Customer customer)
         {
-            create.SaveCustomer(customer);
+            customerCRUD.SaveCustomer(customer);
         }
     }
 }

@@ -12,7 +12,7 @@ using DataAccessLayer;
 namespace PresentationLayer
 {
     //#1 For Method UpdateFormView
-    //item is (objectType) is from https://stackoverflow.com/questions/3561202/check-if-instance-is-of-a-type
+    //item is (objectType) is from - Copied from URL https://stackoverflow.com/questions/3561202/check-if-instance-is-of-a-type
     //answered by the user Jon Skeet (2010)
 
     public class ManagerPresenter
@@ -154,7 +154,7 @@ namespace PresentationLayer
                     screen.confirmedDeadline = order.confirmedDeadline;
                 }
      
-                //item is (objectType) is from https://stackoverflow.com/questions/3561202/check-if-instance-is-of-a-type
+                //item is (objectType) is from - Copied from URL: https://stackoverflow.com/questions/3561202/check-if-instance-is-of-a-type
                 //answered by the user Jon Skeet (2010)
 
                 List<string> itemsList = new List<string>();
@@ -189,8 +189,6 @@ namespace PresentationLayer
                 order.confirmedDeadline = screen.confirmedDeadline;
                 enquiry.price = price;
                 enquiry.hoursToComplete = hours;
-
-                System.Windows.Forms.MessageBox.Show(order.orderID.ToString());
 
                 //as long as the price and hours is reasonable and if the deadline is feasible
                 if (model.PriceHoursCheck(price, hours, orderItems) == true && model.CheckIfDeadlineIsFeasible(hours, screen.startDate, screen.confirmedDeadline) == true)

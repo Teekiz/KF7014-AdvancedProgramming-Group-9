@@ -78,7 +78,6 @@
   <ItemGroup>
     <Compile Include="DataAccessEntities.cs" />
     <Compile Include="DatabaseEntities.cs" />
-    <Compile Include="DatabaseQueries.cs" />
     <Compile Include="CustomerGateway.cs" />
     <Compile Include="EnquiryGateway.cs" />
     <Compile Include="Migrations\Configuration.cs" />

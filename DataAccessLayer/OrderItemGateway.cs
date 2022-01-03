@@ -30,6 +30,7 @@ namespace DataAccessLayer
     public sealed class OrderItemGateway : IOrderItemGateway
     {
         //code for reference 2
+        //Copied from URL: https://csharpindepth.com/articles/singleton
         private static OrderItemGateway instance = null;
         private static readonly object padlock = new object();
         OrderItemGateway() { }
@@ -41,6 +42,7 @@ namespace DataAccessLayer
         //reference 2 ends here.
 
         //Method mentined in reference 1 
+        //Copied from URL: https://stackoverflow.com/questions/20710178/entity-framework-creates-new-duplicate-entries-for-associated-objects
         public bool SaveOrderItems(List<OrderItems> orderItems, Enquiry enquiry)
         {
             try
@@ -68,7 +70,7 @@ namespace DataAccessLayer
             {
                 using (var context = new DatabaseEntities())
                 {
-                    //based on code from https://docs.microsoft.com/en-us/ef/core/querying/
+                    //Copied from URL: https://docs.microsoft.com/en-us/ef/core/querying/
                     var orderItemsQuery = context.OrderItems.Where(i => i.Enquiry.orderID == enquiryID).ToList();
                     return orderItemsQuery;
                 }

@@ -12,14 +12,16 @@ namespace DomainLayer
     //Created by Sai Pavan Madala - due to the lateness of the project, these methods are not really used.
     public interface IStaffModel
     {
+        /*
         void SetStaff(Staff staff);
         Staff GetStaff();
         void SaveStaff(Staff staff);
+        */
     }
 
     public class StaffModel : IStaffModel
     {
-
+        /*
         Staff staff;
         IDatabaseCreateQueries create;
         IDatabaseReadQueries read;
@@ -49,5 +51,7 @@ namespace DomainLayer
         {
             //TODO create.SaveStaff(staff);
         }
+
+        */
     }
 }

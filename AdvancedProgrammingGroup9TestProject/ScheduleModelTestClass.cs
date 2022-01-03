@@ -19,6 +19,9 @@ namespace AdvancedProgrammingGroup9TestProject
         IOrderItemGateway orderItemGateway;
         IOrderGateway orderGateway;
         IScheduleModel model;
+        Order order;
+        Enquiry enquiry;
+        OrderItems order1;
 
         [TestInitialize]
         public void InitialVariables()
@@ -32,19 +35,37 @@ namespace AdvancedProgrammingGroup9TestProject
         [TestMethod]
         public void Testmethod1ScheduleModel()
         {
-            Enquiry enquiry;
-            Order order = new Order();
-            order.orderID = 1;
+            //orders within two months = 4
+            Assert.AreEqual(4, model.GetAllOrdersWithinTwoMonths().Count());
+
+            //order id exisits
+            order = model.GetOrder(2);
+            Assert.AreEqual(2, order.orderID);
+            //order id doesn't exist
+            Assert.IsNull(model.GetOrder(20));
+
+            //should equal 2
             enquiry = model.GetEnquiryFromOrder(order);
-            Assert.AreEqual(1, enquiry.orderID);
-            Assert.AreEqual("Order notes", enquiry.orderNotes);
-            Assert.AreEqual(new DateTime(2020 / 01 / 1), enquiry.receivedDate);
-            Assert.AreEqual(new DateTime(2020 / 30 / 2), enquiry.deadline);
+            Assert.AreEqual(2, enquiry.orderID);
 
-            order.orderID = 0;
-            Assert.IsNull(model.GetEnquiryFromOrder(order));
+            order.orderID = 1;
+            order1 = model.GetOrderItemsFromOrder(order)[0];
+            Assert.IsNotNull(order1);
 
-            /* Fix Later  
+            //should return yes (100%)
+            order.orderID = 3;
+            Assert.IsTrue(model.OnTarget(order));
+
+            //order is behind
+            order.orderID = 1;
+            Assert.IsFalse(model.OnTarget(order));
+
+            //the order is not null
+            Assert.AreEqual(true, model.updateOrder(order));
+
+
+
+            /* Fix Later  - Madalas sumbitted
             checkItemList = model.GetItemsInEnquiry(1);
             Assert.AreEqual("itemOne", checkItemList[0].description);
             Assert.AreEqual(12, checkItemList[0].quantity);

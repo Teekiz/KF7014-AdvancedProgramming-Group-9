@@ -38,7 +38,7 @@ namespace DataAccessLayer
         //while the program will at some point need all the gateways, it doesn't make sense to create multiple versions of these objects.
 
 
-        //Method 3) for reference
+        //Method 3) for reference //Copied from URL: https://csharpindepth.com/articles/singleton
         private static EnquiryGateway instance = null;
         private static readonly object padlock = new object();
         EnquiryGateway() { }
@@ -49,7 +49,7 @@ namespace DataAccessLayer
         }
         //reference 3 ends here.
 
-        //Method 1) reference
+        //Method 1) reference //Copied from URL: https://stackoverflow.com/questions/20710178/entity-framework-creates-new-duplicate-entries-for-associated-objects
         public bool SaveEnquiry(Enquiry enquiry, Customer customer)
         {
             try
@@ -86,7 +86,7 @@ namespace DataAccessLayer
         {
             try
             {
-                //based on code from https://docs.microsoft.com/en-us/ef/core/querying/
+                //Copied from URL: https://docs.microsoft.com/en-us/ef/core/querying/
                 using (var context = new DatabaseEntities())
                 {
                     var enquiryQuery = context.Enquiries.Where(e => e.orderID == id).SingleOrDefault();
@@ -100,7 +100,7 @@ namespace DataAccessLayer
         {
             try
             {
-                //based on code from https://docs.microsoft.com/en-us/ef/core/querying/
+                //Copied from URL: https://docs.microsoft.com/en-us/ef/core/querying/
                 using (var context = new DatabaseEntities())
                 {
                     var enquiryQuery = context.Enquiries.ToList();
@@ -117,7 +117,7 @@ namespace DataAccessLayer
             {
                 using (var context = new DatabaseEntities())
                 {
-                    //based on code from https://docs.microsoft.com/en-us/ef/core/querying/
+                    //Copied from URL: https://docs.microsoft.com/en-us/ef/core/querying/
                     var orderItemsQuery = context.Enquiries.Where(i => i.orderID == enquiry.orderID).SingleOrDefault();
                     orderItemsQuery.deadline = enquiry.deadline;
                     orderItemsQuery.price = enquiry.price;

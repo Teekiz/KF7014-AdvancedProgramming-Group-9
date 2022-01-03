@@ -32,8 +32,8 @@ namespace DataAccessLayer
         private int HoursToComplete;
         private string OrderStatus;
         private string OrderNotes;
-        private Customer customer; //careful, this is inverted virtual
-        private ICollection<OrderItems> OrderItemsList; //virtual
+        private Customer customer;
+        private ICollection<OrderItems> OrderItemsList;
 
         [Key]
         public int orderID { get { return OrderID; } set { OrderID = value; } }
@@ -55,7 +55,7 @@ namespace DataAccessLayer
         private int ItemID;
         private string Description;
         private int Quantity;
-        private byte[] ReferenceImage; //referenceImage is optional for the user - this code was modified based on stack overflow (#1).
+        private byte[] ReferenceImage;  //referenceImage is optional for the user - this code was modified based on stack overflow (#1). Copied from URL: https://stackoverflow.com/questions/4653095/how-to-store-images-using-entity-framework-code-first-ctp-5
         private int MaxTime;
         private int MinTime;
         private double MinCost;

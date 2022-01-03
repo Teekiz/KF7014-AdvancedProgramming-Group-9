@@ -32,8 +32,9 @@ namespace DataAccessLayer
     {
         //Reference 2.
         //reformated to use simple thread-saftey - this code mostly comes from
-        //C# in Depth "Implementing the Singleton Pattern in C#" https://csharpindepth.com/articles/singleton
+        //C# in Depth "Implementing the Singleton Pattern in C#" 
         //it has been changed from the copy of the presentation
+        //copied from URL: https://csharpindepth.com/articles/singleton
 
         //the explanation for using the singleton pattern for the gateways is because there only needs to be one instance of these
         //while the program will at some point need all the gateways, it doesn't make sense to create multiple versions of these objects.
@@ -65,7 +66,7 @@ namespace DataAccessLayer
         {
             try
             {
-                //based on code from https://docs.microsoft.com/en-us/ef/core/querying/
+                //Copied from URL: https://docs.microsoft.com/en-us/ef/core/querying/
                 using (var context = new DatabaseEntities())
                 {
                     var customerQuery = context.Customers.Where(c => c.customerID == id).SingleOrDefault();
@@ -80,7 +81,7 @@ namespace DataAccessLayer
         {
             try
             {
-                //based on code from https://docs.microsoft.com/en-us/ef/core/querying/
+                //Copied from URL: https://docs.microsoft.com/en-us/ef/core/querying/
                 using (var context = new DatabaseEntities())
                 {
                     var customerQuery = context.Customers.ToList();

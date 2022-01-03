@@ -41,6 +41,7 @@ namespace DataAccessLayer
     public sealed class OrderGateway : IOrderGateway
     {
         //Design Pattern implemented by Callum Rossiter
+        //Copied from URL: https://csharpindepth.com/articles/singleton
         //code for reference 4
         private static OrderGateway instance = null;
         private static readonly object padlock = new object();
@@ -53,6 +54,7 @@ namespace DataAccessLayer
         //reference 4 ends here.
 
         //Method for 1) reference - Updated by Callum Rossiter
+        //Copied from URL: https://stackoverflow.com/questions/20710178/entity-framework-creates-new-duplicate-entries-for-associated-objects
         public bool SaveOrder(Order order)
         {
             try
@@ -73,7 +75,7 @@ namespace DataAccessLayer
         {
             try
             {
-                //based on code from https://docs.microsoft.com/en-us/ef/core/querying/
+                //Copied from URL: https://docs.microsoft.com/en-us/ef/core/querying/
                 using (var context = new DatabaseEntities())
                 {
                     var OrderQuery = context.Orders.Where(o => o.orderID == id).SingleOrDefault();
@@ -91,7 +93,7 @@ namespace DataAccessLayer
             {
                 using (var context = new DatabaseEntities())
                 {
-                    //based on code from https://docs.microsoft.com/en-us/ef/core/querying/
+                    //Copied from URL: https://docs.microsoft.com/en-us/ef/core/querying/
                     var orderQuery = context.Orders.Where(o => o.orderID == order.orderID).SingleOrDefault();
                     orderQuery.scheduledStartDate = order.scheduledStartDate;
                     orderQuery.confirmedDeadline = order.confirmedDeadline;
@@ -108,7 +110,7 @@ namespace DataAccessLayer
         {
             try
             {
-                //based on code from https://docs.microsoft.com/en-us/ef/core/querying/
+                //Copied from URL: https://docs.microsoft.com/en-us/ef/core/querying/
                 using (var context = new DatabaseEntities())
                 {
                     var OrderQuery = context.Orders.ToList();
@@ -124,7 +126,7 @@ namespace DataAccessLayer
         {
             try
             {
-                //based on code from https://docs.microsoft.com/en-us/ef/core/querying/
+                //Copied from URL: https://docs.microsoft.com/en-us/ef/core/querying/
                 using (var context = new DatabaseEntities())
                 {
                     var OrderQuery = context.Orders.Include("Enquiry").Where(o => o.orderID == order.orderID).SingleOrDefault();
