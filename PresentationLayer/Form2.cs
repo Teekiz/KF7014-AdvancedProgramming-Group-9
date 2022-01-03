@@ -32,7 +32,6 @@ namespace PresentationLayer
         string timeHours { set; get; }
         DateTime deadline { set; get; }
         DateTime confirmedDeadline { set; get; }
-        string systemRec { get; set; }
         string orderNotes { get; set; }
         string custOrderNotes { get; set; }
         DateTime startDate { get; set; }
@@ -111,11 +110,6 @@ namespace PresentationLayer
         {
             get { return dtpMendDate.Value; }
             set { dtpMendDate.Value = value; }
-        }
-        public string systemRec
-        {
-            get { return OFMsystemrecF.Text; }
-            set { OFMsystemrecF.Text = value; }
         }
         public string orderNotes
         {
