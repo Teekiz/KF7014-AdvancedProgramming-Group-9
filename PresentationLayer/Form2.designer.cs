@@ -39,10 +39,8 @@ namespace PresentationLayer
             this.OFMaddr1F = new System.Windows.Forms.TextBox();
             this.OFNnameF = new System.Windows.Forms.TextBox();
             this.lblCustomerType = new System.Windows.Forms.Label();
-            this.OFMsystemrec = new System.Windows.Forms.Label();
             this.OFMacceptorder = new System.Windows.Forms.Label();
             this.OFMrttcF = new System.Windows.Forms.DateTimePicker();
-            this.OFMsystemrecF = new System.Windows.Forms.TextBox();
             this.OFMaoY = new System.Windows.Forms.RadioButton();
             this.OFMaoN = new System.Windows.Forms.RadioButton();
             this.OFMdateF = new System.Windows.Forms.DateTimePicker();
@@ -160,16 +158,6 @@ namespace PresentationLayer
             this.lblCustomerType.TabIndex = 31;
             this.lblCustomerType.Text = "Customer type";
             // 
-            // OFMsystemrec
-            // 
-            this.OFMsystemrec.AutoSize = true;
-            this.OFMsystemrec.BackColor = System.Drawing.Color.White;
-            this.OFMsystemrec.Location = new System.Drawing.Point(32, 504);
-            this.OFMsystemrec.Name = "OFMsystemrec";
-            this.OFMsystemrec.Size = new System.Drawing.Size(109, 13);
-            this.OFMsystemrec.TabIndex = 35;
-            this.OFMsystemrec.Text = "System Recommends";
-            // 
             // OFMacceptorder
             // 
             this.OFMacceptorder.AutoSize = true;
@@ -187,13 +175,6 @@ namespace PresentationLayer
             this.OFMrttcF.Size = new System.Drawing.Size(431, 20);
             this.OFMrttcF.TabIndex = 38;
             this.OFMrttcF.ValueChanged += new System.EventHandler(this.OFMrttcF_ValueChanged);
-            // 
-            // OFMsystemrecF
-            // 
-            this.OFMsystemrecF.Location = new System.Drawing.Point(147, 504);
-            this.OFMsystemrecF.Name = "OFMsystemrecF";
-            this.OFMsystemrecF.Size = new System.Drawing.Size(431, 20);
-            this.OFMsystemrecF.TabIndex = 41;
             // 
             // OFMaoY
             // 
@@ -509,10 +490,8 @@ namespace PresentationLayer
             this.Controls.Add(this.OFMdateF);
             this.Controls.Add(this.OFMaoN);
             this.Controls.Add(this.OFMaoY);
-            this.Controls.Add(this.OFMsystemrecF);
             this.Controls.Add(this.OFMrttcF);
             this.Controls.Add(this.OFMacceptorder);
-            this.Controls.Add(this.OFMsystemrec);
             this.Controls.Add(this.lblCustomerType);
             this.Controls.Add(this.OFMphone);
             this.Controls.Add(this.OFMaddr1);
@@ -546,10 +525,8 @@ namespace PresentationLayer
         private System.Windows.Forms.TextBox OFMaddr1F;
         private System.Windows.Forms.TextBox OFNnameF;
         private System.Windows.Forms.Label lblCustomerType;
-        private System.Windows.Forms.Label OFMsystemrec;
         private System.Windows.Forms.Label OFMacceptorder;
         private System.Windows.Forms.DateTimePicker OFMrttcF;
-        private System.Windows.Forms.TextBox OFMsystemrecF;
         private System.Windows.Forms.RadioButton OFMaoY;
         private System.Windows.Forms.RadioButton OFMaoN;
         private System.Windows.Forms.DateTimePicker OFMdateF;

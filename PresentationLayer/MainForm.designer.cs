@@ -84,7 +84,7 @@ namespace PresentationLayer
             this.MFb1.Name = "MFb1";
             this.MFb1.Size = new System.Drawing.Size(157, 76);
             this.MFb1.TabIndex = 2;
-            this.MFb1.Text = "Order";
+            this.MFb1.Text = "Order Enquiry";
             this.MFb1.UseVisualStyleBackColor = true;
             this.MFb1.Click += new System.EventHandler(this.MFb1_Click);
             // 
