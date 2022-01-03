@@ -48,7 +48,7 @@ namespace DataAccessLayer
     }
 
     // Order Items written by Callum Rossiter
-    public class OrderItems
+    public abstract class OrderItems //changed to an abstract class
     {
         public OrderItems() {}
 
