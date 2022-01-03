@@ -44,18 +44,10 @@ namespace PresentationLayer
     //Return values of customer enquiry if order number is found (functions through ManagerPresenter).
     public partial class OrderManager : Form, IOrderManager
     {
-        IEnquiryGateway enquiryGateway;
-        IOrderItemGateway orderItemGateway;
-        IOrderGateway orderGateway;
-
         private ManagerPresenter presenter;
 
         public OrderManager()
         {
-            enquiryGateway = EnquiryGateway.Instance;
-            orderItemGateway = OrderItemGateway.Instance;
-            
-            orderGateway = OrderGateway.Instance;
             InitializeComponent();
         }
 
@@ -202,10 +194,7 @@ namespace PresentationLayer
 
         private void ScheduleButton_Click(object sender, EventArgs e)
         {
-            Schedule screen = new Schedule();
-            IScheduleModel model = new ScheduleModel(orderGateway, enquiryGateway, orderItemGateway);
-            SchedulePresenter presentation = new SchedulePresenter(screen, model);
-            screen.ShowDialog();
+            presenter.openSchedule();
         }
 
         private void cmbOrderNumber_SelectedIndexChanged(object sender, EventArgs e)

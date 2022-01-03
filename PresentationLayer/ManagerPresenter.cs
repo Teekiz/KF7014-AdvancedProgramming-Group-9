@@ -52,6 +52,17 @@ namespace PresentationLayer
 
         }
 
+        public void openSchedule()
+        {
+            IEnquiryGateway enquiryGateway = EnquiryGateway.Instance;
+            IOrderItemGateway orderItemGateway = OrderItemGateway.Instance;
+            IOrderGateway orderGateway = OrderGateway.Instance;
+
+            Schedule screen = new Schedule();
+            IScheduleModel model = new ScheduleModel(orderGateway, enquiryGateway, orderItemGateway);
+            SchedulePresenter presentation = new SchedulePresenter(screen, model);
+            screen.ShowDialog();
+        }
 
         //Checks if the order number entered is present. If not, produce system message via missingInfo2().
         //If Order number is found, return enquiry.
