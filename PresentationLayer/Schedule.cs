@@ -21,7 +21,7 @@ namespace PresentationLayer
         void register(SchedulePresenter psr);
     }
 
-    public partial class Schedule : Form, ISchedule
+   public partial class Schedule : Form, ISchedule
     {
         SchedulePresenter presenter;
 

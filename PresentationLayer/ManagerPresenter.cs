@@ -190,6 +190,8 @@ namespace PresentationLayer
                 enquiry.price = price;
                 enquiry.hoursToComplete = hours;
 
+                System.Windows.Forms.MessageBox.Show(order.orderID.ToString());
+
                 //as long as the price and hours is reasonable and if the deadline is feasible
                 if (model.PriceHoursCheck(price, hours, orderItems) == true && model.CheckIfDeadlineIsFeasible(hours, screen.startDate, screen.confirmedDeadline) == true)
                 {
