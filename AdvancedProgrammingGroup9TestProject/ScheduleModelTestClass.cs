@@ -64,7 +64,6 @@ namespace AdvancedProgrammingGroup9TestProject
             order = null;
             enqid = model.GetEnquiryInOrder(order);
             Assert.AreEqual(0, enqid);
-
             
             Assert.AreEqual(true, model.UpdateEnquiry(model.GetEnquiries()[0]));
        
